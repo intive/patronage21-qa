@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharpProject", "RestSharpProject\RestSharpProject.csproj", "{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "patronage21-qa-appium", "patronage21-qa-appium\patronage21-qa-appium.csproj", "{7FFD1121-BBF8-4776-BF4E-F178301511E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +22,10 @@ Global
 		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
