@@ -13,7 +13,7 @@ RestSharp
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharpProject", "RestSharpProject\RestSharpProject.csproj", "{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}"
 master
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "patronage21-qa-appium", "patronage21-qa-appium\patronage21-qa-appium.csproj", "{7FFD1121-BBF8-4776-BF4E-F178301511E2}"
-EndProject
+Selenium
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumProject", "SeleniumProject\SeleniumProject.csproj", "{0B02F274-DF2C-4491-A508-801BDB147492}"
 EndProject
 Global
