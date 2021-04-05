@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.Enums;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -15,8 +17,7 @@ namespace patronage21_qa_appium.Steps
         [Before]
         public void Setup()
         {
-
-            var appFileName = "test-app.apk";
+            var appFileName = "Patron-a-tive.apk";
             var projectBaseDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
             var appPath = Path.Combine(projectBaseDir, @"apps/", appFileName);
 
@@ -32,23 +33,24 @@ namespace patronage21_qa_appium.Steps
         public void TearUp()
         {
             _driver.CloseApp();
-            _driver.LaunchApp();
         }
 
         [Given(@"I run app using Appium server")]
         public void GivenIRunAppUsingAppiumServer()
         {
+            _driver.LaunchApp();
         }
 
         [When(@"I wait for app to start")]
         public void WhenIWaitForAppToStart()
         {
+            Thread.Sleep(1000);
         }
 
         [Then(@"App should run")]
         public void ThenAppShouldRun()
         {
-            Assert.Pass();
+            Assert.AreEqual(AppState.RunningInForeground, _driver.GetAppState("com.intive.patronative"));
         }
     }
 }
