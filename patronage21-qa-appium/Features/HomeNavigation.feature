@@ -4,18 +4,11 @@
 https://tracker.intive.com/jira/browse/IP2-93
 
 Background: 
-	Given The app is running
-	And No action was taken
-
-# to be changed when Register will be removed from Home screen
-# Background: 
-# 	Given I am logged in
-#	And The app is running
-#	And No action was taken
+	Given I am on "Home" page 
 
 # zephyr link
-Scenario:1_HOME_PAGE_IP2-93_Home Page is a first screen seen
-	Then I am on "Home" page 
+Scenario:1_HOME_PAGE_IP2-93_Home Page displayed correctly
+	Then I see "Home" page navigation
 
 # zephyr link
 Scenario:2_HOME_PAGE_IP2-93_Home Page to Tech groups navigation
