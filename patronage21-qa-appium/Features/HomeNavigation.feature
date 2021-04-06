@@ -41,6 +41,20 @@ Scenario:HOME_PAGE_6_IP2-93_home_page_to_events_audit_navigation
 Scenario:HOME_PAGE_7_IP2-93_home_page_to_register_navigation
 	When I click on "Rejestracja" button
 	Then I am on "Register" page
+	
+# zephyr link
+Scenario:HOME_PAGE_8_IP2-93_back_to_home_page_navigation
+	And I click on "Grupy technologiczne" button
+	And I click on "Back" button
+	And I click on "Użytkownicy" button
+	And I click on "Back" button
+	And I click on "Dzienniczek" button
+	And I click on "Back" button
+	And I click on "Kalendarz" button
+	And I click on "Back" button
+	And I click on "Events audit" button
+	And I click on "Back" button
+	Then I am on "Home
 
 # to be changed, there is no ready concept
 # for breadcrumbs appearance or behaviour yet
