@@ -7,44 +7,44 @@ Background:
 	Given I am on "Home" page 
 
 # zephyr link
-Scenario:1_HOME_PAGE_IP2-93_Home Page displayed correctly
+Scenario:HOME_PAGE_1_IP2-93_home_page_displayed_correctly
 	Then I see "Home" page navigation
 
 # zephyr link
-Scenario:2_HOME_PAGE_IP2-93_Home Page to Tech groups navigation
+Scenario:HOME_PAGE_2_IP2-93_home_page_to_tech_groups_navigation
 	When I click on "Grupy technologiczne" button
 	Then I am on "Tech groups" page
 	
 # zephyr link
-Scenario:3_HOME_PAGE_IP2-93_Home Page to Users navigation
+Scenario:HOME_PAGE_3_IP2-93_home_page_to_users_navigation
 	When I click on "Użytkownicy" button
 	Then I am on "Users" page
 	
 # zephyr link
-Scenario:4_HOME_PAGE_IP2-93_Home Page to Journal navigation
+Scenario:HOME_PAGE_4_IP2-93_home_page_to_journal_navigation
 	When I click on "Dzienniczek" button
 	Then I am on "Journal" page
 	
 # zephyr link
-Scenario:5_HOME_PAGE_IP2-93_Home Page to Calendar navigation
+Scenario:HOME_PAGE_5_IP2-93_home_page_to_calendar_navigation
 	When I click on "Kalendarz" button
 	Then I am on "Calendar" page
 	
 # zephyr link
-Scenario:6_HOME_PAGE_IP2-93_Home Page to Events audit navigation
+Scenario:HOME_PAGE_6_IP2-93_home_page_to_events_audit_navigation
 	When I click on "Audyt zdarzeń" button
 	Then I am on "Events audit" page
 	
 # to be changed, in future Register page will be removed from this
 # view and set as first page seen by unregistered user
 # zephyr link?
-Scenario:7_HOME_PAGE_IP2-93_Home Page to Register navigation
+Scenario:HOME_PAGE_7_IP2-93_home_page_to_register_navigation
 	When I click on "Rejestracja" button
 	Then I am on "Register" page
 
 # to be changed, there is no ready concept
 # for breadcrumbs appearance or behaviour yet
 # zephyr link
-#Scenario:8_HOME_PAGE_IP2-93_Home Page breadcrumbs navigation to Home Page
+#Scenario:HOME_PAGE__IP2-93_home_page_breadcrumbs_navigation_to_home_page
 # 	When I click on "Strona główna" in breadcrumbs
 # 	Then I am on "Home" page 
