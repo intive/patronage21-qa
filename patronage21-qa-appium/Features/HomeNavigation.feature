@@ -52,6 +52,6 @@ Scenario:7_HOME_PAGE_IP2-93_Home Page to Register navigation
 # to be changed, there is no ready concept
 # for breadcrumbs appearance or behaviour yet
 # zephyr link
-Scenario:8_HOME_PAGE_IP2-93_Home Page breadcrumbs navigation to Home Page
-	When I click on "Strona główna" in breadcrumbs
-	Then I am on "Home" page 
+#Scenario:8_HOME_PAGE_IP2-93_Home Page breadcrumbs navigation to Home Page
+# 	When I click on "Strona główna" in breadcrumbs
+# 	Then I am on "Home" page 
