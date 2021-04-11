@@ -1,7 +1,7 @@
 ﻿Feature: Form module - sign up
 	Description
 	#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-182
-	#Task in JS Team: https://tracker.intive.com/jira/browse/IP2-99
+	#Task in JS Team: https://tracker.intive.com/jira/browse/IP2-244
 	
 Background: 
 	Given Set the Endpoint with method POST
@@ -17,7 +17,7 @@ Scenario: 1_Form_module - Send request with required data
 Scenario: 2_Form_module - Send request filling data and checking all required fields
 	Given User filled all data 
 	When User interface sends the request to API 
-	Then Successful execution and the server should status 200 return empty JSON body 
+	Then Successful execution, the server should return status 200 with empty JSON body 
 
 #url to test in zephyr
 Scenario: 3_Form_module - Send request without field 'Imię'
