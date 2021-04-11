@@ -29,17 +29,17 @@ Examples:
 	
 # zephyr link
 Scenario Outline:HOME_PAGE_3_IP2-93_back_to_home_page_navigation
-	When User click on "Grupy technologiczne" button
-	And User click on "Back" button
-	And User click on "Użytkownicy" button
-	And User click on "Back" button
-	And User click on "Dzienniczek" button
-	And User click on "Back" button
-	And User click on "Kalendarz" button
-	And User click on "Back" button
-	And User click on "Events audit" button
+	When User click on "<button_name>" button
 	And User click on "Back" button
 	Then User is on "Home" page
+
+Examples: 
+| button_name          |
+| Grupy technologiczne |
+| Użytkownicy          |
+| Dzienniczek          |
+| Kalendarz            |
+| Audyt zdarzeń        |
 
 # to be changed, there is no ready concept
 # for breadcrumbs appearance or behaviour yet
