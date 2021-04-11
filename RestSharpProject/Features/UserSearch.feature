@@ -8,10 +8,10 @@ Given URL endpoint is /api/users
 
 @mytag
 # link do testu 1 w Zephyr
-Scenario Outline: 1_Searching for the existing user by name, surname or username
+Scenario Outline: [/api/users][GET]_1_Searching for the existing user by name, surname or username
 Given Customer sets the endpoint with method GET
-And Customer enters <searchData> as a query parameter
-And <searchData> exists in the database
+And Several users exist in application
+And Customer enters valid <searchData> as a query parameter
 When Customer sends the request to the endpoint
 Then The server returns code 200 
 And JSON body contains <searchData>
@@ -22,10 +22,9 @@ Examples:
 | ?lastName=Nazwisko         |
 
 # link do testu 2 w Zephyr
-Scenario Outline: 2_Searching for the non-existing user
+Scenario Outline: [/api/users][GET]_2_Searching for the non-existing user
 Given Customer sets the endpoint with method GET
-And Customer enters <searchData> as a query parameter
-And <searchData> doesn't exist in the database
+And Customer enters invalid <searchData> as a query parameter
 When Customer sends the request to the endpoint
 Then The server returns code 400 
 And JSON body contains message "Użytkownik nie istnieje"
@@ -34,9 +33,3 @@ Examples:
 | ?username=nieznanaNazwaUzytkownika |
 | ?firstName=nieznaneImie            |
 | ?lastName=nieznaneNazwisko         |
-
-# link do testu 3 w Zephyr
-Scenario: 3_Using non-allowed methods for the endpoint
-Given Customer sets the endpoint with non-allowed method
-When Customer sends the request to the endpoint
-Then The server returns code 405
