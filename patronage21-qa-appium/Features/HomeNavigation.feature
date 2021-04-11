@@ -40,10 +40,3 @@ Examples:
 | Dzienniczek          |
 | Kalendarz            |
 | Audyt zdarzeń        |
-
-# to be changed, there is no ready concept
-# for breadcrumbs appearance or behaviour yet
-# zephyr link
-#Scenario:HOME_PAGE__IP2-93_home_page_breadcrumbs_navigation_to_home_page
-# 	When I click on "Strona główna" in breadcrumbs
-# 	Then I am on "Home" page 
