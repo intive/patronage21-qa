@@ -1,4 +1,4 @@
-﻿Feature: Form module - sign up
+Feature: Form module - sign up
 	Description
 	#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-182
 	#Task in JS Team: https://tracker.intive.com/jira/browse/IP2-244
@@ -6,7 +6,7 @@
 Background: 
 	Given Set the Endpoint with method POST
 	And Add Headers
-	
+
 #url to test in zephyr
 Scenario: 1_Form_module - Send request with required data
 	Given User filled required data
