@@ -1,4 +1,4 @@
-﻿Feature: Form module - sign up
+Feature: Form module - sign up
 	Description
 	#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-182
 	#Task in JS Team: https://tracker.intive.com/jira/browse/IP2-244
