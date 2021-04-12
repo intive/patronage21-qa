@@ -7,7 +7,7 @@ Background:
 	Given Set the Endpoint with method POST
 	And Add Headers
 	
-#url to test in zephyr 
+#url to test in zephyr
 Scenario: 1_Form_module - Send request with required data
 	Given User filled required data
 	When User interface sends the request to API

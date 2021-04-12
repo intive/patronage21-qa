@@ -26,8 +26,8 @@ Scenario Outline: [/api/users][GET]_2_Searching for the non-existing user
 Given Customer sets the endpoint with method GET
 And Customer enters invalid <searchData> as a query parameter
 When Customer sends the request to the endpoint
-Then The server returns code 400 
-And JSON body contains message "Użytkownik nie istnieje"
+Then The server returns code 200 
+And JSON body is empty
 Examples:
 | searchData                         |
 | ?username=nieznanaNazwaUzytkownika |
