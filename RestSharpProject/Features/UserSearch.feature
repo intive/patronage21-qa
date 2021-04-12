@@ -7,7 +7,7 @@ Background:
 Given URL endpoint is /api/users
 
 @mytag
-# link do testu 1 w Zephyr
+# https://tracker.intive.com/jira/browse/IP2-332
 Scenario Outline: [/api/users][GET]_1_Searching for the existing user by name, surname or username
 Given Customer sets the endpoint with method GET
 And Several users exist in application
@@ -21,7 +21,7 @@ Examples:
 | ?firstName=Imie            |
 | ?lastName=Nazwisko         |
 
-# link do testu 2 w Zephyr
+# https://tracker.intive.com/jira/browse/IP2-333
 Scenario Outline: [/api/users][GET]_2_Searching for the non-existing user
 Given Customer sets the endpoint with method GET
 And Customer enters invalid <searchData> as a query parameter
