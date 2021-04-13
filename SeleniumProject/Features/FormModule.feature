@@ -65,7 +65,14 @@ Scenario: 10_Form_module - Form with incorrect password which doesn't have one u
 	When User clicks on button 'Załóż konto'
 	Then User should see message above field 'Hasło' about missing one uppercase
 
+#zephyr link
 Scenario: 11_Form_module - Form with incorrect password wchich doesn't have one special key
-	Given user fills password field without minimum one special key
+	Given User fills password field without minimum one special key
 	When User clicks on button 'Załóż konto'
 	Then User should see message above field 'Hasło' about missing one special key
+
+#zephyr link
+Scenario: 12_Form_module - Form without chosen field 'Tytuł'
+	Given User doesn't choose 'Tytuł'
+	When User clicks on button 'Załóż konto'
+	Then User should see message above field 'Tytuł'
