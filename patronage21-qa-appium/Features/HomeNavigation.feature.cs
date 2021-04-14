@@ -35,7 +35,7 @@ namespace patronage21_qa_appium.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "HomeNavigation", "\tAs a User I want to ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "HomeNavigation", "\tUser want to be able to navigate \r\n\tthroughout the application from Home Page", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,14 +73,23 @@ namespace patronage21_qa_appium.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+#line hidden
+#line 7
+ testRunner.Given("I am on Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Home Page navigation")]
-        public virtual void HomePageNavigation()
+        [NUnit.Framework.DescriptionAttribute("HOME_PAGE_1_IP2-93_home_page_displayed_correctly")]
+        public virtual void HOME_PAGE_1_IP2_93_Home_Page_Displayed_Correctly()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Home Page navigation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("HOME_PAGE_1_IP2-93_home_page_displayed_correctly", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -100,27 +109,33 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
- testRunner.Given("I am on Home Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 6
- testRunner.When("I click on (.*)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.FeatureBackground();
 #line hidden
-#line 7
- testRunner.Then("I am on (.*)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
+ testRunner.Then("I see \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Home Page Topbar")]
-        public virtual void HomePageTopbar()
+        [NUnit.Framework.DescriptionAttribute("HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation")]
+        [NUnit.Framework.TestCaseAttribute("tech_groups", "Grupy technologiczne", "Tech groups", null)]
+        [NUnit.Framework.TestCaseAttribute("users", "Miniaturka modułu użytkowników", "Users", null)]
+        [NUnit.Framework.TestCaseAttribute("journal", "Dzienniczek", "Journal", null)]
+        [NUnit.Framework.TestCaseAttribute("calendar", "Kalendarz", "Calendar", null)]
+        [NUnit.Framework.TestCaseAttribute("events_audit", "Audyt zdarzeń", "Events audit", null)]
+        [NUnit.Framework.TestCaseAttribute("register", "Rejestracja", "Register", null)]
+        public virtual void HOME_PAGE_2_IP2_93_Home_Page_To_Destination_Navigation(string destination, string button_Name, string page_Name, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Home Page Topbar", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 9
+            argumentsOfScenario.Add("destination", destination);
+            argumentsOfScenario.Add("button_name", button_Name);
+            argumentsOfScenario.Add("page_name", page_Name);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -140,14 +155,63 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 10
- testRunner.Given("I am on Home Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+this.FeatureBackground();
 #line hidden
-#line 11
- testRunner.When("I click on (.*)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 18
+ testRunner.When(string.Format("I click on \"{0}\" button", button_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
- testRunner.Then("I am on (.*)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 19
+ testRunner.Then(string.Format("I see \"{0}\" page", page_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("HOME_PAGE_3_IP2-93_back_to_home_page_navigation")]
+        [NUnit.Framework.TestCaseAttribute("Grupy technologiczne", null)]
+        [NUnit.Framework.TestCaseAttribute("Użytkownicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Dzienniczek", null)]
+        [NUnit.Framework.TestCaseAttribute("Kalendarz", null)]
+        [NUnit.Framework.TestCaseAttribute("Audyt zdarzeń", null)]
+        public virtual void HOME_PAGE_3_IP2_93_Back_To_Home_Page_Navigation(string button_Name, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("button_name", button_Name);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("HOME_PAGE_3_IP2-93_back_to_home_page_navigation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 31
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 32
+ testRunner.When(string.Format("I click on \"{0}\" button", button_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 33
+ testRunner.And("I click on \"Back\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 34
+ testRunner.Then("I see \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
