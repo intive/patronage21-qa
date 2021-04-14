@@ -4,10 +4,9 @@
 	Task in QA Board: https://tracker.intive.com/jira/browse/IP2-190
 
 Background: 
-Given URL endpoint is /api/users
+Given Endpoint is /api/users
 
-@mytag
-# link do testu 1 w Zephyr
+# https://tracker.intive.com/jira/browse/IP2-349
 Scenario Outline: [/api/users][GET]_1_Getting list of users with given role
 Given Customer sets the endpoint with method GET
 And Several users with different roles exist in application
