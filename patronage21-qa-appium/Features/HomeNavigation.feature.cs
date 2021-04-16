@@ -78,7 +78,7 @@ namespace patronage21_qa_appium.Features
 #line 6
 #line hidden
 #line 7
- testRunner.Given("I am on Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User is on Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -113,7 +113,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 11
- testRunner.Then("I see \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User sees \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -121,12 +121,12 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation")]
-        [NUnit.Framework.TestCaseAttribute("tech_groups", "Grupy technologiczne", "Tech groups", null)]
-        [NUnit.Framework.TestCaseAttribute("users", "Użytkownicy", "Users", null)]
-        [NUnit.Framework.TestCaseAttribute("journal", "Dzienniczek", "Journal", null)]
-        [NUnit.Framework.TestCaseAttribute("calendar", "Kalendarz", "Calendar", null)]
-        [NUnit.Framework.TestCaseAttribute("events_audit", "Audyt zdarzeń", "Events audit", null)]
-        [NUnit.Framework.TestCaseAttribute("register", "Rejestracja", "Register", null)]
+        [NUnit.Framework.TestCaseAttribute("tech_groups", "Miniaturka modułu grup technologicznych", "Tech groups", null)]
+        [NUnit.Framework.TestCaseAttribute("users", "Miniaturka modułu użytkowników", "Użytkownicy", null)]
+        [NUnit.Framework.TestCaseAttribute("journal", "Miniaturka modułu dzienniczka", "Journal", null)]
+        [NUnit.Framework.TestCaseAttribute("calendar", "Miniaturka modułu kalendarza", "Calendar", null)]
+        [NUnit.Framework.TestCaseAttribute("events_audit", "Miniaturka modułu audytu zdarzeń", "Audyt zdarzeń", null)]
+        [NUnit.Framework.TestCaseAttribute("register", "Miniaturka modułu rejestracji", "Register", null)]
         public virtual void HOME_PAGE_2_IP2_93_Home_Page_To_Destination_Navigation(string destination, string button_Name, string page_Name, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -159,10 +159,10 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 18
- testRunner.When(string.Format("I click on \"{0}\" button", button_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("User clicks on \"{0}\" button", button_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
- testRunner.Then(string.Format("I see \"{0}\" page", page_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("User sees \"{0}\" page", page_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -170,11 +170,12 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("HOME_PAGE_3_IP2-93_back_to_home_page_navigation")]
-        [NUnit.Framework.TestCaseAttribute("Grupy technologiczne", null)]
-        [NUnit.Framework.TestCaseAttribute("Użytkownicy", null)]
-        [NUnit.Framework.TestCaseAttribute("Dzienniczek", null)]
-        [NUnit.Framework.TestCaseAttribute("Kalendarz", null)]
-        [NUnit.Framework.TestCaseAttribute("Audyt zdarzeń", null)]
+        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu grup technologicznych", null)]
+        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu użytkowników", null)]
+        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu dzienniczka", null)]
+        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu kalendarza", null)]
+        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu audytu zdarzeń", null)]
+        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu rejestracji", null)]
         public virtual void HOME_PAGE_3_IP2_93_Back_To_Home_Page_Navigation(string button_Name, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -205,13 +206,13 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 32
- testRunner.When(string.Format("I click on \"{0}\" button", button_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("User clicks on \"{0}\" button", button_Name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 33
- testRunner.And("I click on \"Back\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("User clicks on \"Back\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
- testRunner.Then("I see \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User sees \"Home\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -27,10 +27,15 @@ namespace patronage21_qa_appium.Steps
         }
 
         [Then(@"User sees ""(.*)"" page")]
-        public void ThenUserSeesPage(string pageId)
+        public void ThenUserSeesPage(string pageTitle)
         {
-            var page = _driver.FindElementByAccessibilityId(pageId);
-            Assert.IsTrue(page.Displayed);
+            if (pageTitle.Equals("Home"))
+            {
+                pageTitle = "Witaj w Patron-a-tive!";
+            }
+            var xpath = "//android.view.View[@text='" + pageTitle + "']";
+            var pageElement = _driver.FindElementByXPath(xpath);
+            Assert.IsTrue(pageElement.Displayed);
         }
     }
 }

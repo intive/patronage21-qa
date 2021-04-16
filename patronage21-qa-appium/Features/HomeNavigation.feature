@@ -19,13 +19,13 @@ Scenario Outline:HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation
 	Then User sees "<page_name>" page
 
 Examples: 
-| destination  | button_name          | page_name    |
-| tech_groups  | Grupy technologiczne | Tech groups  |
-| users        | Użytkownicy		  | Users		 |
-| journal      | Dzienniczek          | Journal      |
-| calendar     | Kalendarz            | Calendar     |
-| events_audit | Audyt zdarzeń        | Events audit |
-| register     | Rejestracja          | Register     |
+| destination  | button_name                              | page_name             |       
+| tech_groups  | Miniaturka modułu grup technologicznych  | Grupy technologiczne  |
+| users        | Miniaturka modułu użytkowników		      | Użytkownicy		      |
+| journal      | Miniaturka modułu dzienniczka            | Dzienniczek           |
+| calendar     | Miniaturka modułu kalendarza             | Kalendarz             |
+| events_audit | Miniaturka modułu audytu zdarzeń         | Audyt zdarzeń         |
+| register     | Miniaturka modułu rejestracji            | Rejestracja           |
 	
 # https://tracker.intive.com/jira/browse/IP2-336
 Scenario Outline:HOME_PAGE_3_IP2-93_back_to_home_page_navigation
@@ -34,9 +34,10 @@ Scenario Outline:HOME_PAGE_3_IP2-93_back_to_home_page_navigation
 	Then User sees "Home" page
 
 Examples: 
-| button_name          |
-| Grupy technologiczne |
-| Użytkownicy          |
-| Dzienniczek          |
-| Kalendarz            |
-| Audyt zdarzeń        |
+| button_name                             |
+| Miniaturka modułu grup technologicznych |
+| Miniaturka modułu użytkowników          |
+| Miniaturka modułu dzienniczka           |
+| Miniaturka modułu kalendarza            |
+| Miniaturka modułu audytu zdarzeń        |
+| Miniaturka modułu rejestracji           |
