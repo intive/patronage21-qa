@@ -26,7 +26,7 @@ namespace patronage21_qa_appium.Steps
         }
 
         [AfterScenario]
-        public void TearUp()
+        public void TearDown()
         {
             _driver.CloseApp();
         }

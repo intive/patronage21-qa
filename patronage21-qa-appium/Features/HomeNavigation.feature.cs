@@ -122,7 +122,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation")]
         [NUnit.Framework.TestCaseAttribute("tech_groups", "Grupy technologiczne", "Tech groups", null)]
-        [NUnit.Framework.TestCaseAttribute("users", "Miniaturka modułu użytkowników", "Users", null)]
+        [NUnit.Framework.TestCaseAttribute("users", "Użytkownicy", "Users", null)]
         [NUnit.Framework.TestCaseAttribute("journal", "Dzienniczek", "Journal", null)]
         [NUnit.Framework.TestCaseAttribute("calendar", "Kalendarz", "Calendar", null)]
         [NUnit.Framework.TestCaseAttribute("events_audit", "Audyt zdarzeń", "Events audit", null)]

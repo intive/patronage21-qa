@@ -6,14 +6,14 @@ namespace patronage21_qa_appium.Steps
     [Binding]
     public class HomeNavigationSteps : BaseSteps
     {
-        [Given(@"I am on Home page")]
-        public void GivenIAmOnHomePage()
+        [Given(@"User is on Home page")]
+        public void GivenUserIsOnHomePage()
         {
             _driver.LaunchApp();
         }
 
-        [When(@"I click on ""(.*)"" button")]
-        public void WhenIClickOnButton(string buttonId)
+        [When(@"User clicks on ""(.*)"" button")]
+        public void WhenUserClickskOnButton(string buttonId)
         {
             if (buttonId.Equals("Back"))
             {
@@ -26,8 +26,8 @@ namespace patronage21_qa_appium.Steps
             }
         }
 
-        [Then(@"I see ""(.*)"" page")]
-        public void ThenISeePage(string pageId)
+        [Then(@"User sees ""(.*)"" page")]
+        public void ThenUserSeesPage(string pageId)
         {
             var page = _driver.FindElementByAccessibilityId(pageId);
             Assert.IsTrue(page.Displayed);
