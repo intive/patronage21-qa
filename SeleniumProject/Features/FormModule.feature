@@ -35,29 +35,35 @@ Scenario: 5_Form_module - Form with required data but 'Telefon komórkowy' is in
 	When User clicks on the button Załóż konto
 	Then User should see that field Telefon komórkowy is inccorect
 
+#zephyr link 
+Scenario: 6_Form_module - Form with required data with too short 'Telefon komórkowy'
+	Given User fills too short phone number
+	When User clicks on the button Załóż konto
+	Then User should see error message about too short phone number
+
 #zephyr link
-Scenario: 6_Form_module - Form filled with unchecked fields: 'JavaScript,Java,QA,Mobile'
+Scenario: 7_Form_module - Form filled with unchecked fields: 'JavaScript,Java,QA,Mobile'
 	Given User fills required data
 	And User doesn't check fields about technology groups
 	When User clicks on the button Załóż konto
 	Then User should see error message about unchecked technology groups
 	
 #zephyr link 
-Scenario: 7_Form_module - Form filled with checked all fields: 'JavaScript,Java,QA,Mobile'
+Scenario: 8_Form_module - Form filled with checked all fields: 'JavaScript,Java,QA,Mobile'
 	Given User fills required data 
 	And User checks all fields about technology grups
 	When User clicks on the button Załóż konto
 	Then User should see error message about checked too many technology groups
 
 #zephyr link 
-Scenario: 8_Form_module - Form with checked three fields: 'JavaScript,Java,QA,Mobile'
+Scenario: 9_Form_module - Form with checked three fields: 'JavaScript,Java,QA,Mobile'
 	Given User fills required data 
 	And User checks three technology groups
 	When User clicks on the button Załóż konto
 	Then User should be on site about e-mail verification 
 
 #zephyr link 
-Scenario: 9_Form_module - Form with incorrect field 'Powtórz hasło'
+Scenario: 10_Form_module - Form with incorrect field 'Powtórz hasło'
 	Given User fills required data 
 	And User repeats password incorrect in field Powtórz hasło
 	When User clicks on the button Załóż konto
@@ -71,37 +77,37 @@ Scenario: 10_Form_module - Form with incorrect password which is too short
 	Then User should see message about password is too short
 
 #zephyr link 
-Scenario: 11_Form_module - Form with incorrect password which doesn't have one uppercase
+Scenario: 12_Form_module - Form with incorrect password which doesn't have one uppercase
 	Given User fills passowrd field without minimum one uppercase
 	When User clicks on the button Załóż konto
 	Then User should see message about missing one uppercase
 
 #zephyr link
-Scenario: 12_Form_module - Form with incorrect password which doesn't have one special key
+Scenario: 13_Form_module - Form with incorrect password which doesn't have one special key
 	Given User fills password field without minimum one special key
 	When User clicks on the button Załóż konto
 	Then User should see message about missing one special key
 
 #zephyr link
-Scenario: 13_Form_module - Form without checked field 'Regulamin'
+Scenario: 14_Form_module - Form without checked field 'Regulamin'
 	Given User fills required data 
 	When Users doesn't check field Regulamin
 	Then The button should be inactive
 
 #zephyr link
-Scenario: 14_Form_module - Form with incorrect field 'Github link'
+Scenario: 15_Form_module - Form with incorrect field 'Github link'
 	Given 
 	When 
 	Then 
 
 #zephyr link
-Scenario: 15_Form_module - Form with too short 'Login'
-	Given 
-	When 
-	Then 
+Scenario: 16_Form_module - Form with too short 'Login'
+	Given User fills too short login
+	When User clicks on the button Załóż konto
+	Then User should see error message about incorrect Login
 
 #zephyr link
-Scenario: 16_Form_module - Form with too long 'Login'
-	Given 
-	When 
-	Then 
+Scenario: 17_Form_module - Form with too long 'Login'
+	Given User fills too long login
+	When User clicks on the button Załóż konto
+	Then User should see error message about incorrect Login
