@@ -96,9 +96,9 @@ Scenario: 14_Form_module - Form without checked field 'Regulamin'
 
 #zephyr link
 Scenario: 15_Form_module - Form with incorrect field 'Github link'
-	Given 
-	When 
-	Then 
+	Given User fills field with random letters
+	When User clicks on the button Załóż konto
+	Then User should see error message about incorrect Github link
 
 #zephyr link
 Scenario: 16_Form_module - Form with too short 'Login'
