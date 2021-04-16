@@ -37,8 +37,9 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@");
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -49,8 +50,9 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@");
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -61,51 +63,98 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", null, "Kowalski", email, "123456789", "randomPassword@");
+            user = new UserData("man", null, "Kowalski", email, "123456789", "randomPassword@", technologies);
             ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data but without field Nazwisko")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataButWithoutFieldNazwisko()
         {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("man", "Jan", null, email, "123456789", "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data but without field Adres e-mail")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataButWithoutFieldAdresE_Mail()
         {
-            ScenarioContext.Current.Pending();
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("man", "Jan", "Kowalski", null, "123456789", "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data but without field Numer telefonu")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataButWithoutField()
         {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, null, "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data without checked fields: JavaScript, Java, QA, Mobile")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataWithoutCheckedFieldsJavaScriptJavaQAMobile()
         {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data with checking all about technology groups")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataWithCheckingAllAboutTechnologyGroups()
         {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[4] { "Java", "QA", "JavaScript", "Mobile" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data with checking one field about technology groups")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataWithCheckingOneFieldAboutTechnologyGroups()
         {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "QA" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data with checking three fields from Technologie")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataWithCheckingThreeFieldsFromTechnologie()
         {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data without fields: Hasło and Powtórz hasło")]
@@ -121,23 +170,40 @@ namespace RestSharpProject.Steps
         }
         
         [Given(@"User filled required data without field Hasło")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataWithoutField()
         {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Given(@"User filled required data without field Zgoda obowiązkowa")]
-        public void GivenUserFilledRequiredDataWithoutFieldZgodaObowiazkowa()
-        {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "QA" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", null, technologies);
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled request to API without data")]
+        [Obsolete]
         public void GivenUserFilledRequestToAPIWithoutData()
         {
-            ScenarioContext.Current.Pending();
+            user = new UserData(null, null, null, null, null, null, null);
+            ScenarioContext.Current.Add("user", user);
         }
-        
+
+        [Given(@"User filled request to API with too long phone number")]
+        [Obsolete]
+        public void GivenUserFilledRequestToAPIWithTooLongPhoneNumber()
+        {
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string[] technologies = new string[1] { "QA" };
+            string wrongPhoneNumber = "1234567890";
+
+            user = new UserData("man", "Jan", "Kowalski", email, wrongPhoneNumber, "randomPassword@", technologies);
+            ScenarioContext.Current.Add("user", user);
+        }
+
         [When(@"User interface sends the request to API")]
         [Obsolete]
         public void WhenUserInterfaceSendsTheRequestToAPI()
@@ -164,67 +230,79 @@ namespace RestSharpProject.Steps
         [Then(@"The server should return status 400 and JSON body with message about missing field Nazwisko")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldNazwisko()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about missing field Adres e-mail")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldAdresE_Mail()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about missing field Numer telefonu")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldNumerTelefonu()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about unchecked fields: JavaScript, Java, QA, Mobile")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutUncheckedFieldsJavaScriptJavaQAMobile()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about too many technology groups checked")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutTooManyTechnologyGroupsChecked()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should execute request and return status 200 and empty JSON body")]
         public void ThenTheServerShouldExecuteRequestAndReturnStatusAndEmptyJSONBody()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about missing fields: Hasło and Powtórz hasło")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldsHasloAndPowtorzHaslo()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about missing field Powtórz hasło")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldPowtorzHaslo()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about missing field Hasło")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldHaslo()
         {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about unmarked field Zgoda obowiązkowa")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutUnmarkedFieldZgodaObowiazkowa()
-        {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
         [Then(@"The server should return status 400 and JSON body with message about missing data")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingData()
         {
-            ScenarioContext.Current.Pending();
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
+
+        [Then(@"The server should return status 400 and JSON body with message about incorrect phone number")]
+        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutIncorrectPhoneNumber()
+        {
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
+        }
+
     }
 }

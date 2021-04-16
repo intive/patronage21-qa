@@ -15,7 +15,9 @@ namespace RestSharpProject.Models
         string Phone { get; set; }
         string Password { get; set; }
 
-        public UserData(string gender, string name, string surname, string email, string phone, string password)
+        string[] arrayOfTechnologies = new string[3];
+
+        public UserData(string gender, string name, string surname, string email, string phone, string password, string[] technologies)
         {
             this.Gender = gender;
             this.Name = name;
@@ -23,6 +25,7 @@ namespace RestSharpProject.Models
             this.Email = email;
             this.Phone = phone;
             this.Password = password;
+            this.arrayOfTechnologies = technologies;
         }
     }
 }

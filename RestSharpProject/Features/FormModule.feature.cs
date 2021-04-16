@@ -658,12 +658,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("14_Form_module - Send request without marked field \'Zgoda obowiązkowa\'")]
-        public virtual void _14_Form_Module_SendRequestWithoutMarkedFieldZgodaObowiazkowa()
+        [NUnit.Framework.DescriptionAttribute("14_Form_module - Send request with empty form")]
+        public virtual void _14_Form_Module_SendRequestWithEmptyForm()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("14_Form_module - Send request without marked field \'Zgoda obowiązkowa\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("14_Form_module - Send request with empty form", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 89
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -688,27 +688,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 90
- testRunner.Given("User filled required data without field Zgoda obowiązkowa", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User filled request to API without data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 91
- testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 92
- testRunner.Then("The server should return status 400 and JSON body with message about unmarked fie" +
-                        "ld Zgoda obowiązkowa", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The server should return status 400 and JSON body with message about missing data" +
+                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("15_Form_module - Send request with empty form")]
-        public virtual void _15_Form_Module_SendRequestWithEmptyForm()
+        [NUnit.Framework.DescriptionAttribute("15_Form_module - Send request with too long phone number")]
+        public virtual void _15_Form_Module_SendRequestWithTooLongPhoneNumber()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("15_Form_module - Send request with empty form", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 95
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("15_Form_module - Send request with too long phone number", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 94
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -731,12 +728,15 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
+#line 95
+ testRunner.Given("User filled request to API with too long phone number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 96
- testRunner.Given("User filled request to API without data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 97
- testRunner.Then("The server should return status 400 and JSON body with message about missing data" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The server should return status 400 and JSON body with message about incorrect ph" +
+                        "one number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

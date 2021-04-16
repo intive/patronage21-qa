@@ -85,13 +85,13 @@ Scenario: 13_Form_module - Send request without password field but with field 'P
 	When User interface sends the request to API
 	Then The server should return status 400 and JSON body with message about missing field Hasło
 
-#url to test in zephyr 
-Scenario: 14_Form_module - Send request without marked field 'Zgoda obowiązkowa'
-	Given User filled required data without field Zgoda obowiązkowa
-	When User interface sends the request to API
-	Then The server should return status 400 and JSON body with message about unmarked field Zgoda obowiązkowa
-
 #url to test in zephyr
-Scenario: 15_Form_module - Send request with empty form
+Scenario: 14_Form_module - Send request with empty form
 	Given User filled request to API without data
 	Then The server should return status 400 and JSON body with message about missing data
+
+#url to test in zephyr
+Scenario: 15_Form_module - Send request with too long phone number
+	Given User filled request to API with too long phone number
+	When User interface sends the request to API
+	Then The server should return status 400 and JSON body with message about incorrect phone number
