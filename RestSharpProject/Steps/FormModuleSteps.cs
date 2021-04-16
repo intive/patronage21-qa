@@ -112,9 +112,8 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
-            string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", null);
             ScenarioContext.Current.Add("user", user);
         }
         
