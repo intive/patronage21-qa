@@ -51,7 +51,7 @@ Scenario: 7_Form_module - Send request without marked fields: 'JavaScript, Java,
 
 #url to test in zephyr
 Scenario: 8_Form_module - Send request marking all fields about technology groups
-	Given User filled required data with checking all about technology groups
+	Given User filled required data with checking all technology groups
 	When User interface sends the request to API
 	Then The server should return status 400 and JSON body with message about too many technology groups checked
 
@@ -68,19 +68,19 @@ Scenario: 10_Form_module - Send request marking three fields from 'Technologie'
 	Then The server should execute request and return status 200 and empty JSON body
 
 #url to test in zephyr
-Scenario: 11_Form_module - Send request without fields: 'Hasło' and 'Powtórz hasło'
-	Given User filled required data without fields: Hasło and Powtórz hasło
+Scenario: 11_Form_module - Send request without fields: 'Github link'
+	Given User filled required data without field github link
 	When User interface sends the request to API
-	Then The server should return status 400 and JSON body with message about missing fields: Hasło and Powtórz hasło
+	Then The server should return status 400 and JSON body with message about incorrect github link
 
 #url to test in zephyr
-Scenario: 12_Form_module - Send request without repeated password field
-	Given User filled required data without field Powtórz hasło
-	When User interface sends the request to API
-	Then The server should return status 400 and JSON body with message about missing field Powtórz hasło
+#Scenario: 12_Form_module - Send request without field 'Login'
+#	Given User filled required data without login
+#	When User interface sends the request to API
+#	Then The server should return status 400 and JSON body with message about incorrect login
 
 #url to test in zephyr
-Scenario: 13_Form_module - Send request without password field but with field 'Powtórz hasło'
+Scenario: 13_Form_module - Send request without password field
 	Given User filled required data without field Hasło
 	When User interface sends the request to API
 	Then The server should return status 400 and JSON body with message about missing field Hasło
@@ -95,3 +95,20 @@ Scenario: 15_Form_module - Send request with too long phone number
 	Given User filled request to API with too long phone number
 	When User interface sends the request to API
 	Then The server should return status 400 and JSON body with message about incorrect phone number
+
+#zephyr link
+Scenario: 16_Form_module - Form with incorrect field 'Github link'
+	Given User fills field github link with random letters
+	When User interface sends the request to API
+	Then The server should return status 400 and JSON body with message about incorrect github link
+
+#zephyr link
+#Scenario: 17_Form_module - Form with too short 'Login'
+#	Given User fills too short login
+#	When User interface sends the request to API
+#	Then The server should return status 400 and JSON body with message about incorrect login
+#zephyr link
+#Scenario: 18_Form_module - Form with too long 'Login'
+#	Given User fills too long login
+#	When User interface sends the request to API
+#	Then The server should return status 400 and JSON body with message about incorrect login

@@ -37,9 +37,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -50,9 +52,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -63,9 +67,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", null, "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", null, "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -76,9 +82,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", null, email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", null, email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -86,9 +94,11 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequiredDataButWithoutFieldAdresE_Mail()
         {
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", null, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", null, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -99,9 +109,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, null, "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, null, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -112,21 +124,25 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", null);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", null, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
-        [Given(@"User filled required data with checking all about technology groups")]
+        [Given(@"User filled required data with checking all technology groups")]
         [Obsolete]
         public void GivenUserFilledRequiredDataWithCheckingAllAboutTechnologyGroups()
         {
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[4] { "Java", "QA", "JavaScript", "Mobile" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -137,9 +153,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -150,22 +168,26 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
-        [Given(@"User filled required data without fields: Hasło and Powtórz hasło")]
+        [Given(@"User filled required data without field github link")]
+        [Obsolete]
         public void GivenUserFilledRequiredDataWithoutFieldsHasloAndPowtorzHaslo()
         {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Given(@"User filled required data without field Powtórz hasło")]
-        public void GivenUserFilledRequiredDataWithoutFieldPowtorzHaslo()
-        {
-            ScenarioContext.Current.Pending();
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
+
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, null, "randomPassword@");
+            ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data without field Hasło")]
@@ -175,9 +197,11 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", null, technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, null);
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -185,7 +209,7 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequestToAPIWithoutData()
         {
-            user = new UserData(null, null, null, null, null, null, null);
+            user = new UserData(null, null, null, null, null, null, null, null, null);
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -196,10 +220,28 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
             string wrongPhoneNumber = "1234567890";
 
-            user = new UserData("man", "Jan", "Kowalski", email, wrongPhoneNumber, "randomPassword@", technologies);
+            user = new UserData("man", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
+            ScenarioContext.Current.Add("user", user);
+        }
+
+        [Given(@"User fills field github link with random letters")]
+        [Obsolete]
+        public void GivenUserFillsFieldWithRandomLetters()
+        {
+            rand = new Random();
+
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string githubLink = "qazbji";
+            string[] technologies = new string[1] { "QA" };
+            string wrongPhoneNumber = "1234567890";
+
+            user = new UserData("man", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -268,15 +310,8 @@ namespace RestSharpProject.Steps
             Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
         
-        [Then(@"The server should return status 400 and JSON body with message about missing fields: Hasło and Powtórz hasło")]
+        [Then(@"The server should return status 400 and JSON body with message about incorrect github link")]
         public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldsHasloAndPowtorzHaslo()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing field Powtórz hasło")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldPowtorzHaslo()
         {
             restResponse = (RestResponse)restClient.Execute(restRequest);
             Assert.AreEqual(400, (int)restResponse.StatusCode);
