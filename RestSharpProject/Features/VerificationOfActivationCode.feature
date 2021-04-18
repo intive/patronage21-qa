@@ -1,0 +1,46 @@
+﻿Feature: Verification of activation code
+	Endpoint should allow us to verify the email adress with correct code and activate account.
+
+	# Link QA: https://tracker.intive.com/jira/browse/IP2-181
+	# Link JS: https://tracker.intive.com/jira/browse/IP2-292
+	# Link JS: https://tracker.intive.com/jira/browse/IP2-136
+
+Background:
+Given Endpoint is set
+
+@ignore
+#manual test
+# Link do Testu_1 w Zephyr
+Scenario: Registation_form_1_IP2-292 - Email is positively verified
+	Given User is in data base
+	And is not activated
+	When Client enters the code and User ID
+	And the request is sent to API
+	Then Verification is succesfull, 
+	And return Status is 200
+	And User is activated
+
+
+# Link do Testu_2 w Zephyr
+Scenario: Registation_form_2_IP2-292 - Email cannot be verified
+	Given User is in data base
+	And is not activated
+	When Client enters false code and the User ID
+	And the request is sent to API
+	Then Verification is not succesfull 
+	And return Status is 409
+
+# Link do Testu_3 w Zephyr
+Scenario: Registation_form_3_IP2-292 - User cannot be verified
+	When Client enters a code and not existing User ID
+	And the request is sent to API
+	Then Verification is not succesfull 
+	And return Status is 409
+
+#link do testu 4 w Zephyr
+Scenario: Registation_form_4_IP2-292 - User cannot be activated twice 
+Given User is activated
+When Client enters previously used code and the User ID
+And the request is sent to API  
+Then Verification is not succesfull 
+And return Status is 409 
