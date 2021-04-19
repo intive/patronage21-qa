@@ -11,7 +11,7 @@ Given Endpoint is set
 @ignore
 #manual test
 # Link do Testu_1 w Zephyr
-Scenario: Registation_form_1_IP2-292 - Email is positively verified
+Scenario: REGISTRATION_FORM_1_IP2-292_Email_is_positively_verified
 	Given User is in data base
 	And is not activated
 	When Client enters the code and User ID
@@ -22,7 +22,7 @@ Scenario: Registation_form_1_IP2-292 - Email is positively verified
 
 
 # Link do Testu_2 w Zephyr
-Scenario: Registation_form_2_IP2-292 - Email cannot be verified
+Scenario: REGISTRATION_FORM_2_IP2-292_Email_cannot_be_verified_with_invalid_code
 	Given User is in data base
 	And is not activated
 	When Client enters false code and the User ID
@@ -31,16 +31,25 @@ Scenario: Registation_form_2_IP2-292 - Email cannot be verified
 	And return Status is 409
 
 # Link do Testu_3 w Zephyr
-Scenario: Registation_form_3_IP2-292 - User cannot be verified
+Scenario: REGISTRATION_FORM_3_IP2-292_User_cannot_be_verified
 	When Client enters a code and not existing User ID
 	And the request is sent to API
 	Then Verification is not succesfull 
 	And return Status is 409
 
 #link do testu 4 w Zephyr
-Scenario: Registation_form_4_IP2-292 - User cannot be activated twice 
-Given User is activated
-When Client enters previously used code and the User ID
-And the request is sent to API  
-Then Verification is not succesfull 
-And return Status is 409 
+Scenario: REGISTRATION_FORM_4_IP2-292_User_cannot_be_activated_twice 
+	Given User is activated
+	When Client enters previously used code and the User ID
+	And the request is sent to API  
+	Then Verification is not succesfull 
+	And return Status is 409 
+
+#link do testu 5 w Zephyr
+Scenario: REGISTRATION_FORM_5_IP2-292_Email_cannot_be_verified_with_improper_code_(too_short_or_too_long_or_with_wrong_charakters)
+	Given User is in data base
+	And is not activated
+	When Client enters improper code and the User ID
+	And the request is sent to API
+	Then Verification is not succesfull 
+	And return Status is 400
