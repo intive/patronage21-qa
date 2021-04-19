@@ -12,54 +12,54 @@ And User clicks the <Edytuj profil> button
 Scenario: 1_Editing user description 
 Given User edits his user description 
 When user clicks on the <bio> field 
-And User is writing his description  
+And User is writing his description and clicks <enter> button 
 Then The user description is saved 
 
 # link to Zephyr test
-Scenario: 2_Correct edition of the project
+Scenario: 2_Correct selection of the project to which the user belongs 
 Given User changes the project 
 When User clicks on the <Projekt> field 
 And User selects and clicks his correct project 
-Then Project has been changed correctly
+Then Project has been changed successfully
 
 # link to Zephyr test
 Scenario: 3_Correct edition of the email address
 Given User changes email adress
 When User clicks on the <adres email> field
-And User writes a valid email address 
-Then The address has been changed correctly
+And User writes a valid email address and clicks <enter> button
+Then The address has been changed successfully
 
 # link to Zephyr test
 Scenario: 4_Incorrect email address change 
 Given User changes email adress
 When User clicks on the  <adres email>  field
-And User writes email address without @  
-Then An error appears 
+And User writes email address without @ and clicks <enter> button
+Then The message invalid email address appears
 
 # link to Zephyr test
 Scenario: 5_Correct edition of the phone number
 Given User changes phone number
 When  User clicks on the  <numer telefonu>  field
-And User writes a valid phone number 
-Then The phone number has been changed correctly
+And User writes a valid phone number and clicks <enter> button
+Then The phone number has been changed successfully
 
 # link to Zephyr test
 Scenario: 6_Incorrect phone number change 
 Given User changes phone number
 When  User clicks on the <phone number> field
-And User writes more or less than 9 numbers  
-Then An error appears 
+And User writes more or less than 9 numbers and clicks <enter> button 
+Then The message invalid phone number appears
 
 # link to Zephyr test
 Scenario: 7_Correct ediotion  of the github link 
 Given User changes github link 
 When User clicks on the <link do github> field
-And User writes a valid github link 
-Then Github link has been changed correctly
+And User writes a valid github link and clicks <enter> button
+Then Github link has been changed successfully
 
 # link to Zephyr test
 Scenario: 8_Incorrect github link change 
 Given User changes github link 
 When User clicks on the <link do github> field
-And User writes an incorrect link 
-Then An error appears
+And User writes an incorrect link and clicks <enter> button 
+Then The message invalid link github appears
