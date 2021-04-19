@@ -7,7 +7,7 @@
 #FYI there will be other ticket related to this issue, please enclose link
 
 #https://tracker.intive.com/jira/browse/IP2-303
-Scenario: Module Error Page_1-IP2-137 - User should be able to go back to main site
+Scenario: ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_main_site
 	Given User is on "Wystąpił błąd" site
 	When User clicks "Strona główna" button
 	Then User is tranferred to main site
