@@ -3,7 +3,7 @@
 
 # QA: https://tracker.intive.com/jira/browse/IP2-166
 # JS: https://tracker.intive.com/jira/browse/IP2-135
-#FYI there will be other ticket related to this issue, please enclose link
+# JS: https://tracker.intive.com/jira/browse/IP2-295
 
 Background:
 Given User is on registration site
