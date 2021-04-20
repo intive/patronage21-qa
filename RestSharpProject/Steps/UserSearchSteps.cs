@@ -6,8 +6,8 @@ namespace RestSharpProject.Steps
     [Binding]
     public class UserSearchSteps
     {
-        [Given(@"URL endpoint is /api/users")]
-        public void GivenURLEndpointIsApiUsers()
+        [Given(@"endpoint is /api/users")]
+        public void GivenEndpointIsApiUsers()
         {
             ScenarioContext.Current.Pending();
         }
@@ -18,32 +18,38 @@ namespace RestSharpProject.Steps
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"Customer enters \?userName=nazwaUzytkownika as a query parameter")]
-        public void GivenCustomerEntersUserNameNazwaUzytkownikaAsAQueryParameter()
+        [Given(@"Several users exist in application")]
+        public void GivenSeveralUsersExistInApplication()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"\?userName=nazwaUzytkownika exists in the database")]
-        public void GivenUserNameNazwaUzytkownikaExistsInTheDatabase()
+        [Given(@"Customer enters valid \?userName=TomNowak")]
+        public void GivenCustomerEntersValidUserNameTomNowak()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"Customer enters \?username=nieznanaNazwaUzytkownika as a query parameter")]
-        public void GivenCustomerEntersUsernameNieznanaNazwaUzytkownikaAsAQueryParameter()
+        [Given(@"User with first name ""(.*)"" and last name ""(.*)"" exists in application")]
+        public void GivenUserWithFirstNameAndLastNameExistsInApplication(string p0, string p1)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"\?username=nieznanaNazwaUzytkownika doesn't exist in the database")]
-        public void GivenUsernameNieznanaNazwaUzytkownikaDoesnTExistInTheDatabase()
+        [Given(@"Customer enters ""(.*)"" as a query")]
+        public void GivenCustomerEntersAsAQuery(string p0)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"Customer sets the endpoint with non-allowed method")]
-        public void GivenCustomerSetsTheEndpointWithNon_AllowedMethod()
+        [Given(@"Customer enters invalid \?username=nieznanaNazwa as a query")]
+        public void GivenCustomerEntersInvalidUsernameNieznanaNazwaAsAQuery()
+        {
+            ScenarioContext.Current.Pending();
+        }
+        
+        [Given(@"Customer enters valid \?username= as the query parameter")]
+        public void GivenCustomerEntersValidUsernameAsTheQueryParameter()
         {
             ScenarioContext.Current.Pending();
         }
@@ -54,20 +60,44 @@ namespace RestSharpProject.Steps
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"The server returns code (.\d+)")]
-        public void ThenTheServerReturnsCode(int responseCode)
+        [When(@"Customer sends the request without any value in the query")]
+        public void WhenCustomerSendsTheRequestWithoutAnyValueInTheQuery()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"JSON body contains \?userName=nazwaUzytkownika")]
-        public void ThenJSONBodyContainsUserNameNazwaUzytkownika()
+        [Then(@"The server returns code (.*)")]
+        public void ThenTheServerReturnsCode(int p0)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"JSON body contains message ""(.+)""")]
-        public void ThenJSONBodyContainsMessage(string errorMessage)
+        [Then(@"JSON body contains ""(.*)"": ""(.*)""")]
+        public void ThenJSONBodyContains(string p0, string p1)
+        {
+            ScenarioContext.Current.Pending();
+        }
+        
+        [Then(@"JSON body contains (.*) and (.*)")]
+        public void ThenJSONBodyContainsAnd(string p0, string p1)
+        {
+            ScenarioContext.Current.Pending();
+        }
+        
+        [Then(@"JSON body contains (.*)")]
+        public void ThenJSONBodyContains(string p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+        
+        [Then(@"Error message is shown")]
+        public void ThenErrorMessageIsShown()
+        {
+            ScenarioContext.Current.Pending();
+        }
+        
+        [Then(@"JSON contains empty array")]
+        public void ThenJSONContainsEmptyArray()
         {
             ScenarioContext.Current.Pending();
         }
