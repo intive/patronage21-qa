@@ -184,7 +184,11 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequestToAPIWithTooLongPhoneNumber()
         {
-            string user = "";
+            string[] technologies = new string[1] { "QA" };
+            int longPhoneNumber = 1234567890;
+
+            user = new UserData("Pan", "Jan", "Kowalski", email, longPhoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -192,7 +196,11 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequestToAPIWithTooShortPhoneNumber()
         {
-            string user = "";
+            string[] technologies = new string[1] { "Mobile" };
+            int shortPhoneNumber = 12345678;
+
+            user = new UserData("Pani", "Dorota", "Kowalska", email, shortPhoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -200,7 +208,11 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFillsFieldGithubLinkWithRandomLetters()
         {
-            string user = "";
+            string[] technologies = new string[1] { "QA" };
+            string githubLinkWithRandomLetters = "qazxswedc";
+
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLinkWithRandomLetters);
+
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -208,23 +220,33 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFillsTooLongFirstName()
         {
-            string user = "";
-            ScenarioContext.Current.Add("user", user);
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("Pan", "PrzykładBardzoDługiegoImienia", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+
+            ScenarioContext.Current.Add("user", user); ;
         }
         
         [Given(@"User fills too long last name")]
         [Obsolete]
         public void GivenUserFillsTooLongLastName()
         {
-            string user = "";
-            ScenarioContext.Current.Add("user", user);
+            string[] technologies = new string[1] { "JS" };
+
+            user = new UserData("Pan", "Jan", "PrzykładBardzoDługiegoNazwiska", email, phoneNumber, technologies, password, login, githubLink);
+
+            ScenarioContext.Current.Add("user", user); ;
         }
         
         [Given(@"User fills incorrect email")]
         [Obsolete]
         public void GivenUserFillsIncorrectEmail()
         {
-            string user = "";
+            string[] technologies = new string[1] { "QA" };
+            string incorrectEmail = "exampleWrongEmail.com";
+
+            user = new UserData("Pani", "Dorota", "Kowalska", incorrectEmail, phoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -232,15 +254,22 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFillsIncorrectPassword()
         {
-            string user = "";
-            ScenarioContext.Current.Add("user", user);
+            string[] technologies = new string[1] { "Mobile" };
+            string wrongPassword = "wrongpassword";
+
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, wrongPassword, login, githubLink);
+
+            ScenarioContext.Current.Add("user", user); ;
         }
 
         [Given(@"User fills email which is not unique")]
         [Obsolete]
         public void GivenUserFillsNotUniqueEmail()
         {
-            string user = "";
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -248,7 +277,10 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFillsNotUniqueLogin()
         {
-            string user = "";
+            string[] technologies = new string[1] { "Java" };
+
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -275,20 +307,20 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void ThenTheServerShouldReturnPositiveStatus()
         {
-            //restResponse = (RestResponse)restClient.Execute(restRequest);
-            //Assert.AreEqual(200, (int)restResponse.StatusCode);
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(200, (int)restResponse.StatusCode);
 
-            //ScenarioContext.Current.Add("response", restResponse.Content);
+            ScenarioContext.Current.Add("response", restResponse.Content);
         }
 
         [Then(@"JSON body without sensitive data")]
         [Obsolete]
         public void ThenJSONBodyWithoutSensitiveData()
         {
-            //var responseContent = ScenarioContext.Current["response"].ToString();
-            //JObject parseRestResponse = JObject.Parse(responseContent);
-            //string jsonHasFieldPassword = (string)parseRestResponse["password"];
-            //Assert.AreEqual(null, jsonHasFieldPassword);
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+            string jsonHasFieldPassword = (string)parseRestResponse["password"];
+            Assert.AreEqual(null, jsonHasFieldPassword);
         }
 
         [Then(@"The server should return status 400")]
@@ -305,20 +337,20 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void ThenJSONBodyWithMessageAboutMissingFieldImie()
         {
-            //var responseContent = ScenarioContext.Current["response"].ToString();
-            //JObject parseRestResponse = JObject.Parse(responseContent);
-            //string resposneErrorAboutFirstName = (string)parseRestResponse["fields"]["firstName"];
-            //Assert.AreNotEqual("Imie jest wymagane", resposneErrorAboutFirstName);
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+            string resposneErrorAboutFirstName = (string)parseRestResponse["fields"]["firstName"][0];
+            Assert.AreNotEqual("{Imie jest wymagane}", resposneErrorAboutFirstName);
         }
         
         [Then(@"JSON body with message about missing field Nazwisko")]
         [Obsolete]
         public void ThenJSONBodyWithMessageAboutMissingFieldNazwisko()
         {
-            //var responseContent = ScenarioContext.Current["response"].ToString();
-            //JObject parseRestResponse = JObject.Parse(responseContent);
-            //string resposneErrorAboutLastName = (string)parseRestResponse["fields"]["lastName"];
-            //Assert.AreNotEqual("Nazwisko jest wymagane", resposneErrorAboutLastName);
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+            string resposneErrorAboutLastName = (string)parseRestResponse["fields"]["lastName"][0];
+            Assert.AreNotEqual("{Nazwisko jest wymagane}", resposneErrorAboutLastName);
         }
         
         [Then(@"JSON body with message about missing field Adres e-mail")]
