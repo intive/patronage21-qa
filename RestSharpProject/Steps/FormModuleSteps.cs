@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Newtonsoft.Json;
+using NUnit.Framework;
 using RestSharp;
 using RestSharpProject.Models;
 using System;
@@ -16,7 +17,7 @@ namespace RestSharpProject.Steps
         Random rand;
         UserData user;
 
-        [Given(@"Set the Endpoint with method POST")]
+        [Given(@"Endpoint is /api/register")]
         public void GivenSetTheEndpointWithMethodPOST()
         {
             restClient = new RestClient();
@@ -37,11 +38,12 @@ namespace RestSharpProject.Steps
             rand = new Random();
 
             string email = $"example{rand.Next(0, 10000)}@email.com";
+            int phoneNumber = 123456789;
             string login = $"exampleLogin{rand.Next(0, 10000)}";
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, "randomPassword@", login, githubLink);
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -56,7 +58,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -71,7 +73,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", null, "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", null, "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -86,7 +88,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", null, email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", null, email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -98,7 +100,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", null, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", null, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -113,7 +115,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, null, technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 0, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -127,7 +129,7 @@ namespace RestSharpProject.Steps
             string login = $"exampleLogin{rand.Next(0, 10000)}";
             string githubLink = "https://github.com";
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", null, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, null, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -142,7 +144,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[4] { "Java", "QA", "JavaScript", "Mobile" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -157,7 +159,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -172,7 +174,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -186,7 +188,7 @@ namespace RestSharpProject.Steps
             string login = $"exampleLogin{rand.Next(0, 10000)}";
             string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, null, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, null, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -201,7 +203,7 @@ namespace RestSharpProject.Steps
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
 
-            user = new UserData("man", "Jan", "Kowalski", email, "123456789", technologies, login, githubLink, null);
+            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, null);
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -209,7 +211,7 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequestToAPIWithoutData()
         {
-            user = new UserData(null, null, null, null, null, null, null, null, null);
+            user = new UserData(null, null, null, null, 0, null, null, null, null);
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -223,9 +225,9 @@ namespace RestSharpProject.Steps
             string login = $"exampleLogin{rand.Next(0, 10000)}";
             string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
-            string wrongPhoneNumber = "1234567890";
+            int wrongPhoneNumber = 1234567890;
 
-            user = new UserData("man", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -239,25 +241,32 @@ namespace RestSharpProject.Steps
             string login = $"exampleLogin{rand.Next(0, 10000)}";
             string githubLink = "qazbji";
             string[] technologies = new string[1] { "QA" };
-            string wrongPhoneNumber = "1234567890";
+            int wrongPhoneNumber = 1234567890;
 
-            user = new UserData("man", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
+
+        [Given(@"User filled request to API with too short phone number")]
+        public void GivenUserFilledRequestToAPIWithTooShortPhoneNumber()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
 
         [When(@"User interface sends the request to API")]
         [Obsolete]
         public void WhenUserInterfaceSendsTheRequestToAPI()
         {
             var body = ScenarioContext.Current["user"];
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.AddBody(body);
+            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(new { body }), ParameterType.RequestBody);
         }
         
         [Then(@"The server should return status 200 with empty JSON body")]
         public void ThenTheServerShouldReturnStatusWithEmptyJSONBody()
         {
             restResponse = (RestResponse)restClient.Execute(restRequest);
+            Console.WriteLine(restResponse.Content);
             Assert.AreEqual(200, (int)restResponse.StatusCode);
         }
         
