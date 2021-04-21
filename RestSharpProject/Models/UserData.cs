@@ -8,32 +8,55 @@ namespace RestSharpProject.Models
 {
     public class UserData
     {
-        string Title { get; set; }
-        string Name { get; set; }
-        string Surname { get; set; }
-        string Email { get; set; }
-        int Phone { get; set; }
+        public string title { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string email { get; set; }
+        public int phone { get; set; }
 
-        string[] arrayOfTechnologies = new string[3];
+        public string[] technologies = new string[3];
 
-        string Password { get; set; }
+        public string password { get; set; }
 
-        string Login { get; set; }
+        public string login { get; set; }
 
-        string GithubLink { get; set; }
+        public string githubLink { get; set; }
 
 
-        public UserData(string title, string name, string surname, string email, int phone, string[] technologies, string password, string login, string githubLink)
+        public UserData(string title, string name, string surname, string email, int phone, string[] technology, string password, string login, string githubLink)
         {
-            this.Title = title;
-            this.Name = name;
-            this.Surname = surname;
-            this.Email = email;
-            this.Phone = phone;         
-            this.arrayOfTechnologies = technologies;
-            this.Password = password;
-            this.Login = login;
-            this.GithubLink = githubLink;
+            this.title = title;
+            this.firstName = name;
+            this.lastName = surname;
+            this.email = email;
+            this.phone = phone;         
+            this.technologies = technology;
+            this.password = password;
+            this.login = login;
+            this.githubLink = githubLink;
+        }
+
+        public static string GenerateEmailAdress()
+        {
+            Random rand = new Random();
+            string email = $"example{rand.Next(0, 10000)}@email.com";
+
+            return email;
+        }
+
+        public static string GenerateLogin()
+        {
+            Random rand = new Random();
+            string login = $"exampleLogin{rand.Next(0, 10000)}";
+
+            return login;
+        }
+
+        public static string GenerateGithubLink()
+        {
+            Random rand = new Random();
+            string githubLink = "https://github.com/example" + $"{rand.Next(0, 10000)}";
+            return githubLink;
         }
     }
 }

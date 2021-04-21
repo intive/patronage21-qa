@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
 using RestSharpProject.Models;
 using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace RestSharpProject.Steps
@@ -14,11 +16,17 @@ namespace RestSharpProject.Steps
         RestClient restClient;
         RestRequest restRequest;
         RestResponse restResponse;
-        Random rand;
         UserData user;
 
+        string email = UserData.GenerateEmailAdress();
+        string login = UserData.GenerateLogin();
+        string githubLink = UserData.GenerateGithubLink();
+
+        int phoneNumber = 123456789;
+        string password = "randomPassword@";
+
         [Given(@"Endpoint is /api/register")]
-        public void GivenSetTheEndpointWithMethodPOST()
+        public void GivenEndpointIsApiRegister()
         {
             restClient = new RestClient();
             restRequest = new RestRequest(urlPostRegistration, Method.POST);
@@ -34,117 +42,87 @@ namespace RestSharpProject.Steps
         [Given(@"User filled required data")]
         [Obsolete]
         public void GivenUserFilledRequiredData()
-        {
-            rand = new Random();
-
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            int phoneNumber = 123456789;
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
+        {      
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, "randomPassword@", login, githubLink);
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
-        
+
         [Given(@"User filled all data")]
         [Obsolete]
         public void GivenUserFilledAllData()
         {
-            rand = new Random();
+            string[] technologies = new string[3] { "Java", "QA", "JS" };
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
+            user = new UserData("Pani", "Dorota", "Kowalska", email, phoneNumber, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
-        
-        [Given(@"User filled required data but without field Imię")]
+
+        [Given(@"User filled required data but without data in field Imię")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataButWithoutFieldImie()
+        public void GivenUserFilledRequiredDataButWithoutDataInFieldImie()
         {
-            rand = new Random();
+            string[] technologies = new string[1] { "QA" };
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[1] { "Java" };
+            user = new UserData("Pan", "", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", null, "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
-        
-        [Given(@"User filled required data but without field Nazwisko")]
+
+        [Given(@"User filled required data but without data in field Nazwisko")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataButWithoutFieldNazwisko()
+        public void GivenUserFilledRequiredDataButWithoutDataInFieldNazwisko()
         {
-            rand = new Random();
+            string[] technologies = new string[1] { "JS" };
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[1] { "Java" };
+            user = new UserData("Pani", "Dorota", "", email, phoneNumber, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", "Jan", null, email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
-        
-        [Given(@"User filled required data but without field Adres e-mail")]
+
+        [Given(@"User filled required data but without data in field Adres e-mail")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataButWithoutFieldAdresE_Mail()
+        public void GivenUserFilledRequiredDataButWithoutDataInFieldAdresE_Mail()
         {
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[1] { "Java" };
+            string[] technologies = new string[1] { "QA" };
 
-            user = new UserData("Pan", "Jan", "Kowalski", null, 123456789, technologies, login, githubLink, "randomPassword@");
+            user = new UserData("Pan", "Jan", "Kowalski", "", phoneNumber, technologies, password, login, githubLink);
+
             ScenarioContext.Current.Add("user", user);
         }
-        
-        [Given(@"User filled required data but without field Numer telefonu")]
+
+        [Given(@"User filled required data but without data in field Numer telefonu")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataButWithoutField()
+        public void GivenUserFilledRequiredDataButWithoutDataInFieldNumerTelefonu()
         {
-            rand = new Random();
+            string[] technologies = new string[1] { "JS" };
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[1] { "Java" };
+            user = new UserData("Pani", "Dorota", "Kowalska", email, 0, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, 0, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
-        
+
         [Given(@"User filled required data without checked fields: JavaScript, Java, QA, Mobile")]
         [Obsolete]
         public void GivenUserFilledRequiredDataWithoutCheckedFieldsJavaScriptJavaQAMobile()
         {
-            rand = new Random();
+            string[] technologies = new string[3];
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, null, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
         [Given(@"User filled required data with checking all technology groups")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataWithCheckingAllAboutTechnologyGroups()
+        public void GivenUserFilledRequiredDataWithCheckingAllTechnologyGroups()
         {
-            rand = new Random();
+            string[] technologies = new string[4] { "JS", "Java", "QA", "Mobile" };
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[4] { "Java", "QA", "JavaScript", "Mobile" };
+            user = new UserData("Pani", "Dorota", "Kowalska", email, 0, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -152,14 +130,9 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequiredDataWithCheckingOneFieldAboutTechnologyGroups()
         {
-            rand = new Random();
-
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
         
@@ -167,51 +140,43 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequiredDataWithCheckingThreeFieldsFromTechnologie()
         {
-            rand = new Random();
+            string[] technologies = new string[3] { "JS", "QA", "Java" };
 
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
+            user = new UserData("Pani", "Dorota", "Kowalska", email, phoneNumber, technologies, password, login, githubLink);
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, "randomPassword@");
             ScenarioContext.Current.Add("user", user);
         }
-        
-        [Given(@"User filled required data without field github link")]
+
+        [Given(@"User filled required data without data in field github link")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataWithoutFieldsHasloAndPowtorzHaslo()
+        public void GivenUserFilledRequiredDataWithoutDataInFieldGithubLink()
         {
-            rand = new Random();
-
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string[] technologies = new string[3] { "Java", "QA", "JavaScript" };
-
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, null, "randomPassword@");
-            ScenarioContext.Current.Add("user", user);
-        }
-        
-        [Given(@"User filled required data without field Hasło")]
-        [Obsolete]
-        public void GivenUserFilledRequiredDataWithoutField()
-        {
-            rand = new Random();
-
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
             string[] technologies = new string[1] { "QA" };
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, 123456789, technologies, login, githubLink, null);
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, "");
+
             ScenarioContext.Current.Add("user", user);
         }
-        
-        [Given(@"User filled request to API without data")]
+
+        [Given(@"User filled required data without data in field Hasło")]
         [Obsolete]
-        public void GivenUserFilledRequestToAPIWithoutData()
+        public void GivenUserFilledRequiredDataWithoutDataInFieldHaslo()
         {
-            user = new UserData(null, null, null, null, 0, null, null, null, null);
+            string[] technologies = new string[1] { "JS" };
+
+            user = new UserData("Pani", "Dorota", "Kowalska", email, phoneNumber, technologies, "", login, githubLink);
+
+            ScenarioContext.Current.Add("user", user);
+        }
+
+        [Given(@"User didn't fill data")]
+        [Obsolete]
+        public void GivenUserDidnTFillData()
+        {
+            string[] technologies = new string[1];
+
+            user = new UserData("", "", "", "", 0, technologies, "", "", "");
+
             ScenarioContext.Current.Add("user", user);
         }
 
@@ -219,133 +184,229 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequestToAPIWithTooLongPhoneNumber()
         {
-            rand = new Random();
-
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "https://github.com";
-            string[] technologies = new string[1] { "QA" };
-            int wrongPhoneNumber = 1234567890;
-
-            user = new UserData("Pan", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
+            string user = "";
             ScenarioContext.Current.Add("user", user);
         }
-
-        [Given(@"User fills field github link with random letters")]
-        [Obsolete]
-        public void GivenUserFillsFieldWithRandomLetters()
-        {
-            rand = new Random();
-
-            string email = $"example{rand.Next(0, 10000)}@email.com";
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
-            string githubLink = "qazbji";
-            string[] technologies = new string[1] { "QA" };
-            int wrongPhoneNumber = 1234567890;
-
-            user = new UserData("Pan", "Jan", "Kowalski", email, wrongPhoneNumber, technologies, login, githubLink, "randomPassword@");
-            ScenarioContext.Current.Add("user", user);
-        }
-
+        
         [Given(@"User filled request to API with too short phone number")]
+        [Obsolete]
         public void GivenUserFilledRequestToAPIWithTooShortPhoneNumber()
         {
-            ScenarioContext.Current.Pending();
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+        
+        [Given(@"User fills field github link with random letters")]
+        [Obsolete]
+        public void GivenUserFillsFieldGithubLinkWithRandomLetters()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+        
+        [Given(@"User fills too long first name")]
+        [Obsolete]
+        public void GivenUserFillsTooLongFirstName()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+        
+        [Given(@"User fills too long last name")]
+        [Obsolete]
+        public void GivenUserFillsTooLongLastName()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+        
+        [Given(@"User fills incorrect email")]
+        [Obsolete]
+        public void GivenUserFillsIncorrectEmail()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+        
+        [Given(@"User fills incorrect password")]
+        [Obsolete]
+        public void GivenUserFillsIncorrectPassword()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
         }
 
+        [Given(@"User fills email which is not unique")]
+        [Obsolete]
+        public void GivenUserFillsNotUniqueEmail()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+
+        [Given(@"User fills login which is not unique")]
+        [Obsolete]
+        public void GivenUserFillsNotUniqueLogin()
+        {
+            string user = "";
+            ScenarioContext.Current.Add("user", user);
+        }
+
+        [Given(@"User filled required data but without data about title")]
+        [Obsolete]
+        public void GivenUserFilledRequiredDataButWithoutDataAboutTitle()
+        {
+            string[] technologies = new string[1] { "Mobile" };
+
+            user = new UserData("", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+
+            ScenarioContext.Current.Add("user", user);
+        }
 
         [When(@"User interface sends the request to API")]
         [Obsolete]
         public void WhenUserInterfaceSendsTheRequestToAPI()
         {
             var body = ScenarioContext.Current["user"];
-            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(new { body }), ParameterType.RequestBody);
+            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(body), ParameterType.RequestBody);
         }
         
-        [Then(@"The server should return status 200 with empty JSON body")]
-        public void ThenTheServerShouldReturnStatusWithEmptyJSONBody()
+        [Then(@"The server should return positive status 200")]
+        [Obsolete]
+        public void ThenTheServerShouldReturnPositiveStatus()
         {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Console.WriteLine(restResponse.Content);
-            Assert.AreEqual(200, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing field Imię")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldImie()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing field Nazwisko")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldNazwisko()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing field Adres e-mail")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldAdresE_Mail()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing field Numer telefonu")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldNumerTelefonu()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about unchecked fields: JavaScript, Java, QA, Mobile")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutUncheckedFieldsJavaScriptJavaQAMobile()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about too many technology groups checked")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutTooManyTechnologyGroupsChecked()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should execute request and return status 200 and empty JSON body")]
-        public void ThenTheServerShouldExecuteRequestAndReturnStatusAndEmptyJSONBody()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about incorrect github link")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldsHasloAndPowtorzHaslo()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing field Hasło")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingFieldHaslo()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
-        }
-        
-        [Then(@"The server should return status 400 and JSON body with message about missing data")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutMissingData()
-        {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
+            //restResponse = (RestResponse)restClient.Execute(restRequest);
+            //Assert.AreEqual(200, (int)restResponse.StatusCode);
+
+            //ScenarioContext.Current.Add("response", restResponse.Content);
         }
 
-        [Then(@"The server should return status 400 and JSON body with message about incorrect phone number")]
-        public void ThenTheServerShouldReturnStatusAndJSONBodyWithMessageAboutIncorrectPhoneNumber()
+        [Then(@"JSON body without sensitive data")]
+        [Obsolete]
+        public void ThenJSONBodyWithoutSensitiveData()
+        {
+            //var responseContent = ScenarioContext.Current["response"].ToString();
+            //JObject parseRestResponse = JObject.Parse(responseContent);
+            //string jsonHasFieldPassword = (string)parseRestResponse["password"];
+            //Assert.AreEqual(null, jsonHasFieldPassword);
+        }
+
+        [Then(@"The server should return status 400")]
+        [Obsolete]
+        public void ThenTheServerShouldReturnStatus_BadRequest()
         {
             restResponse = (RestResponse)restClient.Execute(restRequest);
             Assert.AreEqual(400, (int)restResponse.StatusCode);
+
+            ScenarioContext.Current.Add("response", restResponse.Content);
         }
 
+        [Then(@"JSON body with message about missing field Imię")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutMissingFieldImie()
+        {
+            //var responseContent = ScenarioContext.Current["response"].ToString();
+            //JObject parseRestResponse = JObject.Parse(responseContent);
+            //string resposneErrorAboutFirstName = (string)parseRestResponse["fields"]["firstName"];
+            //Assert.AreNotEqual("Imie jest wymagane", resposneErrorAboutFirstName);
+        }
+        
+        [Then(@"JSON body with message about missing field Nazwisko")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutMissingFieldNazwisko()
+        {
+            //var responseContent = ScenarioContext.Current["response"].ToString();
+            //JObject parseRestResponse = JObject.Parse(responseContent);
+            //string resposneErrorAboutLastName = (string)parseRestResponse["fields"]["lastName"];
+            //Assert.AreNotEqual("Nazwisko jest wymagane", resposneErrorAboutLastName);
+        }
+        
+        [Then(@"JSON body with message about missing field Adres e-mail")]
+        public void ThenJSONBodyWithMessageAboutMissingFieldAdresE_Mail()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about missing field Numer telefonu")]
+        public void ThenJSONBodyWithMessageAboutMissingFieldNumerTelefonu()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about unchecked fields: JavaScript, Java, QA, Mobile")]
+        public void ThenJSONBodyWithMessageAboutUncheckedFieldsJavaScriptJavaQAMobile()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about too many technology groups checked")]
+        public void ThenJSONBodyWithMessageAboutTooManyTechnologyGroupsChecked()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about incorrect github link")]
+        public void ThenJSONBodyWithMessageAboutIncorrectGithubLink()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about missing field Hasło")]
+        public void ThenJSONBodyWithMessageAboutMissingFieldHaslo()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about missing data")]
+        public void ThenJSONBodyWithMessageAboutMissingData()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about incorrect phone number")]
+        public void ThenJSONBodyWithMessageAboutIncorrectPhoneNumber()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about incorrect first name")]
+        public void ThenJSONBodyWithMessageAboutIncorrectFirstName()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about incorrect last name")]
+        public void ThenJSONBodyWithMessageAboutIncorrectLastName()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about incorrect email")]
+        public void ThenJSONBodyWithMessageAboutIncorrectEmail()
+        {
+            
+        }
+        
+        [Then(@"JSON body with message about incorrect password")]
+        public void ThenJSONBodyWithMessageAboutIncorrectPassword()
+        {
+            
+        }
+
+        [Then(@"JSON body with message about incorrect login")]
+        public void ThenJSONBodyWithMessageAboutIncorrectLogin()
+        {
+            
+        }
+
+        [Then(@"JSON body with message about incorrect title")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutIncorrectTitle()
+        {
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+            var resposneErrorAboutFirstName = parseRestResponse["fields"]["title"][0];
+            Assert.AreNotEqual("{Niedozwolona wartość}", resposneErrorAboutFirstName);
+        }
     }
 }
