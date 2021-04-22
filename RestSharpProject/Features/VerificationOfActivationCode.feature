@@ -30,14 +30,14 @@ Scenario: REGISTRATION_FORM_2_IP2-292_Email_cannot_be_verified_with_invalid_code
 	And the request is sent to API
 	Then Verification is not successful 
 	And return Status is 409
-	And JSON  body contains status "Bledny kod"
+	And JSON  body contains status 'Bledny kod'
 
 # Link do Testu_3 w Zephyr
 Scenario: REGISTRATION_FORM_3_IP2-292_User_cannot_be_verified
 	When Client enters a code and not existing User ID
 	And the request is sent to API
 	Then Verification is not successful 
-	And JSON  body contains status "Uzytkownik nie istnieje"
+	And JSON  body contains status 'Uzytkownik nie istnieje'
 	And return Status is 404
 
 #link do testu 4 w Zephyr
@@ -47,7 +47,7 @@ Scenario: REGISTRATION_FORM_4_IP2-292_User_cannot_be_activated_twice
 	And the request is sent to API  
 	Then Verification is not successful 
 	And return Status is 409 
-	And JSON  body contains status "Uzytkownik jest juz aktywny"
+	And JSON  body contains status 'Uzytkownik jest juz aktywny'
 
 #link do testu 5 w Zephyr
 Scenario: REGISTRATION_FORM_5_IP2-292_Email_cannot_be_verified_with_improper_code_(too_short_or_too_long_or_with_wrong_charakters)
@@ -56,5 +56,6 @@ Scenario: REGISTRATION_FORM_5_IP2-292_Email_cannot_be_verified_with_improper_cod
 	When Client enters improper code and the User ID
 	And the request is sent to API
 	Then Verification is not successful 
-	And return Status is 409
+	And return Status is 400
+	And JSON  body contains status 'Nieudana rejestracja'
 	
