@@ -21,7 +21,7 @@ Scenario Outline:HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation
 Examples: 
 | destination  | button_name                              | page_name             |       
 | tech_groups  | Miniaturka modułu grup technologicznych  | Grupy technologiczne  |
-| users        | Miniaturka modułu użytkowników		      | Użytkownicy		      |
+| users        | Miniaturka modułu użytkowników		  | Użytkownicy		  |
 | journal      | Miniaturka modułu dzienniczka            | Dzienniczek           |
 | calendar     | Miniaturka modułu kalendarza             | Kalendarz             |
 | events_audit | Miniaturka modułu audytu zdarzeń         | Audyt zdarzeń         |
