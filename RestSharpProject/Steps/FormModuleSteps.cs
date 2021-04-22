@@ -4,7 +4,6 @@ using NUnit.Framework;
 using RestSharp;
 using RestSharpProject.Models;
 using System;
-using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace RestSharpProject.Steps
@@ -121,7 +120,7 @@ namespace RestSharpProject.Steps
         {
             string[] technologies = new string[4] { "JS", "Java", "QA", "Mobile" };
 
-            user = new UserData("Pani", "Dorota", "Kowalska", email, 0, technologies, password, login, githubLink);
+            user = new UserData("Pani", "Dorota", "Kowalska", email, phoneNumber, technologies, password, login, githubLink);
 
             ScenarioContext.Current.Add("user", user);
         }
@@ -396,7 +395,7 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["technologies"][0].ToString();
             var errorAboutTechnologies = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Proszę wybrać conajmniej jedną technologię", errorAboutTechnologies);
+            Assert.That(errorAboutTechnologies, Is.EqualTo("Proszę wybrać conajmniej jedną technologię"));
         }
         
         [Then(@"JSON body with message about too many technology groups checked")]
@@ -408,8 +407,8 @@ namespace RestSharpProject.Steps
 
             var takeErrorFromResponse = parseRestResponse["fields"]["technologies"][0].ToString();
             var errorAboutTechnologies = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
-
-            Assert.AreEqual("Proszę wybrać maksymanie trzy technologie", errorAboutTechnologies);
+            
+            Assert.That(errorAboutTechnologies, Is.EqualTo("Proszę wybrać maksymanie trzy technologie"));
         }
         
         [Then(@"JSON body with message about incorrect github link")]
@@ -422,7 +421,7 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["githubLink"][0].ToString();
             var errorAboutGithubLink = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Niepoprawny link", errorAboutGithubLink);
+            Assert.That(errorAboutGithubLink, Is.EqualTo("Niepoprawny link"));
         }
         
         [Then(@"JSON body with message about empty field Hasło")]
@@ -435,13 +434,19 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["password"][0].ToString();
             var errorAboutPassword = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Hasło musi składać się z co najmniej ośmiu znaków", errorAboutPassword);
+            Assert.That(errorAboutPassword, Is.EqualTo("Hasło musi składać się z co najmniej ośmiu znaków"));
         }
         
         [Then(@"JSON body with message about missing data")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutMissingData()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"];
+
+            Assert.That(takeErrorFromResponse, Is.Not.EqualTo(null));
         }
 
         [Then(@"JSON body with error message about too long phone number")]
@@ -454,7 +459,7 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["phone"][0].ToString();
             var errorAboutPhone = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Numer jest za długi", errorAboutPhone);
+            Assert.That(errorAboutPhone, Is.EqualTo("Numer jest za długi"));
         }
 
         [Then(@"JSON body with error message about too short phone number")]
@@ -467,7 +472,7 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["phone"][0].ToString();
             var errorAboutPhone = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Numer jest za krótki", errorAboutPhone);
+            Assert.That(errorAboutPhone, Is.EqualTo("Numer jest za krótki"));
         }
 
         [Then(@"JSON body with error message about too long first name")]
@@ -480,7 +485,7 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["firstName"][0].ToString();
             var errorAboutFirstName = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Imię jest za długie", errorAboutFirstName);
+            Assert.That(errorAboutFirstName, Is.EqualTo("Imię jest za długie"));
         }
 
         [Then(@"JSON body with error message about too long last name")]
@@ -493,7 +498,7 @@ namespace RestSharpProject.Steps
             var takeErrorFromResponse = parseRestResponse["fields"]["lastName"][0].ToString();
             var errorAboutLastName = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
 
-            Assert.AreEqual("Nazwisko jest za długie", errorAboutLastName);
+            Assert.That(errorAboutLastName, Is.EqualTo("Nazwisko jest za długie"));
         }
 
         [Then(@"JSON body with message about incorrect email")]
