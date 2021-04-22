@@ -86,12 +86,12 @@ namespace RestSharpProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_1_IP-182_send_request_with_required_data")]
-        public virtual void Form_Module_ApiRegister_POST_1_IP_182_Send_Request_With_Required_Data()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_1_IP-244_send_request_with_required_data")]
+        public virtual void FORM_MODULE_ApiRegister_POST_1_IP_244_Send_Request_With_Required_Data()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_1_IP-182_send_request_with_required_data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_1_IP-244_send_request_with_required_data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -132,13 +132,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_2_IP-182_send_request_filling_data_and_checkin" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_2_IP-244_send_request_filling_data_and_checkin" +
             "g_all_required_fields")]
-        public virtual void Form_Module_ApiRegister_POST_2_IP_182_Send_Request_Filling_Data_And_Checking_All_Required_Fields()
+        public virtual void FORM_MODULE_ApiRegister_POST_2_IP_244_Send_Request_Filling_Data_And_Checking_All_Required_Fields()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_2_IP-182_send_request_filling_data_and_checkin" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_2_IP-244_send_request_filling_data_and_checkin" +
                     "g_all_required_fields", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 18
 this.ScenarioInitialize(scenarioInfo);
@@ -180,13 +180,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_3_IP-182_send_request_without_data_in_field_\'I" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_3_IP-244_send_request_without_data_in_field_\'I" +
             "mię\'")]
-        public virtual void Form_Module_ApiRegister_POST_3_IP_182_Send_Request_Without_Data_In_Field_Imie()
+        public virtual void FORM_MODULE_ApiRegister_POST_3_IP_244_Send_Request_Without_Data_In_Field_Imie()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_3_IP-182_send_request_without_data_in_field_\'I" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_3_IP-244_send_request_without_data_in_field_\'I" +
                     "mię\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 25
 this.ScenarioInitialize(scenarioInfo);
@@ -221,20 +221,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 29
- testRunner.And("JSON body with message about missing field Imię", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about empty field Imię", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_4_IP-182_send_request_without_data_in_field_\'N" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_4_IP-244_send_request_without_data_in_field_\'N" +
             "azwisko\'")]
-        public virtual void Form_Module_ApiRegister_POST_4_IP_182_Send_Request_Without_Data_In_Field_Nazwisko()
+        public virtual void FORM_MODULE_ApiRegister_POST_4_IP_244_Send_Request_Without_Data_In_Field_Nazwisko()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_4_IP-182_send_request_without_data_in_field_\'N" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_4_IP-244_send_request_without_data_in_field_\'N" +
                     "azwisko\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 32
 this.ScenarioInitialize(scenarioInfo);
@@ -269,20 +269,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 36
- testRunner.And("JSON body with message about missing field Nazwisko", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about empty field Nazwisko", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_5_IP-182_send_request_without_data_in_field_\'A" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_5_IP-244_send_request_without_data_in_field_\'A" +
             "dres e-mail\'")]
-        public virtual void Form_Module_ApiRegister_POST_5_IP_182_Send_Request_Without_Data_In_Field_AdresE_Mail()
+        public virtual void FORM_MODULE_ApiRegister_POST_5_IP_244_Send_Request_Without_Data_In_Field_AdresE_Mail()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_5_IP-182_send_request_without_data_in_field_\'A" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_5_IP-244_send_request_without_data_in_field_\'A" +
                     "dres e-mail\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 39
 this.ScenarioInitialize(scenarioInfo);
@@ -317,21 +317,19 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 43
- testRunner.And("JSON body with message about missing field Adres e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about empty field Adres e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_6_IP-182_send_request_without_data_in_field_\'N" +
-            "umer telefonu\'")]
-        public virtual void Form_Module_ApiRegister_POST_6_IP_182_Send_Request_Without_Data_In_Field_NumerTelefonu()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_6_IP-244_send_request_with_empty_field_login")]
+        public virtual void FORM_MODULE_ApiRegister_POST_6_IP_244_Send_Request_With_Empty_Field_Login()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_6_IP-182_send_request_without_data_in_field_\'N" +
-                    "umer telefonu\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_6_IP-244_send_request_with_empty_field_login", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 46
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -356,7 +354,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 47
- testRunner.Given("User filled required data but without data in field Numer telefonu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User filled required data without data in field login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 48
  testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -365,20 +363,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 50
- testRunner.And("JSON body with message about missing field Numer telefonu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about incorrect login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_7_IP-182_send_request_without_checked_fields:_" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_7_IP-244_send_request_without_checked_fields:_" +
             "\'JavaScript, Java, QA, Mobile\'")]
-        public virtual void Form_Module_ApiRegister_POST_7_IP_182_Send_Request_Without_Checked_Fields_JavaScriptJavaQAMobile()
+        public virtual void FORM_MODULE_ApiRegister_POST_7_IP_244_Send_Request_Without_Checked_Fields_JavaScriptJavaQAMobile()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_7_IP-182_send_request_without_checked_fields:_" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_7_IP-244_send_request_without_checked_fields:_" +
                     "\'JavaScript, Java, QA, Mobile\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 53
 this.ScenarioInitialize(scenarioInfo);
@@ -420,13 +418,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_8_IP-182_send_request_marking_all_fields_about" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_marking_all_fields_about" +
             "_technology_groups")]
-        public virtual void Form_Module_ApiRegister_POST_8_IP_182_Send_Request_Marking_All_Fields_About_Technology_Groups()
+        public virtual void FORM_MODULE_ApiRegister_POST_8_IP_244_Send_Request_Marking_All_Fields_About_Technology_Groups()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_8_IP-182_send_request_marking_all_fields_about" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_marking_all_fields_about" +
                     "_technology_groups", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 60
 this.ScenarioInitialize(scenarioInfo);
@@ -468,13 +466,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_9_IP-182_send_request_marking_only_one_field_f" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_9_IP-244_send_request_marking_only_one_field_f" +
             "rom_\'Technologie\'")]
-        public virtual void Form_Module_ApiRegister_POST_9_IP_182_Send_Request_Marking_Only_One_Field_From_Technologie()
+        public virtual void FORM_MODULE_ApiRegister_POST_9_IP_244_Send_Request_Marking_Only_One_Field_From_Technologie()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_9_IP-182_send_request_marking_only_one_field_f" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_9_IP-244_send_request_marking_only_one_field_f" +
                     "rom_\'Technologie\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 67
 this.ScenarioInitialize(scenarioInfo);
@@ -516,13 +514,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_10_IP-182_send_request_marking_three_fields_fr" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_10_IP-244_send_request_marking_three_fields_fr" +
             "om_\'Technologie\'")]
-        public virtual void Form_Module_ApiRegister_POST_10_IP_182_Send_Request_Marking_Three_Fields_From_Technologie()
+        public virtual void FORM_MODULE_ApiRegister_POST_10_IP_244_Send_Request_Marking_Three_Fields_From_Technologie()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_10_IP-182_send_request_marking_three_fields_fr" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_10_IP-244_send_request_marking_three_fields_fr" +
                     "om_\'Technologie\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 74
 this.ScenarioInitialize(scenarioInfo);
@@ -564,13 +562,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_11_IP-182_send_request_without_data_in_field_\'" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_11_IP-244_send_request_without_data_in_field_\'" +
             "Github link\'")]
-        public virtual void Form_Module_ApiRegister_POST_11_IP_182_Send_Request_Without_Data_In_Field_GithubLink()
+        public virtual void FORM_MODULE_ApiRegister_POST_11_IP_244_Send_Request_Without_Data_In_Field_GithubLink()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_11_IP-182_send_request_without_data_in_field_\'" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_11_IP-244_send_request_without_data_in_field_\'" +
                     "Github link\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 81
 this.ScenarioInitialize(scenarioInfo);
@@ -612,13 +610,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_12_IP-182_send_request_without_data_in_passwor" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_12_IP-244_send_request_without_data_in_passwor" +
             "d_field")]
-        public virtual void Form_Module_ApiRegister_POST_12_IP_182_Send_Request_Without_Data_In_Password_Field()
+        public virtual void FORM_MODULE_ApiRegister_POST_12_IP_244_Send_Request_Without_Data_In_Password_Field()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_12_IP-182_send_request_without_data_in_passwor" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_12_IP-244_send_request_without_data_in_passwor" +
                     "d_field", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 88
 this.ScenarioInitialize(scenarioInfo);
@@ -653,19 +651,19 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 92
- testRunner.And("JSON body with message about missing field Hasło", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about empty field Hasło", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_13_IP-182_send_request_with_empty_form")]
-        public virtual void Form_Module_ApiRegister_POST_13_IP_182_Send_Request_With_Empty_Form()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_13_IP-244_send_request_with_empty_form")]
+        public virtual void FORM_MODULE_ApiRegister_POST_13_IP_244_Send_Request_With_Empty_Form()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_13_IP-182_send_request_with_empty_form", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_13_IP-244_send_request_with_empty_form", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 95
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -703,13 +701,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_14_IP-182_send_request_with_too_long_phone_num" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_14_IP-244_send_request_with_too_long_phone_num" +
             "ber")]
-        public virtual void Form_Module_ApiRegister_POST_14_IP_182_Send_Request_With_Too_Long_Phone_Number()
+        public virtual void FORM_MODULE_ApiRegister_POST_14_IP_244_Send_Request_With_Too_Long_Phone_Number()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_14_IP-182_send_request_with_too_long_phone_num" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_14_IP-244_send_request_with_too_long_phone_num" +
                     "ber", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 101
 this.ScenarioInitialize(scenarioInfo);
@@ -744,20 +742,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 105
- testRunner.And("JSON body with message about incorrect phone number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with error message about too long phone number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_15_IP-182_send_request_with_too_short_phone_nu" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_15_IP-244_send_request_with_too_short_phone_nu" +
             "mber")]
-        public virtual void Form_Module_ApiRegister_POST_15_IP_182_Send_Request_With_Too_Short_Phone_Number()
+        public virtual void FORM_MODULE_ApiRegister_POST_15_IP_244_Send_Request_With_Too_Short_Phone_Number()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_15_IP-182_send_request_with_too_short_phone_nu" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_15_IP-244_send_request_with_too_short_phone_nu" +
                     "mber", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 108
 this.ScenarioInitialize(scenarioInfo);
@@ -792,20 +790,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 112
- testRunner.And("JSON body with message about incorrect phone number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with error message about too short phone number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_16_IP-182_form_with_incorrect_field_\'Github li" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_16_IP-244_form_with_incorrect_field_\'Github li" +
             "nk\'")]
-        public virtual void Form_Module_ApiRegister_POST_16_IP_182_Form_With_Incorrect_Field_GithubLink()
+        public virtual void FORM_MODULE_ApiRegister_POST_16_IP_244_Form_With_Incorrect_Field_GithubLink()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_16_IP-182_form_with_incorrect_field_\'Github li" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_16_IP-244_form_with_incorrect_field_\'Github li" +
                     "nk\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 115
 this.ScenarioInitialize(scenarioInfo);
@@ -847,12 +845,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_17_IP-182_form_with_too_long_first_name")]
-        public virtual void Form_Module_ApiRegister_POST_17_IP_182_Form_With_Too_Long_First_Name()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_17_IP-244_form_with_too_long_first_name")]
+        public virtual void FORM_MODULE_ApiRegister_POST_17_IP_244_Form_With_Too_Long_First_Name()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_17_IP-182_form_with_too_long_first_name", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_17_IP-244_form_with_too_long_first_name", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 122
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -886,19 +884,19 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 126
- testRunner.And("JSON body with message about incorrect first name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with error message about too long first name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_19_IP-182_form_with_too_long_last_name")]
-        public virtual void Form_Module_ApiRegister_POST_19_IP_182_Form_With_Too_Long_Last_Name()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_18_IP-244_form_with_too_long_last_name")]
+        public virtual void FORM_MODULE_ApiRegister_POST_18_IP_244_Form_With_Too_Long_Last_Name()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_19_IP-182_form_with_too_long_last_name", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_18_IP-244_form_with_too_long_last_name", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 129
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -932,19 +930,19 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 133
- testRunner.And("JSON body with message about incorrect last name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with error message about too long last name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_20_IP-182_form_incorrect_email")]
-        public virtual void Form_Module_ApiRegister_POST_20_IP_182_Form_Incorrect_Email()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_19_IP-244_form_incorrect_email")]
+        public virtual void FORM_MODULE_ApiRegister_POST_19_IP_244_Form_Incorrect_Email()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_20_IP-182_form_incorrect_email", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_19_IP-244_form_incorrect_email", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 136
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -985,12 +983,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_21_IP-182_form_with_incorrect_password")]
-        public virtual void Form_Module_ApiRegister_POST_21_IP_182_Form_With_Incorrect_Password()
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_20_IP-244_form_with_incorrect_password")]
+        public virtual void FORM_MODULE_ApiRegister_POST_20_IP_244_Form_With_Incorrect_Password()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_21_IP-182_form_with_incorrect_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_20_IP-244_form_with_incorrect_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 143
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1031,13 +1029,13 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_22_IP-182_form_with_email_assigned_to_another_" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_21_IP-244_form_with_email_assigned_to_another_" +
             "account")]
-        public virtual void Form_Module_ApiRegister_POST_22_IP_182_Form_With_Email_Assigned_To_Another_Account()
+        public virtual void FORM_MODULE_ApiRegister_POST_21_IP_244_Form_With_Email_Assigned_To_Another_Account()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_22_IP-182_form_with_email_assigned_to_another_" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_21_IP-244_form_with_email_assigned_to_another_" +
                     "account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 150
 this.ScenarioInitialize(scenarioInfo);
@@ -1072,20 +1070,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 154
- testRunner.And("JSON body with message about incorrect email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about not unique email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_23_IP-182_form_with_login_assigned_to_another_" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_22_IP-244_form_with_login_assigned_to_another_" +
             "account")]
-        public virtual void Form_Module_ApiRegister_POST_23_IP_182_Form_With_Login_Assigned_To_Another_Account()
+        public virtual void FORM_MODULE_ApiRegister_POST_22_IP_244_Form_With_Login_Assigned_To_Another_Account()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_23_IP-182_form_with_login_assigned_to_another_" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_22_IP-244_form_with_login_assigned_to_another_" +
                     "account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 157
 this.ScenarioInitialize(scenarioInfo);
@@ -1120,20 +1118,20 @@ this.FeatureBackground();
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 161
- testRunner.And("JSON body with message about incorrect login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("JSON body with message about not unique login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Form_Module_[/api/register]_[POST]_24_IP-182_send_request_without_data_about_titl" +
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_23_IP-244_send_request_without_data_about_titl" +
             "e")]
-        public virtual void Form_Module_ApiRegister_POST_24_IP_182_Send_Request_Without_Data_About_Title()
+        public virtual void FORM_MODULE_ApiRegister_POST_23_IP_244_Send_Request_Without_Data_About_Title()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Form_Module_[/api/register]_[POST]_24_IP-182_send_request_without_data_about_titl" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_23_IP-244_send_request_without_data_about_titl" +
                     "e", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 164
 this.ScenarioInitialize(scenarioInfo);

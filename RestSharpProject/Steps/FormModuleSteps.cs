@@ -22,7 +22,7 @@ namespace RestSharpProject.Steps
         string login = UserData.GenerateLogin();
         string githubLink = UserData.GenerateGithubLink();
 
-        int phoneNumber = 123456789;
+        Nullable<int> phoneNumber = 123456789;
         string password = "randomPassword@";
 
         [Given(@"Endpoint is /api/register")]
@@ -94,13 +94,13 @@ namespace RestSharpProject.Steps
             ScenarioContext.Current.Add("user", user);
         }
 
-        [Given(@"User filled required data but without data in field Numer telefonu")]
+        [Given(@"User filled required data without data in field login")]
         [Obsolete]
-        public void GivenUserFilledRequiredDataButWithoutDataInFieldNumerTelefonu()
+        public void GivenUserFilledRequiredDataWithoutDataInFieldLogin()
         {
-            string[] technologies = new string[1] { "JS" };
+            string[] technologies = new string[1] { "Mobile" };
 
-            user = new UserData("Pani", "Dorota", "Kowalska", email, 0, technologies, password, login, githubLink);
+            user = new UserData("Pani", "Dorota", "", email, phoneNumber, technologies, password, "", githubLink);
 
             ScenarioContext.Current.Add("user", user);
         }
@@ -109,7 +109,7 @@ namespace RestSharpProject.Steps
         [Obsolete]
         public void GivenUserFilledRequiredDataWithoutCheckedFieldsJavaScriptJavaQAMobile()
         {
-            string[] technologies = new string[3];
+            string[] technologies = new string[0];
             user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
 
             ScenarioContext.Current.Add("user", user);
@@ -174,8 +174,9 @@ namespace RestSharpProject.Steps
         public void GivenUserDidnTFillData()
         {
             string[] technologies = new string[1];
+            Nullable<int> emptyPhoneNumber = null;
 
-            user = new UserData("", "", "", "", 0, technologies, "", "", "");
+            user = new UserData("", "", "", "", emptyPhoneNumber, technologies, "", "", "");
 
             ScenarioContext.Current.Add("user", user);
         }
@@ -268,7 +269,7 @@ namespace RestSharpProject.Steps
         {
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+            user = new UserData("Pan", "Jan", "Kowalski", "example@email.com", phoneNumber, technologies, password, login, githubLink);
 
             ScenarioContext.Current.Add("user", user);
         }
@@ -279,7 +280,7 @@ namespace RestSharpProject.Steps
         {
             string[] technologies = new string[1] { "Java" };
 
-            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+            user = new UserData("Pan", "Jan", "Kowalski", email, phoneNumber, technologies, password, "exampleLogin", githubLink);
 
             ScenarioContext.Current.Add("user", user);
         }
@@ -333,60 +334,108 @@ namespace RestSharpProject.Steps
             ScenarioContext.Current.Add("response", restResponse.Content);
         }
 
-        [Then(@"JSON body with message about missing field Imię")]
+        [Then(@"JSON body with message about empty field Imię")]
         [Obsolete]
-        public void ThenJSONBodyWithMessageAboutMissingFieldImie()
+        public void ThenJSONBodyWithMessageAboutEmptyFieldImie()
         {
             var responseContent = ScenarioContext.Current["response"].ToString();
             JObject parseRestResponse = JObject.Parse(responseContent);
-            string resposneErrorAboutFirstName = (string)parseRestResponse["fields"]["firstName"][0];
-            Assert.AreNotEqual("{Imie jest wymagane}", resposneErrorAboutFirstName);
+
+            string takeErrorFromResponse = (string)parseRestResponse["fields"]["firstName"][0].ToString();
+            string errorAboutName = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Imie jest wymagane", errorAboutName);
         }
         
-        [Then(@"JSON body with message about missing field Nazwisko")]
+        [Then(@"JSON body with message about empty field Nazwisko")]
         [Obsolete]
-        public void ThenJSONBodyWithMessageAboutMissingFieldNazwisko()
+        public void ThenJSONBodyWithMessageAboutEmptyFieldNazwisko()
         {
             var responseContent = ScenarioContext.Current["response"].ToString();
             JObject parseRestResponse = JObject.Parse(responseContent);
-            string resposneErrorAboutLastName = (string)parseRestResponse["fields"]["lastName"][0];
-            Assert.AreNotEqual("{Nazwisko jest wymagane}", resposneErrorAboutLastName);
+
+            string takeErrorFromResponse = (string)parseRestResponse["fields"]["lastName"][0].ToString();
+            string errorAboutLastName = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Nazwisko jest wymagane", errorAboutLastName);
         }
         
-        [Then(@"JSON body with message about missing field Adres e-mail")]
-        public void ThenJSONBodyWithMessageAboutMissingFieldAdresE_Mail()
+        [Then(@"JSON body with message about empty field Adres e-mail")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutEmptyFieldAdresE_Mail()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["email"][0].ToString();
+            var errorAboutEmail = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Niepoprawny email", errorAboutEmail);
         }
         
-        [Then(@"JSON body with message about missing field Numer telefonu")]
-        public void ThenJSONBodyWithMessageAboutMissingFieldNumerTelefonu()
+        [Then(@"JSON body with message about empty field Numer telefonu")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutEmptyFieldNumerTelefonu()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["phone"][0].ToString();
+            var errorAboutPhone = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Numer powinien składać się wyłącznie z cyfr", errorAboutPhone);
         }
         
         [Then(@"JSON body with message about unchecked fields: JavaScript, Java, QA, Mobile")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutUncheckedFieldsJavaScriptJavaQAMobile()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["technologies"][0].ToString();
+            var errorAboutTechnologies = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Proszę wybrać conajmniej jedną technologię", errorAboutTechnologies);
         }
         
         [Then(@"JSON body with message about too many technology groups checked")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutTooManyTechnologyGroupsChecked()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["technologies"][0].ToString();
+            var errorAboutTechnologies = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Proszę wybrać maksymanie trzy technologie", errorAboutTechnologies);
         }
         
         [Then(@"JSON body with message about incorrect github link")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutIncorrectGithubLink()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["githubLink"][0].ToString();
+            var errorAboutGithubLink = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Niepoprawny link", errorAboutGithubLink);
         }
         
-        [Then(@"JSON body with message about missing field Hasło")]
-        public void ThenJSONBodyWithMessageAboutMissingFieldHaslo()
+        [Then(@"JSON body with message about empty field Hasło")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutEmptyFieldHaslo()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["password"][0].ToString();
+            var errorAboutPassword = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Hasło musi składać się z co najmniej ośmiu znaków", errorAboutPassword);
         }
         
         [Then(@"JSON body with message about missing data")]
@@ -394,41 +443,109 @@ namespace RestSharpProject.Steps
         {
             
         }
-        
-        [Then(@"JSON body with message about incorrect phone number")]
-        public void ThenJSONBodyWithMessageAboutIncorrectPhoneNumber()
+
+        [Then(@"JSON body with error message about too long phone number")]
+        [Obsolete]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongPhoneNumber()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["phone"][0].ToString();
+            var errorAboutPhone = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Numer jest za długi", errorAboutPhone);
         }
-        
-        [Then(@"JSON body with message about incorrect first name")]
-        public void ThenJSONBodyWithMessageAboutIncorrectFirstName()
+
+        [Then(@"JSON body with error message about too short phone number")]
+        [Obsolete]
+        public void ThenJSONBodyWithErrorMessageAboutTooShortPhoneNumber()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["phone"][0].ToString();
+            var errorAboutPhone = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Numer jest za krótki", errorAboutPhone);
         }
-        
-        [Then(@"JSON body with message about incorrect last name")]
-        public void ThenJSONBodyWithMessageAboutIncorrectLastName()
+
+        [Then(@"JSON body with error message about too long first name")]
+        [Obsolete]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongFirstName()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["firstName"][0].ToString();
+            var errorAboutFirstName = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Imię jest za długie", errorAboutFirstName);
         }
-        
+
+        [Then(@"JSON body with error message about too long last name")]
+        [Obsolete]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongLastName()
+        {
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["lastName"][0].ToString();
+            var errorAboutLastName = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Nazwisko jest za długie", errorAboutLastName);
+        }
+
         [Then(@"JSON body with message about incorrect email")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutIncorrectEmail()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["email"][0].ToString();
+            var errorAboutEmail = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Niepoprawny email", errorAboutEmail);
         }
-        
+
         [Then(@"JSON body with message about incorrect password")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutIncorrectPassword()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["password"][0].ToString();
+            var errorAboutPassword = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Hasło musi mieć przynajmniej jedną dużą literę i jeden znak specjalny", errorAboutPassword);
+        }
+
+        [Then(@"JSON body with message about not unique email")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutNotUniqueEmail()
+        {
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["email"][0].ToString();
+            var errorAboutEmail = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Email jest już zajęty", errorAboutEmail);
         }
 
         [Then(@"JSON body with message about incorrect login")]
+        [Obsolete]
         public void ThenJSONBodyWithMessageAboutIncorrectLogin()
         {
-            
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["login"][0].ToString();
+            var errorAboutLogin = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Login jest wymagany", errorAboutLogin);
         }
 
         [Then(@"JSON body with message about incorrect title")]
@@ -437,8 +554,24 @@ namespace RestSharpProject.Steps
         {
             var responseContent = ScenarioContext.Current["response"].ToString();
             JObject parseRestResponse = JObject.Parse(responseContent);
-            var resposneErrorAboutFirstName = parseRestResponse["fields"]["title"][0];
-            Assert.AreNotEqual("{Niedozwolona wartość}", resposneErrorAboutFirstName);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["title"][0].ToString();
+            var errorAboutTitle = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Niedozwolona wartość", errorAboutTitle);
+        }
+
+        [Then(@"JSON body with message about not unique login")]
+        [Obsolete]
+        public void ThenJSONBodyWithMessageAboutNotUniqueLogin()
+        {
+            var responseContent = ScenarioContext.Current["response"].ToString();
+            JObject parseRestResponse = JObject.Parse(responseContent);
+
+            var takeErrorFromResponse = parseRestResponse["fields"]["login"][0].ToString();
+            var errorAboutEmail = takeErrorFromResponse.TrimStart('{').TrimEnd('}');
+
+            Assert.AreEqual("Login jest już zajęty", errorAboutEmail);
         }
     }
 }

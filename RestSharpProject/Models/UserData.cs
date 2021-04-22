@@ -12,7 +12,7 @@ namespace RestSharpProject.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }
-        public int phone { get; set; }
+        public Nullable<int> phone { get; set; }
 
         public string[] technologies = new string[3];
 
@@ -23,7 +23,7 @@ namespace RestSharpProject.Models
         public string githubLink { get; set; }
 
 
-        public UserData(string title, string name, string surname, string email, int phone, string[] technology, string password, string login, string githubLink)
+        public UserData(string title, string name, string surname, string email, Nullable<int> phone, string[] technology, string password, string login, string githubLink)
         {
             this.title = title;
             this.firstName = name;
