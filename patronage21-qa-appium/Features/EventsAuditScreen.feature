@@ -19,8 +19,8 @@ Scenario: EVENTS_AUDIT_2_IP2-158_Events_are_displayed_by_default_from_most_recen
 
 # 
 Scenario Outline: EVENTS_AUDIT_3_IP2-158_Changing_display_order_of_events
-	When User chooses to sort events "<order>"
-	Then Events are displayed in order "<order>"
+	When User chooses to sort events '<order>'
+	Then Events are displayed in order '<order>'
 
 	Examples: 
 	| order           |
@@ -29,9 +29,9 @@ Scenario Outline: EVENTS_AUDIT_3_IP2-158_Changing_display_order_of_events
 
 # 
 Scenario Outline: EVENTS_AUDIT_4_IP2-158_Display_events_for_an_existing_user
-	Given User "<user_name>" exists in database
-	When User searches for "<user_name>" in events list
-	Then Events list contains entries only for "<user_name>"
+	Given User '<user_name>' exists in database
+	When User searches for '<user_name>' in events list
+	Then Events list contains entries only for '<user_name>'
 
 	Examples: 
 	| user_name |
@@ -40,8 +40,8 @@ Scenario Outline: EVENTS_AUDIT_4_IP2-158_Display_events_for_an_existing_user
 
 #
 Scenario Outline: EVENTS_AUDIT_5_IP2-158_Display_events_for_a_nonexistent_user
-	Given User "<user_name>" does not exist in database
-	When User searches for "<user_name>" in events list
+	Given User '<user_name>' does not exist in database
+	When User searches for '<user_name>' in events list
 	Then Events list is empty
 
 	Examples: 
@@ -50,8 +50,8 @@ Scenario Outline: EVENTS_AUDIT_5_IP2-158_Display_events_for_a_nonexistent_user
 
 #
 Scenario Outline: EVENTS_AUDIT_6_IP2-158_Display_events_for_a_specific_event
-	When User searches for "<event>" in events list
-	Then Events list contains entries only for "<event>"
+	When User searches for '<event>' in events list
+	Then Events list contains entries only for '<event>'
 
 	Examples:
 	| event               |
