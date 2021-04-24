@@ -13,7 +13,7 @@ namespace RestSharpProject.Models
         public string email { get; set; }
         public Nullable<int> phone { get; set; }
 
-        public List<string> technologies { get; set}
+        public List<string> technologies { get; set; }
 
         public string password { get; set; }
 

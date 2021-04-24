@@ -16,6 +16,7 @@ namespace RestSharpProject.Steps
         RestRequest restRequest = new RestRequest("http://127.0.0.1:8080/api/register", Method.POST);
         RestResponse restResponse;
         User user;
+        UserModel userModel;
 
         string email = User.GenerateEmailAdress();
         string login = User.GenerateLogin();
@@ -139,7 +140,8 @@ namespace RestSharpProject.Steps
         [Then(@"JSON body without sensitive data")]
         public void ThenJSONBodyWithoutSensitiveData()
         {
-
+            userModel = JsonConvert.DeserializeObject<UserModel>(restResponse.Content);
+            Assert.That(userModel.password, Is.EqualTo(null));
         }
 
         [Then(@"The server should return status 400")]
