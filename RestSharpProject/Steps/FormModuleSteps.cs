@@ -17,6 +17,7 @@ namespace RestSharpProject.Steps
         RestResponse restResponse;
         User user;
         UserModel userModel;
+        Response responseMessage;
 
         string email = User.GenerateEmailAdress();
         string login = User.GenerateLogin();
@@ -116,6 +117,35 @@ namespace RestSharpProject.Steps
             user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, "");
         }
 
+        [Given(@"User filled required data with checking all technology groups")]
+        public void GivenUserFilledRequiredDataWithCheckingAllTechnologyGroups()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("QA");
+            technologies.Add("JS");
+            technologies.Add("Java");
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User filled required data with checking one field about technology groups")]
+        public void GivenUserFilledRequiredDataWithCheckingOneFieldAboutTechnologyGroups()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User didn't fill data")]
+        public void GivenUserDidnTFillData()
+        {
+            List<string> technologies = new List<string>();
+
+            user = new User("", "", "", null, technologies, "", "", "");
+        }
+
         [Given(@"User interface adds headers")]
         public void GivenUserInterfaceAddsHeaders()
         {
@@ -133,7 +163,6 @@ namespace RestSharpProject.Steps
         public void ThenTheServerShouldReturnPositiveStatus()
         {
             restResponse = (RestResponse)restClient.Execute(restRequest);
-            Console.WriteLine(restResponse.Content);
             Assert.AreEqual(200, (int)restResponse.StatusCode);
         }
 
@@ -154,47 +183,68 @@ namespace RestSharpProject.Steps
         [Then(@"JSON body with message about empty field Imię")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldImie()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imie jest wymagane"));
         }
 
         [Then(@"JSON body with message about empty field Nazwisko")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNazwisko()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.lastName[0], Is.EqualTo("Nazwisko jest wymagane"));
         }
 
         [Then(@"JSON body with message about empty field Adres email")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldAdresEmail()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.email[0], Is.EqualTo("Niepoprawny email"));
         }
 
         [Then(@"JSON body with message about empty field Numer telefonu")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerTelefonu()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer telefonu jest wymagany"));
         }
 
         [Then(@"JSON body with message about empty field Technologie")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerTechnologie()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.technologies[0], Is.EqualTo("Proszę wybrać conajmniej jedną technologię"));
         }
 
         [Then(@"JSON body with message about empty field Hasło")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerHaslo()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Hasło jest wymagane"));
         }
 
         [Then(@"JSON body with message about empty field Login")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerLogin()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Login jest wymagany"));
         }
 
         [Then(@"JSON body with message about empty field Github link")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerGithubLink()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.githubLink[0], Is.EqualTo("Link do github jest wymagany"));
+        }
+
+        [Then(@"JSON body with message about too many technology groups checked")]
+        public void ThenJSONBodyWithMessageAboutTooManyTechnologyGroupsChecked()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.technologies[0], Is.EqualTo("Proszę wybrać maksymanie trzy technologie"));
+        }
+
+        [Then(@"JSON body with message about missing data")]
+        public void ThenJSONBodyWithMessageAboutMissingData()
         {
 
         }
