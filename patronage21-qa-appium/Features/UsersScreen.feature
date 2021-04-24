@@ -3,7 +3,8 @@
 	other users, filter them 
 	by groups and names and view 
 	details about them
-https://tracker.intive.com/jira/browse/IP2-152
+#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-270
+#Task in Android Team: https://tracker.intive.com/jira/browse/IP2-152
 
 Background: 
 	Given User is on "Users" screen
