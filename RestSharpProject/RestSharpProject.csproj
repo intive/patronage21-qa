@@ -24,6 +24,12 @@
     
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     
+
+    
+
+    
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    
   </ItemGroup>
 
   <ItemGroup>
