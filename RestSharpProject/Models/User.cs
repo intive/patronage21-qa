@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace RestSharpProject.Models
 {
-    public class UserData
+    public class User
     {
-        public string title { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }
         public Nullable<int> phone { get; set; }
 
-        public string[] technologies = new string[3];
+        public List<string> technologies { get; set}
 
         public string password { get; set; }
 
@@ -23,13 +22,12 @@ namespace RestSharpProject.Models
         public string githubLink { get; set; }
 
 
-        public UserData(string title, string name, string surname, string email, Nullable<int> phone, string[] technology, string password, string login, string githubLink)
+        public User( string name, string surname, string email, Nullable<int> phone, List<string> technology, string password, string login, string githubLink)
         {
-            this.title = title;
             this.firstName = name;
             this.lastName = surname;
             this.email = email;
-            this.phone = phone;         
+            this.phone = phone;
             this.technologies = technology;
             this.password = password;
             this.login = login;
