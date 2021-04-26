@@ -462,18 +462,18 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:email_pass" +
-            "word_github_link")]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:_email_pas" +
+            "sword_github_link")]
         [NUnit.Framework.TestCaseAttribute("Adres email", null)]
         [NUnit.Framework.TestCaseAttribute("Hasło", null)]
         [NUnit.Framework.TestCaseAttribute("Github link", null)]
-        public virtual void FORM_MODULE_ApiRegister_POST_9_IP_244_Form_With_Incorrect_FieldsEmail_Password_Github_Link(string fieldName, string[] exampleTags)
+        public virtual void FORM_MODULE_ApiRegister_POST_9_IP_244_Form_With_Incorrect_Fields_Email_Password_Github_Link(string fieldName, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("fieldName", fieldName);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:email_pass" +
-                    "word_github_link", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:_email_pas" +
+                    "sword_github_link", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 92
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

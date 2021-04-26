@@ -25,7 +25,11 @@ namespace RestSharpProject.Steps
 
         Nullable<int> phoneNumber = 123456789;
         int tooLongPhoneNumber = 1234567890;
+        int tooShortPhoneNumber = 123;
         string password = "randomPassword@";
+        string incorrectEmail = "wrongEmail";
+        string incorrectPassword = "wrongpassword";
+        string incorrectGithubLink = "wrongLink";
 
         [Given(@"User filled data correctly")]
         public void GivenUserFilledJanKowalskiExampleEmail_ComQARandomPasswordRandomLoginGithub_ComExampleCorrectly()
@@ -174,6 +178,72 @@ namespace RestSharpProject.Steps
             user = new User("Jan", "Kowalski", email, tooLongPhoneNumber, technologies, password, login, githubLink);
         }
 
+        [Given(@"User filled request to API with too short Imię")]
+        public void GivenUserFilledRequestToAPIWithTooShortImie()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Java");
+
+            user = new User("J", "Kowalski", email, tooLongPhoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User filled request to API with too short Nazwisko")]
+        public void GivenUserFilledRequestToAPIWithTooShortNazwisko()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "K", email, tooLongPhoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User filled request to API with too short Numer telefonu")]
+        public void GivenUserFilledRequestToAPIWithTooShortNumerTelefonu()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("JS");
+
+            user = new User("Jan", "Kowalski", email, tooShortPhoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User fills incorrect Adres email")]
+        public void GivenUserFillsIncorrectAdresEmail()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Java");
+
+            user = new User("Jan", "Kowalski", incorrectEmail, phoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User fills incorrect Hasło")]
+        public void GivenUserFillsIncorrectHaslo()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("QA");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, incorrectPassword, login, githubLink);
+        }
+
+        [Given(@"User fills incorrect Github link")]
+        public void GivenUserFillsIncorrectGithubLink()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, incorrectGithubLink);
+        }
+
+        [Given(@"User fills email which is not unique")]
+        public void GivenUserFillsEmailWhichIsNotUnique()
+        {
+            
+        }
+
+        [Given(@"User fills login which is not unique")]
+        public void GivenUserFillsLoginWhichIsNotUnique()
+        {
+            
+        }
+
         [Given(@"User interface adds headers")]
         public void GivenUserInterfaceAddsHeaders()
         {
@@ -275,7 +345,8 @@ namespace RestSharpProject.Steps
         [Then(@"JSON body with message about missing data")]
         public void ThenJSONBodyWithMessageAboutMissingData()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields, Is.Not.Null);
         }
 
         [Then(@"JSON body with error message about too long Imię")]
@@ -297,6 +368,60 @@ namespace RestSharpProject.Steps
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
             Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer jest za długi"));
+        }
+
+        [Then(@"JSON body with error message about too short Imię")]
+        public void ThenJSONBodyWithErrorMessageAboutTooShortImie()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię musi mieć co najmniej 3 znaki"));
+        }
+
+        [Then(@"JSON body with error message about too short Nazwisko")]
+        public void ThenJSONBodyWithErrorMessageAboutTooShortNazwisko()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.lastName[0], Is.EqualTo("Nazwisko musi mieć co najmniej 2 znaki"));
+        }
+
+        [Then(@"JSON body with error message about too short Numer telefonu")]
+        public void ThenJSONBodyWithErrorMessageAboutTooShortNumerTelefonu()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer jest za krótki"));
+        }
+
+        [Then(@"JSON body with message about incorrect Adres email")]
+        public void ThenJSONBodyWithMessageAboutIncorrectAdresEmail()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.email[0], Is.EqualTo("Niepoprawny email"));
+        }
+
+        [Then(@"JSON body with message about incorrect Hasło")]
+        public void ThenJSONBodyWithMessageAboutIncorrectHaslo()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Hasło musi mieć przynajmniej jedną dużą literę i jeden znak specjalny"));
+        }
+
+        [Then(@"JSON body with message about incorrect Github link")]
+        public void ThenJSONBodyWithMessageAboutIncorrectGithubLink()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.githubLink[0], Is.EqualTo("Niepoprawny link"));
+        }
+
+        [Then(@"JSON body with message about not unique email")]
+        public void ThenJSONBodyWithMessageAboutNotUniqueEmail()
+        {
+            
+        }
+
+        [Then(@"JSON body with message about not unique login")]
+        public void ThenJSONBodyWithMessageAboutNotUniqueLogin()
+        {
+
         }
     }
 }

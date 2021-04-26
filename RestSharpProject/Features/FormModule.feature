@@ -89,7 +89,7 @@ Examples:
 	| Numer telefonu |
 
 #https://tracker.intive.com/jira/browse/IP2-385
-Scenario Outline: FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:email_password_github_link
+Scenario Outline: FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:_email_password_github_link
 	Given User fills incorrect <fieldName>
 	When User interface sends the request to API
 	Then The server should return status 400 
