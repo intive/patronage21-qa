@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Drivers;
-using System;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
