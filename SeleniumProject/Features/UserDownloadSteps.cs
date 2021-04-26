@@ -6,26 +6,32 @@ namespace SeleniumProject.Features
     [Binding]
     public class UserDownloadSteps
     {
-        [When(@"User enters the ""(.*)"" he wants to find in the (.*) field")]
+        [Given(@"User is on the ""(.*)"" page")]
+        public void GivenUserIsOnThePage(string p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+        
+        [When(@"User enters the '(.*)' he wants to find in the ""(.*)"" field")]
         public void WhenUserEntersTheHeWantsToFindInTheField(string p0, string p1)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [When(@"User selects a technology group")]
-        public void WhenUserSelectsATechnologyGroup()
+        [When(@"User selects '(.*)'")]
+        public void WhenUserSelects(string p0)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [When(@"The user selects a technology group in which this user is not located")]
-        public void WhenTheUserSelectsATechnologyGroupInWhichThisUserIsNotLocated()
+        [When(@"User writes the user's name and surname in the (.*) field")]
+        public void WhenUserWritesTheUserSNameAndSurnameInTheField(string p0)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"The searched user is not displayed")]
-        public void ThenTheSearchedUserIsNotDisplayed()
+        [Then(@"User with this name and surname is not displayed")]
+        public void ThenUserWithThisNameAndSurnameIsNotDisplayed()
         {
             ScenarioContext.Current.Pending();
         }

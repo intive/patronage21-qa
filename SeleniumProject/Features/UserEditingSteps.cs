@@ -6,80 +6,74 @@ namespace SeleniumProject.Features
     [Binding]
     public class UserEditingSteps
     {
-        [Given(@"User is on the page of his user account")]
-        public void GivenUserIsOnThePageOfHisUserAccount()
+        [When(@"User is writing his description")]
+        public void WhenUserIsWritingHisDescription()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"User clicks the (.*) button")]
-        public void GivenUserClicksTheButton(string p0)
+        [When(@"User selects a project from the list")]
+        public void WhenUserSelectsAProjectFromTheList()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"User edits his user description")]
-        public void GivenUserEditsHisUserDescription()
+        [When(@"User writes a valid email address")]
+        public void WhenUserWritesAValidEmailAddress()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"User changes the project")]
-        public void GivenUserChangesTheProject()
+        [When(@"User writes email address without @")]
+        public void WhenUserWritesEmailAddressWithout()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"User changes email adress")]
-        public void GivenUserChangesEmailAdress()
+        [When(@"User writes a valid phone number")]
+        public void WhenUserWritesAValidPhoneNumber()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"User changes phone number")]
-        public void GivenUserChangesPhoneNumber()
+        [When(@"User writes more or less than (.*) numbers")]
+        public void WhenUserWritesMoreOrLessThanNumbers(int p0)
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Given(@"User changes github link")]
-        public void GivenUserChangesGithubLink()
+        [When(@"User writes a valid github link")]
+        public void WhenUserWritesAValidGithubLink()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [When(@"User clicks on the (.*) field")]
-        public void WhenUserClicksOnTheField(string p0)
+        [When(@"User writes an incorrect link")]
+        public void WhenUserWritesAnIncorrectLink()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [When(@"User clicks on the  (.*)  field")]
-        public void WhenUserClicksOnTheField(string p0)
+        [Then(@"Project has been changed successfuly")]
+        public void ThenProjectHasBeenChangedSuccessfuly()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"The user description is saved")]
-        public void ThenTheUserDescriptionIsSaved()
+        [Then(@"The address has been changed successfuly")]
+        public void ThenTheAddressHasBeenChangedSuccessfuly()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"The message invalid email address appears")]
-        public void ThenTheMessageInvalidEmailAddressAppears()
+        [Then(@"The phone number has been changed successfuly")]
+        public void ThenThePhoneNumberHasBeenChangedSuccessfuly()
         {
             ScenarioContext.Current.Pending();
         }
         
-        [Then(@"The message invalid phone number appears")]
-        public void ThenTheMessageInvalidPhoneNumberAppears()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"The message invalid link github appears")]
-        public void ThenTheMessageInvalidLinkGithubAppears()
+        [Then(@"Github link has been changed successfuly")]
+        public void ThenGithubLinkHasBeenChangedSuccessfuly()
         {
             ScenarioContext.Current.Pending();
         }
