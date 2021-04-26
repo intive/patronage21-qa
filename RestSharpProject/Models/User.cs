@@ -45,7 +45,7 @@ namespace RestSharpProject.Models
         public static string GenerateLogin()
         {
             Random rand = new Random();
-            string login = $"exampleLogin{rand.Next(0, 10000)}";
+            string login = $"userLogin{rand.Next(0, 10000)}";
 
             return login;
         }

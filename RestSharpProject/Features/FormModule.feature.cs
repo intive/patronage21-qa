@@ -362,6 +362,261 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_7_IP-244_send_request_with_too_long_fields:_Im" +
+            "ie_Nazwisko_Numer_telefonu")]
+        [NUnit.Framework.TestCaseAttribute("Imię", null)]
+        [NUnit.Framework.TestCaseAttribute("Nazwisko", null)]
+        [NUnit.Framework.TestCaseAttribute("Numer telefonu", null)]
+        public virtual void FORM_MODULE_ApiRegister_POST_7_IP_244_Send_Request_With_Too_Long_Fields_Imie_Nazwisko_Numer_Telefonu(string fieldName, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("fieldName", fieldName);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_7_IP-244_send_request_with_too_long_fields:_Im" +
+                    "ie_Nazwisko_Numer_telefonu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 66
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 67
+ testRunner.Given(string.Format("User filled request to API with too long {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 68
+ testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 69
+ testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 70
+ testRunner.And(string.Format("JSON body with error message about too long {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_with_too_short_fields:_I" +
+            "mie_Nazwisko_Numer_telefonu")]
+        [NUnit.Framework.TestCaseAttribute("Imię", null)]
+        [NUnit.Framework.TestCaseAttribute("Nazwisko", null)]
+        [NUnit.Framework.TestCaseAttribute("Numer telefonu", null)]
+        public virtual void FORM_MODULE_ApiRegister_POST_8_IP_244_Send_Request_With_Too_Short_Fields_Imie_Nazwisko_Numer_Telefonu(string fieldName, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("fieldName", fieldName);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_with_too_short_fields:_I" +
+                    "mie_Nazwisko_Numer_telefonu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 79
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 80
+ testRunner.Given(string.Format("User filled request to API with too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 81
+ testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 82
+ testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 83
+ testRunner.And(string.Format("JSON body with error message about too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:email_pass" +
+            "word_github_link")]
+        [NUnit.Framework.TestCaseAttribute("Adres email", null)]
+        [NUnit.Framework.TestCaseAttribute("Hasło", null)]
+        [NUnit.Framework.TestCaseAttribute("Github link", null)]
+        public virtual void FORM_MODULE_ApiRegister_POST_9_IP_244_Form_With_Incorrect_FieldsEmail_Password_Github_Link(string fieldName, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("fieldName", fieldName);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:email_pass" +
+                    "word_github_link", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 92
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 93
+ testRunner.Given(string.Format("User fills incorrect {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 94
+ testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 95
+ testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 96
+ testRunner.And(string.Format("JSON body with message about incorrect {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_10_IP-244_form_with_email_assigned_to_another_" +
+            "account")]
+        [NUnit.Framework.TestCaseAttribute("Jan", "Kowalski", "example@email.com", "123456789", "QA", "randomPassword@", "randomLogin", "github.com/example", null)]
+        public virtual void FORM_MODULE_ApiRegister_POST_10_IP_244_Form_With_Email_Assigned_To_Another_Account(string firstName, string lastName, string email, string phoneNumber, string technologies, string password, string login, string githubLink, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("email", email);
+            argumentsOfScenario.Add("phoneNumber", phoneNumber);
+            argumentsOfScenario.Add("technologies", technologies);
+            argumentsOfScenario.Add("password", password);
+            argumentsOfScenario.Add("login", login);
+            argumentsOfScenario.Add("githubLink", githubLink);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_10_IP-244_form_with_email_assigned_to_another_" +
+                    "account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 105
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 106
+ testRunner.Given("User fills email which is not unique", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 107
+ testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 108
+ testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 109
+ testRunner.And("JSON body with message about not unique email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_[/api/register]_[POST]_11_IP-244_form_with_login_assigned_to_another_" +
+            "account")]
+        [NUnit.Framework.TestCaseAttribute("Jan", "Kowalski", "example@email.com", "123456789", "QA", "randomPassword@", "randomLogin", "github.com/example", null)]
+        public virtual void FORM_MODULE_ApiRegister_POST_11_IP_244_Form_With_Login_Assigned_To_Another_Account(string firstName, string lastName, string email, string phoneNumber, string technologies, string password, string login, string githubLink, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("email", email);
+            argumentsOfScenario.Add("phoneNumber", phoneNumber);
+            argumentsOfScenario.Add("technologies", technologies);
+            argumentsOfScenario.Add("password", password);
+            argumentsOfScenario.Add("login", login);
+            argumentsOfScenario.Add("githubLink", githubLink);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_11_IP-244_form_with_login_assigned_to_another_" +
+                    "account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 116
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 117
+ testRunner.Given("User fills login which is not unique", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 118
+ testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 119
+ testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 120
+ testRunner.And("JSON body with message about not unique login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

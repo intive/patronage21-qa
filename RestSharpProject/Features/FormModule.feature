@@ -75,7 +75,7 @@ Examples:
 	| Nazwisko       |
 	| Numer telefonu |
 
-https://tracker.intive.com/jira/browse/IP2-330
+#https://tracker.intive.com/jira/browse/IP2-330
 Scenario Outline: FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_with_too_short_fields:_Imie_Nazwisko_Numer_telefonu
 	Given User filled request to API with too short <fieldName>
 	When User interface sends the request to API

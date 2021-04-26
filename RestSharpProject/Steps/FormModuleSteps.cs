@@ -24,6 +24,7 @@ namespace RestSharpProject.Steps
         string githubLink = User.GenerateGithubLink();
 
         Nullable<int> phoneNumber = 123456789;
+        int tooLongPhoneNumber = 1234567890;
         string password = "randomPassword@";
 
         [Given(@"User filled data correctly")]
@@ -146,6 +147,33 @@ namespace RestSharpProject.Steps
             user = new User("", "", "", null, technologies, "", "", "");
         }
 
+        [Given(@"User filled request to API with too long Imię")]
+        public void GivenUserFilledRequestToAPIWithTooLongImie()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("JS");
+
+            user = new User("NiepoprawnieBardzoDługieImię", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User filled request to API with too long Nazwisko")]
+        public void GivenUserFilledRequestToAPIWithTooLongNazwisko()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "NiepoprawnieBardzoDługieNazwisko", email, phoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User filled request to API with too long Numer telefonu")]
+        public void GivenUserFilledRequestToAPIWithTooLongNumerTelefonu()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("QA");
+
+            user = new User("Jan", "Kowalski", email, tooLongPhoneNumber, technologies, password, login, githubLink);
+        }
+
         [Given(@"User interface adds headers")]
         public void GivenUserInterfaceAddsHeaders()
         {
@@ -163,6 +191,7 @@ namespace RestSharpProject.Steps
         public void ThenTheServerShouldReturnPositiveStatus()
         {
             restResponse = (RestResponse)restClient.Execute(restRequest);
+            Console.WriteLine(restResponse.Content);
             Assert.AreEqual(200, (int)restResponse.StatusCode);
         }
 
@@ -184,14 +213,14 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutEmptyFieldImie()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
-            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imie jest wymagane"));
+            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię musi mieć co najmniej 3 znaki"));
         }
 
         [Then(@"JSON body with message about empty field Nazwisko")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNazwisko()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
-            Assert.That(responseMessage.fields.lastName[0], Is.EqualTo("Nazwisko jest wymagane"));
+            Assert.That(responseMessage.fields.lastName[0], Is.EqualTo("Nazwisko musi mieć co najmniej 2 znaki"));
         }
 
         [Then(@"JSON body with message about empty field Adres email")]
@@ -205,7 +234,7 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerTelefonu()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
-            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer telefonu jest wymagany"));
+            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer powinien składać się wyłącznie z cyfr"));
         }
 
         [Then(@"JSON body with message about empty field Technologie")]
@@ -219,21 +248,21 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerHaslo()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
-            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Hasło jest wymagane"));
+            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Hasło musi składać się z co najmniej ośmiu znaków"));
         }
 
         [Then(@"JSON body with message about empty field Login")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerLogin()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
-            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Login jest wymagany"));
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi mieć co najmniej 2 znaki"));
         }
 
         [Then(@"JSON body with message about empty field Github link")]
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerGithubLink()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
-            Assert.That(responseMessage.fields.githubLink[0], Is.EqualTo("Link do github jest wymagany"));
+            Assert.That(responseMessage.fields.githubLink[0], Is.EqualTo("Niepoprawny link"));
         }
 
         [Then(@"JSON body with message about too many technology groups checked")]
@@ -247,6 +276,27 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutMissingData()
         {
 
+        }
+
+        [Then(@"JSON body with error message about too long Imię")]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongImie()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię jest za długie"));
+        }
+
+        [Then(@"JSON body with error message about too long Nazwisko")]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongNazwisko()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.lastName[0], Is.EqualTo("Nazwisko jest za długie"));
+        }
+
+        [Then(@"JSON body with error message about too long Numer telefonu")]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongNumerTelefonu()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer jest za długi"));
         }
     }
 }
