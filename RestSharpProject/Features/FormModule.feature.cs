@@ -369,6 +369,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("Imię", null)]
         [NUnit.Framework.TestCaseAttribute("Nazwisko", null)]
         [NUnit.Framework.TestCaseAttribute("Numer telefonu", null)]
+        [NUnit.Framework.TestCaseAttribute("Login", null)]
         public virtual void FORM_MODULE_ApiRegister_POST_7_IP_244_Send_Request_With_Too_Long_Fields_Imie_Nazwisko_Numer_Telefonu(string fieldName, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -418,6 +419,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("Imię", null)]
         [NUnit.Framework.TestCaseAttribute("Nazwisko", null)]
         [NUnit.Framework.TestCaseAttribute("Numer telefonu", null)]
+        [NUnit.Framework.TestCaseAttribute("Login", null)]
         public virtual void FORM_MODULE_ApiRegister_POST_8_IP_244_Send_Request_With_Too_Short_Fields_Imie_Nazwisko_Numer_Telefonu(string fieldName, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -425,7 +427,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("fieldName", fieldName);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_with_too_short_fields:_I" +
                     "mie_Nazwisko_Numer_telefonu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 79
+#line 80
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -445,16 +447,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 80
+#line 81
  testRunner.Given(string.Format("User filled request to API with too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 81
+#line 82
  testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 82
+#line 83
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 83
+#line 84
  testRunner.And(string.Format("JSON body with error message about too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -474,7 +476,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("fieldName", fieldName);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:_email_pas" +
                     "sword_github_link", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 92
+#line 94
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -494,16 +496,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 93
+#line 95
  testRunner.Given(string.Format("User fills incorrect {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 94
+#line 96
  testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 95
+#line 97
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 96
+#line 98
  testRunner.And(string.Format("JSON body with message about incorrect {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -528,7 +530,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("githubLink", githubLink);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_10_IP-244_form_with_email_assigned_to_another_" +
                     "account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 105
+#line 107
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -548,16 +550,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 106
+#line 108
  testRunner.Given("User fills email which is not unique", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 107
+#line 109
  testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 108
+#line 110
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 109
+#line 111
  testRunner.And("JSON body with message about not unique email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -582,7 +584,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("githubLink", githubLink);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("FORM_MODULE_[/api/register]_[POST]_11_IP-244_form_with_login_assigned_to_another_" +
                     "account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 116
+#line 118
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -602,16 +604,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 117
+#line 119
  testRunner.Given("User fills login which is not unique", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 118
+#line 120
  testRunner.When("User interface sends the request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 119
+#line 121
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 120
+#line 122
  testRunner.And("JSON body with message about not unique login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

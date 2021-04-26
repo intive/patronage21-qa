@@ -30,6 +30,8 @@ namespace RestSharpProject.Steps
         string incorrectEmail = "wrongEmail";
         string incorrectPassword = "wrongpassword";
         string incorrectGithubLink = "wrongLink";
+        string tooShortLogin = "l";
+        string tooLongLogin = "zaDlugiLoginUzytkownika";
 
         [Given(@"User filled data correctly")]
         public void GivenUserFilledJanKowalskiExampleEmail_ComQARandomPasswordRandomLoginGithub_ComExampleCorrectly()
@@ -178,6 +180,15 @@ namespace RestSharpProject.Steps
             user = new User("Jan", "Kowalski", email, tooLongPhoneNumber, technologies, password, login, githubLink);
         }
 
+        [Given(@"User filled request to API with too long Login")]
+        public void GivenUserFilledRequestToAPIWithTooLongLogin()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, tooLongLogin, githubLink);
+        }
+
         [Given(@"User filled request to API with too short Imię")]
         public void GivenUserFilledRequestToAPIWithTooShortImie()
         {
@@ -203,6 +214,15 @@ namespace RestSharpProject.Steps
             technologies.Add("JS");
 
             user = new User("Jan", "Kowalski", email, tooShortPhoneNumber, technologies, password, login, githubLink);
+        }
+
+        [Given(@"User filled request to API with too short Login")]
+        public void GivenUserFilledRequestToAPIWithTooShortLogin()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, tooShortLogin, githubLink);
         }
 
         [Given(@"User fills incorrect Adres email")]
@@ -370,6 +390,13 @@ namespace RestSharpProject.Steps
             Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer jest za długi"));
         }
 
+        [Then(@"JSON body with error message about too long Login")]
+        public void ThenJSONBodyWithErrorMessageAboutTooLongLogin()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi mieć mniej niż 15 znaków"));
+        }
+
         [Then(@"JSON body with error message about too short Imię")]
         public void ThenJSONBodyWithErrorMessageAboutTooShortImie()
         {
@@ -389,6 +416,13 @@ namespace RestSharpProject.Steps
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
             Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer jest za krótki"));
+        }
+
+        [Then(@"JSON body with error message about too short Login")]
+        public void ThenJSONBodyWithErrorMessageAboutTooShortLogin()
+        {
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi mieć co najmniej 2 znaki"));
         }
 
         [Then(@"JSON body with message about incorrect Adres email")]

@@ -63,7 +63,7 @@ Scenario: FORM_MODULE_[/api/register]_[POST]_6_IP-244_send_request_with_empty_fo
 	And JSON body with message about missing data
 
 #https://tracker.intive.com/jira/browse/IP2-329
-Scenario Outline: FORM_MODULE_[/api/register]_[POST]_7_IP-244_send_request_with_too_long_fields:_Imie_Nazwisko_Numer_telefonu
+Scenario Outline: FORM_MODULE_[/api/register]_[POST]_7_IP-244_send_request_with_too_long_fields:_Imie_Nazwisko_Numer_telefonu_Login
 	Given User filled request to API with too long <fieldName>
 	When User interface sends the request to API
 	Then The server should return status 400 
@@ -74,9 +74,10 @@ Examples:
 	| Imię           |
 	| Nazwisko       |
 	| Numer telefonu |
+	| Login          |
 
 #https://tracker.intive.com/jira/browse/IP2-330
-Scenario Outline: FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_with_too_short_fields:_Imie_Nazwisko_Numer_telefonu
+Scenario Outline: FORM_MODULE_[/api/register]_[POST]_8_IP-244_send_request_with_too_short_fields:_Imie_Nazwisko_Numer_telefonu_Login
 	Given User filled request to API with too short <fieldName>
 	When User interface sends the request to API
 	Then The server should return status 400 
@@ -87,6 +88,7 @@ Examples:
 	| Imię           |
 	| Nazwisko       |
 	| Numer telefonu |
+	| Login          |
 
 #https://tracker.intive.com/jira/browse/IP2-385
 Scenario Outline: FORM_MODULE_[/api/register]_[POST]_9_IP-244_form_with_incorrect_fields:_email_password_github_link
