@@ -1,4 +1,4 @@
-﻿Feature: AppiumAndSpecFlowWorks
+﻿Feature: RunApp
 	As a tester, I want to be able to run
 	application so I can test it further.
 

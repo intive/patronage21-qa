@@ -1,15 +1,23 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Android;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    public class HomeNavigationSteps : BaseSteps
+    public class HomeNavigationSteps
     {
+        private readonly AppiumDriver<AndroidElement> _driver;
+
+        public HomeNavigationSteps(AppiumDriver<AndroidElement> driver)
+        {
+            _driver = driver;
+        }
+
         [Given(@"User is on Home page")]
         public void GivenUserIsOnHomePage()
         {
-            _driver.LaunchApp();
         }
 
         [When(@"User clicks on ""(.*)"" button")]
