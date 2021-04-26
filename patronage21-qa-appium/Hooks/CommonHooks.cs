@@ -20,7 +20,6 @@ namespace patronage21_qa_appium.Steps
         [BeforeScenario]
         public void Setup(IObjectContainer objectContainer)
         {
-            //_driver = AndroidDriver.Init();
             objectContainer.RegisterInstanceAs(_driver);
             _driver.LaunchApp();
         }
