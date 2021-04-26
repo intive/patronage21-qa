@@ -15,8 +15,10 @@ namespace SeleniumProject.Steps
         [Given(@"User user sees the registration success message")]
         public void GivenUserUserSeesTheRegistrationSuccessMessage()
         {
-            driver = new ChromeDriver();
-            driver.Url = "http://localhost:3000/rejestracja-sukces";
+            driver = new ChromeDriver
+            {
+                Url = "http://localhost:3000/rejestracja-sukces"
+            };
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             IWebElement successfulRegistrationText = driver.FindElement(By.XPath(".//text()[.='Twoja rejestracja przebiegła pomyślnie!']"));
