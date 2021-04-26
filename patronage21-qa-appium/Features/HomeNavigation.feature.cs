@@ -121,12 +121,12 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("HOME_PAGE_2_IP2-93_home_page_to_<destination>_navigation")]
-        [NUnit.Framework.TestCaseAttribute("tech_groups", "Miniaturka modułu grup technologicznych", "Grupy technologiczne", null)]
-        [NUnit.Framework.TestCaseAttribute("users", "Miniaturka modułu użytkowników", "Użytkownicy", null)]
-        [NUnit.Framework.TestCaseAttribute("journal", "Miniaturka modułu dzienniczka", "Dzienniczek", null)]
-        [NUnit.Framework.TestCaseAttribute("calendar", "Miniaturka modułu kalendarza", "Kalendarz", null)]
-        [NUnit.Framework.TestCaseAttribute("events_audit", "Miniaturka modułu audytu zdarzeń", "Audyt zdarzeń", null)]
-        [NUnit.Framework.TestCaseAttribute("register", "Miniaturka modułu rejestracji", "Rejestracja", null)]
+        [NUnit.Framework.TestCaseAttribute("tech_groups", "Grupy technologiczne", "Grupy technologiczne", null)]
+        [NUnit.Framework.TestCaseAttribute("users", "Użytkownicy", "Użytkownicy", null)]
+        [NUnit.Framework.TestCaseAttribute("journal", "Dzienniczek", "Dzienniczek", null)]
+        [NUnit.Framework.TestCaseAttribute("calendar", "Kalendarz", "Kalendarz", null)]
+        [NUnit.Framework.TestCaseAttribute("events_audit", "Audyt zdarzeń", "Audyt zdarzeń", null)]
+        [NUnit.Framework.TestCaseAttribute("register", "Rejestracja", "Rejestracja", null)]
         public virtual void HOME_PAGE_2_IP2_93_Home_Page_To_Destination_Navigation(string destination, string button_Name, string page_Name, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
