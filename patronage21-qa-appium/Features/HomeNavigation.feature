@@ -34,10 +34,10 @@ Scenario Outline:HOME_PAGE_3_IP2-93_back_to_home_page_navigation
 	Then User sees "Home" page
 
 Examples: 
-| button_name                             |
-| Miniaturka modułu grup technologicznych |
-| Miniaturka modułu użytkowników          |
-| Miniaturka modułu dzienniczka           |
-| Miniaturka modułu kalendarza            |
-| Miniaturka modułu audytu zdarzeń        |
-| Miniaturka modułu rejestracji           |
+| button_name          |
+| Grupy technologiczne |
+| Użytkownicy          |
+| Dzienniczek          |
+| Kalendarz            |
+| Audyt zdarzeń        |
+| Rejestracja          |

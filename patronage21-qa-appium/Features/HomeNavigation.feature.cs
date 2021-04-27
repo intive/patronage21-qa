@@ -170,12 +170,12 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("HOME_PAGE_3_IP2-93_back_to_home_page_navigation")]
-        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu grup technologicznych", null)]
-        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu użytkowników", null)]
-        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu dzienniczka", null)]
-        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu kalendarza", null)]
-        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu audytu zdarzeń", null)]
-        [NUnit.Framework.TestCaseAttribute("Miniaturka modułu rejestracji", null)]
+        [NUnit.Framework.TestCaseAttribute("Grupy technologiczne", null)]
+        [NUnit.Framework.TestCaseAttribute("Użytkownicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Dzienniczek", null)]
+        [NUnit.Framework.TestCaseAttribute("Kalendarz", null)]
+        [NUnit.Framework.TestCaseAttribute("Audyt zdarzeń", null)]
+        [NUnit.Framework.TestCaseAttribute("Rejestracja", null)]
         public virtual void HOME_PAGE_3_IP2_93_Back_To_Home_Page_Navigation(string button_Name, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
