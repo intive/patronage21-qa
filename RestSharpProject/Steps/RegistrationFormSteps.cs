@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
 using RestSharpProject.Models;
@@ -10,7 +9,7 @@ using TechTalk.SpecFlow;
 namespace RestSharpProject.Steps
 {
     [Binding]
-    public class FormModuleSteps
+    public class RegistrationFormSteps
     {
         RestClient restClient = new RestClient();
         RestRequest restRequest = new RestRequest("http://127.0.0.1:8080/api/register", Method.POST);
@@ -252,26 +251,37 @@ namespace RestSharpProject.Steps
             user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, incorrectGithubLink);
         }
 
+        [Given(@"Creates user account")]
+        public void GivenCreatesDefaultUserAccount()
+        {
+            List<string> technologies = new List<string>();
+            technologies.Add("QA");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
+
+            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+        }
+
         [Given(@"User fills email which is not unique")]
         public void GivenUserFillsEmailWhichIsNotUnique()
         {
-            
+            List<string> technologies = new List<string>();
+            technologies.Add("Mobile");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
         }
 
         [Given(@"User fills login which is not unique")]
         public void GivenUserFillsLoginWhichIsNotUnique()
         {
-            
+            List<string> technologies = new List<string>();
+            technologies.Add("JS");
+
+            user = new User("Jan", "Kowalski", email, phoneNumber, technologies, password, login, githubLink);
         }
 
-        [Given(@"User interface adds headers")]
-        public void GivenUserInterfaceAddsHeaders()
-        {
-            restRequest.AddHeader("Accept", "application/json");
-            restRequest.AddHeader("Content-Type", "application/json");
-        }
-
-        [When(@"User interface sends the request to API")]
+        [When(@"Request sends to API")]
         public void WhenUserInterfaceSendsTheRequestToAPI()
         {
             restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
@@ -281,7 +291,6 @@ namespace RestSharpProject.Steps
         public void ThenTheServerShouldReturnPositiveStatus()
         {
             restResponse = (RestResponse)restClient.Execute(restRequest);
-            Console.WriteLine(restResponse.Content);
             Assert.AreEqual(200, (int)restResponse.StatusCode);
         }
 
@@ -449,13 +458,15 @@ namespace RestSharpProject.Steps
         [Then(@"JSON body with message about not unique email")]
         public void ThenJSONBodyWithMessageAboutNotUniqueEmail()
         {
-            
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.email[0], Is.EqualTo("Email jest już zajęty"));
         }
 
         [Then(@"JSON body with message about not unique login")]
         public void ThenJSONBodyWithMessageAboutNotUniqueLogin()
         {
-
+            responseMessage = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login jest już zajęty"));
         }
     }
 }
