@@ -14,7 +14,7 @@ namespace SeleniumProject.Steps
         [Given(@"User user sees the registration success message")]
         public void GivenUserUserSeesTheRegistrationSuccessMessage()
         {
-           IWebElement successfulRegistrationText = driver.FindElement(By.XPath("//*[text()[contains(.,'Twoja rejestracja przebiegła pomyślnie!')]]"));
+            IWebElement successfulRegistrationText = driver.FindElement(By.XPath("//*[text()[contains(.,'Twoja rejestracja przebiegła pomyślnie!')]]"));
             Assert.AreEqual(true, successfulRegistrationText.Displayed);
         }
 

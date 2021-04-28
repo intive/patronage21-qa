@@ -22,7 +22,12 @@ namespace SeleniumProject.Hooks
             new DriverManager().SetUpDriver(new ChromeConfig());
             //Console.WriteLine("Setup");
 
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
+
+            if (driver == null)
+            {
+                driver = new ChromeDriver();
+            }
             driver.Url = "http://localhost:3000/rejestracja-sukces";
 
          }
@@ -30,7 +35,7 @@ namespace SeleniumProject.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
             driver.Quit();
         }
     }
