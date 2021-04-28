@@ -55,6 +55,7 @@ Scenario: REGISTRATION_FORM_[/api/register]_[POST]_5_IP-244_send_request_marking
 #https://tracker.intive.com/jira/browse/IP2-321
 Scenario: REGISTRATION_FORM_[/api/register]_[POST]_6_IP-244_send_request_with_empty_form
 	Given User didn't fill data
+	When Request sends to API 
 	Then The server should return status 400
 	And JSON body with message about missing data
 
