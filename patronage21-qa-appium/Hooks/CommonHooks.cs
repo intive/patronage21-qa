@@ -12,15 +12,15 @@ namespace patronage21_qa_appium.Steps
         private static AppiumDriver<AndroidElement> _driver;
 
         [BeforeTestRun]
-        public static void Init()
+        public static void Init(IObjectContainer objectContainer)
         {
             _driver = AndroidDriver.Init();
+            objectContainer.RegisterInstanceAs(_driver);
         }
 
         [BeforeScenario]
-        public void Setup(IObjectContainer objectContainer)
+        public void Setup()
         {
-            objectContainer.RegisterInstanceAs(_driver);
             _driver.LaunchApp();
         }
 
