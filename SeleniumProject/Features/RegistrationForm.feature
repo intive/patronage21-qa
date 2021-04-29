@@ -3,9 +3,6 @@
 	#Task in JS Board: https://tracker.intive.com/jira/browse/IP2-98 and https://tracker.intive.com/jira/browse/IP2-243
 	#Task in QA Board: https://tracker.intive.com/jira/browse/IP2-180
 
-Background:
-	Given User is on registration page
-
 #zephyr link
 Scenario: REGISTRATION_FORM_1_IP2-243_form_with_correctly_data
 	Given User fills data correctly
