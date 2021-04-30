@@ -19,7 +19,8 @@ namespace SeleniumProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Form module - sign up", Description="\tUser signs up to Patronage by form.", SourceFile="Features\\FormModule.feature", SourceLine=0)]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Form module - sign up")]
     public partial class FormModule_SignUpFeature
     {
         
@@ -30,7 +31,7 @@ namespace SeleniumProject.Features
 #line 1 "FormModule.feature"
 #line hidden
         
-        [TechTalk.SpecRun.FeatureInitialize()]
+        [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
@@ -38,18 +39,19 @@ namespace SeleniumProject.Features
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [TechTalk.SpecRun.FeatureCleanup()]
+        [NUnit.Framework.OneTimeTearDownAttribute()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [TechTalk.SpecRun.ScenarioCleanup()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -58,6 +60,7 @@ namespace SeleniumProject.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -79,7 +82,8 @@ namespace SeleniumProject.Features
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_1_IP2-243_form_with_required_data", SourceLine=9)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_1_IP2-243_form_with_required_data")]
         public virtual void FORM_MODULE_1_IP2_243_Form_With_Required_Data()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -121,7 +125,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_2_IP2-243_empty_form", SourceLine=15)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_2_IP2-243_empty_form")]
         public virtual void FORM_MODULE_2_IP2_243_Empty_Form()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -160,7 +165,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_3_IP2-243_form_without_chosen_field_\'Tytuł\'", SourceLine=20)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_3_IP2-243_form_without_chosen_field_\'Tytuł\'")]
         public virtual void FORM_MODULE_3_IP2_243_Form_Without_Chosen_Field_Tytul()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -202,7 +208,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_4_IP2-243_form_with_required_data_and_\'Adres e-mail\'_is_incorrect", SourceLine=26)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_4_IP2-243_form_with_required_data_and_\'Adres e-mail\'_is_incorrect")]
         public virtual void FORM_MODULE_4_IP2_243_Form_With_Required_Data_And_AdresE_Mail_Is_Incorrect()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -244,8 +251,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_5_IP2-243_form with_required_data_and_\'Telefon komórkowy\'_is_incorrec" +
-            "t", SourceLine=32)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_5_IP2-243_form with_required_data_and_\'Telefon komórkowy\'_is_incorrec" +
+            "t")]
         public virtual void FORM_MODULE_5_IP2_243_FormWith_Required_Data_And_TelefonKomorkowy_Is_Incorrect()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -288,7 +296,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_6_IP2-243_form_with_required_data_with_too_short_\'Telefon komórkowy\'", SourceLine=38)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_6_IP2-243_form_with_required_data_with_too_short_\'Telefon komórkowy\'")]
         public virtual void FORM_MODULE_6_IP2_243_Form_With_Required_Data_With_Too_Short_TelefonKomorkowy()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -330,8 +339,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_7_IP2-243_form_filled_with_unchecked_fields:_\'JavaScript,Java,QA,Mobi" +
-            "le\'", SourceLine=44)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_7_IP2-243_form_filled_with_unchecked_fields:_\'JavaScript,Java,QA,Mobi" +
+            "le\'")]
         public virtual void FORM_MODULE_7_IP2_243_Form_Filled_With_Unchecked_Fields_JavaScriptJavaQAMobile()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -377,8 +387,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_8_IP2-243_form_filled_with_checked_all_fields:_\'JavaScript,Java,QA,Mo" +
-            "bile\'", SourceLine=51)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_8_IP2-243_form_filled_with_checked_all_fields:_\'JavaScript,Java,QA,Mo" +
+            "bile\'")]
         public virtual void FORM_MODULE_8_IP2_243_Form_Filled_With_Checked_All_Fields_JavaScriptJavaQAMobile()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -424,8 +435,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_9_IP2-243_form_with_checked_three_fields:_\'JavaScript,Java,QA,Mobile\'" +
-            "", SourceLine=58)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_9_IP2-243_form_with_checked_three_fields:_\'JavaScript,Java,QA,Mobile\'" +
+            "")]
         public virtual void FORM_MODULE_9_IP2_243_Form_With_Checked_Three_Fields_JavaScriptJavaQAMobile()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -471,7 +483,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_10_IP2-243_form_with_incorrect_field_\'Powtórz hasło\'", SourceLine=65)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_10_IP2-243_form_with_incorrect_field_\'Powtórz hasło\'")]
         public virtual void FORM_MODULE_10_IP2_243_Form_With_Incorrect_Field_PowtorzHaslo()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -516,7 +529,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_11_IP2-243_form_with_incorrect_password_which_is_too_short", SourceLine=72)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_11_IP2-243_form_with_incorrect_password_which_is_too_short")]
         public virtual void FORM_MODULE_11_IP2_243_Form_With_Incorrect_Password_Which_Is_Too_Short()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -561,8 +575,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_12_IP2-243_form_with_incorrect_password_which_doesn\'t_have_one_upperc" +
-            "ase", SourceLine=79)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_12_IP2-243_form_with_incorrect_password_which_doesn\'t_have_one_upperc" +
+            "ase")]
         public virtual void FORM_MODULE_12_IP2_243_Form_With_Incorrect_Password_Which_Doesnt_Have_One_Uppercase()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -605,8 +620,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_13_IP2-243_form_with_incorrect_password_which_doesn\'t_have_one_specia" +
-            "l_key", SourceLine=85)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_13_IP2-243_form_with_incorrect_password_which_doesn\'t_have_one_specia" +
+            "l_key")]
         public virtual void FORM_MODULE_13_IP2_243_Form_With_Incorrect_Password_Which_Doesnt_Have_One_Special_Key()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -649,7 +665,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_14_IP2-243_form_without_checked_field_\'Regulamin\'", SourceLine=91)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_14_IP2-243_form_without_checked_field_\'Regulamin\'")]
         public virtual void FORM_MODULE_14_IP2_243_Form_Without_Checked_Field_Regulamin()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -691,7 +708,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_15_IP2-243_form_with_incorrect_field_\'Github link\'", SourceLine=97)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_15_IP2-243_form_with_incorrect_field_\'Github link\'")]
         public virtual void FORM_MODULE_15_IP2_243_Form_With_Incorrect_Field_GithubLink()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -733,7 +751,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_16_IP2-243_form_with_too_short_\'Login\'", SourceLine=103)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_16_IP2-243_form_with_too_short_\'Login\'")]
         public virtual void FORM_MODULE_16_IP2_243_Form_With_Too_Short_Login()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -775,7 +794,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("FORM_MODULE_17_IP2-243_form_with_too_long_\'Login\'", SourceLine=109)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("FORM_MODULE_17_IP2-243_form_with_too_long_\'Login\'")]
         public virtual void FORM_MODULE_17_IP2_243_Form_With_Too_Long_Login()
         {
             string[] tagsOfScenario = ((string[])(null));

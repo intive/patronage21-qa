@@ -19,7 +19,8 @@ namespace SeleniumProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Confirmation of participation", Description="\tUser receives information about successfull registration.", SourceFile="Features\\SuccessSiteConfirmationOfParticipation.feature", SourceLine=0)]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Confirmation of participation")]
     public partial class ConfirmationOfParticipationFeature
     {
         
@@ -30,7 +31,7 @@ namespace SeleniumProject.Features
 #line 1 "SuccessSiteConfirmationOfParticipation.feature"
 #line hidden
         
-        [TechTalk.SpecRun.FeatureInitialize()]
+        [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
@@ -38,18 +39,19 @@ namespace SeleniumProject.Features
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [TechTalk.SpecRun.FeatureCleanup()]
+        [NUnit.Framework.OneTimeTearDownAttribute()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [TechTalk.SpecRun.ScenarioCleanup()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -58,6 +60,7 @@ namespace SeleniumProject.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -70,8 +73,9 @@ namespace SeleniumProject.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_1_IP2-288_User_is_informed_about_successfull_registration_and_c" +
-            "an_go_back_to_main_site", SourceLine=8)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_1_IP2-288_User_is_informed_about_successfull_registration_and_c" +
+            "an_go_back_to_main_site")]
         public virtual void REGISTRATION_FORM_1_IP2_288_User_Is_Informed_About_Successfull_Registration_And_Can_Go_Back_To_Main_Site()
         {
             string[] tagsOfScenario = ((string[])(null));

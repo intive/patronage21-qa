@@ -19,8 +19,8 @@ namespace SeleniumProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Verification of email address", Description="\tUser should be able to confirm his/hers email address and activate account with " +
-        "received code.", SourceFile="Features\\RegistrationFormEmailVerification.feature", SourceLine=0)]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Verification of email address")]
     public partial class VerificationOfEmailAddressFeature
     {
         
@@ -31,7 +31,7 @@ namespace SeleniumProject.Features
 #line 1 "RegistrationFormEmailVerification.feature"
 #line hidden
         
-        [TechTalk.SpecRun.FeatureInitialize()]
+        [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
@@ -40,18 +40,19 @@ namespace SeleniumProject.Features
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [TechTalk.SpecRun.FeatureCleanup()]
+        [NUnit.Framework.OneTimeTearDownAttribute()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [TechTalk.SpecRun.ScenarioCleanup()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -60,6 +61,7 @@ namespace SeleniumProject.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -81,8 +83,9 @@ testRunner.Given("User is on registration site", ((string)(null)), ((TechTalk.Sp
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_1_IP2-135_User_inserts_correct_code", SourceLine=14)]
-        [TechTalk.SpecRun.IgnoreAttribute()]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_1_IP2-135_User_inserts_correct_code")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void REGISTRATION_FORM_1_IP2_135_User_Inserts_Correct_Code()
         {
             string[] tagsOfScenario = new string[] {
@@ -128,9 +131,10 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrive_code_on_his/hers_mailb" +
-            "ox", SourceLine=23)]
-        [TechTalk.SpecRun.IgnoreAttribute()]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrive_code_on_his/hers_mailb" +
+            "ox")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void REGISTRATION_FORM_2_IP2_135_User_Should_Be_Able_To_Retrive_Code_On_HisHers_Mailbox()
         {
             string[] tagsOfScenario = new string[] {
@@ -171,8 +175,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_3_IP2-135_User_shouldn\'t_be_able_to_confirm_email_adress_and_ac" +
-            "tivate_account_with_invalid_code", SourceLine=28)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_3_IP2-135_User_shouldn\'t_be_able_to_confirm_email_adress_and_ac" +
+            "tivate_account_with_invalid_code")]
         public virtual void REGISTRATION_FORM_3_IP2_135_User_Shouldnt_Be_Able_To_Confirm_Email_Adress_And_Activate_Account_With_Invalid_Code()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -215,8 +220,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_4_IP2-135_User_shouldn\'t_be_able_to_confirm_email_address_and_a" +
-            "ctivate_account_with_improper_code", Description="(code_which_has_less_than_8_and_more_than_8_characters)", SourceLine=34)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_4_IP2-135_User_shouldn\'t_be_able_to_confirm_email_address_and_a" +
+            "ctivate_account_with_improper_code")]
         public virtual void REGISTRATION_FORM_4_IP2_135_User_Shouldnt_Be_Able_To_Confirm_Email_Address_And_Activate_Account_With_Improper_Code()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -256,8 +262,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_5_IP2-135_Valid_code_can_be_used_only_one_time", SourceLine=42)]
-        [TechTalk.SpecRun.IgnoreAttribute()]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_5_IP2-135_Valid_code_can_be_used_only_one_time")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void REGISTRATION_FORM_5_IP2_135_Valid_Code_Can_Be_Used_Only_One_Time()
         {
             string[] tagsOfScenario = new string[] {
@@ -312,8 +319,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("REGISTRATION_FORM_6_IP2-135_Generated_code_is_unique", SourceLine=54)]
-        [TechTalk.SpecRun.IgnoreAttribute()]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_6_IP2-135_Generated_code_is_unique")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void REGISTRATION_FORM_6_IP2_135_Generated_Code_Is_Unique()
         {
             string[] tagsOfScenario = new string[] {

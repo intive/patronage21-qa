@@ -19,8 +19,8 @@ namespace SeleniumProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Site \"Wystąpił błąd\"", Description="\tThere should be possibility to be transfered to main site from \"Wystąpił błąd\" s" +
-        "ite.", SourceFile="Features\\ErrorPage.feature", SourceLine=0)]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Site \"Wystąpił błąd\"")]
     public partial class SiteWystapilBladFeature
     {
         
@@ -31,7 +31,7 @@ namespace SeleniumProject.Features
 #line 1 "ErrorPage.feature"
 #line hidden
         
-        [TechTalk.SpecRun.FeatureInitialize()]
+        [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
@@ -40,18 +40,19 @@ namespace SeleniumProject.Features
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [TechTalk.SpecRun.FeatureCleanup()]
+        [NUnit.Framework.OneTimeTearDownAttribute()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [TechTalk.SpecRun.ScenarioCleanup()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -60,6 +61,7 @@ namespace SeleniumProject.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -72,7 +74,8 @@ namespace SeleniumProject.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_main_site", SourceLine=9)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_main_site")]
         public virtual void ERROR_PAGE_1_IP2_137_User_Should_Be_Able_To_Go_Back_To_Main_Site()
         {
             string[] tagsOfScenario = ((string[])(null));
