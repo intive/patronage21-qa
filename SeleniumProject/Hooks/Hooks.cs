@@ -32,7 +32,7 @@ namespace Selenium.Hooks
 
             driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Url = "http://localhost:3000/rejestracja-sukces";
+            driver.Url = "http://localhost:3000";
         }
 
         [BeforeScenario]

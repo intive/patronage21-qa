@@ -7,6 +7,6 @@
 
 #link_1 do Zephyr
 Scenario: REGISTRATION_FORM_1_IP2-288_User_is_informed_about_successfull_registration_and_can_go_back_to_main_site
-	Given User user sees the registration success message
+	Given User sees the registration success message on site 
 	When User clicks "Strona główna"
 	Then User should be trasfered to main side

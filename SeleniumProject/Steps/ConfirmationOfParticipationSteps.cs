@@ -16,10 +16,13 @@ namespace SeleniumProject.Steps
         public ConfirmationOfParticipationSteps(IWebDriver driver)
         {
             _webdriver = driver;
+            _webdriver.Url = _webdriver.Url + "rejestracja-sukces"; 
         }
 
-        [Given(@"User user sees the registration success message")]
+        [Given(@"User sees the registration success message on site")]
+
         public void GivenUserUserSeesTheRegistrationSuccessMessage()
+
         {
             IWebElement successfulRegistrationText = _webdriver.FindElement(By.XPath("//*[text()[contains(.,'Twoja rejestracja przebiegła pomyślnie!')]]"));
             Assert.AreEqual(true, successfulRegistrationText.Displayed);
