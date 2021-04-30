@@ -37,7 +37,8 @@ namespace SeleniumProject.Steps
         {
             var wait = new WebDriverWait(_webdriver, new TimeSpan(0, 0, 10 ));
 
-            By element = By.XPath("//span[text()='Patron']");
+            // TO DO: change xpath
+            By element = By.XPath("//div[text()='tu kontent']");
             IWebElement successfulRegistrationText = _webdriver.FindElement(element);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(element));
 
