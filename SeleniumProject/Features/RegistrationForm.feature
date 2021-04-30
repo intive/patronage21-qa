@@ -3,11 +3,15 @@
 	#Task in JS Board: https://tracker.intive.com/jira/browse/IP2-98 and https://tracker.intive.com/jira/browse/IP2-243
 	#Task in QA Board: https://tracker.intive.com/jira/browse/IP2-180
 
+Background: 
+	Given Users is on site about registration form
+
 #zephyr link
 Scenario: REGISTRATION_FORM_1_IP2-243_form_with_correctly_data
 	Given User fills data correctly
-	When User clicks on the Załóż konto button
-	Then User should be on site about e-mail verification
+		| firstName | lastName | email             | phone       | githubLink             | technologies   | login        | password         | passwordConfirm  |
+		| Jan       | Kowalski | example@email.com | 123456789   | github.com/exampleLink | JS             | exampleLogin | examplePassword@ | examplePassword@ |
+	Then User can click on the button Załóż konto
 
 #zephyr link
 Scenario: REGISTRATION_FORM_2_IP2-243_empty_form
@@ -36,7 +40,7 @@ Scenario Outline: REGISTRATION_FORM_4_IP2-243_form_with_data_which_is_too_short
 	
 Examples:
 	| fieldName         |
-	| Numer telefonu |
+	| Numer telefonu    |
 	| Hasło             |
 	| Login             |
 
@@ -50,7 +54,7 @@ Examples:
 	| fieldName			|
 	| Imie				|
 	| Nazwisko			|
-	| Numer telefonu |
+	| Numer telefonu    |
 	| Login             |
 
 #zephyr link

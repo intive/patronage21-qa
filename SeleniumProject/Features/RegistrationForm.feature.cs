@@ -73,6 +73,15 @@ namespace SeleniumProject.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+#line hidden
+#line 7
+ testRunner.Given("Users is on site about registration form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_1_IP2-243_form_with_correctly_data")]
         public virtual void REGISTRATION_FORM_1_IP2_243_Form_With_Correctly_Data()
@@ -80,7 +89,7 @@ namespace SeleniumProject.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_1_IP2-243_form_with_correctly_data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -100,14 +109,34 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
- testRunner.Given("User fills data correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
+this.FeatureBackground();
 #line hidden
-#line 9
- testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "firstName",
+                            "lastName",
+                            "email",
+                            "phone",
+                            "githubLink",
+                            "technologies",
+                            "login",
+                            "password",
+                            "passwordConfirm"});
+                table1.AddRow(new string[] {
+                            "Jan",
+                            "Kowalski",
+                            "example@email.com",
+                            "123456789",
+                            "github.com/exampleLink",
+                            "JS",
+                            "exampleLogin",
+                            "examplePassword@",
+                            "examplePassword@"});
+#line 11
+ testRunner.Given("User fills data correctly", ((string)(null)), table1, "Given ");
 #line hidden
-#line 10
- testRunner.Then("User should be on site about e-mail verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 14
+ testRunner.Then("User can click on the button Załóż konto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -120,7 +149,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_2_IP2-243_empty_form", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -140,10 +169,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 18
  testRunner.Given("User doesn\'t fill data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 19
  testRunner.Then("User can\'t click on the button Załóż konto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -165,7 +197,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("fieldName", fieldName);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_3_IP2-243_form_with_incorrect:_email_phoneNumber_password_confi" +
                     "rmPassword", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 18
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -185,13 +217,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 23
  testRunner.Given(string.Format("User fills {0} incorrect", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 24
  testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 25
  testRunner.Then(string.Format("User should see that field {0} is incorrect", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -209,7 +244,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("fieldName", fieldName);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_4_IP2-243_form_with_data_which_is_too_short", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 32
+#line 36
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -229,13 +264,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 33
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 37
  testRunner.Given(string.Format("User fills too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 34
+#line 38
  testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 35
+#line 39
  testRunner.Then(string.Format("User should see error message about too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -254,7 +292,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("fieldName", fieldName);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_5_IP2-243_form_with_data_which_is_too_long", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 44
+#line 48
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -274,13 +312,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 45
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 49
  testRunner.Given(string.Format("User fills too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 46
+#line 50
  testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 47
+#line 51
  testRunner.Then(string.Format("User should see error message about too short {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -296,7 +337,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_6_IP2-243_form_filled_with_unchecked_fields:_\'JavaScript,Java,Q" +
                     "A,Mobile\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 57
+#line 61
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -316,16 +357,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 58
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 62
  testRunner.Given("User fills required data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 59
+#line 63
  testRunner.And("User doesn\'t check fields about technology groups", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 60
+#line 64
  testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 61
+#line 65
  testRunner.Then("User should see error message about unchecked technology groups", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -341,7 +385,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_7_IP2-243_form_filled_with_checked_all_fields:_\'JavaScript,Java" +
                     ",QA,Mobile\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 64
+#line 68
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -361,16 +405,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 65
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 69
  testRunner.Given("User fills required data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 66
+#line 70
  testRunner.And("User checks all fields about technology grups", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 67
+#line 71
  testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 68
+#line 72
  testRunner.Then("User should see error message about checked too many technology groups", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -386,7 +433,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_8_IP2-243_form_with_checked_three_fields:_\'JavaScript,Java,QA,M" +
                     "obile\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 71
+#line 75
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -406,16 +453,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 72
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 76
  testRunner.Given("User fills required data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 73
+#line 77
  testRunner.And("User checks three technology groups", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 74
+#line 78
  testRunner.When("User clicks on the Załóż konto button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 75
+#line 79
  testRunner.Then("User should be on site about e-mail verification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -429,7 +479,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_9_IP2-243_form_without_checked_field_\'Regulamin\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 78
+#line 82
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -449,13 +499,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 79
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 83
  testRunner.Given("User fills required data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 80
+#line 84
  testRunner.When("Users doesn\'t check field Regulamin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 81
+#line 85
  testRunner.Then("Then The button is inactive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -478,7 +531,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("fieldName", fieldName);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_10_IP2-243_form_without_data_in_field", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 84
+#line 88
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -498,10 +551,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 85
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 89
  testRunner.Given(string.Format("User doesn\'t fill data in {0}", fieldName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 86
+#line 90
  testRunner.Then("User can\'t click on the button Załóż konto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

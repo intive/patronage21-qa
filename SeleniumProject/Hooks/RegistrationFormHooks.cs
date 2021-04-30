@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using SeleniumProject.Drivers;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,11 @@ using WebDriverManager.DriverConfigs.Impl;
 namespace SeleniumProject.Hooks
 {
     [Binding]
+    [Scope(Feature = "Registration form")]
     public sealed class RegistrationFormHooks : DriverHelper
     {
+        public static string Url { get; set; }
+
         [BeforeScenario]
         public void BeforeScenario()
         {
@@ -24,13 +26,15 @@ namespace SeleniumProject.Hooks
             new DriverManager().SetUpDriver(new ChromeConfig());
             WebDriver = new ChromeDriver(option);
 
-            WebDriver.Navigate().GoToUrl("http://localhost:3000/rejestracja");
+            if (Url == null)
+                Url = "http://localhost:3000/rejestracja";
+
+            WebDriver.Navigate().GoToUrl(Url);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            new DriverManager().SetUpDriver(new ChromeConfig());
             WebDriver.Quit();
         }
     }
