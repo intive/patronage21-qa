@@ -45,6 +45,7 @@ namespace Selenium.Hooks
         public void AfterScenario()
         {
             Thread.Sleep(5000);
+            //Thread.Sleep will be removed before merge
             driver.Quit();
         }
     }
