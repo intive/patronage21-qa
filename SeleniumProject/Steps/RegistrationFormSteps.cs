@@ -235,7 +235,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutEmailAdress = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny adres e-mail')]"));
 
-            Assert.That(errorAboutEmailAdress.Text, Is.("Niepoprawny adres e-mail"));
+            Assert.AreEqual(true, errorAboutEmailAdress.Displayed);
         }
 
         [Then(@"User should see that field Numer telefonu is incorrect")]
@@ -243,15 +243,15 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutPhoneNumber = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]"));
 
-            Assert.That(errorAboutPhoneNumber.Text, Is.EqualTo("Niepoprawny numer telefonu"));
+            Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
         }
 
         [Then(@"User should see that field Github link is incorrect")]
         public void ThenUserShouldSeeThatFieldGithubLinkIsIncorrect()
-        {       
+        {
             IWebElement errorAboutGithubLink = _webdriver.FindElement(By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]"));
 
-            Assert.That(errorAboutGithubLink.Text, Is.EqualTo("To nie jest link do konta GitHub"));
+            Assert.AreEqual(true, errorAboutGithubLink.Displayed);
         }
 
         [Then(@"User should see that field Hasło is incorrect")]
@@ -259,7 +259,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutPassword = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Hasło musi mieć przynajmniej jedną dużą literę')]"));
 
-            Assert.That(errorAboutPassword.Text, Is.EqualTo("Hasło musi mieć przynajmniej jedną dużą literę"));
+            Assert.AreEqual(true, errorAboutPassword.Displayed);
         }
 
         [Then(@"User should see that field Powtórz hasło is incorrect")]
@@ -267,7 +267,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutPasswordConfirm = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Hasła nie zgadzają się')]"));
 
-            Assert.That(errorAboutPasswordConfirm.Text, Is.EqualTo("Hasła nie zgadzają się"));
+            Assert.AreEqual(true, errorAboutPasswordConfirm.Displayed);
         }
 
         [Then(@"User should see error message about too short Numer telefonu")]
@@ -275,15 +275,15 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutPhoneNumber = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]"));
 
-            Assert.That(errorAboutPhoneNumber.Text, Is.EqualTo("Niepoprawny numer telefonu"));
+            Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
         }
 
         [Then(@"User should see error message about too short Login")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortLogin()
-        {           
+        {
             IWebElement errorAboutLogin = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Login jest za krótki')]"));
 
-            Assert.That(errorAboutLogin.Text, Is.EqualTo("Login jest za krótki"));
+            Assert.AreEqual(true, errorAboutLogin.Displayed);
         }
 
         [Then(@"User should see error message about too short Hasło")]
@@ -291,7 +291,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutPassword = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Hasło jest za krótkie - min. 8 znaków')]"));
 
-            Assert.That(errorAboutPassword.Text, Is.EqualTo("Hasło jest za krótkie - min. 8 znaków"));
+            Assert.AreEqual(true, errorAboutPassword.Displayed);
         }
 
         [Then(@"User should see error message about too long Imie")]
@@ -299,7 +299,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutTooLongFirstName = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Imię jest za długie')]"));
 
-            Assert.That(errorAboutTooLongFirstName.Text, Is.EqualTo("Imię jest za długie"));
+            Assert.AreEqual(true, errorAboutTooLongFirstName.Displayed);
         }
 
         [Then(@"User should see error message about too long Nazwisko")]
@@ -307,7 +307,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutTooLongLastName = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Nazwisko jest za długie')]"));
 
-            Assert.That(errorAboutTooLongLastName.Text, Is.EqualTo("Nazwisko jest za długie"));
+            Assert.AreEqual(true, errorAboutTooLongLastName.Displayed);
         }
 
         [Then(@"User should see error message about too long Numer telefonu")]
@@ -315,7 +315,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutTooLongPhoneNumber = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]"));
 
-            Assert.That(errorAboutTooLongPhoneNumber.Text, Is.EqualTo("Niepoprawny numer telefonu"));
+            Assert.AreEqual(true, errorAboutTooLongPhoneNumber.Displayed);
         }
 
         [Then(@"User should see error message about too long Login")]
@@ -323,7 +323,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutTooLongLogin = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Login jest za długi')]"));
 
-            Assert.That(errorAboutTooLongLogin.Text, Is.EqualTo("Login jest za długi"));
+            Assert.AreEqual(true, errorAboutTooLongLogin.Displayed);
         }
 
         [Then(@"User should see error message about unchecked technology groups")]
@@ -331,7 +331,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutTechnologies = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Musisz wybrać przynajmniej jedną technologię.')]"));
 
-            Assert.That(errorAboutTechnologies.Text, Is.EqualTo("Musisz wybrać przynajmniej jedną technologię."));
+            Assert.AreEqual(true, errorAboutTechnologies.Displayed);
         }
 
         [Then(@"User should see error message about checked too many technology groups")]
@@ -339,7 +339,7 @@ namespace SeleniumProject.Steps
         {
             IWebElement errorAboutTechnologies = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Można wybrać tylko 3 technologie.')]"));
 
-            Assert.That(errorAboutTechnologies.Text, Is.EqualTo("Można wybrać tylko 3 technologie."));
+            Assert.AreEqual(true, errorAboutTechnologies.Displayed);
         }
     }
 }
