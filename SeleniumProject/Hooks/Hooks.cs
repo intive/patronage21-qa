@@ -10,7 +10,6 @@ using WebDriverManager.DriverConfigs.Impl;
 namespace SeleniumProject.Hooks
 {
     [Binding]
-    [Scope(Feature = "Registration form")]
     public sealed class Hooks
     {
         public static IWebDriver driver;
@@ -41,8 +40,6 @@ namespace SeleniumProject.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            Thread.Sleep(2000);
-
             driver.Quit();
         }
     }
