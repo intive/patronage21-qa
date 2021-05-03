@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using RestSharp;
 using System;
-using System.Data.SqlClient;
 using TechTalk.SpecFlow;
 
 namespace RestSharpProject.Steps
@@ -11,110 +10,81 @@ namespace RestSharpProject.Steps
     public class UserSearchSteps
     {
 
-        private RestClient client;
-        private RestRequest request;
-        private SqlConnection connection;
-        private SqlCommand command;
-        private SqlDataReader reader;
-        private RestResponse response;
+        RestClient client;
+        RestRequest request;
+        RestResponse response;
 
-        [Given(@"Customer sets the endpoint as /api/users with method GET")]
-        public void GivenCustomerSetsTheEndpointAsApiUsersWithMethodGET()
+        [Given(@"Customer sets the endpoint as /frontend-api/users with method GET")]
+        public void GivenCustomerSetsTheEndpointAsFrontend_ApiUsersWithMethodGET()
         {
-            client = new RestClient("htttp://localhost:8080/");
-            request = new RestRequest("api/users", Method.GET);
+            client = new RestClient("http://localhost:8080/");
+            request = new RestRequest("frontend-api/users", Method.GET);
         }
-
-        [Given(@"Several users exist in application")]
-        public void GivenSeveralUsersExistInApplication()
+        
+        [Given(@"Customer enters '(.*)' and '(.*)' as a query parameter")]
+        public void GivenCustomerEntersAndAsAQueryParameter(string key, string value)
         {
-            connection = new SqlConnection("dane do połączenia z bazą");
-            command = new SqlCommand("SELECT * FROM users albo inne zapytanie SQL", connection);
-            reader = command.ExecuteReader();
+            request.AddQueryParameter(key, value);
         }
-
-        [Given(@"Customer enters valid '(.*)' and '(.*)' as a query parameter")]
-        public void GivenCustomerEntersValidAndAsAQueryParameter(string name, string value)
-        {
-            request.AddQueryParameter(name, value);
-        }
-
-        [Given(@"User with '(.*)', '(.*)' and '(.*)', '(.*)' exists in application")]
-        public void GivenUserWithAndExistsInApplication(string name1, string value1, string name2, string value2)
-        {
-            connection = new SqlConnection("dane do połączenia z bazą");
-            command = new SqlCommand("Jakieś zapytanie SQL", connection);
-            reader = command.ExecuteReader();
-        }
-
-        [Given(@"Customer enters '(.*)', '(.*)' and '(.*)', '(.*)' as a query parameter")]
-        public void GivenCustomerEntersAndAsAQueryParameter(string name1, string value1, string name2, string value2)
-        {
-            request.AddQueryParameter(name1, value1).AddQueryParameter(name2, value2);
-        }
-
-        [Given(@"Customer enters invalid '(.*)' and '(.*)' as a query paraneter")]
-        public void GivenCustomerEntersInvalidAndAsAQueryParaneter(string name, string value)
-        {
-            request.AddQueryParameter(name, value);
-        }
-
-        [Given(@"Customer enters valid '(.*)' as the query parameter")]
-        public void GivenCustomerEntersValidAsTheQueryParameter(string name)
-        {
-            request.AddQueryParameter(name, null);
-        }
-
+        
         [When(@"Customer sends the request to the endpoint")]
         public void WhenCustomerSendsTheRequestToTheEndpoint()
         {
-            client.Execute(request);
+            client.Execute<Model.Users>(request);
         }
-
-        [When(@"Customer sends the request without any value in the query")]
-        public void WhenCustomerSendsTheRequestWithoutAnyValueInTheQuery()
+        
+        [When(@"Customer sends the firstName value as '(.*)' and lastName value as '(.*)'")]
+        public void WhenCustomerSendsTheFirstNameValueAsAndLastNameValueAs(string firstNameValue, string lastNameValue)
         {
-            client.Execute(request);
+            request.AddJsonBody(new Model.Users() { firstName = firstNameValue, lastName = lastNameValue });
         }
-
+       
+        
+        [When(@"Customer sends the lastName value as '(.*)'")]
+        public void WhenCustomerSendsTheLastNameValueAs(string lastNameValue)
+        {
+            request.AddJsonBody(new Model.Users() { lastName = lastNameValue });
+        }
+        
+        [When(@"Customer sends the request without any query parameter")]
+        public void WhenCustomerSendsTheRequestWithoutAnyQueryParameter()
+        {
+            response = (RestResponse)client.Execute(request);
+        }
+        
         [Then(@"The server returns code (.*)")]
         public void ThenTheServerReturnsCode(int code)
         {
-            response = (RestResponse)client.Execute(request);
-            Assert.AreEqual(code, (int)response.StatusCode);
+            Assert.AreEqual(code, response.StatusCode);
         }
-
-
+        
+        [Then(@"JSON body contains '(.*)' and '(.*)'")]
+        public void ThenJSONBodyContainsAnd(string key, string value)
+        {
+            //tutaj na pewno jest coś nie tak, ale nie wiem, jak to zmienić
+            string deserializedResponse = response.Content;
+            JObject obs = (JObject)JObject.Parse(deserializedResponse).ToString();
+            string result = obs[value].ToString();
+            Assert.AreEqual(value, result);
+        }
+        
         [Then(@"JSON body contains valid '(.*)'")]
-        public void ThenJSONBodyContainsValid(string nameAndValue)
+        public void ThenJSONBodyContainsValid(string value)
         {
-            response = (RestResponse)client.Execute(request);
-            string responseContent = response.ToString();
-            JObject parseRestResponse = JObject.Parse(responseContent);
-            string jsonHasNameAndValue = (string)parseRestResponse[nameAndValue];
-            Assert.AreEqual(nameAndValue, jsonHasNameAndValue);
+            //tu chciałem użyć response.Data, ale nie da się jej użyć
+            Assert.AreEqual(value, response.Data);
         }
-
-
-        [Then(@"Error message '(.*)' is shown")]
-        public void ThenErrorMessageIsShown(string message)
+        
+        [Then(@"JSON body contains rejectedValue '(.*)'")]
+        public void ThenJSONBodyContainsRejectedValue(string p0)
         {
-            message = "To jest przykładowa wiadomość o błędzie";
-            response = (RestResponse)client.Execute(request);
-            string responseContent = response.ToString();
-            JObject parseRestResponse = JObject.Parse(responseContent);
-            string errorMessage = (string)parseRestResponse[message];
-            Assert.Equals(message, errorMessage);
+            ScenarioContext.Current.Pending();
         }
-
-        [Then(@"JSON contains empty array")]
-        public void ThenJSONContainsEmptyArray()
+        
+        [Then(@"JSON body contains array")]
+        public void ThenJSONBodyContainsArray()
         {
-            response = (RestResponse)client.Execute(request);
-            string responseContent = response.ToString();
-            JObject parseRestResponse = JObject.Parse(responseContent);
-            string emptyJson = (string)parseRestResponse[null];
-            Assert.AreEqual(null, emptyJson);
+            ScenarioContext.Current.Pending();
         }
     }
 }
