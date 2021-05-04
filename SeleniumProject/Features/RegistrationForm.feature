@@ -67,8 +67,7 @@ Scenario: REGISTRATION_FORM_6_IP2-243_form_filled_with_unchecked_fields:_'JavaSc
 		| firstName | lastName | email             | phone       | githubLink             |
 		| Jan       | Kowalski | example@email.com | 123456789   | github.com/exampleLink |
 	When User clicks on Login field
-	Then User should see error message about unchecked technology groups
-	And Button Załóż konto is inactive
+	Then Button Załóż konto is inactive
 	
 #zephyr link
 Scenario: REGISTRATION_FORM_7_IP2-243_form_filled_with_checked_all_fields:_'JavaScript,Java,QA,Mobile'

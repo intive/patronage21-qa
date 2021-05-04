@@ -326,14 +326,6 @@ namespace SeleniumProject.Steps
             Assert.AreEqual(true, errorAboutTooLongLogin.Displayed);
         }
 
-        [Then(@"User should see error message about unchecked technology groups")]
-        public void ThenUserShouldSeeErrorMessageAboutUncheckedTechnologyGroups()
-        {
-            IWebElement errorAboutTechnologies = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Musisz wybrać przynajmniej jedną technologię.')]"));
-
-            Assert.AreEqual(true, errorAboutTechnologies.Displayed);
-        }
-
         [Then(@"User should see error message about checked too many technology groups")]
         public void ThenUserShouldSeeErrorMessageAboutCheckedTooManyTechnologyGroups()
         {
