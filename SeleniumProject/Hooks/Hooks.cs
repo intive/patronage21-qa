@@ -2,11 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using TechTalk.SpecFlow;
 using WebDriverManager;
@@ -45,8 +40,8 @@ namespace Selenium.Hooks
         public void AfterScenario()
         {
             Thread.Sleep(5000);
-            //Thread.Sleep will be removed before merge
             driver.Quit();
         }
     }
 }
+

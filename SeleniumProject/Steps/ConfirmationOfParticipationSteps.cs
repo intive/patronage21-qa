@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using SeleniumProject.Pages;
 using System;
 using System.Threading;
 using TechTalk.SpecFlow;
@@ -12,10 +13,17 @@ namespace SeleniumProject.Steps
     public class ConfirmationOfParticipationSteps
     {
         private readonly IWebDriver _webdriver;
+        private readonly ConfirmationOfParticipationPage confirmationOfParticipationPage;
 
         public ConfirmationOfParticipationSteps(IWebDriver driver)
         {
             _webdriver = driver;
+            confirmationOfParticipationPage = new ConfirmationOfParticipationPage(_webdriver);            
+        }
+
+        [Given(@"Activated User is redirected to Success Site")]
+        public void GivenActivatedUserIsRedirectedToSuccessSite()
+        {
             _webdriver.Url = _webdriver.Url + "rejestracja-sukces";
         }
 
@@ -24,28 +32,23 @@ namespace SeleniumProject.Steps
         public void GivenUserUserSeesTheRegistrationSuccessMessage()
 
         {
-            IWebElement successfulRegistrationText = _webdriver.FindElement(By.XPath("//*[text()[contains(.,'Twoja rejestracja przebiegła pomyślnie!')]]"));
-            Assert.AreEqual(true, successfulRegistrationText.Displayed);
+            Assert.AreEqual(true, confirmationOfParticipationPage.successfulRegistrationText.Displayed);
         }
 
         [When(@"User clicks ""(.*)""")]
         public void WhenUserClicks(string p0)
         {
-            IWebElement mainPageButton = _webdriver.FindElement(By.XPath("//*[text()[contains(.,'Strona główna')]]"));
-            mainPageButton.Click();
+            confirmationOfParticipationPage.mainPageButton.Click();
         }
 
-        [Then(@"User should be trasfered to main site")]
-        public void ThenUserShouldBeTrasferedToMainSide()
+        [Then(@"User should be transfered to main site")]
+        public void ThenUserShouldBeTransferedToMainSite()
         {
             var wait = new WebDriverWait(_webdriver, new TimeSpan(0, 0, 10));
+                      
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(confirmationOfParticipationPage.mainPageContentElement));
 
-            // TO DO: change xpath
-            By element = By.XPath("//div[text()='tu kontent']");
-            IWebElement successfulRegistrationText = _webdriver.FindElement(element);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(element));
-
-            Assert.AreEqual(true, successfulRegistrationText.Displayed);
+            Assert.AreEqual(true, confirmationOfParticipationPage.mainPageContent.Displayed);
         }
     }
 }
