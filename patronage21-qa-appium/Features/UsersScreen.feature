@@ -9,14 +9,14 @@
 Background: 
 	Given User is on "Users" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-489
 Scenario: USERS_SCREEN_1_IP2-152_users_screen_displayed_correctly
 	Then "Szukaj użytkownika" field is empty
 	And "Wybierz grupę" is set to "Wszystkie grupy technologiczne"
 	And User sees "liders" list
 	And User sees "participants" list
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-486
 Scenario Outline: USERS_SCREEN_2_IP2-152_search_existing_user
 	Given Existing user "<name>" assigned to "<list>" list
 	When User writes "<name>" into "Szukaj użytkownika" field
@@ -28,14 +28,14 @@ Examples:
 | Jan Kowalski | Uczestnicy |
 | Anna Nowak   | Liderzy    |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-490
 Scenario: USERS_SCREEN_3_IP2-152_search_not_existing_user
 	Given User "not existing user" does not exist
 	When User writes "not existing user" into "Szukaj użytkownika" field
 	And User clicks "Enter" button
 	Then User sees information that searched user does not exist
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-491
 Scenario Outline: USERS_SCREEN_4_IP2-152_search_group
 	Given Existing user "<user>" assigned to "<list>" list and "<group>" group
 	When User clicks "Wybierz grupę" 
@@ -49,7 +49,7 @@ Examples:
 | Anna Nowak   | Liderzy    | Group 3 |
 | Anna Nowak   | Liderzy    | Group 4 |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-492
 Scenario: USERS_SCREEN_5_IP2-152_search_all_groups
 	Given Existing user "Jan Kowalski" assigned to "Uczestnicy" list and "Group 1" group
 	And Existing user "Anna Nowak" assigned to "Liderzy" list and "Group 3" group
@@ -60,7 +60,7 @@ Scenario: USERS_SCREEN_5_IP2-152_search_all_groups
 	Then User sees user "Jan Kowalski" in "Uczestnicy" list
 	And User sees user "Anna Nowak" in "Liderzy" list
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-493
 Scenario: USERS_SCREEN_6_IP2-152_empty_search_user_field_shows_all_users
 	Given Existing user "Jan Kowalski" assigned to "Uczestnicy" list and "Group 1" group
 	And Existing user "Anna Nowak" assigned to "Liderzy" list and "Group 3" group
@@ -71,7 +71,7 @@ Scenario: USERS_SCREEN_6_IP2-152_empty_search_user_field_shows_all_users
 	Then User sees user "Jan Kowalski" in "Uczestnicy" list
 	And User sees user "Anna Nowak" in "Liderzy" list
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-494
 Scenario Outline: USERS_SCREEN_7_IP2-152_search_user_and_group
 	Given Existing user "<name>" assigned to "<list>" list and "<group>" group
 	When User writes "<name>" into "Szukaj użytkownika" field
@@ -85,7 +85,7 @@ Examples:
 | Jan Kowalski | Uczestnicy | Group 1 |
 | Anna Nowak   | Liderzy    | Group 3 |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-495
 Scenario Outline: USERS_SCREEN_8_IP2-152_search_group_and_user
 	Given Existing user "<name>" assigned to "<list>" list and "<group>" group
 	When User clicks "Wybierz grupę"
@@ -99,7 +99,7 @@ Examples:
 | Jan Kowalski | Uczestnicy | Group 1 |
 | Anna Nowak   | Liderzy    | Group 3 |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-496
 Scenario Outline: USERS_SCREEN_9_IP2-152_search_user_and_wrong_group
 	Given Existing user "<name>" assigned to "<list>" list and not to "<group>" group
 	And No other user in list "<list>" is named "<name>"
@@ -114,7 +114,7 @@ Examples:
 | Jan Kowalski | Uczestnicy | Group 3 |
 | Anna Nowak   | Liderzy    | Group 1 |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-497
 Scenario Outline: USERS_SCREEN_10_IP2-152_search_group_and_wrong_user
 	Given Existing user "<name>" assigned to "<list>" list and "<group>" group
 	And No other user is named "<name>"
@@ -129,7 +129,7 @@ Examples:
 | Jan Kowalski | Uczestnicy | Group 1 |
 | Anna Nowak   | Liderzy    | Group 3 |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-498
 Scenario Outline: USERS_SCREEN_11_IP2-152_view_user_details
 	Given Existing user "<name>" assigned to "<list>" list
 	When User clicks "<name>" in "<list>" list
@@ -140,7 +140,7 @@ Examples:
 | Jan Kowalski | Uczestnicy |
 | Anna Nowak   | Liderzy    |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-499
 Scenario Outline: USERS_SCREEN_12_IP2-152_user_details_back_to_users_screen_navigation
 	Given Existing user "<name>" assigned to "<list>" list
 	When User clicks "<name>" in "<list>" list
@@ -152,7 +152,7 @@ Examples:
 | Jan Kowalski | Uczestnicy |
 | Anna Nowak   | Liderzy    |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-500
 Scenario: USERS_SCREEN_13_IP2-152_records_are_not_duplicated
 	Given Existing user "Jan Kowalski" assigned to "Uczestnicy" list and "Group 1" and "Group 2" groups
 	And No other user in list "Uczestnicy" is named "Jan Kowalski"
@@ -160,7 +160,7 @@ Scenario: USERS_SCREEN_13_IP2-152_records_are_not_duplicated
 	And User clicks "Enter" button
 	Then User sees only one occurance of "Jan Kowalski" in "Uczestnicy" list
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-501
 Scenario Outline: USERS_SCREEN_14_IP2-152_all_users_counter_is_correct
 	Given Existing users in "<group>" group and "<list>" list
 	When User clicks "Wybierz grupę"
@@ -172,7 +172,7 @@ Examples:
 | Group 3 | Liderzy    |
 | Group 1 | Uczestnicy |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-502
 Scenario: USERS_SCREEN_15_IP2-152_no_users_found_counter_is_correct
 	Given No existing user named "not existing user"
 	When User writes "not existing user" into "Szukaj użytkownika" field
@@ -180,7 +180,7 @@ Scenario: USERS_SCREEN_15_IP2-152_no_users_found_counter_is_correct
 	Then "Liderzy" list users counter is correct
 	And "Użytkownicy" list users counter is correct
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-503
 Scenario Outline: USERS_SCREEN_16_IP2-152_user_own_account_is_marked
 	Given User is logged in as "<user>" assigned to "<list>" list
 	And No other user in list "<list>" is named "<user>"
@@ -192,7 +192,7 @@ Examples:
 | Jan Kowalski | Uczestnicy |
 | Anna Nowak   | Liderzy    |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-504
 Scenario Outline: USERS_SCREEN_17_IP2-152_user_own_account_is_marked_and_other_user_with_the_same_name_is_not_marked
 	Given User is logged in as "<name>" assigned to "<list1>" list
 	And Existing user "<name>" assigned to "<list1>" list
