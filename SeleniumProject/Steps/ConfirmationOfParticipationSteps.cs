@@ -41,8 +41,8 @@ namespace SeleniumProject.Steps
             confirmationOfParticipationPage.mainPageButton.Click();
         }
 
-        [Then(@"User should be transfered to main site")]
-        public void ThenUserShouldBeTransferedToMainSite()
+        [Then(@"User should be transferred to main site")]
+        public void ThenUserShouldBeTransferredToMainSite()
         {
             var wait = new WebDriverWait(_webdriver, new TimeSpan(0, 0, 10));
                       
