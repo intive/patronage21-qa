@@ -39,7 +39,6 @@ namespace Selenium.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            Thread.Sleep(5000);
             driver.Quit();
         }
     }
