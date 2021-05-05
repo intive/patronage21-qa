@@ -6,10 +6,10 @@ Sub – Tasks 2.
 
 
 # link to Zephyr_1 test
-Scenatio Outline: USERS_PAGE_1_IP2-91_User_is_looking_for_a_specific_user_successfuly
+Scenario Outline: USERS_PAGE_1_IP2-91_User_is_looking_for_a_specific_user_successfuly
 Given User '<user_data>' exists
-When User enters the '<user_data>' he wants to find in the "szukaj użytkownika" field
-And  User selects a '<technology_group>' 
+When User enters the '<user_data>' in the "szukaj użytkownika" field
+And  User selects a '<technology_group>'
 Then A user with name and surname equal '<user_data>' is displayed
 
 Examples:
@@ -19,11 +19,12 @@ Examples:
 
 
 # link to Zephyr_2 test
-Scenario Outline: USERS_PAGE_2_IP2-91-User_is_looking_for_a_specific_user_without_providing_all_data
+Scenario Outline: USERS_PAGE_2_IP2-91_User_is_looking_for_a_specific_user_without_providing_all_data
 Given User is on the "users" page
-When User enters the '<user_data>' he wants to find in the "szukaj użytkownika" field
-And  User selects '<technology group>' 
-Then The searched user doesn't appear, but displays '<result>'
+When User enters the '<user_data>' in the "szukaj użytkownika" field
+And  User selects '<technology_group>' 
+Then The searched user doesn't appear
+And Is displayed '<result>'
 
 Examples:
 | user_data | technology_group               | result                                    |
@@ -34,8 +35,8 @@ Examples:
 
 
 # link to Zephyr_3 test
-Scenario: USERS_PAGE_3_IP2-91-User_is_looking_for_a_specific_user_unsuccessfuly
+Scenario: USERS_PAGE_3_IP2-91_User_is_looking_for_a_specific_user_unsuccessfuly
 Given User is on the "users" page
-When User writes the user's name and surname in the <szukaj użytkownika> field
-And  The user selects a '<technology group>' in which this user is not located
+When User writes '<user_data>' in the "szukaj użytkownika" field
+And  The user selects a '<technology_group>' in which this user is not located
 Then User with this name and surname is not displayed
