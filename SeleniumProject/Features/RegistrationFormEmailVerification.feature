@@ -66,7 +66,7 @@ Scenario: REGISTRATION_FORM_8_IP2-135_Improper_code_should_not_allow_User_to_be_
 	And User clicks "Zatwierdź kod" button
 	Then User sees 'Wprowadzony kod jest niepoprawny'
 
-	#https://tracker.intive.com/jira/browse/IP2-520
+#https://tracker.intive.com/jira/browse/IP2-520
 Scenario: REGISTRATION_FORM_9_IP2-135_Only_numbers_can_be_inserted_as_code
 	When User enters <code with characters> 
 	| code with characters |
