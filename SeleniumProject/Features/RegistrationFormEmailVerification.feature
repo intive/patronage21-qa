@@ -14,14 +14,14 @@ Given User proceeds with registration via email verification page
 Scenario: REGISTRATION_FORM_1_IP2-135_User_inserts_correct_code
 	Given User has correct code
 	When User enters the code
-	And User clicks "Zatwierdź kod" button
-	Then User sees "Twoja rejestracja przebiegła pomyślnie!"
+	And User clicks Zatwierdź kod button
+	Then User sees Twoja rejestracja przebiegła pomyślnie!
 
 @ignore
 # manual
 #https://tracker.intive.com/jira/browse/IP2-298
 Scenario: REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrive_code_on_mailbox
-	When User clicks "Nie otrzymałem/am kodu"
+	When User clicks Nie otrzymałem/am kodu
 	Then User receives code 
 
 #https://tracker.intive.com/jira/browse/IP2-299
