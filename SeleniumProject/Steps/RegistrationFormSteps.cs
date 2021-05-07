@@ -25,8 +25,8 @@ namespace SeleniumProject.Steps
             dynamic data = table.CreateDynamicInstance();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
-            registrationFormPage.ClickTechnologies();
-            registrationFormPage.ClickTermsAndConditions();
+            registrationFormPage.checkBoxJavaScript.Click();
+            registrationFormPage.checkBoxTermsAndConditions.Click();
         }
 
         [Given(@"User doesn't fill data")]
@@ -131,7 +131,7 @@ namespace SeleniumProject.Steps
             dynamic data = table.CreateDynamicInstance();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
-            registrationFormPage.ClickTermsAndConditions();
+            registrationFormPage.checkBoxTermsAndConditions.Click();
         }
 
         [Given(@"User fills all data")]
@@ -140,61 +140,61 @@ namespace SeleniumProject.Steps
             dynamic data = table.CreateDynamicInstance();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
-            registrationFormPage.ClickTechnologies();
+            registrationFormPage.checkBoxJavaScript.Click();
         }
 
         [When(@"User clicks on next Numer telefonu")]
         public void WhenUserClicksOnNextNumerTelefonu()
         {
-            registrationFormPage.ClickPhoneNumber();
+            registrationFormPage.txtPhone.Click();
         }
 
         [When(@"User clicks on next Github link")]
         public void WhenUserClicksOnNextGithubLink()
         {
-            registrationFormPage.ClickGithubLink();
+            registrationFormPage.txtGithubLink.Click();
         }
 
         [When(@"User clicks on next Technologie")]
         public void WhenUserClicksOnNextTechnologie()
         {
-            registrationFormPage.ClickTechnologies();
+            registrationFormPage.checkBoxJavaScript.Click();
         }
 
         [When(@"User clicks on next Powtórz hasło")]
         public void WhenUserClicksOnNextPowtorzHaslo()
         {
-            registrationFormPage.ClickPasswordConfirm();
+            registrationFormPage.txtPasswordConfirm.Click();
         }
 
         [When(@"User clicks on next Regulamin")]
         public void WhenUserClicksOnNextRegulamin()
         {
-            registrationFormPage.ClickTermsAndConditions();
+            registrationFormPage.checkBoxTermsAndConditions.Click();
         }
 
         [When(@"User clicks on next Hasło")]
         public void WhenUserClicksOnNextHaslo()
         {
-            registrationFormPage.ClickPassword();
+            registrationFormPage.txtPassword.Click();
         }
 
         [When(@"User clicks on next Nazwisko")]
         public void WhenUserClicksOnNextNazwisko()
         {
-            registrationFormPage.ClickLastName();
+            registrationFormPage.txtLastName.Click();
         }
 
         [When(@"User clicks on next Adres email")]
         public void WhenUserClicksOnNextAdresEmail()
         {
-            registrationFormPage.ClickEmail();
+            registrationFormPage.txtEmail.Click();
         }
 
         [When(@"User clicks on Login field")]
         public void WhenUserDoesnTCheckFieldsAboutTechnologyGroups()
         {
-            registrationFormPage.ClickLogin();
+            registrationFormPage.txtLogin.Click();
         }
 
         [When(@"User checks all fields about technologies grups")]
@@ -233,7 +233,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see that field Adres email is incorrect")]
         public void ThenUserShouldSeeThatFieldAdresEmailIsIncorrect()
         {
-            IWebElement errorAboutEmailAdress = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny adres e-mail')]"));
+            By email = By.XPath(".//*[contains(text(),'Niepoprawny adres e-mail')]");
+            IWebElement errorAboutEmailAdress = _webdriver.FindElement(email);
 
             Assert.AreEqual(true, errorAboutEmailAdress.Displayed);
         }
@@ -241,7 +242,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see that field Numer telefonu is incorrect")]
         public void ThenUserShouldSeeThatFieldNumerTelefonuIsIncorrect()
         {
-            IWebElement errorAboutPhoneNumber = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]"));
+            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
+            IWebElement errorAboutPhoneNumber = _webdriver.FindElement(phoneNumber);
 
             Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
         }
@@ -249,7 +251,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see that field Github link is incorrect")]
         public void ThenUserShouldSeeThatFieldGithubLinkIsIncorrect()
         {
-            IWebElement errorAboutGithubLink = _webdriver.FindElement(By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]"));
+            By githubLink = By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]");
+            IWebElement errorAboutGithubLink = _webdriver.FindElement(githubLink);
 
             Assert.AreEqual(true, errorAboutGithubLink.Displayed);
         }
@@ -257,7 +260,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see that field Hasło is incorrect")]
         public void ThenUserShouldSeeThatFieldHasloIsIncorrect()
         {
-            IWebElement errorAboutPassword = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Hasło musi mieć przynajmniej jedną dużą literę')]"));
+            By password = By.XPath(".//*[contains(text(),'Hasło musi mieć przynajmniej jedną dużą literę')]");
+            IWebElement errorAboutPassword = _webdriver.FindElement(password);
 
             Assert.AreEqual(true, errorAboutPassword.Displayed);
         }
@@ -265,7 +269,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see that field Powtórz hasło is incorrect")]
         public void ThenUserShouldSeeThatFieldPowtorzHasloIsIncorrect()
         {
-            IWebElement errorAboutPasswordConfirm = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Hasła nie zgadzają się')]"));
+            By passwordConfirm = By.XPath(".//*[contains(text(),'Hasła nie zgadzają się')]");
+            IWebElement errorAboutPasswordConfirm = _webdriver.FindElement(passwordConfirm);
 
             Assert.AreEqual(true, errorAboutPasswordConfirm.Displayed);
         }
@@ -273,7 +278,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too short Numer telefonu")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortNumerTelefonu()
         {
-            IWebElement errorAboutPhoneNumber = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]"));
+            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
+            IWebElement errorAboutPhoneNumber = _webdriver.FindElement(phoneNumber);
 
             Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
         }
@@ -281,7 +287,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too short Login")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortLogin()
         {
-            IWebElement errorAboutLogin = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Login jest za krótki')]"));
+            By login = By.XPath(".//*[contains(text(),'Login jest za krótki')]");
+            IWebElement errorAboutLogin = _webdriver.FindElement(login);
 
             Assert.AreEqual(true, errorAboutLogin.Displayed);
         }
@@ -289,7 +296,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too short Hasło")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortHaslo()
         {
-            IWebElement errorAboutPassword = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Hasło jest za krótkie - min. 8 znaków')]"));
+            By password = By.XPath(".//*[contains(text(),'Hasło jest za krótkie - min. 8 znaków')]");
+            IWebElement errorAboutPassword = _webdriver.FindElement(password);
 
             Assert.AreEqual(true, errorAboutPassword.Displayed);
         }
@@ -297,7 +305,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too long Imie")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongImie()
         {
-            IWebElement errorAboutTooLongFirstName = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Imię jest za długie')]"));
+            By firstName = By.XPath(".//*[contains(text(),'Imię jest za długie')]");
+            IWebElement errorAboutTooLongFirstName = _webdriver.FindElement(firstName);
 
             Assert.AreEqual(true, errorAboutTooLongFirstName.Displayed);
         }
@@ -305,7 +314,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too long Nazwisko")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongNazwisko()
         {
-            IWebElement errorAboutTooLongLastName = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Nazwisko jest za długie')]"));
+            By lastName = By.XPath(".//*[contains(text(),'Nazwisko jest za długie')]");
+            IWebElement errorAboutTooLongLastName = _webdriver.FindElement(lastName);
 
             Assert.AreEqual(true, errorAboutTooLongLastName.Displayed);
         }
@@ -313,7 +323,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too long Numer telefonu")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongNumerTelefonu()
         {
-            IWebElement errorAboutTooLongPhoneNumber = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]"));
+            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
+            IWebElement errorAboutTooLongPhoneNumber = _webdriver.FindElement(phoneNumber);
 
             Assert.AreEqual(true, errorAboutTooLongPhoneNumber.Displayed);
         }
@@ -321,7 +332,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too long Login")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongLogin()
         {
-            IWebElement errorAboutTooLongLogin = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Login jest za długi')]"));
+            By login = By.XPath(".//*[contains(text(),'Login jest za długi')]");
+            IWebElement errorAboutTooLongLogin = _webdriver.FindElement(login);
 
             Assert.AreEqual(true, errorAboutTooLongLogin.Displayed);
         }
@@ -329,7 +341,8 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about checked too many technology groups")]
         public void ThenUserShouldSeeErrorMessageAboutCheckedTooManyTechnologyGroups()
         {
-            IWebElement errorAboutTechnologies = _webdriver.FindElement(By.XPath(".//*[contains(text(),'Można wybrać tylko 3 technologie.')]"));
+            By technologies = By.XPath(".//*[contains(text(),'Można wybrać tylko 3 technologie.')]");
+            IWebElement errorAboutTechnologies = _webdriver.FindElement(technologies);
 
             Assert.AreEqual(true, errorAboutTechnologies.Displayed);
         }
