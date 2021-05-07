@@ -45,14 +45,19 @@ And User clicks "Zatwierdź" button
 Then The phone number has been changed successfuly
 
 # link to Zephyr_6 test
-Scenario: USER_PROFILE_6_IP2-91_Incorrect_phone_number_change 
+Scenario Outline: USER_PROFILE_6_IP2-91_Incorrect_phone_number_change 
 When  User clicks on the "numer telefonu" field
-And User writes more or less than 9 numbers
+And User enters an incorrect '<digits>'
 And User clicks "Zatwierdź" button
-Then The message invalid phone number appears
+Then The message "invalid phone number" is displayed 
+
+Examples: 
+| digits      |
+| 1112223     |
+| 11122233345 |
 
 # link to Zephyr_7 test
-Scenario: USER_PROFILE_7_IP2-91_Correct_ediotion_of_the_github_link 
+Scenario: USER_PROFILE_7_IP2-91_Correct_ediotion_of_the_github_link
 When User clicks on the "link do github" field
 And User writes a valid github link
 And User clicks "Zatwierdź" button
