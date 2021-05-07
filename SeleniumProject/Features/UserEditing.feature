@@ -57,7 +57,7 @@ Examples:
 | 11122233345 |
 
 # link to Zephyr_7 test
-Scenario: USER_PROFILE_7_IP2-91_Correct_ediotion_of_the_github_link
+Scenario: USER_PROFILE_7_IP2-91_Correct_change_of_the_github_link
 When User clicks on the "link do github" field
 And User writes a valid github link
 And User clicks "Zatwierdź" button
