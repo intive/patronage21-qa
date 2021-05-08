@@ -28,7 +28,7 @@ Scenario: REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrive_code_on_mai
 Scenario: REGISTRATION_FORM_3_IP2-135_False_code_should_not_allow_User_to_be_verified_and_activated
 	When User enters code 00000000
 	And User clicks Zatwierdź kod button
-	Then User sees Wprowadzony kod jest niepoprawny
+	Then User sees Błędny kod
 
 #https://tracker.intive.com/jira/browse/IP2-300
 Scenario: REGISTRATION_FORM_4_IP2-135_Too_short_code_should_not_allow_User_to_be_verified_and_activated 
