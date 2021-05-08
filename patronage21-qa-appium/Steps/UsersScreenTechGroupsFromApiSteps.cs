@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using TechTalk.SpecFlow;
 using RestSharp;
-using RestSharp.Serialization.Json;
-using System.Collections.Generic;
-using NUnit.Framework;
+using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
 {
@@ -33,7 +32,7 @@ namespace patronage21_qa_appium.Steps
         {
             _driver.FindElementByXPath("//android.widget.ImageView[@content-desc='Miniaturka modułu użytkowników']").Click();
         }
-        
+
         [When(@"User clicks ""(.*)""")]
         public void WhenUserClicks(string p0)
         {
@@ -41,16 +40,19 @@ namespace patronage21_qa_appium.Steps
             var element = _driver.FindElementByXPath(elementXpath);
             element.Click();
         }
-        
+
         [Then(@"User sees correct tech groups")]
         public void ThenUserSeesCorrectTechGroups()
         {
+            var displayedGroupsXpath = "//android.widget.ScrollView/android.view.View";
+            var displayedGroups = _driver.FindElementsByXPath(displayedGroupsXpath);
             for (var i = 0; i < _groups.Count; i++)
             {
                 var elementXpath = "//android.view.View[@text='" + _groups[i] + "']";
                 var element = _driver.FindElementsByXPath(elementXpath);
-                Assert.IsNotEmpty(element);
+                Assert.AreEqual(1, element.Count);
             }
+            Assert.AreEqual(_groups.Count, displayedGroups.Count);
         }
     }
 }

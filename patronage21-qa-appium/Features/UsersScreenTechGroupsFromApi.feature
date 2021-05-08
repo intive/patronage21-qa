@@ -7,5 +7,5 @@
 
 Scenario: USERS_SCREEN_1_IP2-469_tech_groups_are_loaded_correctly
 	Given User is on "Users" screen
-	When User clicks "Wybierz grupę"
+	When User clicks "Wszystkie grupy"
 	Then User sees correct tech groups
