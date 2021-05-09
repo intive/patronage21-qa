@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
@@ -21,6 +22,7 @@ namespace patronage21_qa_appium.Steps
         public UsersScreenTechGroupsFromApiSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             _url = "http://64z31.mocklab.io";
             _client = new RestClient(_url);
             _requestGet = new RestRequest("/api/groups/technologies", Method.GET);
