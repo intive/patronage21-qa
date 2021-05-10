@@ -3,19 +3,19 @@
 	#Task in JS Board: https://tracker.intive.com/jira/browse/IP2-98 and https://tracker.intive.com/jira/browse/IP2-243
 	#Task in QA Board: https://tracker.intive.com/jira/browse/IP2-180
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-396
 Scenario: REGISTRATION_FORM_1_IP2-243_form_with_correctly_data
 	Given User fills data correctly
 		| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
 		| Jan       | Kowalski | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword@ | examplePassword@ |
 	Then Button Załóż konto is active
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-397
 Scenario: REGISTRATION_FORM_2_IP2-243_empty_form
 	Given User doesn't fill data
 	Then Button Załóż konto is inactive
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-398
 Scenario Outline: REGISTRATION_FORM_3_IP2-243_form_with_incorrect:_email_phoneNumber_password_confirmPassword
 	Given User fills <fieldName> incorrect
 		| firstName | lastName | email             | phone       | githubLink             | login        | password         |
@@ -32,7 +32,7 @@ Examples:
 	| Hasło			 | Powtórz hasło  |
 	| Powtórz hasło  | Regulamin      |
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-399
 Scenario Outline: REGISTRATION_FORM_4_IP2-243_form_with_data_which_is_too_short
 	Given User fills too short <fieldName>
 		| firstName | lastName | email             | githubLink             |
@@ -47,7 +47,7 @@ Examples:
 	| Login          | Hasło         |
 	| Hasło          | Powtórz hasło |
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-400
 Scenario Outline: REGISTRATION_FORM_5_IP2-243_form_with_data_which_is_too_long
 	Given User fills too long <fieldName>
 	When User clicks on next <nextFieldName>
@@ -61,7 +61,7 @@ Examples:
 	| Numer telefonu | Github link   |
 	| Login          | Hasło         |
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-401
 Scenario: REGISTRATION_FORM_6_IP2-243_form_filled_with_unchecked_fields:_'JavaScript,Java,QA,Mobile'
 	Given User fills data which is before technologies field
 		| firstName | lastName | email             | phone       | githubLink             |
@@ -69,16 +69,16 @@ Scenario: REGISTRATION_FORM_6_IP2-243_form_filled_with_unchecked_fields:_'JavaSc
 	When User clicks on Login field
 	Then Button Załóż konto is inactive
 	
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-402
 Scenario: REGISTRATION_FORM_7_IP2-243_form_filled_with_checked_all_fields:_'JavaScript,Java,QA,Mobile'
 	Given User fills data which is before technologies field
 		| firstName | lastName | email             | phone       | githubLink             |
 		| Jan       | Kowalski | example@email.com | 123456789   | github.com/exampleLink |
-	When User checks all fields about technologies grups
+	When User checks all fields about technologies groups
 	Then User should see error message about checked too many technology groups
 	And Button Załóż konto is inactive
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-403
 Scenario: REGISTRATION_FORM_8_IP2-243_form_with_checked_three_fields:_'JavaScript,Java,QA,Mobile'
 	Given User fills all data without technologies
 		| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
@@ -86,7 +86,7 @@ Scenario: REGISTRATION_FORM_8_IP2-243_form_with_checked_three_fields:_'JavaScrip
 	When User checks three technologies groups
 	Then Button Załóż konto is active
 
-#zephyr link
+#https://tracker.intive.com/jira/browse/IP2-404
 Scenario: REGISTRATION_FORM_9_IP2-243_form_without_checked_field_'Regulamin'
 	Given User fills all data
 		| firstName | lastName | email             | phone     | githubLink             | technologies | login       | password         | passwordConfirm  |

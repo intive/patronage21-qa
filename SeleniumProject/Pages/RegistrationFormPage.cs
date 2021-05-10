@@ -90,7 +90,7 @@ namespace SeleniumProject.Pages
             txtFirstName.SendKeys(firstName);
             txtLastName.SendKeys(lastName);
             txtEmail.SendKeys(email);
-            txtPhone.SendKeys("12345678");
+            txtPhone.SendKeys("abcdef");
         }
 
         public void RegistrationFormWithIncorrectGithubLink(string firstName, string lastName, string email, Nullable<int> phone)
@@ -132,7 +132,7 @@ namespace SeleniumProject.Pages
             txtFirstName.SendKeys(firstName);
             txtLastName.SendKeys(lastName);
             txtEmail.SendKeys(email);
-            txtPhone.SendKeys(123.ToString());
+            txtPhone.SendKeys(12345678.ToString());
         }
 
         public void RegistrationFormWithTooShortLogin(string firstName, string lastName, string email, string githubLink)
@@ -173,7 +173,7 @@ namespace SeleniumProject.Pages
         {
             txtFirstName.SendKeys("Jan");
             txtLastName.SendKeys("Kowalski");
-            txtLogin.SendKeys("exmapleEmail@email.com");
+            txtLogin.SendKeys("exampleEmail@email.com");
             txtPhone.SendKeys(1234567890.ToString());
         }
 

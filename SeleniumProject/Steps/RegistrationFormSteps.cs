@@ -197,8 +197,8 @@ namespace SeleniumProject.Steps
             registrationFormPage.txtLogin.Click();
         }
 
-        [When(@"User checks all fields about technologies grups")]
-        public void WhenUserChecksAllFieldsAboutTechnologiesGrups()
+        [When(@"User checks all fields about technologies groups")]
+        public void WhenUserChecksAllFieldsAboutTechnologiesGroups()
         {
             registrationFormPage.ChecksAllTechnologies();
         }
