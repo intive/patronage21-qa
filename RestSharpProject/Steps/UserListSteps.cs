@@ -1,5 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Newtonsoft.Json;
+using NUnit.Framework;
 using RestSharp;
+using RestSharpProject.Models;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace RestSharpProject.Steps
@@ -19,21 +22,21 @@ namespace RestSharpProject.Steps
             url = "http://127.0.0.1:8080/api/list";
         }
 
-        [When(@"Client send request with active parameter set to false")]
-        public void WhenClientSendRequestWithActiveParameterSetToFalse()
+        [When(@"Client sends request to API")]
+        public void WhenClientSendsRequestToApi()
         {
-            restRequestUserList = new RestRequest(url + "?active=false");
+            restRequestUserList = new RestRequest(url);
             restResponseList = restClient.Get(restRequestUserList);
         }
 
-        [When(@"Client send request with active parameter set to true")]
-        public void WhenClientSendRequestWithActiveParameterSetToTrue()
+        [When(@"Client sends request with active parameter set to true")]
+        public void WhenClientSendsRequestWithActiveParameterSetToTrue()
         {
             restRequestUserList = new RestRequest(url + "?active=true");
             restResponseList = restClient.Get(restRequestUserList);
         }
 
-        [Then(@"Response is successfull")]
+        [Then(@"Response is successful")]
         public void ThenResponseIsSuccessfull()
         {
             Assert.That(restResponseList.IsSuccessful, Is.True);
@@ -42,14 +45,23 @@ namespace RestSharpProject.Steps
         [Then(@"contains list of all users")]
         public void ThenContainsListOfAllUsers()
         {
-            Assert.That(restResponseList.Content.Contains("\"active\":false"), Is.True);
-            Assert.That(restResponseList.Content.Contains("\"active\":true"), Is.True);
+            List<UserModel> restResponseAllUserList = JsonConvert.DeserializeObject<List<UserModel>>(restResponseList.Content);
+            Assert.That(restResponseAllUserList.Count > 0, Is.True);
         }
 
         [Then(@"contains list of active users")]
         public void ThenContainsListOfActiveUsers()
         {
-            Assert.That(restResponseList.Content.Contains("\"active\":true"), Is.True);
+            List<UserModel> restResponseActiveUserList = JsonConvert.DeserializeObject<List<UserModel>>(restResponseList.Content);
+            if (restResponseActiveUserList.Count == 0)
+            {
+                //'[]' is also positive result
+                Assert.IsTrue(true);
+            }
+            else
+            {
+                Assert.That(restResponseList.Content.Contains("\"active\":false"), Is.False);
+            }
         }
     }
 }

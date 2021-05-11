@@ -7,15 +7,15 @@ This feature will allow to show a list of users, which are activated.
 Background:
 Given Endpoint is api/list
 
-#Zephyr
+#https://tracker.intive.com/jira/browse/IP2-565
 Scenario: USER_LIST_1_IP2-294_List_of_all_user_is_visible
-When Client send request with active parameter set to false
-Then Response is successfull
+When Client sends request to API
+Then Response is successful
 And contains list of all users
 
-#Zephyr
+#https://tracker.intive.com/jira/browse/IP2-566
 Scenario: USER_LIST_2_IP2-294_ List_of_active_users_is_visible
-When Client send request with active parameter set to true
-Then Response is successfull
+When Client sends request with active parameter set to true
+Then Response is successful
 And contains list of active users
 
