@@ -10,15 +10,13 @@ Background:
 
 # zephyr link
 Scenario: USERS_SCREEN_1_IP2-152_deactivation_screen_displayed_correctly
-	Given Existing user with username "jankowalski" password "Deactivate1!!" and surname "Kowalski"
-	When User log in with username "jankowalski" and password "Deactivate1!!"
+	When User regisers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen
 	Then User sees "Dezaktywacja" screen
 	
 # zephyr link
 Scenario: USERS_SCREEN_2_IP2-152_account_deactivated_correctly
-	Given Existing user with username "jankowalski" password "Deactivate1!!" and surname "Kowalski"
-	When User log in with username "jankowalski" and password "Deactivate1!!"
+	When User regisers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Deactivation" screen
 	And User writes "Kowalski" to "Nazwisko" field
 	And User clicks "Dezaktywuj profil"
@@ -27,8 +25,7 @@ Scenario: USERS_SCREEN_2_IP2-152_account_deactivated_correctly
 
 # zephyr link
 Scenario Outline: USERS_SCREEN_3_IP2-152_wrong_surname_provided
-	Given Existing user with username "jankowalski" password "Deactivate1!!" and surname "Kowalski"
-	When User log in with username "jankowalski" and password "Deactivate1!!"
+	When User regisers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Deactivation" screen
 	And User writes "notKowalski" to "Nazwisko" field
 	And User clicks "Dezaktywuj profil"
@@ -36,8 +33,7 @@ Scenario Outline: USERS_SCREEN_3_IP2-152_wrong_surname_provided
 	
 # zephyr link
 Scenario: USERS_SCREEN_4_IP2-152_too_long_surname_provided
-	Given Existing user with username "jankowalski" password "Deactivate1!!" and surname "Kowalski"
-	When User log in with username "jankowalski" and password "Deactivate1!!"
+	When User regisers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen
 	And User writes "21" characters to "Nazwisko" field
 	Then User sees "20" characters in "Nazwisko" field
