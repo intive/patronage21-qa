@@ -17,16 +17,16 @@ Scenario: USERS_SCREEN_1_IP2-152_deactivation_screen_displayed_correctly
 # zephyr link
 Scenario: USERS_SCREEN_2_IP2-152_account_deactivated_correctly
 	When User regisers as "jankwalski" with surname "Kowalski"
-	And User navigates to "Deactivation" screen
+	And User navigates to "Dezaktywacja" screen
 	And User writes "Kowalski" to "Nazwisko" field
 	And User clicks "Dezaktywuj profil"
-	Then User with username "jankowalski" and password "Deactivate1!!" profile is deactivated
+	Then User with username "jankowalski" profile is deactivated
 	And User is not logged in
 
 # zephyr link
 Scenario Outline: USERS_SCREEN_3_IP2-152_wrong_surname_provided
 	When User regisers as "jankwalski" with surname "Kowalski"
-	And User navigates to "Deactivation" screen
+	And User navigates to "Dezaktywacja" screen
 	And User writes "notKowalski" to "Nazwisko" field
 	And User clicks "Dezaktywuj profil"
 	Then User sees "Dezaktywacja" screen
