@@ -35,5 +35,5 @@ Scenario Outline: USERS_SCREEN_3_IP2-152_wrong_surname_provided
 Scenario: USERS_SCREEN_4_IP2-152_too_long_surname_provided
 	When User regisers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen
-	And User writes "21" characters to "Nazwisko" field
-	Then User sees "20" characters in "Nazwisko" field
+	And User writes "31" characters to "Nazwisko" field
+	Then User sees "30" characters in "Nazwisko" field
