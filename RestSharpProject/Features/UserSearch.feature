@@ -7,16 +7,12 @@ Background:
 Given Customer sets the endpoint as /frontend-api/users with method GET
 
 # https://tracker.intive.com/jira/browse/IP2-332
-Scenario Outline: USER_SEARCH_[/frontend-api/users]_[GET]_1_IP2-90_Searching_for_the_existing_user_by_firstName_lastName_or_userName
+Scenario: USER_SEARCH_[/frontend-api/users]_[GET]_1_IP2-90_Searching_for_the_existing_user_by_firstName_lastName_or_userName
 Given Customer enters <key> and <value> as a query parameter
 When Customer sends the request to the endpoint
+// przypisanie response'a w WHEN
 Then The server returns code 200 
-And JSON body contains <key> and <value>
-Examples: 
-| key       | value    |
-| firstName | Mark     |
-| lastName  | Marcuson |
-| userName  | marcuson |
+And JSON body contains list
 
 
 # https://tracker.intive.com/jira/browse/IP2-381

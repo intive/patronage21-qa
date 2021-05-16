@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestSharpProject.Model
 {
-    class Users
+    public class Users
     {
         public string login { get; set; }
         public string firstName { get; set; }
@@ -15,5 +15,12 @@ namespace RestSharpProject.Model
         public string phoneNumber { get; set; }
         public string gitHubUrl { get; set; }
         public string userName { get; set; }
+    }
+
+    public class Response
+    {
+        public List<string> firstName { get; set; }
+        public List<string> lastName { get; set; }
+        public List<string> userName { get; set; }
     }
 }

@@ -80,24 +80,24 @@ namespace RestSharpProject.Features
 #line 6
 #line hidden
 #line 7
-testRunner.Given("Customer sets the endpoint as /api/users with method GET", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("Customer sets the endpoint as /frontend-api/users with method GET", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/api/users]_[GET]_1_IP2-90_Searching_for_the_existing_user_by name_s" +
-            "urname_or_username")]
-        [NUnit.Framework.TestCaseAttribute("userName", "TomNowak", null)]
-        [NUnit.Framework.TestCaseAttribute("firstName", "Tomasz", null)]
-        [NUnit.Framework.TestCaseAttribute("lastName", "Nowak", null)]
-        public virtual void USER_SEARCH_ApiUsers_GET_1_IP2_90_Searching_For_The_Existing_User_ByName_Surname_Or_Username(string name, string value, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_1_IP2-90_Searching_for_the_existing_user_" +
+            "by_firstName_lastName_or_userName")]
+        [NUnit.Framework.TestCaseAttribute("firstName", "Mark", null)]
+        [NUnit.Framework.TestCaseAttribute("lastName", "Marcuson", null)]
+        [NUnit.Framework.TestCaseAttribute("userName", "marcuson", null)]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_1_IP2_90_Searching_For_The_Existing_User_By_FirstName_LastName_Or_UserName(string key, string value, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("key", key);
             argumentsOfScenario.Add("value", value);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/api/users]_[GET]_1_IP2-90_Searching_for_the_existing_user_by name_s" +
-                    "urname_or_username", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_1_IP2-90_Searching_for_the_existing_user_" +
+                    "by_firstName_lastName_or_userName", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -122,32 +122,31 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 11
-testRunner.Given("Several users exist in application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given(string.Format("Customer enters {0} and {1} as a query parameter", key, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 12
-testRunner.And(string.Format("Customer enters valid {0} and {1} as a query parameter", name, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 13
 testRunner.When("Customer sends the request to the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 13
 testRunner.Then("The server returns code 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 15
-testRunner.And(string.Format("JSON body contains {0} and {1}", name, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+testRunner.And(string.Format("JSON body contains {0} and {1}", key, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/api/users]_[GET]_2_IP2-90_Searching_for_user_by_two_valid_queries")]
-        public virtual void USER_SEARCH_ApiUsers_GET_2_IP2_90_Searching_For_User_By_Two_Valid_Queries()
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_2_IP2-90_Searching_for_user_by_two_valid_" +
+            "queries")]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_2_IP2_90_Searching_For_User_By_Two_Valid_Queries()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/api/users]_[GET]_2_IP2-90_Searching_for_user_by_two_valid_queries", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_2_IP2-90_Searching_for_user_by_two_valid_" +
+                    "queries", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -170,20 +169,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
+#line 24
+testRunner.Given("Customer enters \'key\' and \'value\' as a query parameter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 25
-testRunner.Given("User with \'firstName\', \'Tomasz\' and \'lastName\', \'Nowak\' exists in application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 26
-testRunner.And("Customer enters \'firstName\', \'Tomasz\' and \'lastName\', \'Nowak\' as a query paramete" +
-                        "r", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 27
 testRunner.When("Customer sends the request to the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 26
 testRunner.Then("The server returns code 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 29
+#line 27
 testRunner.And("JSON body contains valid \'name and value\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -191,15 +186,15 @@ testRunner.And("JSON body contains valid \'name and value\'", ((string)(null)), 
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/api/users]_[GET]_3_IP2-90_Searching_for_user_by_first_valid_and_sec" +
-            "ond_invalid_query_param")]
-        public virtual void USER_SEARCH_ApiUsers_GET_3_IP2_90_Searching_For_User_By_First_Valid_And_Second_Invalid_Query_Param()
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_3_IP2-90_Searching_for_firstName_and_last" +
+            "Name_shorter_than_two_characters")]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_3_IP2_90_Searching_For_FirstName_And_LastName_Shorter_Than_Two_Characters()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/api/users]_[GET]_3_IP2-90_Searching_for_user_by_first_valid_and_sec" +
-                    "ond_invalid_query_param", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 34
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_3_IP2-90_Searching_for_firstName_and_last" +
+                    "Name_shorter_than_two_characters", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -221,37 +216,30 @@ this.ScenarioInitialize(scenarioInfo);
                 this.ScenarioStart();
 #line 6
 this.FeatureBackground();
+#line hidden
+#line 33
+testRunner.When("Customer sends the firstName value as \'a\' and lastName value as \'a\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 34
+testRunner.Then("The server returns code 422", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 35
-testRunner.Given("User with \'firstName\', \'Tomasz\' and \'lastName\', \'Nowak\' exists in application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 36
-testRunner.And("Customer enters \'firstName\', \'Tomasz\' and \'lastNNName\', \'Nowak\' as a query parame" +
-                        "ter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 37
-testRunner.When("Customer sends the request to the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 38
-testRunner.Then("The server returns code 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 39
-testRunner.And("JSON body contains valid \'user object\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("JSON body contains rejectedValue \'a\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/api/users]_[GET]_4_IP2-90_Searching_for_user_by_first_invalid_and_s" +
-            "econd_valid_query_param")]
-        public virtual void USER_SEARCH_ApiUsers_GET_4_IP2_90_Searching_For_User_By_First_Invalid_And_Second_Valid_Query_Param()
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_4_IP2-90_Searching_for_firstName_and_last" +
+            "Name_with_number_inside")]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_4_IP2_90_Searching_For_FirstName_And_LastName_With_Number_Inside()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/api/users]_[GET]_4_IP2-90_Searching_for_user_by_first_invalid_and_s" +
-                    "econd_valid_query_param", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 43
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_4_IP2-90_Searching_for_firstName_and_last" +
+                    "Name_with_number_inside", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 39
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -274,89 +262,74 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 44
-testRunner.Given("User with \'firstName\', \'Tomasz\' and \'lastName\', \'Nowak\' exists in application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 40
+testRunner.When("Customer sends the firstName value as \'John1\' and lastName value as \'Doe1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 45
-testRunner.And("Customer enters \'firsdNName\', \'Tomasz\' and \'lastName\', \'Nowak\' as a query paramet" +
-                        "er", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+testRunner.Then("The server returns code 422", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 42
+testRunner.And("JSON body contains rejectedValue \'Tomasz1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_5_IP2-90_Searching_for_lastName_with_doub" +
+            "le_barreled lastName")]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_5_IP2_90_Searching_For_LastName_With_Double_BarreledLastName()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_5_IP2-90_Searching_for_lastName_with_doub" +
+                    "le_barreled lastName", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 46
-testRunner.When("Customer sends the request to the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
 #line hidden
 #line 47
-testRunner.Then("The server returns code 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.When("Customer sends the lastName value as \'Doe-Nowak\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 48
-testRunner.And("Error message \'message\' is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/api/users]_[GET]_5_IP2-90_Searching_for_the_non-existing_user")]
-        [NUnit.Framework.TestCaseAttribute("username", "nieznanaNazwa", null)]
-        [NUnit.Framework.TestCaseAttribute("firstName", "nieznaneImie", null)]
-        [NUnit.Framework.TestCaseAttribute("lastName", "nieznaneNazwisko", null)]
-        public virtual void USER_SEARCH_ApiUsers_GET_5_IP2_90_Searching_For_The_Non_Existing_User(string name, string value, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("name", name);
-            argumentsOfScenario.Add("value", value);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/api/users]_[GET]_5_IP2-90_Searching_for_the_non-existing_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 52
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line hidden
-#line 53
-testRunner.Given(string.Format("Customer enters invalid {0} and {1} as a query paraneter", name, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 54
-testRunner.When("Customer sends the request to the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 55
 testRunner.Then("The server returns code 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 56
-testRunner.And("JSON contains empty array", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 49
+testRunner.And("JSON body contains array", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/api/users]_[GET]_6_IP2-90_Sending_request_with_no_value_in_query")]
-        [NUnit.Framework.TestCaseAttribute("username", null)]
-        [NUnit.Framework.TestCaseAttribute("firstName", null)]
-        [NUnit.Framework.TestCaseAttribute("lastName", null)]
-        public virtual void USER_SEARCH_ApiUsers_GET_6_IP2_90_Sending_Request_With_No_Value_In_Query(string name, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_5_IP2-90_Searching_for_the_non-existing_u" +
+            "ser")]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_5_IP2_90_Searching_For_The_Non_Existing_User()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("name", name);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/api/users]_[GET]_6_IP2-90_Sending_request_with_no_value_in_query", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 65
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_5_IP2-90_Searching_for_the_non-existing_u" +
+                    "ser", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -379,17 +352,62 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 66
-testRunner.Given(string.Format("Customer enters valid {0} as the query parameter", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
+testRunner.Given("Customer enters \'firstName\' and \'Jacek\' as a query parameter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 67
-testRunner.When("Customer sends the request without any value in the query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
+testRunner.When("Customer sends the request to the endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 68
-testRunner.Then("The server returns code 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 56
+testRunner.Then("The server returns code 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 69
-testRunner.And("Error message \'meeesage\' is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 57
+testRunner.And("JSON body contains array", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("USER_SEARCH_[/frontend-api/users]_[GET]_6_IP2-90_Sending_request_with_no_query_pa" +
+            "rameter")]
+        public virtual void USER_SEARCH_Frontend_ApiUsers_GET_6_IP2_90_Sending_Request_With_No_Query_Parameter()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USER_SEARCH_[/frontend-api/users]_[GET]_6_IP2-90_Sending_request_with_no_query_pa" +
+                    "rameter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 61
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 62
+testRunner.When("Customer sends the request without any query parameter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 63
+testRunner.Then("The server returns code 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 64
+testRunner.And("JSON body contains array", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
