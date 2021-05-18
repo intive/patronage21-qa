@@ -5,7 +5,7 @@
 Scenario Outline: HAMBURGER_MENU_1_IP2-541_User_clicks_on_page_name_in_header
 	Given User is on 'page'
 	When User clicks on page name in header
-	Then User goes to home page
+	Then User is transferred to home page
 
 	Examples:
 		| page               |
@@ -26,7 +26,7 @@ Scenario Outline: HAMBURGER_MENU_3_IP2-541_User_clicks_on_home_page_in_hamburger
 	Given User is on 'page'
 	And User clicks on hamburger menu
 	When User clicks on home page
-	Then User is on home page
+	Then User is transferred to home page
 
 	Examples:
 		| page               |
@@ -37,7 +37,7 @@ Scenario Outline: HAMBURGER_MENU_4_IP2-541_User_clicks_on_calendar_in_hamburger_
 	Given User is on 'page'
 	And User clicks on hamburger menu
 	When User clicks on calendar
-	Then User is on page about calendar
+	Then User is transferred to calendar
 
 	Examples:
 		| page               |
@@ -48,7 +48,7 @@ Scenario Outline: HAMBURGER_MENU_5_IP2-541_User_clicks_on_registration_in_hambur
 	Given User is on 'page'
 	And User clicks on hamburger menu
 	When User clicks on registration
-	Then User is on page about registration
+	Then User is transferred to registration
 
 	Examples:
 		| page               |
