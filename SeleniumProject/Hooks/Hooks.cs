@@ -2,17 +2,17 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Threading;
 using TechTalk.SpecFlow;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace Selenium.Hooks
+namespace SeleniumProject.Hooks
 {
     [Binding]
     public sealed class Hooks
     {
         public static IWebDriver driver;
+
         public static IObjectContainer _objectContainer;
 
         public Hooks(IObjectContainer objectContainer)
@@ -43,4 +43,3 @@ namespace Selenium.Hooks
         }
     }
 }
-
