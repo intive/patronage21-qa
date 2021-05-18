@@ -17,10 +17,10 @@ namespace SeleniumProject.Pages
         private By email = By.XPath(".//*[@name='email']");
         private By phone = By.XPath(".//*[@name='phone']");
         private By githubLink = By.XPath(".//*[@name='githubLink']");
-        private By javaScriptCheckBox = By.XPath(".//*[@value='JS']");
+        private By javaScriptCheckBox = By.XPath(".//*[@value='JavaScript']");
         private By javaCheckBox = By.XPath(".//*[@value='Java']");
         private By qaCheckBox = By.XPath(".//*[@value='QA']");
-        private By mobileCheckBox = By.XPath(".//*[@value='Mobile']");
+        private By mobileCheckBox = By.XPath(".//*[@value='Mobile(Android)']");
         private By login = By.XPath(".//*[@name='login']");
         private By password = By.XPath(".//*[@name='password']");
         private By passwordconfirm = By.XPath(".//*[@name='passwordConfirm']");
@@ -173,7 +173,6 @@ namespace SeleniumProject.Pages
         {
             txtFirstName.SendKeys("Jan");
             txtLastName.SendKeys("Kowalski");
-            txtLogin.SendKeys("exampleEmail@email.com");
             txtPhone.SendKeys(1234567890.ToString());
         }
 

@@ -242,7 +242,7 @@ namespace SeleniumProject.Steps
         [Then(@"User should see that field Numer telefonu is incorrect")]
         public void ThenUserShouldSeeThatFieldNumerTelefonuIsIncorrect()
         {
-            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
+            By phoneNumber = By.XPath(".//span[text()='Niepoprawny numer telefonu']");
             IWebElement errorAboutPhoneNumber = _webdriver.FindElement(phoneNumber);
 
             Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
@@ -278,7 +278,7 @@ namespace SeleniumProject.Steps
         [Then(@"User should see error message about too short Numer telefonu")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortNumerTelefonu()
         {
-            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
+            By phoneNumber = By.XPath(".//span[text()='Niepoprawny numer telefonu']");
             IWebElement errorAboutPhoneNumber = _webdriver.FindElement(phoneNumber);
 
             Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
