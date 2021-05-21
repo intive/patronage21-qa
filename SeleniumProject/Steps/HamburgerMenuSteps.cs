@@ -12,9 +12,9 @@ namespace SeleniumProject.Steps
         private By patronageLogo = By.XPath(".//*[@class='logo__Text-sc-1ubblt8-2 jkbUZv']");
         private By hamburgerMenu = By.XPath(".//*[@d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z']");
         private By itemsInHamburgerMenu = By.XPath(".//*[@class='MuiPaper-root MuiMenu-paper MuiPopover-paper MuiPaper-elevation8 MuiPaper-rounded']");
-        private By fisrtItemInHamburgerMenu = By.XPath(".//*[contains(text(),'Strona główna')]");
-        private By secondItemInHamburgerMenu = By.XPath(".//*[contains(text(),'Kalendarz')]");
-        private By thirdItemInHamburgerMenu = By.XPath(".//*[contains(text(),'Rejestracja')]");
+        private By fisrtItemInHamburgerMenu = By.XPath(".//li[contains(text(),'Strona główna')]");
+        private By secondItemInHamburgerMenu = By.XPath(".//li[contains(text(),'Kalendarz')]");
+        private By thirdItemInHamburgerMenu = By.XPath(".//li[contains(text(),'Rejestracja')]");
 
         public HamburgerMenuSteps(IWebDriver driver)
         {
