@@ -5,15 +5,14 @@ Task in Java board: https://tracker.intive.com/jira/browse/IP2-91
 Sub – Tasks 3. 
 
 Background: 
-Given User is on the page of his user account
-And User clicks the "Edytuj profil" button
+Given User clicks the Edytuj profil button
 
 # link to Zephyr_1 test
 Scenario: USER_PROFILE_1_IP2-91_Editing_user_description 
-When User clicks on the "bio" field 
-And User is writing his description 
-And User clicks "Zatwierdź" button 
-Then The user description is saved 
+Given User clicks on the bio field 
+When User is writing his description 
+Then User clicks Zatwierdź button 
+
 
 # link to Zephyr_2 test
 Scenario: USER_PROFILE_2_IP2-91_Correct_adding_of_the_project_to_which_the_user_belongs 
