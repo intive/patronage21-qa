@@ -10,7 +10,6 @@ using TechTalk.SpecFlow;
 namespace SeleniumProject.Steps
 {
     [Binding]
-    [Scope (Feature = ("Confirmation of participation"))]
     public class ConfirmationOfParticipationSteps
     {
         private readonly IWebDriver _webdriver;
