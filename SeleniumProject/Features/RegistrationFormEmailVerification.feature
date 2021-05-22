@@ -27,8 +27,8 @@ Scenario: REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrieve_code_on_ma
 #https://tracker.intive.com/jira/browse/IP2-299
 Scenario: REGISTRATION_FORM_3_IP2-135_False_code_should_not_allow_User_to_be_verified_and_activated
 	When User enters code '00000000'
-	And User clicks 'Zatwierdź kod' button
-	Then User sees 'Błędny kod'
+	Then User sees 'Kodu nie można zaczynać od 0'
+	And is not able to click 'Zatwierdź kod' button
 
 #https://tracker.intive.com/jira/browse/IP2-300
 Scenario: REGISTRATION_FORM_4_IP2-135_Too_short_code_should_not_allow_User_to_be_verified_and_activated 
@@ -60,17 +60,11 @@ Scenario: REGISTRATION_FORM_7_IP2-135_Retrieving_of_the_code_should_be_possible
 	| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
 	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword@ | examplePassword@ |
 	And is transfered to verifications site
-	When User clicks renewal butto
+	When User clicks Nie otrzymałem/am kodu button
 	Then User sees 'Kod aktywacyjny został wysłany pomyśnie'
 
-#https://tracker.intive.com/jira/browse/IP2-519
-#Scenario: REGISTRATION_FORM_8_IP2-135_Improper_code_should_not_allow_User_to_be_verified_and_activated 
-	#When User enters code '    1234'
-	#And User clicks "Zatwierdź kod"
-	#Then User sees 'Błędny kod'
-
 #https://tracker.intive.com/jira/browse/IP2-520
-Scenario: REGISTRATION_FORM_9_IP2-135_Only_numbers_can_be_inserted_as_code
+Scenario: REGISTRATION_FORM_8_IP2-135_Only_numbers_can_be_inserted_as_code
 	When User enters <code with characters> 
 	| code with characters |
 	| 'aaaaaa'             |

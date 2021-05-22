@@ -13,7 +13,7 @@ namespace SeleniumProject.Pages
         }
 
         public string buttonName;
-        public By buttonCommonXPath => By.XPath($"//*[text()[contains(.,'{buttonName}')]]/parent::a");
+        public By buttonCommonXPath => By.XPath($"//*[text()[contains(.,'{buttonName}')]]/parent::*");
         public IWebElement buttonCommon => driver.FindElement(buttonCommonXPath);
     }
 

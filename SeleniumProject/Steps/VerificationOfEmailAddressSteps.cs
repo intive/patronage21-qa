@@ -7,7 +7,6 @@ using TechTalk.SpecFlow.Assist;
 namespace SeleniumProject.Steps
 {
     [Binding]
-    [Scope(Feature = "Verification of email address")]
     public class VerificationOfEmailAddressSteps
     {
         private readonly IWebDriver _webdriver;
@@ -58,12 +57,11 @@ namespace SeleniumProject.Steps
             verificationOfEmailAddressPage.codeInput.SendKeys(p0);
         }
 
-        [When(@"User clicks renewal butto")]
-        public void WhenUserClicksRenewalButto()
+        [When(@"User clicks Nie otrzymałem/am kodu button")]
+        public void WhenUserClicksNieOtrzymalemKoduButton()
         {
             verificationOfEmailAddressPage.renewalSentButton.Click();
         }
-
 
         [When(@"User enters (.*)")]
         public void WhenUserEnters(string p0, Table table)
