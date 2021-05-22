@@ -33,7 +33,7 @@ Scenario: REGISTRATION_FORM_3_IP2-135_False_code_should_not_allow_User_to_be_ver
 #https://tracker.intive.com/jira/browse/IP2-300
 Scenario: REGISTRATION_FORM_4_IP2-135_Too_short_code_should_not_allow_User_to_be_verified_and_activated 
 	When User enters code '1234'
-	Then User sees 'Wprowadzony kod jest zbyt krótki'
+	Then User sees 'Kod jest za krótki'
 	And is not able to click 'Zatwierdź kod' button
 	
 @ignore
@@ -64,10 +64,10 @@ Scenario: REGISTRATION_FORM_7_IP2-135_Retrieving_of_the_code_should_be_possible
 	Then User sees 'Kod aktywacyjny został wysłany pomyśnie'
 
 #https://tracker.intive.com/jira/browse/IP2-519
-Scenario: REGISTRATION_FORM_8_IP2-135_Improper_code_should_not_allow_User_to_be_verified_and_activated 
-	When User enters code '    1234'
-	And User clicks "Zatwierdź kod"
-	Then User sees 'Błędny kod'
+#Scenario: REGISTRATION_FORM_8_IP2-135_Improper_code_should_not_allow_User_to_be_verified_and_activated 
+	#When User enters code '    1234'
+	#And User clicks "Zatwierdź kod"
+	#Then User sees 'Błędny kod'
 
 #https://tracker.intive.com/jira/browse/IP2-520
 Scenario: REGISTRATION_FORM_9_IP2-135_Only_numbers_can_be_inserted_as_code
