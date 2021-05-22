@@ -36,12 +36,6 @@ namespace SeleniumProject.Steps
             Assert.AreEqual(true, confirmationOfParticipationPage.successfulRegistrationText.Displayed);
         }
 
-        [When(@"User clicks ""(.*)""")]
-        public void WhenUserClicks(string p0)
-        {
-            confirmationOfParticipationPage.mainPageButton.Click();
-        }
-
         [Then(@"User should be transferred to main site")]
         public void ThenUserShouldBeTransferredToMainSite()
         {

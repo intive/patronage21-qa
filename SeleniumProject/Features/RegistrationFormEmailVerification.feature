@@ -60,13 +60,13 @@ Scenario: REGISTRATION_FORM_7_IP2-135_Retrieving_of_the_code_should_be_possible
 	| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
 	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword@ | examplePassword@ |
 	And is transfered to verifications site
-	When User clicks 'Nie otrzymałem/am kodu'
+	When User clicks renewal butto
 	Then User sees 'Kod aktywacyjny został wysłany pomyśnie'
 
 #https://tracker.intive.com/jira/browse/IP2-519
 Scenario: REGISTRATION_FORM_8_IP2-135_Improper_code_should_not_allow_User_to_be_verified_and_activated 
 	When User enters code '    1234'
-	And User clicks 'Zatwierdź kod' button
+	And User clicks "Zatwierdź kod"
 	Then User sees 'Błędny kod'
 
 #https://tracker.intive.com/jira/browse/IP2-520

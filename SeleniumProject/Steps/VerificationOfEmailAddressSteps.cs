@@ -12,11 +12,13 @@ namespace SeleniumProject.Steps
     {
         private readonly IWebDriver _webdriver;
         private readonly VerificationOfEmailAddressPage verificationOfEmailAddressPage;
+        private readonly BasePage basePage;
 
         public VerificationOfEmailAddressSteps(IWebDriver driver)
         {
             _webdriver = driver;
             verificationOfEmailAddressPage = new VerificationOfEmailAddressPage(_webdriver);
+            basePage = new BasePage(_webdriver);
         }
 
         [Given(@"User proceeds with registration via email verification page")]
@@ -56,17 +58,12 @@ namespace SeleniumProject.Steps
             verificationOfEmailAddressPage.codeInput.SendKeys(p0);
         }
 
-        [When(@"User clicks '(.*)' button")]
-        public void WhenUserClicksButton(string p0)
-        {
-            verificationOfEmailAddressPage.confirmationButton.Click();
-        }
-
-        [When(@"User clicks '(.*)'")]
-        public void WhenUserClicks(string p0)
+        [When(@"User clicks renewal butto")]
+        public void WhenUserClicksRenewalButto()
         {
             verificationOfEmailAddressPage.renewalSentButton.Click();
         }
+
 
         [When(@"User enters (.*)")]
         public void WhenUserEnters(string p0, Table table)
@@ -81,9 +78,10 @@ namespace SeleniumProject.Steps
         }
 
         [Then(@"is not able to click '(.*)' button")]
-        public void ThenIsNotAbleToClickButton(string p0)
+        public void ThenIsNotAbleToClickButton(string buttonName)
         {
-            Assert.That(verificationOfEmailAddressPage.confirmationButton.Enabled, Is.False);
+            basePage.buttonName = buttonName;
+            Assert.That(basePage.buttonCommon.Enabled, Is.False);
         }
     }
 }
