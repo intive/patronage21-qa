@@ -4,10 +4,10 @@
 
 
 # Link to Zephyr
-Scenario Outline: 1_LIST_GROUP_[/api/groups]_[GET]_IP2-590_Getting_a_list_of_technology_groups 
+Scenario Outline: LIST_GROUP_1_[/api/groups]_[GET]_IP2-590_Getting_a_list_of_technology_groups 
 Given User sets the proper url
 When User sends GET request 
-Then The server returns the code 200 and JSON body contain a list of technology groups
-
+Then The server returns the code 200
+And JSON body contain a list of technology groups
 
 
