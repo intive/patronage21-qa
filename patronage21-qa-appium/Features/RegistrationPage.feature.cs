@@ -152,13 +152,27 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "surname",
+                            "phone",
+                            "password",
+                            "passwordConfirm",
+                            "Github"});
+                table1.AddRow(new string[] {
+                            "Jan",
+                            "Kowalski",
+                            "123456789",
+                            "Qwerty+8",
+                            "Qwerty+8",
+                            "https://www.github.com/jan-kowalski"});
 #line 15
- testRunner.When("User completes \"form\" \"correctly\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("User completes form correctly", ((string)(null)), table1, "When ");
 #line hidden
-#line 16
+#line 18
  testRunner.Then("User \"can\" sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 17
+#line 19
  testRunner.And("User sees \"Email verification\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -167,66 +181,68 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("REGISTRATION_PAGE_3_IP2-261_registration_form_has_proper_validation")]
-        [NUnit.Framework.TestCaseAttribute("name", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("name", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("name", "too short", null)]
-        [NUnit.Framework.TestCaseAttribute("name", "too long", null)]
-        [NUnit.Framework.TestCaseAttribute("name", "with digit", null)]
-        [NUnit.Framework.TestCaseAttribute("name", "with special character", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "too short", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "too long", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "with digit", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "with special character", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no @", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no sign before @", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no . after @", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no sign before . after @", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no sign after . after @", null)]
-        [NUnit.Framework.TestCaseAttribute("phone", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("phone", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("phone", "too short", null)]
-        [NUnit.Framework.TestCaseAttribute("phone", "too long", null)]
-        [NUnit.Framework.TestCaseAttribute("phone", "with letter", null)]
-        [NUnit.Framework.TestCaseAttribute("technologies", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("technologies", "with too few selections", null)]
-        [NUnit.Framework.TestCaseAttribute("technologies", "with to many selections", null)]
-        [NUnit.Framework.TestCaseAttribute("login", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("login", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("login", "too short", null)]
-        [NUnit.Framework.TestCaseAttribute("login", "too long", null)]
-        [NUnit.Framework.TestCaseAttribute("login", "with special character", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "too short", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "too long", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "with no uppercase letter", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "with no digit", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "with no special character", null)]
-        [NUnit.Framework.TestCaseAttribute("confirm password", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("confirm password", "with wrong password", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with no http", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with no www", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with no github.com", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with no username", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with too long username", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with non-alphanumeric character in username", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with hyphen at start in username", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with hyphen at end in username", null)]
-        [NUnit.Framework.TestCaseAttribute("consent", "correctly", null)]
-        [NUnit.Framework.TestCaseAttribute("consent", "by leave required", null)]
-        public virtual void REGISTRATION_PAGE_3_IP2_261_Registration_Form_Has_Proper_Validation(string data, string inAWay, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("name", "correctly", "Jan", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("name", "with no data", "", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("name", "too short", "J", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("name", "too long", "JanJanJanJanJanJanJanJanJanJanJa", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("name", "with digit", "Jan1", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("name", "with special character", "Jan@", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "correctly", "Kowalski", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "with no data", "", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "too short", "K", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "too long", "KowalskiKowalskiKowalskiKowalski", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "with digit", "Kowalski1", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "with special character", "Kowalski#", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "correctly", "jankowalski@gmail.com", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no data", "", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no @", "jankowalskigmail.com", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no sign before @", "jankowalskigmailcom", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no . after @", "jankowalski@gmailcom", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no data before . after @", "jankowalski@.com", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no data after . after @", "jankowalski@gmail.", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("phone", "correctly", "123456789", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("phone", "with no data", "", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("phone", "too short", "12345678", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("phone", "too long", "1234567890", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("phone", "with letter", "12345678a", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("technologies", "correctly", "1", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("technologies", "with too few selections", "0", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("technologies", "with to many selections", "4", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("login", "correctly", "JanKowalski1", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("login", "with no data", "", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("login", "too short", "J", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("login", "too long", "JanKowalski1JanKowalski1", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("login", "with special character", "JanKowalski1JanKowalski1#", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "correctly", "Qwerty+8", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "with no data", "", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "too short", "Qwert+5", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "too long", "Qwertyuiopasdfghjkl+1", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "with no uppercase letter", "qwerty+8", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "with no digit", "qwertyu+", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "with no special character", "qwertyu8", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("password confirm", "correctly", "Qwerty+8", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("password confirm", "with wrong password", "Qwerty+7", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "correctly", "https://www.github.com/jan-kowalski", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with no https", "www.github.com/jan-kowalski", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with no www", "https://github.com/jan-kowalski", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with no github.com", "https://www./jan-kowalski", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with no username", "https://www.github.com/", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with too long username", "https://www.github.com/jan-kowalskijan-kowalskijan-kowalskijank", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with non-alphanumeric character in username", "https://www.github.com/jankowalski@#%", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with hyphen at start in username", "https://www.github.com/-jan-kowalski", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with hyphen at end in username", "https://www.github.com/jan-kowalski-", "NOK", null)]
+        [NUnit.Framework.TestCaseAttribute("consents", "correctly", "2", "OK", null)]
+        [NUnit.Framework.TestCaseAttribute("consents", "by leave required", "1", "NOK", null)]
+        public virtual void REGISTRATION_PAGE_3_IP2_261_Registration_Form_Has_Proper_Validation(string element, string inAWay, string data, string valid, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("data", data);
+            argumentsOfScenario.Add("element", element);
             argumentsOfScenario.Add("in a way", inAWay);
+            argumentsOfScenario.Add("data", data);
+            argumentsOfScenario.Add("valid", valid);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_3_IP2-261_registration_form_has_proper_validation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 20
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -249,11 +265,11 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 21
- testRunner.When(string.Format("User completes \"{0}\" \"{1}\"", data, inAWay), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+ testRunner.When(string.Format("User completes \"{0}\" \"{1}\" with \"{2}\"", element, inAWay, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
- testRunner.Then(string.Format("User is informed about validation result of entered \"{0}\"", data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+ testRunner.Then(string.Format("User is informed if \"{0}\" is \"{1}\"", element, valid), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -262,25 +278,26 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("REGISTRATION_PAGE_4_IP2-261_registration_is_not_possible_after_filling_in_the_for" +
             "m_incorrectly")]
-        [NUnit.Framework.TestCaseAttribute("name", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("surname", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("email", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("phone", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("technologies", "with too few selections", null)]
-        [NUnit.Framework.TestCaseAttribute("login", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("password", "with no data", null)]
-        [NUnit.Framework.TestCaseAttribute("confirm password", "with wrong password", null)]
-        [NUnit.Framework.TestCaseAttribute("Github", "with no http", null)]
-        [NUnit.Framework.TestCaseAttribute("consent", "by leave required", null)]
-        public virtual void REGISTRATION_PAGE_4_IP2_261_Registration_Is_Not_Possible_After_Filling_In_The_Form_Incorrectly(string data, string incorrectly, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("name", "with no data", "", null)]
+        [NUnit.Framework.TestCaseAttribute("surname", "with no data", "", null)]
+        [NUnit.Framework.TestCaseAttribute("email", "with no data", "", null)]
+        [NUnit.Framework.TestCaseAttribute("phone", "with no data", "", null)]
+        [NUnit.Framework.TestCaseAttribute("technologies", "with too few selections", "", null)]
+        [NUnit.Framework.TestCaseAttribute("login", "with no data", "", null)]
+        [NUnit.Framework.TestCaseAttribute("password", "with no data", "", null)]
+        [NUnit.Framework.TestCaseAttribute("confirm password", "with wrong password", "Qwerty+7", null)]
+        [NUnit.Framework.TestCaseAttribute("Github", "with no https", "www.github.com/jan-kowalski", null)]
+        [NUnit.Framework.TestCaseAttribute("consent", "by leave required", "", null)]
+        public virtual void REGISTRATION_PAGE_4_IP2_261_Registration_Is_Not_Possible_After_Filling_In_The_Form_Incorrectly(string element, string inAWay, string data, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("element", element);
+            argumentsOfScenario.Add("in a way", inAWay);
             argumentsOfScenario.Add("data", data);
-            argumentsOfScenario.Add("incorrectly", incorrectly);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_4_IP2-261_registration_is_not_possible_after_filling_in_the_for" +
                     "m_incorrectly", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 80
+#line 82
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -303,13 +320,27 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 81
- testRunner.When("User completes \"form\" \"correctly\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 82
- testRunner.And(string.Format("User completes \"{0}\" \"{1}\"", data, incorrectly), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "surname",
+                            "phone",
+                            "password",
+                            "passwordConfirm",
+                            "Github"});
+                table2.AddRow(new string[] {
+                            "Jan",
+                            "Kowalski",
+                            "123456789",
+                            "Qwerty+8",
+                            "Qwerty+8",
+                            "https://www.github.com/jan-kowalski"});
 #line 83
+ testRunner.When("User completes form correctly", ((string)(null)), table2, "When ");
+#line hidden
+#line 86
+ testRunner.And(string.Format("User completes \"{0}\" \"{1}\" with \"{2}\"", element, inAWay, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 87
  testRunner.Then("User \"can not\" sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -317,15 +348,18 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("REGISTRATION_PAGE_5_IP2-261_registration_is_not_possible_with_email_which_was_use" +
-            "d_before")]
-        public virtual void REGISTRATION_PAGE_5_IP2_261_Registration_Is_Not_Possible_With_Email_Which_Was_Used_Before()
+        [NUnit.Framework.DescriptionAttribute("REGISTRATION_PAGE_5_IP2-261_registration_is_not_possible_with_element_which_was_u" +
+            "sed_before")]
+        [NUnit.Framework.TestCaseAttribute("email", null)]
+        [NUnit.Framework.TestCaseAttribute("login", null)]
+        public virtual void REGISTRATION_PAGE_5_IP2_261_Registration_Is_Not_Possible_With_Element_Which_Was_Used_Before(string element, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_5_IP2-261_registration_is_not_possible_with_email_which_was_use" +
-                    "d_before", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 99
+            argumentsOfScenario.Add("element", element);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_5_IP2-261_registration_is_not_possible_with_element_which_was_u" +
+                    "sed_before", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 103
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -348,14 +382,42 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 100
- testRunner.When("User signs up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "surname",
+                            "phone",
+                            "password",
+                            "passwordConfirm",
+                            "Github"});
+                table3.AddRow(new string[] {
+                            "Jan",
+                            "Kowalski",
+                            "123456789",
+                            "Qwerty+8",
+                            "Qwerty+8",
+                            "https://www.github.com/jan-kowalski"});
+#line 104
+ testRunner.When("User signs up", ((string)(null)), table3, "When ");
 #line hidden
-#line 101
- testRunner.And("User signs up again with the same email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "name",
+                            "surname",
+                            "phone",
+                            "password",
+                            "passwordConfirm",
+                            "Github"});
+                table4.AddRow(new string[] {
+                            "Jan",
+                            "Kowalski",
+                            "123456789",
+                            "Qwerty+8",
+                            "Qwerty+8",
+                            "https://www.github.com/jan-kowalski"});
+#line 107
+ testRunner.And(string.Format("User signs up again with the same \"{0}\"", element), ((string)(null)), table4, "And ");
 #line hidden
-#line 102
- testRunner.Then("User \"can not\" sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 110
+ testRunner.Then(string.Format("User is informed if \"{0}\" is \"repeated\"", element), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

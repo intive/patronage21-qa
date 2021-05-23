@@ -48,10 +48,10 @@ Scenario Outline:REGISTRATION_PAGE_3_IP2-261_registration_form_has_proper_valida
 	| phone            | with no data                                |                                                                 | NOK   |
 	| phone            | too short                                   | 12345678                                                        | NOK   |
 	| phone            | too long                                    | 1234567890                                                      | NOK   |
-	| phone            | with letter                                 | 123456789a                                                      | NOK   |
-	| technologies     | correctly                                   |                                                                 | OK    |
-	| technologies     | with too few selections                     |                                                                 | NOK   |
-	| technologies     | with to many selections                     |                                                                 | NOK   |
+	| phone            | with letter                                 | 12345678a                                                       | NOK   |
+	| technologies     | correctly                                   | 1                                                               | OK    |
+	| technologies     | with too few selections                     | 0                                                               | NOK   |
+	| technologies     | with to many selections                     | 4                                                               | NOK   |
 	| login            | correctly                                   | JanKowalski1                                                    | OK    |
 	| login            | with no data                                |                                                                 | NOK   |
 	| login            | too short                                   | J                                                               | NOK   |
@@ -75,8 +75,8 @@ Scenario Outline:REGISTRATION_PAGE_3_IP2-261_registration_form_has_proper_valida
 	| Github           | with non-alphanumeric character in username | https://www.github.com/jankowalski@#%                           | NOK   |
 	| Github           | with hyphen at start in username            | https://www.github.com/-jan-kowalski                            | NOK   |
 	| Github           | with hyphen at end in username              | https://www.github.com/jan-kowalski-                            | NOK   |
-	| consent          | correctly                                   |                                                                 | OK    |
-	| consent          | by leave required                           |                                                                 | NOK   |
+	| consents         | correctly                                   | 2                                                               | OK    |
+	| consents         | by leave required                           | 1                                                               | NOK   |
 
 # Zephyr link
 Scenario Outline:REGISTRATION_PAGE_4_IP2-261_registration_is_not_possible_after_filling_in_the_form_incorrectly
