@@ -4,7 +4,7 @@
 
 
 # Link to Zephyr
-Scenario Outline: LIST_GROUP_1_[/api/groups]_[GET]_IP2-590_Getting_a_list_of_technology_groups 
+Scenario: LIST_GROUP_1_[/api/groups]_[GET]_IP2-590_Getting_a_list_of_technology_groups 
 Given User sets the proper url
 When User sends GET request 
 Then The server returns the code 200
