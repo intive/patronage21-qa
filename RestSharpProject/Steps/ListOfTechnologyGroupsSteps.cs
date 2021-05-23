@@ -11,11 +11,12 @@ namespace RestSharpProject.Steps
     {
         RestClient client = new RestClient();
         IRestRequest request = new RestRequest();
-       
+        IRestResponse response;
+
         [Given(@"User sets the proper url")]
         public void GivenUserSetsTheProperUrl()
         {
-            client = new RestClient("http://intive-patronage.pl:9101");
+            client = new RestClient("http://intive-patronage.pl");
         }
 
         [When(@"User sends GET request")]
@@ -24,18 +25,24 @@ namespace RestSharpProject.Steps
             request = new RestRequest("/api/groups", Method.GET);
         }
 
-        [Then(@"The server returns the code (.*) and JSON body contain a list of technology groups")]
-        public void ThenTheServerReturnsTheCodeAndJSONBodyContainAListOfTechnologyGroups(int code)
+        [Then(@"The server returns the code (.*)")]
+        public void ThenTheServerReturnsTheCode(int code)
         {
-            IRestResponse response = client.Execute(request);
-            var responseMessage = JsonConvert.DeserializeObject<Group>(response.Content);
-        
+            response = client.Execute(request);
+
             Assert.AreEqual(code, (int)response.StatusCode);
-            Assert.That(responseMessage.groups[0], Is.EqualTo("Java"));
-            Assert.That(responseMessage.groups[1], Is.EqualTo("JavaScript"));
-            Assert.That(responseMessage.groups[2], Is.EqualTo("QA"));
-            Assert.That(responseMessage.groups[3], Is.EqualTo("Mobile (Android)"));
-            Assert.That(responseMessage.groups[4], Is.EqualTo("Pearl Advanced"));
+        }
+
+        [Then(@"JSON body contain a list of technology groups")]
+        public void ThenJSONBodyContainAListOfTechnologyGroups()
+        { 
+            var responseMessage = JsonConvert.DeserializeObject<Group>(response.Content);
+       
+            Assert.That(responseMessage.groups.Contains("Java"), Is.True);
+            Assert.That(responseMessage.groups.Contains("JavaScript"), Is.True);
+            Assert.That(responseMessage.groups.Contains("QA"), Is.True);
+            Assert.That(responseMessage.groups.Contains("Mobile (Android)"), Is.True);
+            Assert.That(responseMessage.groups.Count, Is.EqualTo(4));
         }
     }
 }
