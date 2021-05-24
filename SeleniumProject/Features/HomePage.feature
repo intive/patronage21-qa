@@ -11,8 +11,8 @@ Scenario: HOME_PAGE_1_IP2-542_user_clicks_on_calendar
 	Then User is transferred to page about calendar
 
 Scenario Outline: HOME_PAGE_2_IP2-542_module_exists_and_is_inactive
-	When '<Module>' is on home page
-	Then '<Module>' is inactive
+	When <Module> is on home page
+	Then <Module> is inactive
 
 	Examples: 
 		| Module               |
