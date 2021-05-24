@@ -30,9 +30,10 @@ And Message "User not found" is displayed
 
 
 # link to Zephyr_3_test
-Scenario: USER_PROFILE_3_[/api/projects]_[PATCH]_IP2-358_Deactivation_after_entering_the_login_incorrectly
-When User enters login with invalid characters 
+Scenario Outline: USER_PROFILE_3_[/api/projects]_[PATCH]_IP2-358_Deactivation_after_entering_the_login_incorrectly
+When User enters '<login>' with invalid characters 
 
+Examples:
 | login      |
 | J#n8       |
 | J an8      |
