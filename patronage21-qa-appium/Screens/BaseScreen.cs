@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Interfaces;
@@ -10,7 +6,7 @@ using OpenQA.Selenium.Appium.MultiTouch;
 
 namespace patronage21_qa_appium.Screens
 {
-    class BaseScreen
+    internal class BaseScreen
     {
         private static Dictionary<string, string> _homeXpathDict = new()
         {

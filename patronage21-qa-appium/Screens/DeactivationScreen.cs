@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 
 namespace patronage21_qa_appium.Screens
 {
-    class DeactivationScreen : BaseScreen
+    internal class DeactivationScreen : BaseScreen
     {
         private static readonly string _screenName = "Dezaktywacja";
         public static Dictionary<string, string> _screenXpath = _screensXpathDict[_screenName];
