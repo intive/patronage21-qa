@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Npgsql;
 
 namespace patronage21_qa_appium.Drivers
 {
-    class JavaDatabase
+    internal class JavaDatabase
     {
         private static readonly string _connectionString = "Host=localhost;Database=patronative;Username=admin;Password=p4tron4tiv3;Port=5101;Persist Security Info=True";
 
