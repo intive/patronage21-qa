@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace RestSharpProject.Models
 {
-    class Project
+    public class ProjectList
     {
-        public List<string> projects { get; set; }
+        public List<Project> projects { get; set; }
+    }
+
+    public class Project
+    {
+        public int id { get; set; }
+        public string name { get; set; }
     }
 }
