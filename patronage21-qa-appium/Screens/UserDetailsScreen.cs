@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 
 namespace patronage21_qa_appium.Screens
 {
-    class UserDetailsScreen : BaseScreen
+    internal class UserDetailsScreen : BaseScreen
     {
         private static readonly string _screenName = "Szczegóły użytkownika";
         public static Dictionary<string, string> _screenXpath = _screensXpathDict[_screenName];

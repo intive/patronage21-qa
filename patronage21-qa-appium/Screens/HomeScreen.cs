@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Screens;
 
 namespace patronage21_qa_appium.Screens
 {

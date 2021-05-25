@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.Interfaces;
-using OpenQA.Selenium.Appium.MultiTouch;
 
 namespace patronage21_qa_appium.Screens
 {
