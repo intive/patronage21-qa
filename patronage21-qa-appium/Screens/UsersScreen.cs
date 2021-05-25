@@ -40,6 +40,17 @@ namespace patronage21_qa_appium.Screens
             return base.SearchForElement(driver, _screenName, searchFor);
         }
 
+        public AndroidElement GetElementFromList(AppiumDriver<AndroidElement> driver, string element, string listName)
+        {
+            return driver.FindElementByXPath(_screensXpathDict[_screenName][listName + " lista"] + "[@text = '" + element + "']");
+        }
+
+        public IReadOnlyCollection<AndroidElement> GetElementsFromList(AppiumDriver<AndroidElement> driver, string element, string listName)
+        {
+            return driver.FindElementsByXPath(_screensXpathDict[_screenName][listName + " lista"] + "[@text = '" + element + "']");
+            // return base.SearchForElements(driver, _screenName, searchFor);
+        }
+
         public IReadOnlyCollection<AndroidElement> GetLidersList(AppiumDriver<AndroidElement> driver)
         {
             var participantsHeader = GetElements(driver, "Uczestnicy nagłówek");

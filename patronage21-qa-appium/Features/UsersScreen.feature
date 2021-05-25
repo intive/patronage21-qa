@@ -7,14 +7,14 @@
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-152
 
 Background: 
-	Given User is on "Users" screen
+	Given User is on "Użytkownicy" screen
 
 # https://tracker.intive.com/jira/browse/IP2-489
 Scenario: USERS_SCREEN_1_IP2-152_users_screen_displayed_correctly
 	Then "Szukaj użytkownika" field is empty
 	And "Wybierz grupę" is set to "Wszystkie grupy technologiczne"
-	And User sees "liders" list
-	And User sees "participants" list
+	And User sees "Liderzy" list
+	And User sees "Uczestnicy" list
 	
 # https://tracker.intive.com/jira/browse/IP2-486
 Scenario Outline: USERS_SCREEN_2_IP2-152_search_existing_user
@@ -133,7 +133,7 @@ Examples:
 Scenario Outline: USERS_SCREEN_11_IP2-152_view_user_details
 	Given Existing user "<name>" assigned to "<list>" list
 	When User clicks "<name>" in "<list>" list
-	Then User sees "Details" screen
+	Then User sees "Szczegóły użytkownika" screen
 
 Examples: 
 | name         | list       |
@@ -145,7 +145,7 @@ Scenario Outline: USERS_SCREEN_12_IP2-152_user_details_back_to_users_screen_navi
 	Given Existing user "<name>" assigned to "<list>" list
 	When User clicks "<name>" in "<list>" list
 	And User clicks "Back" button
-	Then User is on "Users" screen
+	Then User is on "Użytkownicy" screen
 
 Examples: 
 | name         | list       |
