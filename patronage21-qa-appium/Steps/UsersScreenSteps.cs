@@ -17,26 +17,6 @@ namespace patronage21_qa_appium.Steps
             _driver = driver;
         }
 
-        private Dictionary<string, string> _usersScreenDict = new Dictionary<string, string>
-        {
-            { "Users", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[@text='Użytkownicy']" },
-            { "Szukaj użytkownika", "//android.widget.EditText[@content-desc='Search Icon']"},
-            { "Wybierz grupę_text", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[2]"},
-            { "Wybierz grupę", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[3]"},
-            { "Wszystkie grupy", "//android.view.View[@text='Wszystkie grupy']"},
-            { "Java", "//android.view.View[@text='Java']"},
-            { "QA", "//android.view.View[@text='QA']"},
-            { "Android", "//android.view.View[@text='Android']"},
-            { "JavaScript", "//android.view.View[@text='JavaScript']"},
-            { "Details", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/android.view.View[@text='Bio']"},
-            { "Liderzy_header", "//android.view.View[@text='Liderzy']" },
-            { "Liderzy_counter", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()=1]" },
-            { "Liderzy_list", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']]" },
-            { "Uczestnicy_header", "//android.view.View[@text='Uczestnicy']" },
-            { "Uczestnicy_counter", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()=1]" },
-            { "Uczestnicy_list", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1]" },
-        };
-
         [BeforeFeature]
         public void Setup()
         {
