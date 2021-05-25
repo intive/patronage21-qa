@@ -40,8 +40,8 @@ namespace patronage21_qa_appium.Screens
             bool qa = false, bool android = false, bool javascript = false, bool java = false, string login = "", string password = "", string confirmPassword = "", string github = "",
             bool first_regulations = false, bool second_regulations = false, bool submit = false)
         {
-            SearchForElement(driver, "Zwrot").Click();
-            SearchForElement(driver, title).Click();
+            GetElement(driver, "Zwrot").Click();
+            GetElement(driver, title).Click();
             SearchForElement(driver, "Imię").SendKeys(first_name);
             SearchForElement(driver, "Nazwisko").SendKeys(last_name);
             SearchForElement(driver, "Email").SendKeys(email);

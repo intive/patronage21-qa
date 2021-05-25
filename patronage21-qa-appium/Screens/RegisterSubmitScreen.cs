@@ -4,17 +4,10 @@ using OpenQA.Selenium.Appium.Android;
 
 namespace patronage21_qa_appium.Screens
 {
-    internal class ActivationSubmitScreen : BaseScreen
+    internal class RegisterSubmitScreen : BaseScreen
     {
-        private static string _screenName = "Aktywacja";
+        private static string _screenName = "Potwierdzenie rejestracji";
         public static Dictionary<string, string> _screenXpath = _screensXpathDict[_screenName];
-
-        private static Dictionary<string, string> _xpathDict = new()
-        {
-            { "Nagłówek", "//android.view.View[@text='Twoja rejestracja przebiegła pomyślnie!']" },
-            { "Opis", "//android.view.View[@text='Konto zostało utworzone, możesz korzystać z aplikacji']" },
-            { "Zamknij", "//android.widget.Button[@text='Zamknij']" },
-        };
 
         public void ClickElement(AppiumDriver<AndroidElement> driver, string elementName)
         {

@@ -9,22 +9,18 @@ Background:
 	Given User is not logged in
 
 # zephyr link
-Scenario outline: USERS_SCREEN_1_IP2-152_deactivation_screen_displayed_correctly
+Scenario Outline: USERS_SCREEN_1_IP2-152_deactivation_screen_displayed_correctly
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "<way>"
 	Then User sees "Dezaktywacja" screen
+
 	Examples: 
 	| way         |
 	| Użytkownicy |
 	| Moje konto  |
-
-# zephyr link
-Scenario: USERS_SCREEN_2_IP2-152_deactivation_screen_through_users_screen_displayed_correctly
-	When User navigates to "Dezaktywacja" screen through "Moje konto" 
-	Then User sees "Dezaktywacja" screen
 	
 # zephyr link
-Scenario: USERS_SCREEN_3_IP2-152_account_deactivated_correctly
+Scenario: USERS_SCREEN_2_IP2-152_account_deactivated_correctly
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "Moje konto" 
 	And User writes "Kowalski" to "Nazwisko" field
@@ -33,7 +29,7 @@ Scenario: USERS_SCREEN_3_IP2-152_account_deactivated_correctly
 	And User is not logged in
 
 # zephyr link
-Scenario: USERS_SCREEN_4_IP2-152_wrong_surname_provided
+Scenario: USERS_SCREEN_3_IP2-152_wrong_surname_provided
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "Moje konto" 
 	And User writes "notKowalski" to "Nazwisko" field
@@ -41,7 +37,7 @@ Scenario: USERS_SCREEN_4_IP2-152_wrong_surname_provided
 	Then User sees "Dezaktywacja" screen
 	
 # zephyr link
-Scenario: USERS_SCREEN_5_IP2-152_too_long_surname_provided
+Scenario: USERS_SCREEN_4_IP2-152_too_long_surname_provided
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "Moje konto" 
 	And User writes "21" characters to "Nazwisko" field

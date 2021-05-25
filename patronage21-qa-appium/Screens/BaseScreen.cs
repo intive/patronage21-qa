@@ -68,17 +68,13 @@ namespace patronage21_qa_appium.Screens
             { "Kod", "//android.widget.EditText[@text='Kod *, Kod *']" },
             { "Zatwierdź kod", "//android.widget.Button[@text='Zatwierdź kod']" },
             { "Nie otrzymałem/am kodu", "//android.widget.Button[@text='Nie otrzymałem/am kodu']" },
-            { "First element", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/*[1]" },
-            { "Last element", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/*[last()]" },
         };
 
-        private static Dictionary<string, string> _activationSubmitXpathDict = new()
+        private static Dictionary<string, string> _registerSubmitXpathDict = new()
         {
             { "Nagłówek", "//android.view.View[@text='Twoja rejestracja przebiegła pomyślnie!']" },
             { "Opis", "//android.view.View[@text='Konto zostało utworzone, możesz korzystać z aplikacji']" },
             { "Zamknij", "//android.widget.Button[@text='Zamknij']" },
-            { "First element", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/*[1]" },
-            { "Last element", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/*[last()]" },
         };
 
         private static Dictionary<string, string> _usersXpathDict = new()
@@ -145,16 +141,24 @@ namespace patronage21_qa_appium.Screens
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
         };
 
+        private static Dictionary<string, string> _deactivationSubmitXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Pomyślnie zdezaktywowano konto']" },
+            { "Opis", "//android.view.View[@text='Nastąpi przekierowanie do ekranu logowania']" },
+            { "OK", "//android.widget.Button[@text='OK']" },
+        };
+
         public static Dictionary<string, Dictionary<string, string>> _screensXpathDict = new()
         {
             { "Home", _homeXpathDict },
             { "Logowanie", _loginXpathDict },
             { "Rejestracja", _registerXpathDict },
             { "Aktywacja", _activationXpathDict },
-            { "Potwierdzenie rejestracji", _activationSubmitXpathDict },
+            { "Potwierdzenie rejestracji", _registerSubmitXpathDict },
             { "Użytkownicy", _usersXpathDict },
             { "Szczegóły użytkownika", _userDetailsXpathDict },
             { "Dezaktywacja", _deactivationXpathDict },
+            { "Potwierdzenie dezaktywacji", _deactivationSubmitXpathDict },
         };
 
         public static void Swipe(IPerformsTouchActions driver, int startX, int startY, int endX, int endY, int duration)
@@ -198,6 +202,11 @@ namespace patronage21_qa_appium.Screens
             {
                 return elements[0];
             }
+        }
+
+        public virtual void Wait(AppiumDriver<AndroidElement> driver)
+        {
+            driver.FindElementByXPath("//*");
         }
 
         public virtual void ClickElement(AppiumDriver<AndroidElement> driver, string screenName, string elementName)

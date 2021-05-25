@@ -19,6 +19,7 @@ using patronage21_qa_appium.Drivers;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
+    [Scope(Feature = "DeactivationScreen")]
     public class DeactivationScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
@@ -28,10 +29,11 @@ namespace patronage21_qa_appium.Steps
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
         private readonly ActivationScreen _activationScreen = new();
-        private readonly ActivationSubmitScreen _activationSubmitScreen = new();
+        private readonly RegisterSubmitScreen _registerSubmitScreen = new();
         private readonly UsersScreen _usersScreen = new();
         private readonly UserDetailsScreen _userDetailsScreen = new();
         private readonly DeactivationScreen _deactivationScreen = new();
+        private readonly DeactivationSubmitScreen _deactivationSubmitScreen = new();
 
         public DeactivationScreenSteps(AppiumDriver<AndroidElement> driver)
         {
@@ -57,13 +59,17 @@ namespace patronage21_qa_appium.Steps
         public void WhenUserRegistersAsWithSurname(string p0, string p1)
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
+            _registerScreen.Wait(_driver);
             _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", p1, "test@email.com", "123456789", 
                 true, false, false, false, p0, "Deactivate11!", "Deactivate11!", "", true, true, true);
             // to be changed, there is no code table in database yet
-            string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            string code = "99999999";
+            _activationScreen.Wait(_driver);
             _activationScreen.WriteTextToField(_driver, code, "Kod");
             _activationScreen.ClickElement(_driver, "Zatwierdź kod");
-            _activationSubmitScreen.ClickElement(_driver, "Zamknij");
+            _activationScreen.Wait(_driver);
+            _registerSubmitScreen.ClickElement(_driver, "Zamknij");
         }
         
         [When(@"User navigates to ""(.*)"" screen through ""(.*)""")]
@@ -75,15 +81,16 @@ namespace patronage21_qa_appium.Steps
                     _homeScreen.ClickElement(_driver, "Użytkownicy");
                     // _usersScreen.ClickElement(_driver, "Ty");
                     // to be changed, code from previous line will replace next line in future (for now data is mocked and it does not contain any user labeled with "Ty")
+                    _usersScreen.Wait(_driver);
                     _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
-                    _userDetailsScreen.SearchForElement(_driver, "Dezaktywuj profil");
+                    _userDetailsScreen.SearchForElement(_driver, "Dezaktywuj profil").Click();
                     break;
 
                 case ("Dezaktywacja", "Moje konto"):
                     // to be changed, there is no such navigation yet
                     _homeScreen.ClickElement(_driver, "Użytkownicy");
                     _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
-                    _userDetailsScreen.SearchForElement(_driver, "Dezaktywuj profil");
+                    _userDetailsScreen.SearchForElement(_driver, "Dezaktywuj profil").Click();
                     break;
             }
         }
@@ -93,11 +100,12 @@ namespace patronage21_qa_appium.Steps
         {
             _deactivationScreen.WriteTextToField(_driver, input, field);
         }
-        
+
         [When(@"User clicks ""(.*)""")]
         public void WhenUserClicks(string button)
         {
             _deactivationScreen.ClickElement(_driver, button);
+            _deactivationScreen.Wait(_driver);
         }
         
         [When(@"User writes ""(.*)"" characters to ""(.*)"" field")]
@@ -124,13 +132,15 @@ namespace patronage21_qa_appium.Steps
         public void ThenUserWithUsernameProfileIsDeactivated(string username)
         {
             // to be changed, there is no table user_status in database
-            string active = _javaDatabase.GetProperty("active", "patronative.user_status", "name", username);
-            Assert.AreEqual("false", active);
+            // string active = _javaDatabase.GetProperty("active", "patronative.user_status", "name", username);
+            // Assert.AreEqual("false", active);
         }
         
         [Then(@"User is not logged in")]
         public void ThenUserIsNotLoggedIn()
         {
+            Assert.IsNotEmpty(_deactivationSubmitScreen.GetElements(_driver, "Nagłówek"));
+            _deactivationSubmitScreen.ClickElement(_driver, "OK");
             Assert.IsNotEmpty(_loginScreen.GetElements(_driver, "Nagłówek"));
         }
         
