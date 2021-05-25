@@ -84,12 +84,21 @@ namespace patronage21_qa_appium.Features
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_1_IP2-152_users_screen_displayed_correctly")]
         public virtual void USERS_SCREEN_1_IP2_152_Users_Screen_Displayed_Correctly()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_1_IP2-152_users_screen_displayed_correctly", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_users_screen_displayed_correctly")]
+        public virtual void USERS_SCREEN__IP2_152_Users_Screen_Displayed_Correctly()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_users_screen_displayed_correctly", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -130,16 +139,27 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_2_IP2-152_search_existing_user")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
         public virtual void USERS_SCREEN_2_IP2_152_Search_Existing_User(string name, string list, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_existing_user")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
+        public virtual void USERS_SCREEN__IP2_152_Search_Existing_User(string name, string list, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_2_IP2-152_search_existing_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_existing_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -173,19 +193,32 @@ this.FeatureBackground();
  testRunner.And("User clicks \"Enter\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 24
+<<<<<<< HEAD
  testRunner.Then(string.Format("User sees user \"{0}\" in \"{1}\" list", name, list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+=======
+ testRunner.Then(string.Format("User sees \"{0}\" in \"{1}\" list", name, list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_3_IP2-152_search_not_existing_user")]
         public virtual void USERS_SCREEN_3_IP2_152_Search_Not_Existing_User()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_3_IP2-152_search_not_existing_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_not_existing_user")]
+        public virtual void USERS_SCREEN__IP2_152_Search_Not_Existing_User()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_not_existing_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -226,19 +259,31 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_4_IP2-152_search_group")]
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_group")]
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 2", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 4", null)]
+<<<<<<< HEAD
         public virtual void USERS_SCREEN_4_IP2_152_Search_Group(string user, string list, string group, string[] exampleTags)
+=======
+        public virtual void USERS_SCREEN__IP2_152_Search_Group(string user, string list, string group, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("user", user);
             argumentsOfScenario.Add("list", list);
             argumentsOfScenario.Add("group", group);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_4_IP2-152_search_group", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_group", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 39
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -279,12 +324,21 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_5_IP2-152_search_all_groups")]
         public virtual void USERS_SCREEN_5_IP2_152_Search_All_Groups()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_5_IP2-152_search_all_groups", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_all_groups")]
+        public virtual void USERS_SCREEN__IP2_152_Search_All_Groups()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_all_groups", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -337,12 +391,21 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_6_IP2-152_empty_search_user_field_shows_all_users")]
         public virtual void USERS_SCREEN_6_IP2_152_Empty_Search_User_Field_Shows_All_Users()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_6_IP2-152_empty_search_user_field_shows_all_users", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_empty_search_user_field_shows_all_users")]
+        public virtual void USERS_SCREEN__IP2_152_Empty_Search_User_Field_Shows_All_Users()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_empty_search_user_field_shows_all_users", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 64
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -395,17 +458,28 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_7_IP2-152_search_user_and_group")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
         public virtual void USERS_SCREEN_7_IP2_152_Search_User_And_Group(string name, string list, string group, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_user_and_group")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
+        public virtual void USERS_SCREEN__IP2_152_Search_User_And_Group(string name, string list, string group, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
             argumentsOfScenario.Add("group", group);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_7_IP2-152_search_user_and_group", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_user_and_group", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 75
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -452,17 +526,28 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_8_IP2-152_search_group_and_user")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
         public virtual void USERS_SCREEN_8_IP2_152_Search_Group_And_User(string name, string list, string group, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_group_and_user")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
+        public virtual void USERS_SCREEN__IP2_152_Search_Group_And_User(string name, string list, string group, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
             argumentsOfScenario.Add("group", group);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_8_IP2-152_search_group_and_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_group_and_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 89
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -509,17 +594,28 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_9_IP2-152_search_user_and_wrong_group")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 3", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 1", null)]
         public virtual void USERS_SCREEN_9_IP2_152_Search_User_And_Wrong_Group(string name, string list, string group, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_user_and_wrong_group")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 3", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 1", null)]
+        public virtual void USERS_SCREEN__IP2_152_Search_User_And_Wrong_Group(string name, string list, string group, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
             argumentsOfScenario.Add("group", group);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_9_IP2-152_search_user_and_wrong_group", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_user_and_wrong_group", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 103
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -569,17 +665,28 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_10_IP2-152_search_group_and_wrong_user")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
         public virtual void USERS_SCREEN_10_IP2_152_Search_Group_And_Wrong_User(string name, string list, string group, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_search_group_and_wrong_user")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Group 1", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", "Group 3", null)]
+        public virtual void USERS_SCREEN__IP2_152_Search_Group_And_Wrong_User(string name, string list, string group, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
             argumentsOfScenario.Add("group", group);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_10_IP2-152_search_group_and_wrong_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_search_group_and_wrong_user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 118
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -629,16 +736,27 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_11_IP2-152_view_user_details")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
         public virtual void USERS_SCREEN_11_IP2_152_View_User_Details(string name, string list, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_view_user_details")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
+        public virtual void USERS_SCREEN__IP2_152_View_User_Details(string name, string list, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_11_IP2-152_view_user_details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_view_user_details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 133
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -676,16 +794,27 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_12_IP2-152_user_details_back_to_users_screen_navigation")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
         public virtual void USERS_SCREEN_12_IP2_152_User_Details_Back_To_Users_Screen_Navigation(string name, string list, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_user_details_back_to_users_screen_navigation")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
+        public virtual void USERS_SCREEN__IP2_152_User_Details_Back_To_Users_Screen_Navigation(string name, string list, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_12_IP2-152_user_details_back_to_users_screen_navigation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_user_details_back_to_users_screen_navigation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 144
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -726,12 +855,21 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_13_IP2-152_records_are_not_duplicated")]
         public virtual void USERS_SCREEN_13_IP2_152_Records_Are_Not_Duplicated()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_13_IP2-152_records_are_not_duplicated", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_records_are_not_duplicated")]
+        public virtual void USERS_SCREEN__IP2_152_Records_Are_Not_Duplicated()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_records_are_not_duplicated", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 156
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -776,16 +914,27 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_14_IP2-152_all_users_counter_is_correct")]
         [NUnit.Framework.TestCaseAttribute("Group 3", "Liderzy", null)]
         [NUnit.Framework.TestCaseAttribute("Group 1", "Uczestnicy", null)]
         public virtual void USERS_SCREEN_14_IP2_152_All_Users_Counter_Is_Correct(string group, string list, string[] exampleTags)
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_all_users_counter_is_correct")]
+        [NUnit.Framework.TestCaseAttribute("Group 3", "Liderzy", null)]
+        [NUnit.Framework.TestCaseAttribute("Group 1", "Uczestnicy", null)]
+        public virtual void USERS_SCREEN__IP2_152_All_Users_Counter_Is_Correct(string group, string list, string[] exampleTags)
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("group", group);
             argumentsOfScenario.Add("list", list);
+<<<<<<< HEAD
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_14_IP2-152_all_users_counter_is_correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_all_users_counter_is_correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 164
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -826,12 +975,21 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_15_IP2-152_no_users_found_counter_is_correct")]
         public virtual void USERS_SCREEN_15_IP2_152_No_Users_Found_Counter_Is_Correct()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_15_IP2-152_no_users_found_counter_is_correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_no_users_found_counter_is_correct")]
+        public virtual void USERS_SCREEN__IP2_152_No_Users_Found_Counter_Is_Correct()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_no_users_found_counter_is_correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 176
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -875,6 +1033,7 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_16_IP2-152_user_own_account_is_marked")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
         [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
@@ -885,6 +1044,18 @@ this.FeatureBackground();
             argumentsOfScenario.Add("name", name);
             argumentsOfScenario.Add("list", list);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_16_IP2-152_user_own_account_is_marked", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_user_own_account_is_marked")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
+        public virtual void USERS_SCREEN__IP2_152_User_Own_Account_Is_Marked(string user, string list, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("user", user);
+            argumentsOfScenario.Add("list", list);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_user_own_account_is_marked", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 184
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -909,6 +1080,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 185
+<<<<<<< HEAD
  testRunner.Given(string.Format("User is logged in as \"<user>\" assigned to \"{0}\" list", list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 186
@@ -916,6 +1088,15 @@ this.FeatureBackground();
 #line hidden
 #line 187
  testRunner.Then(string.Format("User sees \"Ty\" mark next to user \"{0}\" in \"{1}\" list", name, list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+=======
+ testRunner.Given(string.Format("User is logged in as \"{0}\" assigned to \"{1}\" list", user, list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 186
+ testRunner.And(string.Format("No other user is named \"{0}\"", user), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 187
+ testRunner.Then(string.Format("User sees \"Ty\" mark next to user \"{0}\" in \"{1}\"", user, list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line hidden
 #line 188
  testRunner.And("No other user is marked with \"Ty\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -925,6 +1106,7 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+<<<<<<< HEAD
         [NUnit.Framework.DescriptionAttribute("USERS_SCREEN_17_IP2-152_user_own_account_is_marked_and_other_user_with_the_same_n" +
             "ame_is_not_marked")]
         [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", "Liderzy", null)]
@@ -938,6 +1120,20 @@ this.FeatureBackground();
             argumentsOfScenario.Add("list2", list2);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN_17_IP2-152_user_own_account_is_marked_and_other_user_with_the_same_n" +
                     "ame_is_not_marked", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+=======
+        [NUnit.Framework.DescriptionAttribute("USERS_SCREEN__IP2-152_user_own_account_is_marked_and_other_user_with_the_same_nam" +
+            "e_is_not_marked")]
+        [NUnit.Framework.TestCaseAttribute("Jan Kowalski", "Uczestnicy", null)]
+        [NUnit.Framework.TestCaseAttribute("Anna Nowak", "Liderzy", null)]
+        public virtual void USERS_SCREEN__IP2_152_User_Own_Account_Is_Marked_And_Other_User_With_The_Same_Name_Is_Not_Marked(string user, string list, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("user", user);
+            argumentsOfScenario.Add("list", list);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("USERS_SCREEN__IP2-152_user_own_account_is_marked_and_other_user_with_the_same_nam" +
+                    "e_is_not_marked", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line 196
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -962,6 +1158,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 197
+<<<<<<< HEAD
  testRunner.Given(string.Format("User is logged in as \"{0}\" assigned to \"{1}\" list", name, list1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 198
@@ -975,6 +1172,18 @@ this.FeatureBackground();
 #line hidden
 #line 201
  testRunner.And(string.Format("User does not see \"Ty\" mark next to user \"{0}\" in \"{1}\" list", name, list2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+=======
+ testRunner.Given(string.Format("User is logged in as \"<name>\" assigned to \"{0}\" list", list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 198
+ testRunner.And(string.Format("Two users named \"<name>\" assigned to \"{0}\" exists", list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 199
+ testRunner.Then(string.Format("User sees \"Ty\" mark next to his name \"<name>\" in \"{0}\" list", list), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 200
+ testRunner.And("User does not see \"Ty\" mark next to other user named \"<name>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+>>>>>>> f4108541559c85c7f87f75a7d2efe8130925ce0d
 #line hidden
             }
             this.ScenarioCleanup();
