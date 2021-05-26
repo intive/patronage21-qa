@@ -27,7 +27,8 @@ namespace SeleniumProject.Hooks
 
             driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Url = "http://localhost:3000";
+            // to powinno byc usuniete, mamy kilka systemow z roznymi adresami.
+            //driver.Url = "http://localhost:3000";
         }
 
         [BeforeScenario]

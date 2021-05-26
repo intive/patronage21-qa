@@ -7,14 +7,14 @@ Sub – Tasks 2.
 
 # link to Zephyr_1 test
 Scenario Outline: USERS_PAGE_1_IP2-91_User_is_looking_for_a_specific_user_successfuly
-Given User '<user_data>' exists
-When User enters the '<user_data>' in the "szukaj użytkownika" field
+Given User is on the "users" page
+When User enters the '<user_data>' in the szukaj użytkownika field
 And  User selects a '<technology_group>'
 Then A user with name and surname equal '<user_data>' is displayed
 
 Examples:
 | user_data        | technology_group                                  |
-| name and surname | Wszystkie grupy technologiczne                    |
+| Tomek Nowak      | Wszystkie grupy technologiczne                    |
 | name and surname | technological group in which this user is located |
 
 
