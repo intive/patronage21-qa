@@ -160,13 +160,13 @@ namespace SeleniumProject.Pages
 
         public void RegistrationFormWithTooLongFirstName()
         {
-            txtFirstName.SendKeys("enterTooLongUserFirstName");
+            txtFirstName.SendKeys("userEnteredTooLongUserFirstName");
         }
 
         public void RegistrationFormWithTooLongLastName()
         {
             txtFirstName.SendKeys("Jan");
-            txtLastName.SendKeys("enterTooLongUserLastName");
+            txtLastName.SendKeys("userEnteredTooLongUserLastNamee");
         }
 
         public void RegistrationFormWithTooLongPhoneNumber()

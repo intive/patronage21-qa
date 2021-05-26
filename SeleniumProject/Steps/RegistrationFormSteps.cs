@@ -139,7 +139,7 @@ namespace SeleniumProject.Steps
         [Given(@"User fills too long Githublink")]
         public void GivenUserFillsTooLongGithublink()
         {
-            registrationFormPage.RegistrationFormWithTooLongHaslo();
+            registrationFormPage.RegistrationFormWithTooLongGithubLink();
         }
 
         [Given(@"User fills data which is before technologies field")]
@@ -215,6 +215,12 @@ namespace SeleniumProject.Steps
         public void WhenUserClicksOnNextAdresEmail()
         {
             registrationFormPage.txtEmail.Click();
+        }
+
+        [When(@"User clicks on next Login")]
+        public void WhenUserClicksOnNextLogin()
+        {
+            registrationFormPage.txtLogin.Click();
         }
 
         [When(@"User clicks on Login field")]
