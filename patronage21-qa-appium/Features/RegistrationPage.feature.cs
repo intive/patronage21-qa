@@ -156,16 +156,26 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "surname"});
+                            "name",
+                            "surname",
+                            "phone",
+                            "password",
+                            "password confirm",
+                            "Github"});
                 table1.AddRow(new string[] {
-                            "123456789"});
+                            "Jan",
+                            "Kowalski",
+                            "123456789",
+                            "Qwerty+8",
+                            "Qwerty+8",
+                            "https://www.github.com/jan-kowalski"});
 #line 16
  testRunner.When("User completes form correctly", ((string)(null)), table1, "When ");
 #line hidden
-#line 21
+#line 19
  testRunner.Then("User \"can\" sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 20
  testRunner.And("User sees \"Email verification\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -235,7 +245,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("data", data);
             argumentsOfScenario.Add("valid", valid);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_3_IP2-261_registration_form_has_proper_validation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 25
+#line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -258,10 +268,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line hidden
-#line 26
+#line 24
  testRunner.When(string.Format("User completes \"{0}\" \"{1}\" with \"{2}\"", element, inAWay, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 27
+#line 25
  testRunner.Then(string.Format("User is informed if \"{0}\" is \"{1}\"", element, valid), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -290,7 +300,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("data", data);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_4_IP2-261_registration_is_not_possible_after_filling_in_the_for" +
                     "m_incorrectly", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 85
+#line 83
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -327,13 +337,13 @@ this.FeatureBackground();
                             "Qwerty+8",
                             "Qwerty+8",
                             "https://www.github.com/jan-kowalski"});
-#line 86
+#line 84
  testRunner.When("User completes form correctly", ((string)(null)), table2, "When ");
 #line hidden
-#line 89
+#line 87
  testRunner.And(string.Format("User completes \"{0}\" \"{1}\" with \"{2}\"", element, inAWay, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 90
+#line 88
  testRunner.Then("User \"can not\" sign up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -352,7 +362,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("element", element);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_PAGE_5_IP2-261_registration_is_not_possible_with_element_which_was_u" +
                     "sed_before", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 106
+#line 104
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -389,7 +399,7 @@ this.FeatureBackground();
                             "Qwerty+8",
                             "Qwerty+8",
                             "https://www.github.com/jan-kowalski"});
-#line 107
+#line 105
  testRunner.When("User signs up", ((string)(null)), table3, "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -406,10 +416,10 @@ this.FeatureBackground();
                             "Qwerty+8",
                             "Qwerty+8",
                             "https://www.github.com/jan-kowalski"});
-#line 110
+#line 108
  testRunner.And(string.Format("User signs up again with the same \"{0}\"", element), ((string)(null)), table4, "And ");
 #line hidden
-#line 113
+#line 111
  testRunner.Then(string.Format("User is informed if \"{0}\" is \"repeated\"", element), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

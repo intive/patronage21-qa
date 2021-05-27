@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using System;
+using patronage21_qa_appium.Pages;
+using patronage21_qa_appium.Utils;
 using System.Collections.Generic;
-using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -12,6 +12,8 @@ namespace patronage21_qa_appium.Steps
     public class RegistrationPageSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private readonly RegistrationPageObject _registrationPageObject;
+        private readonly RegistrationSupport _registrationSupport;
         private Dictionary<string, string[]> editTextElements = new Dictionary<string, string[]>()
         {
             { "name", new string[] { "Imię *, Imię *", "Pole wymagane, Imię *" } },
@@ -24,9 +26,13 @@ namespace patronage21_qa_appium.Steps
             { "Github" , new string[] { "Github URL, Github URL", "Github URL, Github URL" } },
         };
 
-        public RegistrationPageSteps(AppiumDriver<AndroidElement> driver)
+        public RegistrationPageSteps(AppiumDriver<AndroidElement> driver, 
+            RegistrationPageObject registrationPageObject, 
+            RegistrationSupport registrationSupport)
         {
             _driver = driver;
+            _registrationPageObject = registrationPageObject;
+            _registrationSupport = registrationSupport;
         }
 
         [Given(@"User is on Registration page")]
@@ -46,12 +52,7 @@ namespace patronage21_qa_appium.Steps
             {
                 for (int i = 0; i < int.Parse(data); i++)
                 {
-                    var checkBox = _driver.FindElement(
-                                   new ByAndroidUIAutomator(
-                                       "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                       ".scrollIntoView(new UiSelector().className(\"android.widget.CheckBox\")" +
-                                       ".instance(" + i + "))"));
-                    checkBox.Click();
+                    _registrationPageObject.SelectCheckbox(i);
                 }
             }
             else if (element.Equals("consents"))
@@ -62,26 +63,12 @@ namespace patronage21_qa_appium.Steps
                                        ".flingToEnd()"));
                 for (int i = 0; i < int.Parse(data); i++)
                 {
-                    var checkBox = _driver.FindElement(
-                                   new ByAndroidUIAutomator(
-                                       "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                       ".scrollIntoView(new UiSelector().className(\"android.widget.CheckBox\")" +
-                                       ".instance(" + i + "))"));
-                    checkBox.Click();
+                    _registrationPageObject.SelectCheckbox(i);
                 }
             }
             else
             {
-                var editText = _driver.FindElement(
-                                new ByAndroidUIAutomator(
-                                    "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                    ".scrollIntoView(new UiSelector().text(\"" + editTextElements[element][0] + "\"))"));
-                editText.Click();
-                editText = _driver.FindElement(
-                              new ByAndroidUIAutomator(
-                                  "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                  ".scrollIntoView(new UiSelector().text(\"" + editTextElements[element][1] + "\"))"));
-                editText.SendKeys(data);
+                _registrationPageObject.FillEditText(editTextElements[element], data);
             }
         }
 
@@ -94,65 +81,24 @@ namespace patronage21_qa_appium.Steps
                 var element = elementEnumerator.Current;
                 var elementName = element.Key;
                 var elementData = element.Value;
-                var editText = _driver.FindElement(
-                                          new ByAndroidUIAutomator(
-                                              "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                              ".scrollIntoView(new UiSelector().text(\"" + editTextElements[elementName][0] + "\"))"));
-                editText.Click();
-                editText = _driver.FindElement(
-                                          new ByAndroidUIAutomator(
-                                              "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                              ".scrollIntoView(new UiSelector().text(\"" + editTextElements[elementName][1] + "\"))"));
-                editText.SendKeys(elementData);
+                _registrationPageObject.FillEditText(editTextElements[elementName], elementData);
                 _driver.HideKeyboard();
 
                 if (elementName.Equals("surname"))
                 {
-                    editText = _driver.FindElement(
-                                          new ByAndroidUIAutomator(
-                                              "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                              ".scrollIntoView(new UiSelector().text(\"" + editTextElements["email"][0] + "\"))"));
-                    editText.Click();
-                    editText = _driver.FindElement(
-                                              new ByAndroidUIAutomator(
-                                                  "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                                  ".scrollIntoView(new UiSelector().text(\"" + editTextElements["email"][1] + "\"))"));
-                    
-                    var random = new Random();
-                    const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                    var randomString = new string(Enumerable.Repeat(chars, 10)
-                        .Select(s => s[random.Next(s.Length)]).ToArray());
-                    var randomEmail = randomString + "@example.com";
-                    editText.SendKeys(randomEmail);
+                    var randomEmail = _registrationSupport.GenerateRandomString() + "@example.com";
+                    _registrationPageObject.FillEditText(editTextElements["email"], randomEmail);
                     _driver.HideKeyboard();
                 }
                 else if (elementName.Equals("phone"))
                 {
                     for (int i = 0; i < 1; i++)
                     {
-                        var checkBox = _driver.FindElement(
-                                       new ByAndroidUIAutomator(
-                                           "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                           ".scrollIntoView(new UiSelector().className(\"android.widget.CheckBox\")" +
-                                           ".instance(" + i + "))"));
-                        checkBox.Click();
+                        _registrationPageObject.SelectCheckbox(i);
                     }
-                    editText = _driver.FindElement(
-                                         new ByAndroidUIAutomator(
-                                             "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                             ".scrollIntoView(new UiSelector().text(\"" + editTextElements["email"][0] + "\"))"));
-                    editText.Click();
-                    editText = _driver.FindElement(
-                                              new ByAndroidUIAutomator(
-                                                  "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                                  ".scrollIntoView(new UiSelector().text(\"" + editTextElements["email"][1] + "\"))"));
 
-                    var random = new Random();
-                    const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                    var randomString = new string(Enumerable.Repeat(chars, 10)
-                        .Select(s => s[random.Next(s.Length)]).ToArray());
-                    var randomLogin = randomString;
-                    editText.SendKeys(randomLogin);
+                    var randomLogin = _registrationSupport.GenerateRandomString(); 
+                    _registrationPageObject.FillEditText(editTextElements["login"], randomLogin);
                     _driver.HideKeyboard();
                 }
                 else if (elementName.Equals("Github"))
@@ -163,12 +109,7 @@ namespace patronage21_qa_appium.Steps
                                        ".flingToEnd()"));
                     for (int i = 0; i < 2; i++)
                     {
-                        var checkBox = _driver.FindElement(
-                                       new ByAndroidUIAutomator(
-                                           "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                                           ".scrollIntoView(new UiSelector().className(\"android.widget.CheckBox\")" +
-                                           ".instance(" + i + "))"));
-                        checkBox.Click();
+                        _registrationPageObject.SelectCheckbox(i);
                     }
                 }
             }
@@ -177,25 +118,25 @@ namespace patronage21_qa_appium.Steps
         [When(@"User signs up")]
         public void WhenUserSignsUp(Table formData)
         {
-            //ScenarioContext.Current.Add()
+            ScenarioContext.Current.Pending();
         }
 
         [When(@"User signs up again with the same ""(.*)""")]
         public void WhenUserSignsUpAgainWithTheSame(string element, Table formData)
         {
-            // ScenarioContext.Current.Get()
+            ScenarioContext.Current.Pending();
         }
 
         [Then(@"User sees ""(.*)"" page"), Scope(Tag = "registration")]
         public void ThenUserSeesPage(string page)
         {
-            //Assert.Pass();
+            Assert.Pass();
         }
 
         [Then(@"User ""(.*)"" sign up")]
         public void ThenUserSignUp(string ability)
         {
-           // Assert.Pass();
+           Assert.Pass();
         }
 
         [Then(@"User is informed if ""(.*)"" is ""(.*)""")]

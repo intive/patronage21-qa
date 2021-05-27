@@ -14,10 +14,8 @@ Scenario:REGISTRATION_PAGE_1_IP2-261_registration_page_displayed_correctly
 # Zephyr link
 Scenario:REGISTRATION_PAGE_2_IP2-261_registration_is_possible_after_filling_in_the_form_correctly
 	When User completes form correctly
-		#| #   | #    | # | # | name | surname  | phone     | password | password confirm | Github |
-		#| #   | #    | # | # | Jan  | Kowalski | 123456789 | Qwerty+8 | Qwerty+8         | https://www.github.com/jan-kowalski |
-		| surname |
-		| 123456789 |
+		| name | surname  | phone     | password | password confirm | Github                              |
+		| Jan  | Kowalski | 123456789 | Qwerty+8 | Qwerty+8         | https://www.github.com/jan-kowalski |
 	Then User "can" sign up
 	And User sees "Email verification" page
 
