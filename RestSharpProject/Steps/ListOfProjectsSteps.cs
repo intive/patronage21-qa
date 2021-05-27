@@ -9,8 +9,8 @@ namespace RestSharpProject.Features
     [Binding]
     public class ListOfProjectsSteps
     {
-        IRestClient client = new RestClient();
-        IRestRequest request = new RestRequest();
+        RestClient client;
+        RestRequest request;
         IRestResponse response;
 
 
@@ -21,7 +21,7 @@ namespace RestSharpProject.Features
         }
 
         [When(@"User sends a GET request with a valid '(.*)'")]
-        public void WhenUserSendsAGETRequestWithAValid(int year)
+        public void WhenUserSendsAGETRequestWithAValid(string year)
         {
             request = new RestRequest("/api/projects?year=" + year, Method.GET);
         }
@@ -43,6 +43,13 @@ namespace RestSharpProject.Features
         {
             response = client.Execute(request);
             Assert.AreEqual(code, (int)response.StatusCode);
+        }
+
+        [Then(@"JSON body contain a list of projects from proper year")]
+        public void ThenJSONBodyContainAListOfProjectsFromProperYear()
+        {
+            var responseMessage = JsonConvert.DeserializeObject<ProjectList>(response.Content);
+            Assert.IsNotNull(responseMessage);
         }
 
         [Then(@"JSON body contain a list of projects from current year")]
