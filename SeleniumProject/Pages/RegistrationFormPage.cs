@@ -160,13 +160,13 @@ namespace SeleniumProject.Pages
 
         public void RegistrationFormWithTooLongFirstName()
         {
-            txtFirstName.SendKeys("enterTooLongUserFirstName");
+            txtFirstName.SendKeys("userEnteredTooLongUserFirstName");
         }
 
         public void RegistrationFormWithTooLongLastName()
         {
             txtFirstName.SendKeys("Jan");
-            txtLastName.SendKeys("enterTooLongUserLastName");
+            txtLastName.SendKeys("userEnteredTooLongUserLastNamee");
         }
 
         public void RegistrationFormWithTooLongPhoneNumber()
@@ -205,6 +205,37 @@ namespace SeleniumProject.Pages
             checkBoxJavaScript.Click();
             checkBoxJava.Click();
             checkBoxQA.Click();
+        }
+
+        public void RegistrationFormWithTooLongHaslo()
+        {
+            txtFirstName.SendKeys("Jan");
+            txtLastName.SendKeys("Kowalski");
+            txtEmail.SendKeys("example@email.com");
+            txtPhone.SendKeys(123456789.ToString());
+            txtGithubLink.SendKeys("github.com/example12");
+            checkBoxJavaScript.Click();
+            txtLogin.SendKeys("exampleLogin");
+            txtPassword.SendKeys("tooLongPasswordWithSpecialKey6@");
+        }
+
+        public void RegistrationFormWithTooShortImie()
+        {
+            txtFirstName.SendKeys("J");
+        }
+
+        public void RegistrationFormWithTooShortNazwisko(string firstName)
+        {
+            txtFirstName.SendKeys(firstName);
+            txtLastName.SendKeys("K");
+        }
+        public void RegistrationFormWithTooLongGithubLink()
+        {
+            txtFirstName.SendKeys("Jan");
+            txtLastName.SendKeys("Kowalski");
+            txtEmail.SendKeys("example@email.com");
+            txtPhone.SendKeys(123456789.ToString());
+            txtGithubLink.SendKeys("github.com/tooLongGithubLinkWhichIsIncorrect1234567");
         }
     }
 }

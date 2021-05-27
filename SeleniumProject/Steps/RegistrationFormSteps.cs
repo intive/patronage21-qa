@@ -72,6 +72,19 @@ namespace SeleniumProject.Steps
                 (string)data.githubLink, (string)data.login, (string)data.password);
         }
 
+        [Given(@"User fills too short Imię")]
+        public void GivenUserFillsTooShortImie(Table table)
+        {
+            registrationFormPage.RegistrationFormWithTooShortImie();          
+        }
+
+        [Given(@"User fills too short Nazwisko")]
+        public void GivenUserFillsTooShortNazwisko(Table table)
+        {
+            dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.RegistrationFormWithTooShortNazwisko((string)data.firstName);
+        }
+
         [Given(@"User fills too short Numer telefonu")]
         public void GivenUserFillsTooShortNumerTelefonu(Table table)
         {
@@ -117,6 +130,18 @@ namespace SeleniumProject.Steps
             registrationFormPage.RegistrationFormWithTooLongLogin();
         }
 
+        [Given(@"User fills too long Hasło")]
+        public void GivenUserFillsTooLongHaslo()
+        {
+            registrationFormPage.RegistrationFormWithTooLongHaslo();
+        }
+
+        [Given(@"User fills too long Githublink")]
+        public void GivenUserFillsTooLongGithublink()
+        {
+            registrationFormPage.RegistrationFormWithTooLongGithubLink();
+        }
+
         [Given(@"User fills data which is before technologies field")]
         public void GivenUserFillsRequiredData(Table table)
         {
@@ -131,6 +156,7 @@ namespace SeleniumProject.Steps
             dynamic data = table.CreateDynamicInstance();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
+            registrationFormPage.checkBoxJavaScript.Click();
             registrationFormPage.checkBoxTermsAndConditions.Click();
         }
 
@@ -189,6 +215,12 @@ namespace SeleniumProject.Steps
         public void WhenUserClicksOnNextAdresEmail()
         {
             registrationFormPage.txtEmail.Click();
+        }
+
+        [When(@"User clicks on next Login")]
+        public void WhenUserClicksOnNextLogin()
+        {
+            registrationFormPage.txtLogin.Click();
         }
 
         [When(@"User clicks on Login field")]
@@ -275,6 +307,24 @@ namespace SeleniumProject.Steps
             Assert.AreEqual(true, errorAboutPasswordConfirm.Displayed);
         }
 
+        [Then(@"User should see error message about too short Imię")]
+        public void ThenUserShouldSeeErrorMessageAboutTooShortImie()
+        {
+            By firstName = By.XPath(".//*[contains(text(),'Imię jest za krótkie')]");
+            IWebElement errorAboutFirstName = _webdriver.FindElement(firstName);
+
+            Assert.AreEqual(true, errorAboutFirstName.Displayed);
+        }
+
+        [Then(@"User should see error message about too short Nazwisko")]
+        public void ThenUserShouldSeeErrorMessageAboutTooShortNazwisko()
+        {
+            By lastName = By.XPath(".//*[contains(text(),'Nazwisko jest za krótkie')]");
+            IWebElement errorAboutLastName = _webdriver.FindElement(lastName);
+
+            Assert.AreEqual(true, errorAboutLastName.Displayed);
+        }
+
         [Then(@"User should see error message about too short Numer telefonu")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortNumerTelefonu()
         {
@@ -336,6 +386,24 @@ namespace SeleniumProject.Steps
             IWebElement errorAboutTooLongLogin = _webdriver.FindElement(login);
 
             Assert.AreEqual(true, errorAboutTooLongLogin.Displayed);
+        }
+
+        [Then(@"User should see error message about too long Hasło")]
+        public void ThenUserShouldSeeErrorMessageAboutTooLongHaslo()
+        {
+            By password = By.XPath(".//*[contains(text(),'Hasło jest za długie - max. 20 znaków')]");
+            IWebElement errorAboutTooLongPassword = _webdriver.FindElement(password);
+
+            Assert.AreEqual(true, errorAboutTooLongPassword.Displayed);
+        }
+
+        [Then(@"User should see error message about too long Githublink")]
+        public void ThenUserShouldSeeErrorMessageAboutTooLongGithublink()
+        {
+            By githubLink = By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]");
+            IWebElement errorAboutTooLongGithubLink = _webdriver.FindElement(githubLink);
+
+            Assert.AreEqual(true, errorAboutTooLongGithubLink.Displayed);
         }
 
         [Then(@"User should see error message about checked too many technology groups")]
