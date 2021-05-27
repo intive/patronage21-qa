@@ -1,3 +1,4 @@
+@registration
 Feature: RegistrationPage
 	New user wants to be able to register an account
 	to apply for the Patronative program
@@ -8,13 +9,15 @@ Background:
 
 # Zephyr link
 Scenario:REGISTRATION_PAGE_1_IP2-261_registration_page_displayed_correctly
-	Then User sees Registration page
+	Then User sees "Registration" page
 
 # Zephyr link
 Scenario:REGISTRATION_PAGE_2_IP2-261_registration_is_possible_after_filling_in_the_form_correctly
 	When User completes form correctly
-		| name | surname  | phone     | password | passwordConfirm | Github                              |
-		| Jan  | Kowalski | 123456789 | Qwerty+8 | Qwerty+8        | https://www.github.com/jan-kowalski |
+		#| #   | #    | # | # | name | surname  | phone     | password | password confirm | Github |
+		#| #   | #    | # | # | Jan  | Kowalski | 123456789 | Qwerty+8 | Qwerty+8         | https://www.github.com/jan-kowalski |
+		| surname |
+		| 123456789 |
 	Then User "can" sign up
 	And User sees "Email verification" page
 
