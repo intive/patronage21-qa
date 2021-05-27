@@ -10,6 +10,7 @@ Given User sets the url
 Scenario Outline: LIST_PROJECT_1_[/api/projects]_[GET]_IP2-592_Getting_a_list_of_projects_valid_year_provided
 When User sends a GET request with a valid '<year>'
 Then Server returns the code <code>
+And JSON body contain a list of projects from proper year
 
 Examples:
 | year | code |
@@ -29,11 +30,8 @@ Examples:
 | B4   | 422  | 
 
 # Link to Zephyr
-Scenario Outline: LIST_PROJECT_3_[/api/projects]_[GET]_IP2-592_Getting_a_list_of_projects_empty_year
+Scenario: LIST_PROJECT_3_[/api/projects]_[GET]_IP2-592_Getting_a_list_of_projects_empty_year
 When User sends a GET request without any year
-Then Server returns the code <code> 
+Then Server returns the code 200 
 And JSON body contain a list of projects from current year 
 
-Examples:
-| year | code |
-| 2021 | 200  |
