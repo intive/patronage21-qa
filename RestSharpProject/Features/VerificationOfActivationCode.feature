@@ -6,56 +6,68 @@
 	# Link JS: https://tracker.intive.com/jira/browse/IP2-136
 
 Background:
-Given Endpoint is set
+Given Endpoint is /api/activate
 
 @ignore
-#manual test
+# manual test
 # https://tracker.intive.com/jira/browse/IP2-433
 Scenario: REGISTRATION_FORM_1_IP2-292_Email_is_positively_verified
-	Given User is in database
-	And his status is inactive
-	When Client enters the code and User ID
-	And the request is sent to API
-	Then Verification is successful, 
-	And return Status is 200
+	Given Inactive User is in database
+	When Request is sent with data to API
+	| email          | activationCode |
+	| ....@email.com | 12345678       |
+	Then Verification is successful 
 	And User is activated
-	And JSON  body contains status 'Aktywacja udana'
+	And response contains status '"Aktywacja udana"'
 
 
 # https://tracker.intive.com/jira/browse/IP2-434
-Scenario: REGISTRATION_FORM_2_IP2-292_Email_cannot_be_verified_with_invalid_code
-	Given User is in database
-	And his status is inactive
-	When Client enters false code and the User ID
+Scenario: REGISTRATION_FORM_2_IP2-292_Email_can_not_be_verified_with_invalid_code
+	Given Inactive User is in database
+	When Client enters false code and the email
 	And the request is sent to API
 	Then Verification is not successful 
 	And return Status is 409
-	And JSON  body contains status 'Bledny kod'
+	And response contains status '"Błędny kod"'
 
 # https://tracker.intive.com/jira/browse/IP2-435
-Scenario: REGISTRATION_FORM_3_IP2-292_User_cannot_be_verified
-	When Client enters a code and not existing User ID
+Scenario: REGISTRATION_FORM_3_IP2-292_User_does_not_exist
+	When Client enters a code and not existing email
 	And the request is sent to API
 	Then Verification is not successful 
-	And JSON  body contains status 'Uzytkownik nie istnieje'
+	And response contains status '"Użytkownik nie istnieje"'
 	And return Status is 404
 
 #https://tracker.intive.com/jira/browse/IP2-436
-Scenario: REGISTRATION_FORM_4_IP2-292_User_cannot_be_activated_twice 
+Scenario: REGISTRATION_FORM_4_IP2-292_User_can_not_be_activated_twice 
 	Given User is activated
-	When Client enters previously used code and the User ID
+	When Client enters previously used code and the email
 	And the request is sent to API  
 	Then Verification is not successful 
 	And return Status is 409 
-	And JSON  body contains status 'Uzytkownik jest juz aktywny'
+	And response contains status '"Użytkownik jest już aktywny"'
 
 #https://tracker.intive.com/jira/browse/IP2-437
-Scenario: REGISTRATION_FORM_5_IP2-292_Email_cannot_be_verified_with_improper_code_(too_short_or_too_long_or_with_wrong_charakters)
-	Given User is in database
-	And his status is inactive
-	When Client enters improper code and the User ID
+Scenario Outline: REGISTRATION_FORM_5_IP2-292_Improper_code_will_not_activate_User
+	Given Inactive User is in database
+	When Client enters <improper code> and the email
 	And the request is sent to API
 	Then Verification is not successful 
 	And return Status is 400
-	And JSON  body contains status 'Nieudana rejestracja'
+	And response contains <errorMessage>
+	Examples:
+	| improper code | errorMessage		 |
+	| 12345         | Kod jest za krótki |
+	| 123456789     | Kod jest za długi  |
+	
+#https://tracker.intive.com/jira/browse/IP2-436
+Scenario: REGISTRATION_FORM_6_IP2-292_User_can_not_be_activated_with_incomplete_email 
+	Given Inactive User is in database
+	When Client enters code and incomplete email
+	| code     | incomplete email    |
+	| 12345678 | example476email.com |
+	And the request is sent to API  
+	Then Verification is not successful 
+	And return Status is 400 
+	And response contains status '"Niepoprawny email"'
 	
