@@ -52,13 +52,13 @@ namespace SeleniumProject.Steps
         [When(@"Dzienniczek is on home page")]
         public void WhenDiaryIsOnHomePage()
         {
-            homePage.FindUsersModule();
+            homePage.FindDiaryModule();
         }
 
         [When(@"Audyt zdarzeń is on home page")]
         public void WhenAuditOfEventsIsOnHomePage()
         {
-            homePage.FindUsersModule();
+            homePage.FindAuditOfEventsModule();
         }
 
         [Then(@"User is transferred to page about calendar")]
@@ -70,25 +70,25 @@ namespace SeleniumProject.Steps
         [Then(@"Grupy technologiczne is inactive")]
         public void ThenTechnologiesGroupsIsInactive()
         {
-            Assert.That(homePage.TechnologiesGroupsModuleIsInactive(), Is.True);
+            Assert.That(homePage.TechnologiesGroupsModuleIsActive(), Is.False);
         }
 
         [Then(@"Użytkownicy is inactive")]
         public void ThenUsersIsInactive()
         {
-            Assert.That(homePage.UsersModuleIsInactive(), Is.True);
+            Assert.That(homePage.UsersModuleIsActive(), Is.False);
         }
 
         [Then(@"Dzienniczek is inactive")]
         public void ThenDiaryIsInactive()
         {
-            Assert.That(homePage.DiaryModuleIsInactive(), Is.True);
+            Assert.That(homePage.DiaryModuleIsActive(), Is.False);
         }
 
         [Then(@"Audyt zdarzeń is inactive")]
         public void ThenAuditOfEventsIsInactive()
         {
-            Assert.That(homePage.AuditOfEventsModuleIsInactive(), Is.True);
+            Assert.That(homePage.AuditOfEventsModuleIsActive(), Is.False);
         }
     }
 }

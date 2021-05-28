@@ -11,13 +11,17 @@ namespace SeleniumProject.Pages
             this.driver = driver;
         }
 
-        private By technologiesGroups = By.XPath(".//*[contains(text(),'Grupy technologiczne')]");
-        private By users = By.XPath(".//*[contains(text(),'Użytkownicy')]");
-        private By diary = By.XPath(".//*[contains(text(),'Dzienniczek')]");
-        private By calendar = By.XPath(".//*[contains(text(),'Kalendarz')]");
-        private By auditOfEvents = By.XPath(".//*[contains(text(),'Kalendarz')]");
+        private By technologiesGroups = By.XPath("//*[text()='Grupy technologiczne']//parent::button");
+        private By users = By.XPath("//*[text()='Użytkownicy']//parent::button");
+        private By diary = By.XPath("//*[text()='Dzienniczek']//parent::button");
+        private By calendar = By.XPath("//*[text()='Kalendarz']//parent::button");
+        private By auditOfEvents = By.XPath("//*[text()='Audyt zdarzeń']//parent::button");
 
+        private IWebElement technologiesGroupsModule => driver.FindElement(technologiesGroups);
+        private IWebElement usersModule => driver.FindElement(users);
+        private IWebElement diaryModule => driver.FindElement(diary);
         private IWebElement calendarModule => driver.FindElement(calendar);
+        private IWebElement auditOfEventsModule => driver.FindElement(auditOfEvents);
 
         public void ClicksOnCalendar() => calendarModule.Click();
 
@@ -31,12 +35,12 @@ namespace SeleniumProject.Pages
 
         public void FindAuditOfEventsModule() => driver.FindElement(auditOfEvents);
 
-        public bool TechnologiesGroupsModuleIsInactive() => driver.FindElement(technologiesGroups).Enabled;
+        public bool TechnologiesGroupsModuleIsActive() => technologiesGroupsModule.Enabled;
 
-        public bool UsersModuleIsInactive() => driver.FindElement(users).Enabled;
+        public bool UsersModuleIsActive() => usersModule.Enabled;
 
-        public bool DiaryModuleIsInactive() => driver.FindElement(diary).Enabled;
-
-        public bool AuditOfEventsModuleIsInactive() => driver.FindElement(auditOfEvents).Enabled;
+        public bool DiaryModuleIsActive() => diaryModule.Enabled;
+        
+        public bool AuditOfEventsModuleIsActive() => auditOfEventsModule.Enabled;
     }
 }
