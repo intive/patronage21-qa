@@ -74,9 +74,7 @@ namespace patronage21_qa_appium.Steps
             var displayedGroups = _usersScreen.GetElements(_driver, "Grupy");
             for (var i = 0; i < _groups.Count; i++)
             {
-                var lookingFor = _groups[i];
-                var element = _usersScreen.GetElements(_driver, _groups[i]);
-                Assert.AreEqual(1, element.Count);
+                Assert.AreEqual(1, _usersScreen.GetElements(_driver, _groups[i]).Count);
             }
             Assert.AreEqual(_groups.Count, displayedGroups.Count);
         }

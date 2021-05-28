@@ -79,7 +79,7 @@ namespace patronage21_qa_appium.Screens
             { "Opis", "//android.view.View[@text='Użytkownicy']/following-sibling::android.view.View[position()=1]" },
             { "Szukaj użytkownika", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*" },
             { "Wybrana grupa", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText" },
-            { "Wybierz grupe", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText/following-sibling::*[position()=1]" },
+            { "Wybierz grupę", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText/following-sibling::*[position()=1]" },
             { "Liderzy nagłówek", "//android.view.View[@text='Liderzy']" },
             { "Liderzy licznik", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()=1]" },
             { "Liderzy lista", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']]" },
@@ -92,12 +92,12 @@ namespace patronage21_qa_appium.Screens
             { "Ty", "//android.view.View[@text='Ty']" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
-            { "Grupy", "//android.view.View" },
+            { "Grupy", "//android.view.View[@text='Wszystkie grupy']/following-sibling::android.view.View" },
             { "Wszystkie grupy", "//android.view.View[@text='Wszystkie grupy']" },
             { "QA", "//android.view.View[@text='QA']" },
             { "Java", "//android.view.View[@text='Java']" },
-            { "Javascript", "//android.view.View[@text='Javascript']" },
-            { "Android", "//android.view.View[contains(@text, 'Android')]" },
+            { "JavaScript", "//android.view.View[@text='JavaScript']" },
+            { "Mobile (Android)", "//android.view.View[contains(@text, 'Android')]" },
         };
 
         // To be changed, for now both owned account and other person account details are the same
