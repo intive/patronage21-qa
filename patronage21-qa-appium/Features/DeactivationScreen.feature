@@ -8,7 +8,7 @@
 Background: 
 	Given User is not logged in
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-758
 Scenario Outline: USERS_SCREEN_1_IP2-152_deactivation_screen_displayed_correctly
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "<way>"
@@ -19,7 +19,7 @@ Scenario Outline: USERS_SCREEN_1_IP2-152_deactivation_screen_displayed_correctly
 	| Użytkownicy |
 	| Moje konto  |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-759
 Scenario: USERS_SCREEN_2_IP2-152_account_deactivated_correctly
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "Moje konto" 
@@ -28,7 +28,7 @@ Scenario: USERS_SCREEN_2_IP2-152_account_deactivated_correctly
 	Then User with username "jankowalski" profile is deactivated
 	And User is not logged in
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-760
 Scenario: USERS_SCREEN_3_IP2-152_wrong_surname_provided
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "Moje konto" 
@@ -36,7 +36,7 @@ Scenario: USERS_SCREEN_3_IP2-152_wrong_surname_provided
 	And User clicks "Dezaktywuj profil"
 	Then User sees "Dezaktywacja" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-761
 Scenario: USERS_SCREEN_4_IP2-152_too_long_surname_provided
 	When User registers as "jankwalski" with surname "Kowalski"
 	And User navigates to "Dezaktywacja" screen through "Moje konto" 
