@@ -22,6 +22,7 @@ namespace SeleniumProject.Pages
         public IWebElement passwordConfirm => driver.FindElement(By.XPath("//*[@name='passwordConfirm']"));
         public IWebElement checkBoxQA => driver.FindElement(By.XPath("//*[@value='QA']"));
         public IWebElement checkBoxTermsAndConditions => driver.FindElement(By.XPath("//*[@name='regulations']"));
+        public IWebElement checkBoxInformation => driver.FindElement(By.XPath("//*[@name='information']"));
         public IWebElement zalozKontoButton => driver.FindElement(By.XPath("//*[text()[contains(.,'Załóż konto')]]"));
         public IWebElement codeInput => driver.FindElement(By.XPath("//*[@id='outlined-adornment-password']"));
         public IWebElement renewalSentButton => driver.FindElement(By.XPath("//span[@class='MuiButton-label' and text() = 'Nie otrzymałem/am kodu']"));

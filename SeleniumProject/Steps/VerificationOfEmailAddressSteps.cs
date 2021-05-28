@@ -43,10 +43,11 @@ namespace SeleniumProject.Steps
             verificationOfEmailAddressPage.passwordConfirm.SendKeys(data.passwordConfirm);
             verificationOfEmailAddressPage.checkBoxQA.Click();
             verificationOfEmailAddressPage.checkBoxTermsAndConditions.Click();
+            verificationOfEmailAddressPage.checkBoxInformation.Click();
         }
 
-        [Given(@"is transfered to verifications site")]
-        public void GivenIsTransferedToVerificationsSite()
+        [Given(@"is transferred to verification site")]
+        public void GivenIsTransferredToVerificationSite()
         {
             verificationOfEmailAddressPage.zalozKontoButton.Click();
         }

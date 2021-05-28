@@ -26,9 +26,14 @@ Scenario: REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrieve_code_on_ma
 
 #https://tracker.intive.com/jira/browse/IP2-299
 Scenario: REGISTRATION_FORM_3_IP2-135_False_code_should_not_allow_User_to_be_verified_and_activated
+	Given User enters data
+	| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
+	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
+	And is transferred to verification site 
 	When User enters code '00000000'
-	Then User sees 'Kodu nie można zaczynać od 0'
-	And is not able to click 'Zatwierdź kod' button
+	And User clicks "Zatwierdź kod" 
+	Then User sees 'Błędny kod'
+	
 
 #https://tracker.intive.com/jira/browse/IP2-300
 Scenario: REGISTRATION_FORM_4_IP2-135_Too_short_code_should_not_allow_User_to_be_verified_and_activated 
@@ -43,7 +48,7 @@ Scenario: REGISTRATION_FORM_5_IP2-135_User_can_be_activated_only_once
 	Given User already used code
 	And activated account
 	When User tries to activate again with the same code
-	Then User sees 'Uzytkownik jest juz aktywny'
+	Then User sees 'Użytkownik jest już aktywny'
 	
 @ignore
 # manual 
@@ -58,10 +63,10 @@ Scenario: REGISTRATION_FORM_6_IP2-135_Generated_code_is_unique
 Scenario: REGISTRATION_FORM_7_IP2-135_Retrieving_of_the_code_should_be_possible
 	Given User enters data
 	| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
-	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword@ | examplePassword@ |
-	And is transfered to verifications site
+	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
+	And is transferred to verification site
 	When User clicks Nie otrzymałem/am kodu button
-	Then User sees 'Kod aktywacyjny został wysłany pomyśnie'
+	Then User sees 'Kod aktywacyjny został wysłany pomyślnie'
 
 #https://tracker.intive.com/jira/browse/IP2-520
 Scenario: REGISTRATION_FORM_8_IP2-135_Only_numbers_can_be_inserted_as_code
