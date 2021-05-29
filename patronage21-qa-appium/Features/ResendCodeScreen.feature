@@ -12,15 +12,18 @@ Scenario: RESEND_CODE_SCREEN_1_IP2-152_resend_code_screen_displayed_correctly
 	Then User sees "Wyślij ponownie kod" screen
 
 # zephyr link
+@ignore
 Scenario: RESEND_CODE_SCREEN_1_IP2-152_code_resent_correctly
 	Given User registers as "JanKowalski" with "jankowalski@email.com" email
 	When User clicks "Nie otrzymałem/am kodu" on "Weryfikacja adresu email" screen
 	And User writes "jankowalski@email.com" to "Email" field
-	Then User sees "Wyślij ponownie kod" screen
+	And User clicks "Wyślij kod" on "Wyślij ponownie kod" screen
+	Then User sees "Weryfikacja adresu email" screen
+	And Code is sent to "jankowalski@email.com" email
 
 # zephyr link
 Scenario: RESEND_CODE_SCREEN_1_IP2-152_wrong_email_provided
-	Given User registers as "JanKowalski"
+	Given User registers as "JanKowalski" with "jankowalski@email.com" email
 	When User clicks "Nie otrzymałem/am kodu" on "Weryfikacja adresu email" screen
 	And User clicks "Wyślij kod" on "Wyślij ponownie kod" screen
 	And User writes "jankowalskigmail.com" to "Email" field
