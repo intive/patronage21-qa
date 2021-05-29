@@ -2,6 +2,8 @@
 	User wants to be able to 
 	view informations about
 	himself and other users
+#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-269
+#Task in Android Team: https://tracker.intive.com/jira/browse/IP2-153
 
 # zephyr link
 Scenario Outline: USER_DETAILS_SCREEN_1_IP2-269_user_details_screen_displayed_correctly
