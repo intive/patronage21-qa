@@ -1,6 +1,6 @@
 ﻿Feature: VerifyEmailScreen
-	User wants to be activate
-	his account during 
+	User wants to be able to
+	activate his account during 
 	registration process
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-258
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-145
