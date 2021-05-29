@@ -1,7 +1,7 @@
 ﻿Feature: ResendCodeScreen
 	User wants to be able to 
-	deactivate his profile
-	to sign out from Patronage
+	resend activation code
+	during registration process
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-253
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-146
 
