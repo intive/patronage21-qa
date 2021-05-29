@@ -22,7 +22,7 @@ namespace RestSharpProject.Steps
         private string login = User.GenerateLogin();
         private string githubLink = User.GenerateGithubLink();
         private Nullable<int> phoneNumber = 123456789;
-        private string password = "randomPassword@";
+        private string password = "randomPassword5@";
         private string activatedUserEmail;
 
         [Given(@"Endpoint is /api/activate")]
@@ -69,7 +69,7 @@ namespace RestSharpProject.Steps
             restRequest.AddJsonBody(new
             {
                 email = email,
-                activationCode = 12345678
+                activationCode = "12345678"
             });
         }
 
@@ -84,8 +84,8 @@ namespace RestSharpProject.Steps
         {
             restRequest.AddJsonBody(new
             {
-                email = email,
-                activationCode = 12345678
+                email = "email@email.com",
+                activationCode = "12345678"
             });
         }
 
@@ -95,12 +95,12 @@ namespace RestSharpProject.Steps
             restRequest.AddJsonBody(new
             {
                 email = activatedUserEmail,
-                activationCode = 12345678
+                activationCode = "12345678"
             });
         }
 
         [When(@"Client enters (.*) and the email")]
-        public void WhenClientEntersAndTheEmail(int code)
+        public void WhenClientEntersAndTheEmail(string code)
         {
             restRequest.AddJsonBody(new
             {
@@ -115,14 +115,14 @@ namespace RestSharpProject.Steps
             restRequest.AddJsonBody(new
             {
                 email = "example476email.com",
-                activationCode = 12345678
+                activationCode = "12345678"
             });
         }
 
         [Then(@"response contains status '(.*)'")]
         public void ThenResponseContainsStatus(string status)
         {
-            Assert.IsTrue(restResponse.Content.Contains(status));
+            Assert.That(restResponse.Content.Contains(status));
         }
 
         [Then(@"Verification is not successful")]
@@ -137,16 +137,10 @@ namespace RestSharpProject.Steps
             Assert.AreEqual((int)restResponse.StatusCode, statusCode);
         }
 
-        [Then(@"response contains Kod jest za krótki")]
-        public void ThenResponseContainsKodJestZaKrotki()
+        [Then(@"response contains Niepoprawny kod aktywacyjny")]
+        public void ThenResponseContainsNiepoprawnyKodAktywacyjny()
         {
-            Assert.IsTrue(restResponse.Content.Contains("Kod jest za krótki"));
-        }
-
-        [Then(@"response contains Kod jest za długi")]
-        public void ThenResponseContainsKodJestZaDlugi()
-        {
-            Assert.IsTrue(restResponse.Content.Contains("Kod jest za długi"));
+            Assert.IsTrue(restResponse.Content.Contains("Niepoprawny kod aktywacyjny"));
         }
     }
 }

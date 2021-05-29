@@ -56,9 +56,9 @@ Scenario Outline: REGISTRATION_FORM_5_IP2-292_Improper_code_will_not_activate_Us
 	And return Status is 400
 	And response contains <errorMessage>
 	Examples:
-	| improper code | errorMessage		 |
-	| 12345         | Kod jest za krótki |
-	| 123456789     | Kod jest za długi  |
+	| improper code   | errorMessage				  |
+	| "12345"         | Niepoprawny kod aktywacyjny   |
+	| "123456789"     | Niepoprawny kod aktywacyjny   |
 	
 #https://tracker.intive.com/jira/browse/IP2-436
 Scenario: REGISTRATION_FORM_6_IP2-292_User_can_not_be_activated_with_incomplete_email 
