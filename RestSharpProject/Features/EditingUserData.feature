@@ -8,6 +8,7 @@ Given User exists in the database
 | login     | firstName | lastName | email         | phoneNumber | gitHubUrl                | bio              | 
 | AnnaNowak | Tomasz    | Nowak    | tom@gmail.com | 783984984   | https://github.com/tom7u | duhfisudfhisudfh | 
 
+# https://tracker.intive.com/jira/browse/IP2-487
 Scenario Outline: USER_EDIT_1_[/api/users]_[PUT]_IP2-89_API_editing_user_who_exists_in_the_database_success
 When User sends a PUT request 
 | login   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   | bio   |
@@ -25,6 +26,7 @@ Examples:
 | AnnaNowak | Piotr     | Mazurek   | piter.dsfd@gmail.com    | 689984984   | https://github.com/piter56 | dhfhdfh     | 200  |
 | AnnaNowak | Anna      | Nowak     | ania1233d@gmail.com     | 111111111   | https://github.com/Ania    | jestem Ania | 200  |
 
+# https://tracker.intive.com/jira/browse/IP2-488
 Scenario Outline: USER_EDIT_2_[/api/users]_[PUT]_IP2-89_API_editing_user_who_exists_in_the_database_fail
 When User sends a PUT request 
 | login   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   | bio   | 
@@ -52,6 +54,7 @@ Examples:
 | AnnaNowak             | Tomasz                          | Nowak                           | tom@gmailcomi | 783984984   | htts://github.com/tom7u  | dhfdhdfh | 422  | Example e-mail: example.Mail123@mail.com, username part 3 to 30 characters                                                                                                       |
 
 
+# https://tracker.intive.com/jira/browse/IP2-505
 Scenario Outline: USER_EDIT_3_[/api/users]_[PUT]_IP2-89_API_editing_user_who_does_not_exists_in_the_database
 When User sends a PUT request 
 | login   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   | bio   | 
