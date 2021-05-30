@@ -9,7 +9,6 @@ using TechTalk.SpecFlow;
 namespace RestSharpProject.Steps
 {
     [Binding]
-    [Scope(Feature = "Verification of activation code")]
     public class VerificationOfActivationCodeSteps
     {
         private IRestClient restClient = new RestClient();
@@ -63,16 +62,6 @@ namespace RestSharpProject.Steps
             activatedUserEmail = userList[0].email;
         }
 
-        [When(@"Client enters false code and the email")]
-        public void WhenClientEntersFalseCodeAndTheEmail()
-        {
-            restRequest.AddJsonBody(new
-            {
-                email = email,
-                activationCode = "12345678"
-            });
-        }
-
         [When(@"the request is sent to API")]
         public void WhenTheRequestIsSentToAPI()
         {
@@ -89,8 +78,8 @@ namespace RestSharpProject.Steps
             });
         }
 
-        [When(@"Client enters previously used code and the email")]
-        public void WhenClientEntersPreviouslyUsedCodeAndTheEmail()
+        [When(@"Client inserts previously used code and the email")]
+        public void WhenClientInsertsPreviouslyUsedCodeAndTheEmail()
         {
             restRequest.AddJsonBody(new
             {
@@ -122,7 +111,7 @@ namespace RestSharpProject.Steps
         [Then(@"response contains status '(.*)'")]
         public void ThenResponseContainsStatus(string status)
         {
-            Assert.That(restResponse.Content.Contains(status));
+            Assert.IsTrue(restResponse.Content.Contains(status));
         }
 
         [Then(@"Verification is not successful")]
@@ -134,13 +123,7 @@ namespace RestSharpProject.Steps
         [Then(@"return Status is (.*)")]
         public void ThenReturnStatusIs(int statusCode)
         {
-            Assert.AreEqual((int)restResponse.StatusCode, statusCode);
-        }
-
-        [Then(@"response contains Niepoprawny kod aktywacyjny")]
-        public void ThenResponseContainsNiepoprawnyKodAktywacyjny()
-        {
-            Assert.IsTrue(restResponse.Content.Contains("Niepoprawny kod aktywacyjny"));
+            Assert.AreEqual(statusCode, (int)restResponse.StatusCode);
         }
     }
 }
