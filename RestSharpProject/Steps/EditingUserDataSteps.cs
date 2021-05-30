@@ -32,17 +32,16 @@ namespace RestSharpProject.Features
             request = new RestRequest("/api/users", Method.PUT);
             request.AddParameter("application/json", JsonConvert.SerializeObject(updatedUser), ParameterType.RequestBody);
             response = client.Execute(request);
-
-
-            var getRequest = new RestRequest("/api/users/AnnaNowak", Method.GET);
-            var getResponse = client.Execute(getRequest);
-            responseMessage = JsonConvert.DeserializeObject<RootPUT>(getResponse.Content);
         }
 
         [Then(@"Server returns status (.*) and Json body contain updated parameters")]
         public void ThenServerReturnsStatusAndJsonBodyContainUpdatedParameters(int code)
         {
             Assert.AreEqual(code, (int)response.StatusCode);
+
+            var getRequest = new RestRequest("/api/users/AnnaNowak", Method.GET);
+            var getResponse = client.Execute(getRequest);
+            responseMessage = JsonConvert.DeserializeObject<RootPUT>(getResponse.Content);
 
             Assert.That(responseMessage.user.login, Is.EqualTo(updatedUser.login));
             Assert.That(responseMessage.user.firstName, Is.EqualTo(updatedUser.firstName));
