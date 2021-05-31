@@ -1,27 +1,26 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumProject.Pages;
-using System;
 using TechTalk.SpecFlow;
 
 namespace SeleniumProject.Steps
 {
     [Binding]
-    public class ErrorPageSteps
+    public class ErrorSiteSteps
     {
         private readonly IWebDriver _webdriver;
-        private readonly ErrorPage_Page errorPage_Page;
+        private readonly ErrorSite_Page errorSite;
         private readonly BasePage basePage;
 
-        public ErrorPageSteps(IWebDriver driver)
+        public ErrorSiteSteps(IWebDriver driver)
         {
             _webdriver = driver;
-            errorPage_Page = new ErrorPage_Page(_webdriver);
+            errorSite = new ErrorSite_Page(_webdriver);
             basePage = new BasePage(_webdriver);
         }
 
-        [Given(@"Wrong Url redirects user to Error Page")]
-        public void GivenWrongUrlRedirectsUserToErrorPage()
+        [Given(@"Wrong Url redirects user to Error Site")]
+        public void GivenWrongUrlRedirectsUserToErrorSite()
         {
             _webdriver.Url = _webdriver.Url + "404";
         }
@@ -29,19 +28,13 @@ namespace SeleniumProject.Steps
         [Given(@"User sees information about false url address")]
         public void GivenUserSeesInformationAboutFalseUrlAdress()
         {
-            Assert.AreEqual(true, errorPage_Page.wrongAddressText.Displayed);
+            Assert.AreEqual(true, errorSite.wrongAddressText.Displayed);
         }
 
         [Then(@"User is transferred to main site")]
         public void ThenUserIsTransferredToMainSite()
         {
-            Assert.AreEqual(true, errorPage_Page.patronativePage.Displayed);
+            Assert.AreEqual(true, errorSite.patronativePage.Displayed);
         }
-        
-        /*[Then(@"User is transferred to last opened page")]
-        public void ThenUserIsTransferredToLastOpenedPage()
-        {
-            ScenarioContext.Current.Pending();
-        }*/
     }
 }

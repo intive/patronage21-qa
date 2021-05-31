@@ -1,4 +1,4 @@
-﻿Feature: Error Page
+﻿Feature: Error Site
 	There should be possibility to be transferred to main site from "Wystąpił błąd" site.
 
 
@@ -6,7 +6,7 @@
 # JS: https://tracker.intive.com/jira/browse/IP2-137 and https://tracker.intive.com/jira/browse/IP2-540
 
 Background:
-Given Wrong Url redirects user to Error Page
+Given Wrong Url redirects user to Error Site
 
 #https://tracker.intive.com/jira/browse/IP2-303
 Scenario: ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_main_site
@@ -14,8 +14,8 @@ Scenario: ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_main_site
 	When User clicks "Strona główna" 
 	Then User is transferred to main site
 
-#@ignore
+@ignore
 #Zephyr link
-#Scenario: ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_previous_site
-	#When User clicks "Wróć" 
-	#Then User is transferred to last opened page
+Scenario: ERROR_PAGE_1_IP2-137_User_should_be_able_to_go_back_to_previous_site
+	When User clicks "Wróć" 
+	Then User is transferred to last opened page
