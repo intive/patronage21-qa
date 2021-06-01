@@ -5,7 +5,7 @@
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-249
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-141
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-815
 Scenario: TECH_GROUPS_GROUP_SCREEN_1_IP2-249_group_screen_displayed_correctly
 	Given User is on "Grupy technologiczne" screen
 	When User clicks "Grupa I"
@@ -15,7 +15,7 @@ Scenario: TECH_GROUPS_GROUP_SCREEN_1_IP2-249_group_screen_displayed_correctly
 	And "Liderzy" list counter is correct
 	And "Kandydaci" list counter is correct
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-816
 # there is no ready concept of signing to group yet
 @ignore
 Scenario: TECH_GROUPS_GROUP_SCREEN_2_IP2-249_sign_in_to_group
@@ -25,7 +25,7 @@ Scenario: TECH_GROUPS_GROUP_SCREEN_2_IP2-249_sign_in_to_group
 	And User clicks "Zapisz się do grupy"
 	Then User is signed to "Grupa I"
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-817
 # there is no ready concept of signing to group yet
 @ignore
 Scenario: TECH_GROUPS_GROUP_SCREEN_3_IP2-249_sign_out_from_group
@@ -36,7 +36,7 @@ Scenario: TECH_GROUPS_GROUP_SCREEN_3_IP2-249_sign_out_from_group
 	And User clicks "Zrezygnuj z kandydatury"
 	Then User is not signed to "Grupa I"
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-818
 Scenario: TECH_GROUPS_GROUP_SCREEN_4_IP2-249_navigate_to_stage_and_back
 	Given User is on "Grupy technologiczne" screen
 	When User clicks "Grupa I"
