@@ -10,7 +10,6 @@ using TechTalk.SpecFlow;
 namespace SeleniumProject.Steps
 {
     [Binding]
-    [Scope (Feature = ("Confirmation of participation"))]
     public class ConfirmationOfParticipationSteps
     {
         private readonly IWebDriver _webdriver;
@@ -34,12 +33,6 @@ namespace SeleniumProject.Steps
 
         {
             Assert.AreEqual(true, confirmationOfParticipationPage.successfulRegistrationText.Displayed);
-        }
-
-        [When(@"User clicks ""(.*)""")]
-        public void WhenUserClicks(string p0)
-        {
-            confirmationOfParticipationPage.mainPageButton.Click();
         }
 
         [Then(@"User should be transferred to main site")]
