@@ -5,7 +5,7 @@
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-269
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-153
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-803
 Scenario Outline: USER_DETAILS_SCREEN_1_IP2-269_user_details_screen_displayed_correctly
 	Given User registers as "<username>"
 	When User clicks "Użytkownicy"
@@ -18,7 +18,7 @@ Examples:
 	| JanKowalski    | JanKowalski |
 	| NiejanKowalski | JanKowalski |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-804
 Scenario: USER_DETAILS_SCREEN_2_IP2-269_navigate_to_other_screen_and_back
 	Given User registers as "JanKowalski"
 	When User clicks "Użytkownicy"
@@ -30,7 +30,7 @@ Scenario: USER_DETAILS_SCREEN_2_IP2-269_navigate_to_other_screen_and_back
 	Then User sees "Szczegóły użytkownika" screen
 
 @ignore
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-805
 Scenario Outline: USER_DETAILS_SCREEN_3_IP2-269_contact_buttons_works
 	Given User registers as "<username>"
 	When User clicks "Użytkownicy"
