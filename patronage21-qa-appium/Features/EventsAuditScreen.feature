@@ -8,11 +8,11 @@
 Background: 
 	Given User is on "Audyt zdarzeń" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-806
 Scenario: EVENTS_AUDIT_1_IP2-273_events_audit_screen_displayed_correctly
 	Then Users sees "Audyt zdarzeń" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-807
 Scenario Outline: EVENTS_AUDIT_2_IP2-273_display_events_in_order
 	When User clicks "Sortuj"
 	And User clicks "<sort_by>"
@@ -23,7 +23,7 @@ Examples:
 	| Od najnowszych  |
 	| Od najstarszych |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-808
 Scenario Outline: EVENTS_AUDIT_3_IP2-273_search_events_of_type
 	When User clicks "Wyszukaj"
 	And User writes "<search>" to "Wyszukaj" field 
@@ -35,7 +35,7 @@ Examples:
 	| Wylogowanie |
 	| Rejestracja |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-809
 Scenario Outline: EVENTS_AUDIT_4_IP2-273_search_events_by_username
 	When User clicks "Wyszukaj"
 	And User writes "<search>" to "Wyszukaj" field 
@@ -46,7 +46,7 @@ Examples:
 	| JanKowalski |
 	| AnnaNowak   |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-810
 Scenario: EVENTS_AUDIT_5_IP2-273_scroll_to_bottom_and_back
 	Given User sees first element of events list
 	When User scroll down
