@@ -9,7 +9,6 @@ using TechTalk.SpecFlow;
 namespace RestSharpProject.Steps
 {
     [Binding]
-    [Scope(Feature = "Verification of activation code")]
     public class VerificationOfActivationCodeSteps
     {
         private IRestClient restClient = new RestClient();
@@ -22,7 +21,7 @@ namespace RestSharpProject.Steps
         private string login = User.GenerateLogin();
         private string githubLink = User.GenerateGithubLink();
         private Nullable<int> phoneNumber = 123456789;
-        private string password = "randomPassword@";
+        private string password = "randomPassword5@";
         private string activatedUserEmail;
 
         [Given(@"Endpoint is /api/activate")]
@@ -63,16 +62,6 @@ namespace RestSharpProject.Steps
             activatedUserEmail = userList[0].email;
         }
 
-        [When(@"Client enters false code and the email")]
-        public void WhenClientEntersFalseCodeAndTheEmail()
-        {
-            restRequest.AddJsonBody(new
-            {
-                email = email,
-                activationCode = 12345678
-            });
-        }
-
         [When(@"the request is sent to API")]
         public void WhenTheRequestIsSentToAPI()
         {
@@ -84,23 +73,23 @@ namespace RestSharpProject.Steps
         {
             restRequest.AddJsonBody(new
             {
-                email = email,
-                activationCode = 12345678
+                email = "email@email.com",
+                activationCode = "12345678"
             });
         }
 
-        [When(@"Client enters previously used code and the email")]
-        public void WhenClientEntersPreviouslyUsedCodeAndTheEmail()
+        [When(@"Client inserts previously used code and the email")]
+        public void WhenClientInsertsPreviouslyUsedCodeAndTheEmail()
         {
             restRequest.AddJsonBody(new
             {
                 email = activatedUserEmail,
-                activationCode = 12345678
+                activationCode = "12345678"
             });
         }
 
         [When(@"Client enters (.*) and the email")]
-        public void WhenClientEntersAndTheEmail(int code)
+        public void WhenClientEntersAndTheEmail(string code)
         {
             restRequest.AddJsonBody(new
             {
@@ -115,7 +104,7 @@ namespace RestSharpProject.Steps
             restRequest.AddJsonBody(new
             {
                 email = "example476email.com",
-                activationCode = 12345678
+                activationCode = "12345678"
             });
         }
 
@@ -134,19 +123,7 @@ namespace RestSharpProject.Steps
         [Then(@"return Status is (.*)")]
         public void ThenReturnStatusIs(int statusCode)
         {
-            Assert.AreEqual((int)restResponse.StatusCode, statusCode);
-        }
-
-        [Then(@"response contains Kod jest za krótki")]
-        public void ThenResponseContainsKodJestZaKrotki()
-        {
-            Assert.IsTrue(restResponse.Content.Contains("Kod jest za krótki"));
-        }
-
-        [Then(@"response contains Kod jest za długi")]
-        public void ThenResponseContainsKodJestZaDlugi()
-        {
-            Assert.IsTrue(restResponse.Content.Contains("Kod jest za długi"));
+            Assert.AreEqual(statusCode, (int)restResponse.StatusCode);
         }
     }
 }
