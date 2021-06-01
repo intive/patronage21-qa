@@ -8,7 +8,7 @@
 Background: 
 	Given User is on "Grupa I" group "Etap I" stage screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-820
 Scenario: TECH_GROUPS_GROUP_STAGE_1_IP2-247_deactivation_screen_displayed_correctly
 	Then User sees "Grupa I" group "Etap I" stage screen
 	And User sees "Grupa I" group "Etap I" stage description 
@@ -16,7 +16,7 @@ Scenario: TECH_GROUPS_GROUP_STAGE_1_IP2-247_deactivation_screen_displayed_correc
 	And Meetings counter is correct
 	And User sees "Grupa I" group "Etap I" completion level
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-821
 # to be changed, there is no concept of those buttons yet
 Scenario Outline: TECH_GROUPS_GROUP_STAGE_2_IP2-247_get_materials
 	When User clicks "Pobierz materiały"
@@ -27,12 +27,12 @@ Examples:
 	| Pobierz materiały   | Materiały   |
 	| Sprawdź dzienniczek | Dzienniczek |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-822
 Scenario: TECH_GROUPS_GROUP_STAGE_3_IP2-247_view_meeting
 	When User clicks first meeting
 	Then User sees first meeting details
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-823
 # to be changed, there is no concept of those buttons yet
 Scenario: TECH_GROUPS_GROUP_STAGE_4_IP2-247_navigate_to_and_back
 	When User clicks "Pobierz materiały"
