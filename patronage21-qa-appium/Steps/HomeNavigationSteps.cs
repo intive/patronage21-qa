@@ -1,10 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using System.Collections.Generic;
-using TechTalk.SpecFlow;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Screens;
+using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
 {
