@@ -35,7 +35,7 @@ namespace RestSharpProject.Features
         }
 
         [Then(@"JSON body contain list of users with proper '(.*)' with '(.*)'")]
-        public void ThenJSONBodyContainListOfUsersWithProperParameterWithValue(string parameter, string value)
+        public void ThenJSONBodyContainListOfUsersWithProperWith(string parameter, string value)
         {
             var responseMessage = JsonConvert.DeserializeObject<GetUsersList>(response.Content);
 
