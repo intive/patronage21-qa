@@ -11,11 +11,11 @@
 Background: 
 Given Url is set
 
-#
-Scenario Outline: LIST_USER_1_[/api/users][GET]_Getting_list_of_users_with_given_parameter_success
+#Link to Zephyr
+Scenario Outline: LIST_USER_1_[/api/users][GET]_IP2-90_Getting_list_of_users_with_given_parameter_success
 When Users sends the GET request with a '<query>' parameter
 Then Server return the code <code> 
-And JSON body contain list of users with proper parameter '<parameter>' with value '<value>'  
+And JSON body contain list of users with proper '<parameter>' with '<value>'  
 
 Examples:
 | query                      | code | parameter       | value      |
@@ -43,21 +43,21 @@ Examples:
 | role=                      | 200  | role            |            |
      
 
-Scenario Outline: LIST_USER_2_[/api/users][GET]_Getting_list_of_users_with_given_parameter_fail
+#Link to Zephyr
+Scenario Outline: LIST_USER_2_[/api/users][GET]_IP2-90_Getting_list_of_users_with_given_parameter_fail
 When Users send the GET request with a '<query>' parameter
 Then Server returns the code <code> and the message '<firstMessage>'
 
 Examples:
-| query                                               | code | firstMessage                                                                                               |
-| firstName=Oleg435435                                | 422  | Letters only, minimum 2 characters, maximum 125 characters                                                 |
-| firstName=marta paluszek                            | 422  | Letters only, minimum 2 characters, maximum 125 characters                                                 |
-| firstName=mar-pal                                   | 422  | Letters only, minimum 2 characters, maximum 125 characters                                                 |
-| lastName=3dhu-5dsu                                  | 422  | Letters only, dash/space allowed in case of two-part surname, minimum 2 characters, maximum 125 characters |
-| lastName=2wresdf                                    | 422  | Letters only, dash/space allowed in case of two-part surname, minimum 2 characters, maximum 125 characters |
-| login=Kas$dd                                        | 422  | Letters or numbers, minimum 2 characters, maximum 125 characters                                           |
-| login=Kas dd                                        | 422  | Letters or numbers, minimum 2 characters, maximum 125 characters                                           |
-| firstName=tom%asz&lastName=karola3k&login=AnnaNowak | 422  | Letters only, minimum 2 characters, maximum 125 characters                                                 |
-| firstName=tomasz&lastName=karola3k&login=AnnaNowak  | 422  | Letters only, dash/space allowed in case of two-part surname, minimum 2 characters, maximum 125 characters |
-| firstName=tomasz&lastName=karolak&login=anna nowa   | 422  | Letters or numbers, minimum 2 characters, maximum 125 characters                                           |
-| firstName=6tgfgh&lastName=5&login=tom3              | 422  | Letters only, minimum 2 characters, maximum 125 characters                                                 |                                                                                                  
+| firstName=Oleg435435                                | 422 | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
+| firstName=marta paluszek                            | 422 | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
+| firstName=mar-pal                                   | 422 | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
+| lastName=3dhu-5dsu                                  | 422 | Letters only, capital and Polish letters allowed, either dash or space in case of two-part surname, minimum 2 characters, maximum 30 characters |
+| lastName=2wresdf                                    | 422 | Letters only, capital and Polish letters allowed, either dash or space in case of two-part surname, minimum 2 characters, maximum 30 characters |
+| login=Kas$dd                                        | 422 | Letters and numbers, minimum 2 characters, maximum 15 characters                                                                                |
+| login=Kas dd                                        | 422 | Letters and numbers, minimum 2 characters, maximum 15 characters                                                                                |
+| firstName=tom%asz&lastName=karola3k&login=AnnaNowak | 422 | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
+| firstName=tomasz&lastName=karola3k&login=AnnaNowak  | 422 | Letters only, capital and Polish letters allowed, either dash or space in case of two-part surname, minimum 2 characters, maximum 30 characters |
+| firstName=tomasz&lastName=karolak&login=anna nowa   | 422 | Letters and numbers, minimum 2 characters, maximum 15 characters                                                                                |
+| firstName=6tgfgh&lastName=5&login=tom3              | 422 | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |               
                                     
