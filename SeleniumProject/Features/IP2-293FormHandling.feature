@@ -14,6 +14,7 @@ Then Response is successful
 And The user is redirected to the site 'Weryfikacja'
 
 #Link to Zephyr 2 
+
 Scenario: REGISTRATION_FORM_STEP_1_2_IP2_293_Verification_site_is_not_visible
 Given The user fills the form by correct details
 When The user clicks button 'załóz konto'
