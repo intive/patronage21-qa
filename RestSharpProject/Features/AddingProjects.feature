@@ -8,36 +8,36 @@ Background:
 
 # Link to Zephyr
 Scenario Outline: PROJECT_LIMIT_1_[api/users]_[PUT]_IP2-676_Adding_projects_to_user_account
-	When User sends the PUT request to add <count> projects
+	When User '<username>' sends the PUT request to add <count> projects
 	Then Server returns status <code>
 	
 Examples: 
-| count | code |
-| 1     | 200  |
-| 2     | 200  |
-| 3     | 200  |
-| 4     | 200  |
-| 5     | 200  |
+| username  | count | code |
+| AnnaNowak | 1     | 200  |
+| AnnaNowak | 2     | 200  |
+| AnnaNowak | 3     | 200  |
+| AnnaNowak | 4     | 200  |
+| AnnaNowak | 5     | 200  |
 
 
 #Link to Zephyr
 Scenario Outline: PROJECT_LIMIT_2_[api/users]_[PUT]_IP2-676_Adding_more_than_five_projects_to_user_account
-	When User sends the PUT request to add <count> projects
-	Then Server returns status <code> and message '<message>' about the limit
+	When User '<username>' sends the PUT request to add <count> projects
+	Then Server returns status <code> and error message '<message>' 
 
 Examples:
-| count | code | message                                                       |
-| 6     | 422  | Maximum number of projects in which you can participate is: 5 |
-| 7     | 422  | Maximum number of projects in which you can participate is: 5 |
+| username  | count | code | message                                                       |
+| AnnaNowak | 6     | 422  | Maximum number of projects in which you can participate is: 5 |
+| AnnaNowak | 7     | 422  | Maximum number of projects in which you can participate is: 5 |
 
 
 #Link to Zephyr
 Scenario Outline: PROJECT_LIMIT_3_[api/users]_[PUT]_IP2-676_Adding_projects_to_user_account_that_does_not_exist
-	When User sends the PUT request to add <count> projects
-	Then Server returns status <code> and message '<message>' that user is not found
+	When User '<username>' sends the PUT request to add <count> projects
+	Then Server returns status <code> and error message '<message>'
 
 Examples:
-| count | code | message        |
-| 1     | 404  | User not found |
-| 2     | 404  | User not found |
+| username | count | code | message        |
+| Roman    | 1     | 404  | User not found |
+| Tomasz   | 2     | 404  | User not found |
 
