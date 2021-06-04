@@ -7,11 +7,10 @@ Background:
 	Given Url is set
 
 # Link to Zephyr
-Scenario outline: PROJECT_LIMIT_1_[api/users]_[PUT]_IP2-676_Adding_project_to_user_account
+Scenario Outline: PROJECT_LIMIT_1_[api/users]_[PUT]_IP2-676_Adding_projects_to_user_account
 	When User sends the PUT request to add <count> projects
-	Then Server returns status <code> 
-	And JSON body contain a list of added projects
-
+	Then Server returns status <code>
+	
 Examples: 
 | count | code |
 | 1     | 200  |
@@ -22,11 +21,23 @@ Examples:
 
 
 #Link to Zephyr
-Scenario outline: PROJECT_LIMIT_2_[api/users]_[PUT]_IP2-676_Adding_more_than_five_different_projects_to_user_account
-	When User sends the PUT request to add <count> different projects
-	Then Server returns status <code> and message about the limit
+Scenario Outline: PROJECT_LIMIT_2_[api/users]_[PUT]_IP2-676_Adding_more_than_five_projects_to_user_account
+	When User sends the PUT request to add <count> projects
+	Then Server returns status <code> and message '<message>' about the limit
 
 Examples:
-| count | code |
-| 6     | 422  |
-| 7     | 422  |
+| count | code | message                                                       |
+| 6     | 422  | Maximum number of projects in which you can participate is: 5 |
+| 7     | 422  | Maximum number of projects in which you can participate is: 5 |
+
+
+#Link to Zephyr
+Scenario Outline: PROJECT_LIMIT_3_[api/users]_[PUT]_IP2-676_Adding_projects_to_user_account_that_does_not_exist
+	When User sends the PUT request to add <count> projects
+	Then Server returns status <code> and message '<message>' that user is not found
+
+Examples:
+| count | code | message        |
+| 1     | 404  | User not found |
+| 2     | 404  | User not found |
+
