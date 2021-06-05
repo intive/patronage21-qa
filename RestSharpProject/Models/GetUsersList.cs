@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace RestSharpProject.Models
 {
+    public class GetUsersList
+    {
+        public List<GetUserData> users { get; set; }
+    }
 
-    public class UserGET
+    public class GetUserData
     {
         public string login { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public List<string> image { get; set; } = null!;
         public string status { get; set; }
-    }
-
-    public class Root
-    {
-        public List<UserGET> users { get; set; }
     }
 
     public class RejectedValue
@@ -38,7 +37,6 @@ namespace RestSharpProject.Models
         public List<ViolationError> violationErrors { get; set; }
     }
 }
-
 
 
 

@@ -21,14 +21,8 @@ namespace RestSharpProject.Features
             client = new RestClient("http://intive-patronage.pl");
         }
 
-        [When(@"Users sends the GET request with a '(.*)' parameter")]
-        public void WhenUsersSendsTheGETRequestWithAParameter(string query)
-        {
-            request = new RestRequest("/api/users?" + query, Method.GET);
-        }
-
-        [When(@"Users send the GET request with a '(.*)' parameter")]
-        public void WhenUsersSendTheGETRequestWithAParameter(string query)
+        [When(@"User sends the GET request with a '(.*)' parameter")]
+        public void WhenUserSendsTheGETRequestWithAParameter(string query)
         {
             request = new RestRequest("/api/users?" + query, Method.GET);
         }
@@ -40,10 +34,10 @@ namespace RestSharpProject.Features
             Assert.AreEqual(code, (int)response.StatusCode);
         }
 
-        [Then(@"JSON body contain list of users with proper parameter '(.*)' with value '(.*)'")]
-        public void ThenJSONBodyContainListOfUsersWithProperParameterWithValue(string parameter, string value)
+        [Then(@"JSON body contain list of users with proper '(.*)' with '(.*)'")]
+        public void ThenJSONBodyContainListOfUsersWithProperWith(string parameter, string value)
         {
-            var responseMessage = JsonConvert.DeserializeObject<Root>(response.Content);
+            var responseMessage = JsonConvert.DeserializeObject<GetUsersList>(response.Content);
 
             if (parameter == "firstName")
             {
