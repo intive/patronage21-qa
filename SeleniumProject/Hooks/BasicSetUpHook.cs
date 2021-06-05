@@ -52,19 +52,55 @@ namespace SeleniumProject.Hooks
             switch (scenarioBlock)
             {
                 case ScenarioBlock.Given:
-                    _scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text);
+                    if (_scenarioContext.TestError != null)
+                    {
+                        _scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Fail
+                        (_scenarioContext.TestError.Message + "\n" + _scenarioContext.TestError.StackTrace); ;
+                    }
+                    else
+                    {
+                        _scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Pass("");
+                    }
+
                     break;
 
                 case ScenarioBlock.When:
-                    _scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text);
+                    if (_scenarioContext.TestError != null)
+                    {
+                        _scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text).Fail
+                        (_scenarioContext.TestError.Message + "\n" + _scenarioContext.TestError.StackTrace);
+                    }
+                    else
+                    {
+                        _scenario.CreateNode<When>(_scenarioContext.StepContext.StepInfo.Text).Pass("");
+                    }
+
                     break;
 
                 case ScenarioBlock.Then:
-                    _scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text);
+                    if (_scenarioContext.TestError != null)
+                    {
+                        _scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text).Fail
+                        (_scenarioContext.TestError.Message + "\n" + _scenarioContext.TestError.StackTrace);
+                    }
+                    else
+                    {
+                        _scenario.CreateNode<Then>(_scenarioContext.StepContext.StepInfo.Text).Pass("");
+                    }
+
                     break;
 
                 default:
-                    _scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text);
+                    if (_scenarioContext.TestError != null)
+                    {
+                        _scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text).Fail
+                            (_scenarioContext.TestError.Message + "\n" + _scenarioContext.TestError.StackTrace);
+                    }
+                    else
+                    {
+                        _scenario.CreateNode<And>(_scenarioContext.StepContext.StepInfo.Text).Pass("");
+                    }
+
                     break;
             }
         }
