@@ -22,11 +22,4 @@
 	<Folder Include="Drivers\" />
     <Folder Include="Hooks\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <SpecFlowFeatureFiles Update="Features\Calendar.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-    </SpecFlowFeatureFiles>
-  </ItemGroup>
-
-</Project>
+ </Project>
