@@ -12,7 +12,7 @@ Given Wrong Url redirects user to Error Site
 Scenario: ERROR_SITE_1_IP2-137_User_should_be_able_to_go_back_to_main_site
 	Given User sees information about false url address
 	When User clicks "Strona główna" 
-	Then User is transferred to main site
+	Then User should be transferred to main site
 
 @ignore
 #https://tracker.intive.com/jira/browse/IP2-827
