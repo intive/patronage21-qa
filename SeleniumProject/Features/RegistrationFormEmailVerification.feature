@@ -1,4 +1,4 @@
-﻿Feature: Verification of email address 
+﻿Feature: Registration Form email verification 
 	User should be able to confirm his/hers email address and activate account with received code.
 
 # QA: https://tracker.intive.com/jira/browse/IP2-166
