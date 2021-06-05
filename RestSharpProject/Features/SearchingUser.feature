@@ -11,7 +11,7 @@
 Background: 
 Given Url is set
 
-#Link to Zephyr
+#https://tracker.intive.com/jira/browse/IP2-854
 Scenario Outline: LIST_USER_1_[/api/users][GET]_IP2-90_Getting_list_of_users_with_given_parameter_success
 When User sends the GET request with a '<query>' parameter
 Then Server return the code <code> 
@@ -43,7 +43,7 @@ Examples:
 | role=                      | 200  | role            |            |
      
 
-#Link to Zephyr
+#https://tracker.intive.com/jira/browse/IP2-855
 Scenario Outline: LIST_USER_2_[/api/users][GET]_IP2-90_Getting_list_of_users_with_given_parameter_fail
 When User sends the GET request with a '<query>' parameter
 Then Server returns the code <code> and the message '<firstMessage>'
