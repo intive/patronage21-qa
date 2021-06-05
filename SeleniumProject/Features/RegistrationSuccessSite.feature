@@ -1,4 +1,4 @@
-﻿Feature: Confirmation of participation
+﻿Feature: Registration SuccessSite
 	User receives information about successfull registration.
 
 #link QA: https://tracker.intive.com/jira/browse/IP2-305 and https://tracker.intive.com/jira/browse/IP2-175

@@ -10,15 +10,16 @@ using TechTalk.SpecFlow;
 namespace SeleniumProject.Steps
 {
     [Binding]
-    public class ConfirmationOfParticipationSteps
+    public class RegistrationSuccessSiteSteps
     {
         private readonly IWebDriver _webdriver;
-        private readonly ConfirmationOfParticipationPage confirmationOfParticipationPage;
+        private readonly RegistrationSuccessSitePage registrationSuccessSitePage;
+        private readonly BasePage basePage;
 
-        public ConfirmationOfParticipationSteps(IWebDriver driver)
+        public RegistrationSuccessSiteSteps(IWebDriver driver)
         {
             _webdriver = driver;
-            confirmationOfParticipationPage = new ConfirmationOfParticipationPage(_webdriver);            
+            registrationSuccessSitePage = new RegistrationSuccessSitePage(_webdriver);            
         }
 
         [Given(@"Activated User is redirected to Success Site")]
@@ -32,7 +33,7 @@ namespace SeleniumProject.Steps
         public void GivenUserUserSeesTheRegistrationSuccessMessage()
 
         {
-            Assert.AreEqual(true, confirmationOfParticipationPage.successfulRegistrationText.Displayed);
+            Assert.AreEqual(true, registrationSuccessSitePage.successfulRegistrationText.Displayed);
         }
 
         [Then(@"User should be transferred to main site")]
@@ -40,9 +41,9 @@ namespace SeleniumProject.Steps
         {
             var wait = new WebDriverWait(_webdriver, new TimeSpan(0, 0, 10));
                       
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(confirmationOfParticipationPage.mainPageContentElement));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(basePage.mainPageContentElement));
 
-            Assert.AreEqual(true, confirmationOfParticipationPage.mainPageContent.Displayed);
+            Assert.AreEqual(true, basePage.mainPageContent.Displayed);
         }
     }
 }
