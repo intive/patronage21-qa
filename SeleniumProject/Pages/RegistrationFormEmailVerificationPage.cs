@@ -3,11 +3,11 @@ using System;
 
 namespace SeleniumProject.Pages
 {
-    internal class VerificationOfEmailAddressPage
+    internal class RegistrationFormEmailVerificationPage
     {
         private IWebDriver driver;
 
-        public VerificationOfEmailAddressPage(IWebDriver driver)
+        public RegistrationFormEmailVerificationPage(IWebDriver driver)
         {
             this.driver = driver;
         }
@@ -26,9 +26,9 @@ namespace SeleniumProject.Pages
         public IWebElement zalozKontoButton => driver.FindElement(By.XPath("//*[text()[contains(.,'Załóż konto')]]"));
         public IWebElement codeInput => driver.FindElement(By.XPath("//*[@id='outlined-adornment-password']"));
         public IWebElement renewalSentButton => driver.FindElement(By.XPath("//span[@class='MuiButton-label' and text() = 'Nie otrzymałem/am kodu']"));
-        public IWebElement getErrorMessage(string p0)
+        public IWebElement getErrorMessage(string text)
         {
-            return driver.FindElement(By.XPath("//*[text()[contains (.,'" + p0 + "')]]"));
+            return driver.FindElement(By.XPath("//*[text()[contains (.,'" + text + "')]]"));
         }
 
         public static string GenerateEmailAdress()
