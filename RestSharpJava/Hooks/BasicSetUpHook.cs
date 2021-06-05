@@ -3,7 +3,7 @@ using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
 using TechTalk.SpecFlow;
 
-namespace SeleniumProject.Hooks
+namespace RestSharpProject.Hooks
 {
     [Binding]
     public sealed class BasicSetUpHook
