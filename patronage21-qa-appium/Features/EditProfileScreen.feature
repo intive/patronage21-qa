@@ -4,13 +4,13 @@
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-266
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-154
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-862
 Scenario: EDIT_PROFILE_SCREEN_1_IP2-154_edit_profile_screen_displayed_correctly
 	When User registers as "JanKowalski" with surname "Kowalski"
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	Then User sees "Edycja użytkownika" screen
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-863
 Scenario: EDIT_PROFILE_SCREEN_2_IP2-154_edit_profile_correctly
 	When User registers
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
@@ -23,8 +23,8 @@ Scenario: EDIT_PROFILE_SCREEN_2_IP2-154_edit_profile_correctly
 	Then User "JanKowalski" data is
 	| titleEdit | first_nameEdit | last_nameEdit | emailEdit                | phoneEdit | githubEdit                            | bioEdit         |
 	| Pani      | Janina         | Kowalska      | janinakowalska@email.com | 987654321 | www.github.com/janinakowalska12874509 | Test bio janina |
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-864
 Scenario: EDIT_PROFILE_SCREEN_3_IP2-154_incorrect_first_name_provided
 	When User registers
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
@@ -39,8 +39,8 @@ Scenario: EDIT_PROFILE_SCREEN_3_IP2-154_incorrect_first_name_provided
 	And User writes "Jan!" to "Imię" field
 	And User clicks "Zapisz"
 	Then User "JanKowalski" "Imię" is "Jan"
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-865
 Scenario: EDIT_PROFILE_SCREEN_4_IP2-154_incorrect_last_name_provided
 	When User registers
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
@@ -55,8 +55,8 @@ Scenario: EDIT_PROFILE_SCREEN_4_IP2-154_incorrect_last_name_provided
 	And User writes "Kowalski!" to "Nazwisko" field
 	And User clicks "Zapisz"
 	Then User "JanKowalski" "Nazwisko" is "Kowalski"
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-866
 Scenario: EDIT_PROFILE_SCREEN_5_IP2-154_incorrect_email_provided
 	When User registers
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
@@ -75,8 +75,8 @@ Scenario: EDIT_PROFILE_SCREEN_5_IP2-154_incorrect_email_provided
 	And User writes "jankowalski@gmail." to "Email" field
 	And User clicks "Zapisz"
 	Then User "JanKowalski" "Email" is "jankowalski@email.com"
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-867
 Scenario: EDIT_PROFILE_SCREEN_6_IP2-154_incorrect_phone_number_provided
 	When User registers
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
@@ -89,8 +89,8 @@ Scenario: EDIT_PROFILE_SCREEN_6_IP2-154_incorrect_phone_number_provided
 	And User writes "12345678a" to "Numer telefonu" field
 	And User clicks "Zapisz"
 	Then User "JanKowalski" "Numer telefonu" is "123456789"
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-868
 Scenario: EDIT_PROFILE_SCREEN_7_IP2-154_incorrect_github_provided
 	When User registers
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
@@ -107,8 +107,8 @@ Scenario: EDIT_PROFILE_SCREEN_7_IP2-154_incorrect_github_provided
 	And User writes "https://www.github.com/jan-kowalski-" to "Github" field
 	And User clicks "Zapisz"
 	Then User "JanKowalski" "Github" is "www.github.com/jankowalski12874509"
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-869
 Scenario: EDIT_PROFILE_SCREEN_8_IP2-154_fields_max_length
 	When User registers as "JanKowalski" with surname "Kowalski"
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
