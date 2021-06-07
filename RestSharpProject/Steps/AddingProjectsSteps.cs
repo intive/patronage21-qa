@@ -9,20 +9,20 @@ using TechTalk.SpecFlow;
 namespace RestSharpProject.Steps
 {
     [Binding]
-    public class AddingProjectsToUserAccountSteps
+    public class AddingProjectSteps
     {
         RestClient client;
         RestRequest request;
         IRestResponse response;
 
-        [Given(@"Url is set")]
-        public void GivenUrlIsSet()
+        [Given(@"Proper url is set")]
+        public void GivenProperUrlIsSet()
         {
             client = new RestClient("http://intive-patronage.pl");
         }
 
         [When(@"User '(.*)' sends the PUT request to add (.*) projects")]
-        public void WhenUserSendsThePUTRequestToAddProjects(string username, int count)
+        public void WhenUserSendsThePUTRequestToAddProjects(string login, int count)
         {
             List<Projects> projects = new List<Projects>();
             for (int i = 0; i < count; i++)
@@ -30,7 +30,7 @@ namespace RestSharpProject.Steps
                 projects.Add(new Projects($"fajny pojekt {i}", "Developer"));
             }
 
-            UserWithProjects user1 = new UserWithProjects(username, "Anna", "Nowak", "ania@wp.pl", "456456456", "https://www.github.com/ssadf", "opis", projects);
+            UserWithProjects user1 = new UserWithProjects(login, "Anna", "Nowak", "ania@wp.pl", "456456456", "https://www.github.com/ssadf", "opis", projects);
 
             request = new RestRequest("/api/users", Method.PUT);
             request.AddParameter("application/json", JsonConvert.SerializeObject(user1), ParameterType.RequestBody);
@@ -54,3 +54,4 @@ namespace RestSharpProject.Steps
 
         }
     }
+}
