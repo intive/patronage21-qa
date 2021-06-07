@@ -37,7 +37,7 @@ namespace patronage21_qa_appium.Screens
         {
             { "Nagłówek", "//android.view.View[@text='Zgłoś się do programu Patron-a-tive już dziś!']" },
             { "Opis", "//android.view.View[@text='Wystarczy, że wypełnisz poniższy formularz zgłoszeniowy.']" },
-            { "Zwrot", "//android.widget.EditText[@text='Pan' or @text='Pani']/following-sibling::android.view.View[position()=1]" },
+            { "Zwrot", "//android.view.View[@text='Wystarczy, że wypełnisz poniższy formularz zgłoszeniowy.']/following-sibling::android.view.View[position()=1]" },
             { "Pan", "//android.view.View[@text='Pan']" },
             { "Pani", "//android.view.View[@text='Pani']" },
             { "Imię", "//android.widget.EditText[@text='Imię *, Imię *']" },
@@ -144,6 +144,37 @@ namespace patronage21_qa_appium.Screens
             { "OK", "//android.widget.Button[@text='OK']" },
         };
 
+        private static Dictionary<string, string> _gradebookXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Dzienniczek']" },
+            { "Opis", "//android.view.View[@text='Dzienniczek']/following-sibling::android.view.View[position()=1]" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _calendarXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Kalendarz']" },
+            { "Opis", "//android.view.View[@text='Kalendarz']/following-sibling::android.view.View[position()=1]" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _eventsAuditXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Audyt zdarzeń']" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _techGroupsXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Grupy technologiczne']" },
+            { "Opis", "//android.view.View[@text='Grupy technologiczne']/following-sibling::android.view.View[position()=1]" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
         public static Dictionary<string, Dictionary<string, string>> _screensXpathDict = new()
         {
             { "Home", _homeXpathDict },
@@ -155,6 +186,10 @@ namespace patronage21_qa_appium.Screens
             { "Szczegóły użytkownika", _userDetailsXpathDict },
             { "Dezaktywacja", _deactivationXpathDict },
             { "Potwierdzenie dezaktywacji", _deactivationSubmitXpathDict },
+            { "Dzienniczek", _gradebookXpathDict },
+            { "Kalendarz", _calendarXpathDict },
+            { "Audyt zdarzeń", _eventsAuditXpathDict },
+            { "Grupy technologiczne", _techGroupsXpathDict },
         };
 
         public static void Swipe(IPerformsTouchActions driver, int startX, int startY, int endX, int endY, int duration)
