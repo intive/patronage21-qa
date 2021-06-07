@@ -144,12 +144,21 @@ namespace patronage21_qa_appium.Screens
             { "OK", "//android.widget.Button[@text='OK']" },
         };
 
+        private static Dictionary<string, string> _resendCodeXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Weryfikacja adresu e-mail']" },
+            { "Opis", "//android.view.View[@text='Wpisz ponownie swój adres e-mail']" },
+            { "Email", "//android.widget.EditText[@text='Email *, Email *']" },
+            { "Wyślij kod", "//android.widget.Button[@text='Wyślij kod']" },
+        };
+
         public static Dictionary<string, Dictionary<string, string>> _screensXpathDict = new()
         {
             { "Home", _homeXpathDict },
             { "Logowanie", _loginXpathDict },
             { "Rejestracja", _registerXpathDict },
             { "Aktywacja", _activationXpathDict },
+            { "Wyślij ponownie kod", _resendCodeXpathDict },
             { "Potwierdzenie rejestracji", _registerSubmitXpathDict },
             { "Użytkownicy", _usersXpathDict },
             { "Szczegóły użytkownika", _userDetailsXpathDict },
@@ -221,6 +230,16 @@ namespace patronage21_qa_appium.Screens
         }
 
         public virtual IReadOnlyCollection<AndroidElement> GetElements(AppiumDriver<AndroidElement> driver, string screenName, string elementName)
+        {
+            return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
+        }
+
+        public static AndroidElement GetElementFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
+        {
+            return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
+        }
+
+        public static IReadOnlyCollection<AndroidElement> GetElementsFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
         {
             return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
         }
