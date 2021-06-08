@@ -12,17 +12,8 @@ namespace patronage21_qa_appium.Steps
     public class RegisterScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
-
-        private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
-        private readonly ActivationScreen _activationScreen = new();
-        private readonly RegisterSubmitScreen _registerSubmitScreen = new();
-        private readonly UsersScreen _usersScreen = new();
-        private readonly UserDetailsScreen _userDetailsScreen = new();
-        private readonly DeactivationScreen _deactivationScreen = new();
-        private readonly DeactivationSubmitScreen _deactivationSubmitScreen = new();
 
         public RegisterScreenSteps(AppiumDriver<AndroidElement> driver)
         {
