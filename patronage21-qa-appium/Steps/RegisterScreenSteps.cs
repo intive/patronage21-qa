@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Screens;
 using TechTalk.SpecFlow;
 
@@ -26,7 +25,7 @@ namespace patronage21_qa_appium.Steps
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
         }
-        
+
         [When(@"User completes form correctly but with ""(.*)"" set to ""(.*)""")]
         public void WhenUserCompletesFormCorrectlyButWithSetTo(string field, string value)
         {
@@ -36,7 +35,7 @@ namespace patronage21_qa_appium.Steps
             if (value.Contains("[znakidiakrytyczne]")) { value = value.Replace("[znakidiakrytyczne]", "ĘÓĄŚŁŻŹŃ"); }
             _registerScreen.SubmitRegisterFormWithFieldSetTo(_driver, field, value);
         }
-        
+
         [Then(@"Submit button is inactive")]
         public void ThenButtonIsInactive()
         {
@@ -61,7 +60,7 @@ namespace patronage21_qa_appium.Steps
         {
             // To be developed
             // when user registration will be connected to api
-            // check if created user exists in database 
+            // check if created user exists in database
         }
 
         [When(@"User completes form correctly but with every tech group selected")]
@@ -90,6 +89,5 @@ namespace patronage21_qa_appium.Steps
         {
             Assert.IsTrue(_registerScreen.GetElement(_driver, "Załóż konto").Enabled);
         }
-
     }
 }

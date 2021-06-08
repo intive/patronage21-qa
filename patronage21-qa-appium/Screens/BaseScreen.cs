@@ -230,9 +230,10 @@ namespace patronage21_qa_appium.Screens
         {
             return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
         }
+
         public virtual AndroidElement FindElementByText(AppiumDriver<AndroidElement> driver, string text)
         {
-            return driver.FindElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList()" + 
+            return driver.FindElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList()" +
                 ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
         }
 
