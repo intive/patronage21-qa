@@ -40,6 +40,7 @@ namespace patronage21_qa_appium.Steps
             // or use unique data for every scenario
             _driver.LaunchApp();
         }
+
         [Given(@"User registers as ""(.*)"" with ""(.*)"" email")]
         public void GivenUserRegistersAsWithEmail(string username, string email)
         {
@@ -55,13 +56,13 @@ namespace patronage21_qa_appium.Steps
         {
             BaseScreen.GetElementFromScreen(_driver, element, screen).Click();
         }
-        
+
         [When(@"User writes ""(.*)"" to ""(.*)"" field")]
         public void WhenUserWritesToField(string text, string field)
         {
             _resendCodeScreen.WriteTextToField(_driver, text, field);
         }
-        
+
         [Then(@"User sees ""(.*)"" screen")]
         public void ThenUserSeesScreen(string screen)
         {

@@ -179,7 +179,7 @@ namespace patronage21_qa_appium.Screens
         {
             { "Nagłówek", "//android.view.View[@text='Weryfikacja adresu e-mail']" },
             { "Opis", "//android.view.View[@text='Wpisz ponownie swój adres e-mail']" },
-            { "Email", "//android.widget.EditText[@text='Email *, Email *']" },
+            { "Email", "//android.widget.EditText[position()=1]" },
             { "Wyślij kod", "//android.widget.Button[@text='Wyślij kod']" },
         };
 
