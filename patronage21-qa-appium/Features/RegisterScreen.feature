@@ -39,17 +39,17 @@ Scenario Outline: REGISTER_SCREEN_2_IP2-261_register_successfully
 
 	
 # zephyr link
-Scenario: REGISTER_SCREEN_2_IP2-261_incorrect_tech_groups_checkboxes_all_selected
+Scenario: REGISTER_SCREEN_3_IP2-261_incorrect_tech_groups_checkboxes_all_selected
 	When User completes form correctly but with every tech group selected
 	Then Submit button is inactive
 	
 # zephyr link
-Scenario: REGISTER_SCREEN_2_IP2-261_incorrect_tech_groups_checkboxes_none_selected
+Scenario: REGISTER_SCREEN_4_IP2-261_incorrect_tech_groups_checkboxes_none_selected
 	When User completes form correctly but without any tech group selected
 	Then Submit button is inactive
 	
 # zephyr link
-Scenario: REGISTER_SCREEN_2_IP2-261_incorrect_consents
+Scenario: REGISTER_SCREEN_5_IP2-261_incorrect_consents
 	When User completes form correctly but with "Login" set to "JanKowalski"
 	And User clicks "Pierwsza zgoda" checkbox
 	And User submits register form
@@ -59,7 +59,7 @@ Scenario: REGISTER_SCREEN_2_IP2-261_incorrect_consents
 	Then Submit button is inactive
 
 # zephyr link
-Scenario Outline:REGISTRATION_SCREEN_3_IP2-261_incorrect_field_validation
+Scenario Outline:REGISTRATION_SCREEN_6_IP2-261_incorrect_field_validation
 	When User completes form correctly but with "<field>" set to "<value>"
 	Then Submit button is inactive
 
