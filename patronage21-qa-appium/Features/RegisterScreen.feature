@@ -5,11 +5,11 @@
 Background: 
 	Given User is on Registration page
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-888
 Scenario: REGISTER_SCREEN_1_IP2-261_register_screen_displayed_correctly
 	Then User sees "Rejestracja" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-889
 Scenario Outline: REGISTER_SCREEN_2_IP2-261_register_successfully
 	When User completes form correctly but with "<field>" set to "<value>"
 	Then Submit button is active
@@ -38,17 +38,17 @@ Scenario Outline: REGISTER_SCREEN_2_IP2-261_register_successfully
 	| Github URL | github.com/JanKowalski                                         |
 
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-890
 Scenario: REGISTER_SCREEN_3_IP2-261_incorrect_tech_groups_checkboxes_all_selected
 	When User completes form correctly but with every tech group selected
 	Then Submit button is inactive
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-891
 Scenario: REGISTER_SCREEN_4_IP2-261_incorrect_tech_groups_checkboxes_none_selected
 	When User completes form correctly but without any tech group selected
 	Then Submit button is inactive
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-892
 Scenario: REGISTER_SCREEN_5_IP2-261_incorrect_consents
 	When User completes form correctly but with "Login" set to "JanKowalski"
 	And User clicks "Pierwsza zgoda" checkbox
@@ -57,8 +57,8 @@ Scenario: REGISTER_SCREEN_5_IP2-261_incorrect_consents
 	And User submits register form
 	And User clicks "Pierwsza zgoda" checkbox
 	Then Submit button is inactive
-
-# zephyr link
+	
+# https://tracker.intive.com/jira/browse/IP2-893
 Scenario Outline: REGISTRATION_SCREEN_6_IP2-261_incorrect_field_validation
 	When User completes form correctly but with "<field>" set to "<value>"
 	Then Submit button is inactive
