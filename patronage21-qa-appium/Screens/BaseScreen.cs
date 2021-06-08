@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Interfaces;
@@ -46,12 +47,17 @@ namespace patronage21_qa_appium.Screens
             { "Email", "//android.widget.EditText[@text='Email *, Email *']" },
             { "Numer telefonu", "//android.widget.EditText[@text='Numer telefonu *, Numer telefonu *']" },
             { "QA_checkbox", "//android.view.View[@text='QA']/preceding-sibling::android.widget.CheckBox[position()=1]" },
+            { "Java_checkbox", "//android.view.View[@text='Java']/preceding-sibling::android.widget.CheckBox[position()=1]" },
+            { "JavaScript_checkbox", "//android.view.View[@text='JavaScript']/preceding-sibling::android.widget.CheckBox[position()=1]" },
+            { "Android_checkbox", "//android.view.View[@text='Mobile (Android)']/preceding-sibling::android.widget.CheckBox[position()=1]" },
             { "Login", "//android.widget.EditText[@text='Login *, Login *']" },
             { "Hasło", "//android.widget.EditText[@text='Hasło *, Hasło *']" },
             { "Potwierdź hasło", "//android.widget.EditText[@text='Potwierdź hasło *, Potwierdź hasło *']" },
             { "Github URL", "//android.widget.EditText[@text='Github URL, Github URL']" },
             { "Zgoda wymagana", "//android.view.View[@text='Zgoda wymagana']" },
             { "Zgoda wymagana_checkbox", "//android.view.View[@text='Zgoda wymagana']/preceding-sibling::android.widget.CheckBox[position()=1]" },
+            { "Pierwsza zgoda", "//android.widget.CheckBox[position()=1]" },
+            { "Druga zgoda", "//android.widget.CheckBox[position()=2]" },
             { "Załóż konto", "//android.widget.Button[@text='Załóż konto']" },
             { "First element", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/*[1]" },
             { "Last element", "//android.view.ViewGroup/android.view.View/android.widget.ScrollView/*[last()]" },
@@ -223,6 +229,37 @@ namespace patronage21_qa_appium.Screens
         public virtual IReadOnlyCollection<AndroidElement> GetElements(AppiumDriver<AndroidElement> driver, string screenName, string elementName)
         {
             return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
+        }
+        public virtual AndroidElement FindElementByText(AppiumDriver<AndroidElement> driver, string text)
+        {
+            return driver.FindElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList()" + 
+                ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
+        }
+
+        public static void SwipeToBottom(AppiumDriver<AndroidElement> driver)
+        {
+            try
+            {
+                driver.FindElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).flingToEnd(4)"));
+            }
+            catch (InvalidSelectorException)
+            {
+                // ignore
+            }
+        }
+
+        public static void SwipeToTop(AppiumDriver<AndroidElement> driver)
+        {
+            try
+            {
+                driver.FindElement(MobileBy.AndroidUIAutomator(
+                        "new UiScrollable(new UiSelector().scrollable(true)).flingToBeginning(4)"));
+            }
+            catch (InvalidSelectorException)
+            {
+                // ignore
+            }
         }
     }
 }
