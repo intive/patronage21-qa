@@ -29,10 +29,6 @@ namespace patronage21_qa_appium.Steps
         [When(@"User completes form correctly but with ""(.*)"" set to ""(.*)""")]
         public void WhenUserCompletesFormCorrectlyButWithSetTo(string field, string value)
         {
-            if (field.Contains("Imi")) { field = "Imię"; }
-            else if (field.Contains("Potw")) { field = "Potwierdź hasło"; }
-            else if (field.Contains("Has")) { field = "Hasło"; }
-            if (value.Contains("[znakidiakrytyczne]")) { value = value.Replace("[znakidiakrytyczne]", "ĘÓĄŚŁŻŹŃ"); }
             _registerScreen.SubmitRegisterFormWithFieldSetTo(_driver, field, value);
         }
 

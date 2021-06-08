@@ -1,4 +1,4 @@
-Feature: RegisterScreen
+﻿Feature: RegisterScreen
 	New user wants to be able to register an account
 	to apply for the Patronative program
 
@@ -16,10 +16,10 @@ Scenario Outline: REGISTER_SCREEN_2_IP2-261_register_successfully
 
 	Examples:
 	| field      | value                                                          |
-	| Imi�       | Ja                                                             |
-	| Imi�       | JanJanJanJanJanJanJanJanJanJan                                 |
-	| Imi�       | Jan[znakidiakrytyczne]                                         |
-	| Nazwisko   | Kowalski[znakidiakrytyczne]                                    |
+	| Imię       | Ja                                                             |
+	| Imię       | JanJanJanJanJanJanJanJanJanJan                                 |
+	| Imię       | JanĘÓĄŚŁŻŹŃ                                                    |
+	| Nazwisko   | KowalskiĘÓĄŚŁŻŹŃ                                               |
 	| Nazwisko   | KowalskiKowalskiKowalskiKowals                                 |
 	| Nazwisko   | Ko                                                             |
 	| Login      | Ja                                                             |
@@ -65,11 +65,11 @@ Scenario Outline:REGISTRATION_SCREEN_3_IP2-261_incorrect_field_validation
 
 	Examples:
 	| field           | value                                                           |
-	| Imi�            | J                                                               |
-	| Imi�            | JanJanJanJanJanJanJanJanJanJanJ                                 |
-	| Imi�            | Jan1                                                            |
-	| Imi�            | Jan@                                                            |
-	| Imi�            | [Empty]                                                         |
+	| Imię            | J                                                               |
+	| Imię            | JanJanJanJanJanJanJanJanJanJanJ                                 |
+	| Imię            | Jan1                                                            |
+	| Imię            | Jan@                                                            |
+	| Imię            | [Empty]                                                         |
 	| Nazwisko        | K                                                               |
 	| Nazwisko        | KowalskiKowalskiKowalskiKowalsk                                 |
 	| Nazwisko        | Kowalski1                                                       |
@@ -92,13 +92,13 @@ Scenario Outline:REGISTRATION_SCREEN_3_IP2-261_incorrect_field_validation
 	| Login           | JanKowalski1JanKowalski1                                        |
 	| Login           | JanKowalski1JanKowalski1#                                       |
 	| Login           | [Empty]                                                         |
-	| Has�o           | Qwert+5                                                         |
-	| Has�o           | Qwertyuiopasdfghjkl+1                                           |
-	| Has�o           | qwerty+8                                                        |
-	| Has�o           | Qwertyu+                                                        |
-	| Has�o           | [Empty]                                                         |
-	| Potwierd� has�o | Niepasujace@2                                                   |
-	| Potwierd� has�o | [Empty]                                                         |
+	| Hasło           | Qwert+5                                                         |
+	| Hasło           | Qwertyuiopasdfghjkl+1                                           |
+	| Hasło           | qwerty+8                                                        |
+	| Hasło           | Qwertyu+                                                        |
+	| Hasło           | [Empty]                                                         |
+	| Potwierdź hasło | Niepasujace@2                                                   |
+	| Potwierdź hasło | [Empty]                                                         |
 	| Github URL      | https://www./jan-kowalski                                       |
 	| Github URL      | https://www.github.com/                                         |
 	| Github URL      | https://www.github.com/jan-kowalskijan-kowalskijan-kowalskijank |
