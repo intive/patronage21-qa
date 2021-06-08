@@ -59,7 +59,7 @@ Scenario: REGISTER_SCREEN_5_IP2-261_incorrect_consents
 	Then Submit button is inactive
 
 # zephyr link
-Scenario Outline:REGISTRATION_SCREEN_6_IP2-261_incorrect_field_validation
+Scenario Outline: REGISTRATION_SCREEN_6_IP2-261_incorrect_field_validation
 	When User completes form correctly but with "<field>" set to "<value>"
 	Then Submit button is inactive
 
