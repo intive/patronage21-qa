@@ -9,13 +9,13 @@ namespace SeleniumProject.Steps
     public class ErrorSiteSteps
     {
         private readonly IWebDriver _webdriver;
-        private readonly ErrorSite_Page errorSite;
+        private readonly ErrorSitePage errorSite;
         private readonly BasePage basePage;
 
         public ErrorSiteSteps(IWebDriver driver)
         {
             _webdriver = driver;
-            errorSite = new ErrorSite_Page(_webdriver);
+            errorSite = new ErrorSitePage(_webdriver);
             basePage = new BasePage(_webdriver);
         }
 
@@ -29,12 +29,6 @@ namespace SeleniumProject.Steps
         public void GivenUserSeesInformationAboutFalseUrlAdress()
         {
             Assert.AreEqual(true, errorSite.wrongAddressText.Displayed);
-        }
-
-        [Then(@"User is transferred to main site")]
-        public void ThenUserIsTransferredToMainSite()
-        {
-            Assert.AreEqual(true, errorSite.patronativePage.Displayed);
         }
     }
 }
