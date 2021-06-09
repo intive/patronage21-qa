@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -18,6 +19,7 @@ namespace SeleniumProject.Hooks
         public Hooks(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
+            driver.Url = TestContext.Parameters["homePage"];
 
             new DriverManager().SetUpDriver(new ChromeConfig());
 
@@ -25,9 +27,11 @@ namespace SeleniumProject.Hooks
             options.SetLoggingPreference(LogType.Browser, LogLevel.All);
             options.AddArgument("--start-maximized");
 
+            if (string.IsNullOrEmpty(driver.Url))
+                driver.Url = "http://localhost:3000";
+
             driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Url = "http://localhost:3000";
         }
 
         [BeforeScenario]
