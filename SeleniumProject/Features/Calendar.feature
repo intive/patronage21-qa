@@ -1,4 +1,5 @@
-﻿Feature: Calendar Fundamental
+﻿@ignore
+Feature: Calendar Fundamental
 
 	#link JS https://tracker.intive.com/jira/browse/IP2-543
 	#link QA https://tracker.intive.com/jira/browse/IP2-614
