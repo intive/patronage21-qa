@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumProject.Pages
 {
@@ -16,13 +11,29 @@ namespace SeleniumProject.Pages
             this.driver = driver;
         }
 
-        private By users = By.XPath("//*[text()='Użytkownicy']//parent::button");
-        private By calendar = By.XPath("//*[text()='Kalendarz']//parent::button");
-
-        private IWebElement usersModule => driver.FindElement(users);
-        private IWebElement calendarModule => driver.FindElement(calendar);
-
-        public void NavigateToCalendarSite() => calendarModule.Click();
-        public void NavigateToUsersSite() => usersModule.Click();
+        public void NavigateToHomePage()
+        {
+            driver.Navigate().GoToUrl(driver.Url);
+        }
+        public void NavigateToCalendar()
+        {
+            driver.Navigate().GoToUrl(driver.Url + "kalendarz");
+        }
+        public void NavigateToRegistration()
+        {
+            driver.Navigate().GoToUrl(driver.Url + "rejestracja");
+        }
+        public void NavigateToVerification()
+        {
+            driver.Navigate().GoToUrl(driver.Url + "weryfikacja");
+        }
+        public void NavigateToErrorSite()
+        {
+            driver.Navigate().GoToUrl(driver.Url + "404");
+        }
+        public void NavigateToSuccessfulRegistration()
+        {
+            driver.Navigate().GoToUrl(driver.Url + "rejestracja-sukces");
+        }
     }
 }
