@@ -30,6 +30,19 @@ namespace SeleniumProject.Steps
             homePage.FindCalendarModule();
         }
 
+        [Given(@"Users module is on home page")]
+        public void GivenUsersModuleIsOnHomePage()
+        {
+            homePage.FindUsersModule();
+        }
+
+        [When(@"User clicks on users module")]
+        public void WhenUserClicksOnUsersModule()
+        {
+            homePage.ClicksOnUsers();
+            Thread.Sleep(4000);
+        }
+
         [When(@"User clicks on Kalendarz")]
         public void WhenUserClicksOnKalendarz()
         {
@@ -41,12 +54,6 @@ namespace SeleniumProject.Steps
         public void WhenTechnologiesGroupsIsOnHomePage()
         {
             homePage.FindTechnologiesGroupsModule();
-        }
-
-        [When(@"Użytkownicy is on home page")]
-        public void WhenUsersIsOnHomePage()
-        {
-            homePage.FindUsersModule();
         }
 
         [When(@"Dzienniczek is on home page")]
@@ -89,6 +96,12 @@ namespace SeleniumProject.Steps
         public void ThenAuditOfEventsIsInactive()
         {
             Assert.That(homePage.AuditOfEventsModuleIsActive(), Is.False);
+        }
+
+        [Then(@"User is transferred to page about users")]
+        public void ThenUserIsTransferredToPageAboutUsers()
+        {
+            Assert.That(_webdriver.Url, Is.EqualTo("http://intive-patronage.pl/"));
         }
     }
 }

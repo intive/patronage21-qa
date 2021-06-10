@@ -25,6 +25,8 @@ namespace SeleniumProject.Pages
 
         public void ClicksOnCalendar() => calendarModule.Click();
 
+        public void ClicksOnUsers() => usersModule.Click();
+
         public void FindCalendarModule() => driver.FindElement(calendar);
 
         public void FindTechnologiesGroupsModule() => driver.FindElement(technologiesGroups);
@@ -40,7 +42,7 @@ namespace SeleniumProject.Pages
         public bool UsersModuleIsActive() => usersModule.Enabled;
 
         public bool DiaryModuleIsActive() => diaryModule.Enabled;
-        
+
         public bool AuditOfEventsModuleIsActive() => auditOfEventsModule.Enabled;
     }
 }
