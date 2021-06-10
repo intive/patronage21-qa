@@ -3,10 +3,10 @@ using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
 using TechTalk.SpecFlow;
 
-namespace RestSharpProject.Hooks
+namespace RestSharpJS.Hooks
 {
     [Binding]
-    public sealed class BasicSetUpHook
+    public sealed class extentReportHook
     {
         private static ScenarioContext _scenarioContext;
         private static ExtentReports _extentReports;
@@ -54,7 +54,7 @@ namespace RestSharpProject.Hooks
                     if (_scenarioContext.TestError != null)
                     {
                         _scenario.CreateNode<Given>(_scenarioContext.StepContext.StepInfo.Text).Fail
-                        (_scenarioContext.TestError.Message + "\n" + _scenarioContext.TestError.StackTrace); ;
+                        (_scenarioContext.TestError.Message + "\n" + _scenarioContext.TestError.StackTrace);
                     }
                     else
                     {
