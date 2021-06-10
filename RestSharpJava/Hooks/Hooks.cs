@@ -17,7 +17,7 @@ namespace RestSharpJava.Hooks
             _objectContainer = objectContainer;
 
             if (string.IsNullOrEmpty(envUrl))
-                envUrl = "https://localhost:8080/api";
+                envUrl = "http://localhost:8080/api";
 
             restClient = new RestClient(envUrl);
         }
