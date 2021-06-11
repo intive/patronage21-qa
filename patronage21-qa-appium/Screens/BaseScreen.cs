@@ -144,6 +144,16 @@ namespace patronage21_qa_appium.Screens
             { "OK", "//android.widget.Button[@text='OK']" },
         };
 
+        private static Dictionary<string, string> _editUserXpathDict = new()
+        {
+            { "Imię", "//android.widget.EditText[position()=1]" },
+            { "Nazwisko", "//android.widget.EditText[position()=2]" },
+            { "Email", "//android.widget.EditText[position()=3]" },
+            { "Numer telefonu", "//android.widget.EditText[position()=4]" },
+            { "Github", "//android.widget.EditText[position()=5]" },
+            { "Bio", "//android.widget.EditText[position()=6]" },
+        };
+
         private static Dictionary<string, string> _gradebookXpathDict = new()
         {
             { "Nagłówek", "//android.view.View[@text='Dzienniczek']" },
@@ -194,6 +204,7 @@ namespace patronage21_qa_appium.Screens
             { "Użytkownicy", _usersXpathDict },
             { "Szczegóły użytkownika", _userDetailsXpathDict },
             { "Dezaktywacja", _deactivationXpathDict },
+            { "Edycja użytkownika", _editUserXpathDict },
             { "Potwierdzenie dezaktywacji", _deactivationSubmitXpathDict },
             { "Dzienniczek", _gradebookXpathDict },
             { "Kalendarz", _calendarXpathDict },
@@ -260,6 +271,11 @@ namespace patronage21_qa_appium.Screens
         }
 
         public virtual AndroidElement GetElement(AppiumDriver<AndroidElement> driver, string screenName, string elementName)
+        {
+            return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
+        }
+
+        public static AndroidElement GetElementFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
         {
             return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
         }
