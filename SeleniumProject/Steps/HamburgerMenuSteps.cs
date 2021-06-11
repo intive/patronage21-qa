@@ -1,5 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumProject.Pages;
+using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 
@@ -9,16 +12,18 @@ namespace SeleniumProject.Steps
     public class HamburgerMenuSteps
     {
         private readonly IWebDriver _webdriver;
-        private By patronageLogo = By.XPath(".//*[@class='logo__Text-sc-1ubblt8-2 jkbUZv']");
-        private By hamburgerMenu = By.XPath(".//*[@d='M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z']");
-        private By itemsInHamburgerMenu = By.XPath(".//*[@class='MuiPaper-root MuiMenu-paper MuiPopover-paper MuiPaper-elevation8 MuiPaper-rounded']");
-        private By firstItemInHamburgerMenu = By.XPath(".//li[contains(text(),'Strona główna')]");
-        private By secondItemInHamburgerMenu = By.XPath(".//li[contains(text(),'Kalendarz')]");
-        private By thirdItemInHamburgerMenu = By.XPath(".//li[contains(text(),'Rejestracja')]");
+        private readonly HomePage homePage;
+        private WebDriverWait wait;
+        private string homePageUrl, calendarUrl, registrationUrl;
 
         public HamburgerMenuSteps(IWebDriver driver)
         {
             _webdriver = driver;
+            homePageUrl = _webdriver.Url;
+            calendarUrl = _webdriver.Url + "kalendarz";
+            registrationUrl = _webdriver.Url + "rejestracja";
+            wait = new WebDriverWait(_webdriver, TimeSpan.FromSeconds(10));
+            homePage = new HomePage(_webdriver);
         }
 
         [Given(@"User is on '(.*)'")]
@@ -37,67 +42,67 @@ namespace SeleniumProject.Steps
         [Given(@"User clicks on hamburger menu")]
         public void GivenUserClicksOnHamburgerMenu()
         {
-            _webdriver.FindElement(hamburgerMenu).Click();
-            Thread.Sleep(4000);
+            wait.Until<bool>((_webdriver) =>
+            {
+                homePage.ClicksOnHamburgerMenu();
+                return true;
+            });
         }
 
         [When(@"User clicks on page name in header")]
         public void WhenUserClicksOnPageNameInHeader()
         {
-            _webdriver.FindElement(patronageLogo).Click();
-            Thread.Sleep(4000);
+            homePage.ClicksOnLogo();
         }
 
         [When(@"User clicks on hamburger menu")]
         public void WhenUserClicksOnHamburgerMenu()
         {
-            _webdriver.FindElement(hamburgerMenu).Click();
-            Thread.Sleep(4000);
+            homePage.ClicksOnHamburgerMenu();
         }
 
         [When(@"User clicks on home page")]
         public void WhenUserClicksOnHomePage()
         {
-            _webdriver.FindElement(firstItemInHamburgerMenu).Click();
-            Thread.Sleep(4000);
+            homePage.ClicksOnHomePage();
         }
 
         [When(@"User clicks on calendar")]
         public void WhenUserClicksOnCalendar()
         {
-            _webdriver.FindElement(secondItemInHamburgerMenu).Click();
-            Thread.Sleep(4000);
+            homePage.ClicksOnCalendar();
+            Thread.Sleep(500);
         }
 
         [When(@"User clicks on registration")]
         public void WhenUserClicksOnRegistration()
         {
-            _webdriver.FindElement(thirdItemInHamburgerMenu).Click();
-            Thread.Sleep(4000);
+            homePage.ClicksOnRegistration();
+            Thread.Sleep(500);
         }
 
         [Then(@"User is transferred to home page")]
         public void ThenUserIsTransferredToHomePage()
         {
-            Assert.That(_webdriver.Url, Is.EqualTo("http://localhost:3000/"));
+            Assert.AreEqual(_webdriver.Url, homePageUrl);
         }
 
         [Then(@"Hamburger menu shows its options")]
         public void ThenHamburgerMenuShowsItsOptions()
         {
-            Assert.That((_webdriver.FindElement(itemsInHamburgerMenu).Displayed), Is.True);
+            Assert.That(homePage.ElementsInHamburgerMenuDisplayed(), Is.True);
         }
 
         [Then(@"User is transferred to calendar")]
         public void ThenUserIsTransferredToCalendar()
         {
-            Assert.That(_webdriver.Url, Is.EqualTo("http://localhost:3000/kalendarz"));
+            Assert.AreEqual(_webdriver.Url, calendarUrl);
         }
 
         [Then(@"User is transferred to registration")]
         public void ThenUserIsTransferredToRegistration()
         {
-            Assert.That(_webdriver.Url, Is.EqualTo("http://localhost:3000/rejestracja"));
+            Assert.AreEqual(_webdriver.Url, registrationUrl);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿Feature: Verification of email address 
+﻿Feature: Registration Form email verification 
 	User should be able to confirm his/hers email address and activate account with received code.
 
 # QA: https://tracker.intive.com/jira/browse/IP2-166
@@ -70,7 +70,7 @@ Scenario: REGISTRATION_FORM_7_IP2-135_Retrieving_of_the_code_should_be_possible
 
 #https://tracker.intive.com/jira/browse/IP2-520
 Scenario: REGISTRATION_FORM_8_IP2-135_Only_numbers_can_be_inserted_as_code
-	When User enters <code with characters> 
+	When User enters 'code with characters' 
 	| code with characters |
 	| 'aaaaaa'             |
 	| '123a455'            |

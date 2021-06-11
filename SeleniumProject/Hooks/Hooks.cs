@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -11,9 +12,11 @@ namespace SeleniumProject.Hooks
     [Binding]
     public sealed class Hooks
     {
-        public static IWebDriver driver;
+        public static IWebDriver _driver;
 
         public static IObjectContainer _objectContainer;
+
+        public string envUrl = TestContext.Parameters["homePage"];
 
         public Hooks(IObjectContainer objectContainer)
         {
@@ -25,21 +28,25 @@ namespace SeleniumProject.Hooks
             options.SetLoggingPreference(LogType.Browser, LogLevel.All);
             options.AddArgument("--start-maximized");
 
-            driver = new ChromeDriver(options);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Url = "http://localhost:3000";
+            _driver = new ChromeDriver(options);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+            if (string.IsNullOrEmpty(envUrl))
+                envUrl = "http://localhost:3000";
+
+            _driver.Url = envUrl;
         }
 
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _objectContainer.RegisterInstanceAs<IWebDriver>(driver);
+            _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            driver.Quit();
+            _driver.Quit();
         }
     }
 }

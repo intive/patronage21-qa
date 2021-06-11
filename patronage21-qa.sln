@@ -6,15 +6,19 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA789BA6-995C-42A0-A16F-2AFA321458EA}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		ApiHerokuJava.runsettings = ApiHerokuJava.runsettings
+		ApiHerokuJS.runsettings = ApiHerokuJS.runsettings
+		PatronativePage.runsettings = PatronativePage.runsettings
 		README.md = README.md
 	EndProjectSection
 EndProject
-RestSharp
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharpProject", "RestSharpProject\RestSharpProject.csproj", "{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}"
-master
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "patronage21-qa-appium", "patronage21-qa-appium\patronage21-qa-appium.csproj", "{7FFD1121-BBF8-4776-BF4E-F178301511E2}"
-Selenium
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "patronage21-qa-appium", "patronage21-qa-appium\patronage21-qa-appium.csproj", "{7FFD1121-BBF8-4776-BF4E-F178301511E2}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumProject", "SeleniumProject\SeleniumProject.csproj", "{0B02F274-DF2C-4491-A508-801BDB147492}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestSharpJava", "RestSharpJava\RestSharpJava.csproj", "{292FC4D3-91C3-4C5B-8A87-B498D0766B7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestSharpJS", "RestSharpJS\RestSharpJS.csproj", "{C712ADCC-DFFB-40A0-9C98-C9B66669D2F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,21 +26,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-RestSharp
-		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7FC1ABE-8834-4C65-AEB2-BF08AC973DD6}.Release|Any CPU.Build.0 = Release|Any CPU
-master
 		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FFD1121-BBF8-4776-BF4E-F178301511E2}.Release|Any CPU.Build.0 = Release|Any CPU
-Selenium
 		{0B02F274-DF2C-4491-A508-801BDB147492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B02F274-DF2C-4491-A508-801BDB147492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B02F274-DF2C-4491-A508-801BDB147492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B02F274-DF2C-4491-A508-801BDB147492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{292FC4D3-91C3-4C5B-8A87-B498D0766B7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292FC4D3-91C3-4C5B-8A87-B498D0766B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292FC4D3-91C3-4C5B-8A87-B498D0766B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292FC4D3-91C3-4C5B-8A87-B498D0766B7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C712ADCC-DFFB-40A0-9C98-C9B66669D2F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C712ADCC-DFFB-40A0-9C98-C9B66669D2F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C712ADCC-DFFB-40A0-9C98-C9B66669D2F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C712ADCC-DFFB-40A0-9C98-C9B66669D2F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

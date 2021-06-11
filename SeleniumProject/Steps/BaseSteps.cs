@@ -1,10 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumProject.Pages;
 using System;
-using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace SeleniumProject.Steps
@@ -18,7 +16,7 @@ namespace SeleniumProject.Steps
         public BaseSteps(IWebDriver driver)
         {
             _webdriver = driver;
-            basePage = new BasePage(_webdriver);            
+            basePage = new BasePage(_webdriver);
         }
 
         [StepDefinition(@"User clicks ""(.*)""")]
@@ -28,6 +26,13 @@ namespace SeleniumProject.Steps
             basePage.buttonCommon.Click();
         }
 
+        [StepDefinition(@"User should be transferred to main site")]
+        public void ThenUserShouldBeTransferredToMainSite()
+        {
+            var wait = new WebDriverWait(_webdriver, new TimeSpan(0, 0, 10));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(basePage.mainPageContentElement));
 
+            Assert.AreEqual(true, basePage.mainPageContent.Displayed);
+        }
     }
 }

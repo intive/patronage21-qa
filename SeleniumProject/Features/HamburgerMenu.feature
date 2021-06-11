@@ -20,9 +20,9 @@ Scenario Outline: HAMBURGER_MENU_2_IP2-541_User_clicks_on_hamburger_menu
 	Then Hamburger menu shows its options 
 
 	Examples:
-		| page               |
-		| strona główna      |
-		| kalendarz          |
+		| page          |
+		| strona główna |
+		| kalendarz     |
 
 #https://tracker.intive.com/jira/browse/IP2-707
 Scenario Outline: HAMBURGER_MENU_3_IP2-541_User_clicks_on_home_page_in_hamburger_menu
