@@ -18,9 +18,9 @@ namespace RestSharpProject.Steps
         private Response responseMessage;
         private string signUpUrl = "/register";
 
-        public RegistrationFormSteps(RestClient restClinet)
+        public RegistrationFormSteps(RestClient restClient)
         {
-            _restClient = new RestClient(restClinet.BaseUrl + signUpUrl);
+            _restClient = new RestClient(restClient.BaseUrl + signUpUrl);
             _restRequest = new RestRequest(Method.POST);
         }
 
@@ -260,7 +260,7 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutEmptyFieldImie()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię musi mieć co najmniej 3 znaki"));
+            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię musi mieć co najmniej 2 znaki"));
         }
 
         [Then(@"JSON body with message about empty field Nazwisko")]
@@ -281,7 +281,7 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerTelefonu()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer powinien składać się wyłącznie z cyfr"));
+            Assert.That(responseMessage.fields.phone[0], Is.EqualTo("Numer jest za krótki"));
         }
 
         [Then(@"JSON body with message about empty field Technologie")]
@@ -302,7 +302,7 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutEmptyFieldNumerLogin()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi mieć co najmniej 2 znaki"));
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi składać się z co najmniej 2 znaków"));
         }
 
         [Then(@"JSON body with message about empty field Github link")]
@@ -351,14 +351,14 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithErrorMessageAboutTooLongLogin()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi mieć mniej niż 15 znaków"));
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login może składać się z maksymalnie 15 znaków"));
         }
 
         [Then(@"JSON body with error message about too short Imię")]
         public void ThenJSONBodyWithErrorMessageAboutTooShortImie()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię musi mieć co najmniej 3 znaki"));
+            Assert.That(responseMessage.fields.firstName[0], Is.EqualTo("Imię musi mieć co najmniej 2 znaki"));
         }
 
         [Then(@"JSON body with error message about too short Nazwisko")]
@@ -379,7 +379,7 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithErrorMessageAboutTooShortLogin()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi mieć co najmniej 2 znaki"));
+            Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi składać się z co najmniej 2 znaków"));
         }
 
         [Then(@"JSON body with message about incorrect Adres email")]
@@ -393,7 +393,7 @@ namespace RestSharpProject.Steps
         public void ThenJSONBodyWithMessageAboutIncorrectHaslo()
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Hasło musi mieć przynajmniej jedną dużą literę i jeden znak specjalny"));
+            Assert.That(responseMessage.fields.password[0], Is.EqualTo("Hasło musi zawierać przynajmniej jedną dużą literę, jedną małą literę, jedną cyfrę i jeden znak specjalny"));
         }
 
         [Then(@"JSON body with message about incorrect Github link")]
