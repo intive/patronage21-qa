@@ -285,11 +285,6 @@ namespace patronage21_qa_appium.Screens
             return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
         }
 
-        public static AndroidElement GetElementFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
-        {
-            return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
-        }
-
         public static IReadOnlyCollection<AndroidElement> GetElementsFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
         {
             return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
