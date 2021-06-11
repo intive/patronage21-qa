@@ -101,7 +101,13 @@ namespace patronage21_qa_appium.Steps
         [Then(@"User sees ""(.*)"" screen")]
         public void ThenUserSeesScreen(string screenName)
         {
-            BaseScreen.GetElementsFromScreen(_driver, "Nagłówek", screenName);
+            switch(screenName)
+            {
+                case "Szczegóły użytkownika":
+                    BaseScreen.GetElementsFromScreen(_driver, "Zdjęcie", screenName);
+                    BaseScreen.GetElementsFromScreen(_driver, "Nazwa użytkownika", screenName);
+                    break;
+            }
         }
         
         [Then(@"""(.*)"" screen is displayed correctly for ""(.*)"" profile")]

@@ -103,7 +103,6 @@ namespace patronage21_qa_appium.Screens
         // To be changed, for now both owned account and other person account details are the same
         private static Dictionary<string, string> _userDetailsXpathDict = new()
         {
-            { "Nagłówek", "//android.view.View[@text='Użytkownicy']" },
             { "Opis", "//android.view.View[@text='Użytkownicy']/following-sibling::android.view.View[position()=1]" },
             { "Zdjęcie", "//android.widget.ImageView[@content-desc='Search Icon']" },
             { "Nazwa użytkownika", "//android.widget.ImageView[@content-desc='Zdjęcie profilowe']/following-sibling::android.view.View[position()=1]" },
