@@ -1,6 +1,6 @@
 Feature: Registration form
 	#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-182
-	#Task in JS Team: https://tracker.intive.com/jira/browse/IP2-244
+	#Task in JS Team: https://tracker.intive.com/jira/browse/IP2-244 and https://tracker.intive.com/jira/browse/IP2-780
 
 #https://tracker.intive.com/jira/browse/IP2-314
 Scenario: REGISTRATION_FORM_[/api/register]_[POST]_1_IP-244_send_request_with_correctly_data
@@ -124,12 +124,14 @@ Examples:
 	| firstName | lastName | email			   | phoneNumber | technologies | password        | login       | githubLink         |
 	| Jan       | Kowalski | example@email.com | 123456789   | QA           | randomPassword@ | randomLogin | github.com/example |
 
+#https://tracker.intive.com/jira/browse/IP2-910
 Scenario: REGISTRATION_FORM_[/api/register]_[POST]_12_IP-244_send_request_with_polish_characters_in_name_and_lastname
 	Given User filled data correctly with polish characters in name and lastname
 	When Request sends to API 
 	Then The server should return positive status 200 
 	And JSON body without sensitive data
 
+#https://tracker.intive.com/jira/browse/IP2-911
 Scenario: REGISTRATION_FORM_[/api/register]_[POST]_13_IP-244_send_request_with_two-part_lastname
 	Given User filled data correctly with two-part lastname
 	When Request sends to API 

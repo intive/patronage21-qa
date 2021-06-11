@@ -229,6 +229,20 @@ namespace RestSharpProject.Steps
             user = user.CreateUser(user);
         }
 
+        [Given(@"User filled data correctly with polish characters in name and lastname")]
+        public void GivenUserFilledDataCorrectlyWithPolishCharactersInNameAndLastname()
+        {
+            user = new User("QŃ", "Kędzierzawy", null, null, null, null, null, null);
+            user = user.CreateUser(user);
+        }
+
+        [Given(@"User filled data correctly with two-part lastname")]
+        public void GivenUserFilledDataCorrectlyWithTwo_PartLastname()
+        {
+            user = new User(null, "Kowalski-Nowak", null, null, null, null, null, null);
+            user = user.CreateUser(user);
+        }
+
         [When(@"Request sends to API")]
         public void WhenUserInterfaceSendsTheRequestToAPI()
         {
