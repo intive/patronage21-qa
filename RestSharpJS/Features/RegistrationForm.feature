@@ -123,3 +123,15 @@ Scenario: REGISTRATION_FORM_[/api/register]_[POST]_11_IP-244_form_with_login_ass
 Examples:
 	| firstName | lastName | email			   | phoneNumber | technologies | password        | login       | githubLink         |
 	| Jan       | Kowalski | example@email.com | 123456789   | QA           | randomPassword@ | randomLogin | github.com/example |
+
+Scenario: REGISTRATION_FORM_[/api/register]_[POST]_12_IP-244_send_request_with_polish_characters_in_name_and_lastname
+	Given User filled data correctly with polish characters in name and lastname
+	When Request sends to API 
+	Then The server should return positive status 200 
+	And JSON body without sensitive data
+
+Scenario: REGISTRATION_FORM_[/api/register]_[POST]_13_IP-244_send_request_with_two-part_lastname
+	Given User filled data correctly with two-part lastname
+	When Request sends to API 
+	Then The server should return positive status 200 
+	And JSON body without sensitive data

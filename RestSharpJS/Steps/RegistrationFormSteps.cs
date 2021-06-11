@@ -115,7 +115,7 @@ namespace RestSharpProject.Steps
         public void GivenUserFilledRequiredDataWithCheckingOneFieldAboutTechnologyGroups()
         {
             List<string> technologies = new List<string>();
-            technologies.Add("Mobile");
+            technologies.Add("QA");
             user = new User(null, null, null, null, technologies, null, null, null);
             user = user.CreateUser(user);
         }
