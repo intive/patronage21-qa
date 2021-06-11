@@ -1,24 +1,22 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using System.Collections.Generic;
+using patronage21_qa_appium.Screens;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
+    [Scope(Feature = "HomeNavigation")]
     public class HomeNavigationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
-        private Dictionary<string, string> buttons = new Dictionary<string, string>()
-        {
-            { "Grupy technologiczne", "Miniaturka modułu grup technologicznych"},
-            { "Użytkownicy", "Miniaturka modułu użytkowników"},
-            { "Dzienniczek", "Miniaturka modułu dzienniczka"},
-            { "Kalendarz", "Miniaturka modułu kalendarza"},
-            { "Audyt zdarzeń", "Miniaturka modułu audytu zdarzeń"},
-            { "Rejestracja", "Miniaturka modułu rejestracji"},
-        };
+
+        private readonly HomeScreen _homeScreen = new();
+        private readonly LoginScreen _loginScreen = new();
+        private readonly RegisterScreen _registerScreen = new();
+        private readonly ActivationScreen _activationScreen = new();
+        private readonly RegisterSubmitScreen _registerSubmitScreen = new();
 
         public HomeNavigationSteps(AppiumDriver<AndroidElement> driver)
         {
@@ -28,35 +26,38 @@ namespace patronage21_qa_appium.Steps
         [Given(@"User is on Home page")]
         public void GivenUserIsOnHomePage()
         {
+            _loginScreen.ClickElement(_driver, "Rejestracja");
+            _registerScreen.Wait(_driver);
+            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", "test@email.com", "123456789",
+                true, false, false, false, "test", "Deactivate11!", "Deactivate11!", "", true, true, true);
+            // to be changed, there is no code table in database yet
+            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            string code = "99999999";
+            _activationScreen.Wait(_driver);
+            _activationScreen.WriteTextToField(_driver, code, "Kod");
+            _activationScreen.ClickElement(_driver, "Zatwierdź kod");
+            _activationScreen.Wait(_driver);
+            _registerSubmitScreen.ClickElement(_driver, "Zamknij");
         }
 
         [When(@"User clicks on ""(.*)"" button")]
-        public void WhenUserClickskOnButton(string buttonId)
+        public void WhenUserClickskOnButton(string button)
         {
-            if (buttonId.Equals("Back"))
+            if (button.Equals("Back"))
             {
                 _driver.Navigate().Back();
             }
             else
             {
-                var button = _driver.FindElementByAccessibilityId(buttons[buttonId]);
-                button.Click();
+                _homeScreen.ClickElement(_driver, button);
             }
         }
 
         [Then(@"User sees ""(.*)"" page")]
         public void ThenUserSeesPage(string pageTitle)
         {
-            if (pageTitle.Equals("Home"))
-            {
-                pageTitle = "Witaj w Patron-a-tive!";
-            } else if (pageTitle.Equals("Rejestracja"))
-            {
-                pageTitle = "Logowanie";
-            }
-            var xpath = "//android.view.View[@text='" + pageTitle + "']";
-            var pageElement = _driver.FindElementByXPath(xpath);
-            Assert.IsTrue(pageElement.Displayed);
+            var headerXpath = BaseScreen._screensXpathDict[pageTitle]["Nagłówek"];
+            Assert.IsNotEmpty(_driver.FindElementsByXPath(headerXpath));
         }
     }
 }

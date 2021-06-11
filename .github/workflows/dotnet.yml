@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: "30 13 * * 4"
+
+jobs:
+  build_restsharp_js:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: ./RestSharpJS
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings
+      working-directory: ./RestSharpJS
+      
+  build_restsharp_java:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: ./RestSharpJava
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJava.runsettings
+      working-directory: ./RestSharpJava
+      
+  build_selenium:
+  
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: ./SeleniumProject
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --settings:PatronativePage.runsettings
+      working-directory: ./SeleniumProject

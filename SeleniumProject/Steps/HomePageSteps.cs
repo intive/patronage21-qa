@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumProject.Pages;
+using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 
@@ -11,72 +13,80 @@ namespace SeleniumProject.Steps
     {
         private readonly IWebDriver _webdriver;
         private readonly HomePage homePage;
+        private WebDriverWait wait;
+        private string homePageUrl, calendarUrl;
+        private string usersUrl = TestContext.Parameters["javaUsersPage"];
 
         public HomePageSteps(IWebDriver driver)
         {
             _webdriver = driver;
+            homePageUrl = _webdriver.Url;
+            calendarUrl = _webdriver.Url + "kalendarz";
+            if (string.IsNullOrEmpty(usersUrl))
+                usersUrl = "http://localhost:3000/";
+            wait = new WebDriverWait(_webdriver, TimeSpan.FromSeconds(10));
             homePage = new HomePage(_webdriver);
         }
 
         [Given(@"User is on home page")]
         public void GivenUserIsOnHomePage()
         {
-            _webdriver.Url = _webdriver.Url;
+            _webdriver.Url = homePageUrl;
         }
 
         [Given(@"Kalendarz is on home page")]
         public void GivenKalendarzIsOnHomePage()
         {
-            homePage.FindCalendarModule();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(homePage.calendar));
+        }
+
+        [Given(@"Users module is on home page")]
+        public void GivenUsersModuleIsOnHomePage()
+        {
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(homePage.users));
+        }
+
+        [When(@"User clicks on users module")]
+        public void WhenUserClicksOnUsersModule()
+        {
+            homePage.ClicksOnUsersModule();
         }
 
         [When(@"User clicks on Kalendarz")]
         public void WhenUserClicksOnKalendarz()
         {
-            homePage.ClicksOnCalendar();
-            Thread.Sleep(4000);
+            homePage.ClicksOnCalendarModule();
+            Thread.Sleep(500);
         }
 
         [When(@"Grupy technologiczne is on home page")]
         public void WhenTechnologiesGroupsIsOnHomePage()
         {
-            homePage.FindTechnologiesGroupsModule();
-        }
-
-        [When(@"Użytkownicy is on home page")]
-        public void WhenUsersIsOnHomePage()
-        {
-            homePage.FindUsersModule();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(homePage.technologiesGroups));
         }
 
         [When(@"Dzienniczek is on home page")]
         public void WhenDiaryIsOnHomePage()
         {
-            homePage.FindDiaryModule();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(homePage.diary));
         }
 
         [When(@"Audyt zdarzeń is on home page")]
         public void WhenAuditOfEventsIsOnHomePage()
         {
-            homePage.FindAuditOfEventsModule();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(homePage.auditOfEvents));
         }
 
         [Then(@"User is transferred to page about calendar")]
         public void ThenUserIsTransferredToPageAboutCalendar()
         {
-            Assert.That(_webdriver.Url, Is.EqualTo("http://localhost:3000/kalendarz"));
+            Assert.AreEqual(_webdriver.Url, calendarUrl);
         }
 
         [Then(@"Grupy technologiczne is inactive")]
         public void ThenTechnologiesGroupsIsInactive()
         {
             Assert.That(homePage.TechnologiesGroupsModuleIsActive(), Is.False);
-        }
-
-        [Then(@"Użytkownicy is inactive")]
-        public void ThenUsersIsInactive()
-        {
-            Assert.That(homePage.UsersModuleIsActive(), Is.False);
         }
 
         [Then(@"Dzienniczek is inactive")]
@@ -89,6 +99,12 @@ namespace SeleniumProject.Steps
         public void ThenAuditOfEventsIsInactive()
         {
             Assert.That(homePage.AuditOfEventsModuleIsActive(), Is.False);
+        }
+
+        [Then(@"User is transferred to page about users")]
+        public void ThenUserIsTransferredToPageAboutUsers()
+        {
+            Assert.AreEqual(_webdriver.Url, usersUrl);
         }
     }
 }

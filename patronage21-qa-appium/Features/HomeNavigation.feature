@@ -25,19 +25,17 @@ Examples:
 | journal      | Dzienniczek		   | Dzienniczek           |
 | calendar     | Kalendarz			   | Kalendarz             |
 | events_audit | Audyt zdarzeń		   | Audyt zdarzeń         |
-| register     | Rejestracja		   | Rejestracja           |
 	
 # https://tracker.intive.com/jira/browse/IP2-336
-Scenario Outline:HOME_PAGE_3_IP2-93_back_to_home_page_navigation
-	When User clicks on "<button_name>" button
+Scenario:HOME_PAGE_3_IP2-93_back_to_home_page_navigation
+	When User clicks on "Grupy technologiczne" button
+	And User clicks on "Back" button
+	When User clicks on "Użytkownicy" button
+	And User clicks on "Back" button
+	When User clicks on "Dzienniczek" button
+	And User clicks on "Back" button
+	When User clicks on "Kalendarz" button
+	And User clicks on "Back" button
+	When User clicks on "Audyt zdarzeń" button
 	And User clicks on "Back" button
 	Then User sees "Home" page
-
-Examples: 
-| button_name          |
-| Grupy technologiczne |
-| Użytkownicy          |
-| Dzienniczek          |
-| Kalendarz            |
-| Audyt zdarzeń        |
-| Rejestracja          |

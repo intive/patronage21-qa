@@ -37,7 +37,7 @@ namespace patronage21_qa_appium.Screens
         {
             { "Nagłówek", "//android.view.View[@text='Zgłoś się do programu Patron-a-tive już dziś!']" },
             { "Opis", "//android.view.View[@text='Wystarczy, że wypełnisz poniższy formularz zgłoszeniowy.']" },
-            { "Zwrot", "//android.widget.EditText[@text='Pan' or @text='Pani']/following-sibling::android.view.View[position()=1]" },
+            { "Zwrot", "//android.view.View[@text='Wystarczy, że wypełnisz poniższy formularz zgłoszeniowy.']/following-sibling::android.view.View[position()=1]" },
             { "Pan", "//android.view.View[@text='Pan']" },
             { "Pani", "//android.view.View[@text='Pani']" },
             { "Imię", "//android.widget.EditText[@text='Imię *, Imię *']" },
@@ -79,7 +79,7 @@ namespace patronage21_qa_appium.Screens
             { "Opis", "//android.view.View[@text='Użytkownicy']/following-sibling::android.view.View[position()=1]" },
             { "Szukaj użytkownika", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*" },
             { "Wybrana grupa", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText" },
-            { "Wybierz grupe", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText/following-sibling::*[position()=1]" },
+            { "Wybierz grupę", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText/following-sibling::*[position()=1]" },
             { "Liderzy nagłówek", "//android.view.View[@text='Liderzy']" },
             { "Liderzy licznik", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()=1]" },
             { "Liderzy lista", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']]" },
@@ -95,12 +95,12 @@ namespace patronage21_qa_appium.Screens
             { "Ty użytkownik", "//android.view.View[@text='Ty']/preceding-sibling::android.view.View[position()=1]" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
-            { "Grupy", "//android.view.View" },
+            { "Grupy", "//android.view.View[@text='Wszystkie grupy']/following-sibling::android.view.View" },
             { "Wszystkie grupy", "//android.view.View[@text='Wszystkie grupy']" },
             { "QA", "//android.view.View[@text='QA']" },
             { "Java", "//android.view.View[@text='Java']" },
-            { "Javascript", "//android.view.View[@text='Javascript']" },
-            { "Android", "//android.view.View[contains(@text, 'Android')]" },
+            { "JavaScript", "//android.view.View[@text='JavaScript']" },
+            { "Mobile (Android)", "//android.view.View[contains(@text, 'Android')]" },
         };
 
         // To be changed, for now both owned account and other person account details are the same
@@ -147,17 +147,72 @@ namespace patronage21_qa_appium.Screens
             { "OK", "//android.widget.Button[@text='OK']" },
         };
 
+        private static Dictionary<string, string> _editUserXpathDict = new()
+        {
+            { "Imię", "//android.widget.EditText[position()=1]" },
+            { "Nazwisko", "//android.widget.EditText[position()=2]" },
+            { "Email", "//android.widget.EditText[position()=3]" },
+            { "Numer telefonu", "//android.widget.EditText[position()=4]" },
+            { "Github", "//android.widget.EditText[position()=5]" },
+            { "Bio", "//android.widget.EditText[position()=6]" },
+        };
+
+        private static Dictionary<string, string> _gradebookXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Dzienniczek']" },
+            { "Opis", "//android.view.View[@text='Dzienniczek']/following-sibling::android.view.View[position()=1]" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _calendarXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Kalendarz']" },
+            { "Opis", "//android.view.View[@text='Kalendarz']/following-sibling::android.view.View[position()=1]" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _eventsAuditXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Audyt zdarzeń']" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _techGroupsXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Grupy technologiczne']" },
+            { "Opis", "//android.view.View[@text='Grupy technologiczne']/following-sibling::android.view.View[position()=1]" },
+            { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
+            { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
+        };
+
+        private static Dictionary<string, string> _resendCodeXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Weryfikacja adresu e-mail']" },
+            { "Opis", "//android.view.View[@text='Wpisz ponownie swój adres e-mail']" },
+            { "Email", "//android.widget.EditText[position()=1]" },
+            { "Wyślij kod", "//android.widget.Button[@text='Wyślij kod']" },
+        };
+
         public static Dictionary<string, Dictionary<string, string>> _screensXpathDict = new()
         {
             { "Home", _homeXpathDict },
             { "Logowanie", _loginXpathDict },
             { "Rejestracja", _registerXpathDict },
             { "Aktywacja", _activationXpathDict },
+            { "Wyślij ponownie kod", _resendCodeXpathDict },
             { "Potwierdzenie rejestracji", _registerSubmitXpathDict },
             { "Użytkownicy", _usersXpathDict },
             { "Szczegóły użytkownika", _userDetailsXpathDict },
             { "Dezaktywacja", _deactivationXpathDict },
+            { "Edycja użytkownika", _editUserXpathDict },
             { "Potwierdzenie dezaktywacji", _deactivationSubmitXpathDict },
+            { "Dzienniczek", _gradebookXpathDict },
+            { "Kalendarz", _calendarXpathDict },
+            { "Audyt zdarzeń", _eventsAuditXpathDict },
+            { "Grupy technologiczne", _techGroupsXpathDict },
         };
 
         public static void Swipe(IPerformsTouchActions driver, int startX, int startY, int endX, int endY, int duration)
@@ -223,7 +278,22 @@ namespace patronage21_qa_appium.Screens
             return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
         }
 
+        public static AndroidElement GetElementFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
+        {
+            return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
+        }
+
         public virtual IReadOnlyCollection<AndroidElement> GetElements(AppiumDriver<AndroidElement> driver, string screenName, string elementName)
+        {
+            return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
+        }
+
+        public static AndroidElement GetElementFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
+        {
+            return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
+        }
+
+        public static IReadOnlyCollection<AndroidElement> GetElementsFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
         {
             return driver.FindElementsByXPath(_screensXpathDict[screenName][elementName]);
         }
