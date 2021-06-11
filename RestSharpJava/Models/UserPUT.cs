@@ -23,22 +23,6 @@ namespace RestSharpProject.Models
         public string bio { get; set; }
         public string status { get; set; }
     }
-
-    public class RejectedValue
-    {
-
-    }
-
-    public class ViolationError
-    {
-        public string fieldName { get; set; }
-        public string message { get; set; }
-    }
-
-    public class RootResponse
-    {
-        public List<ViolationError> violationErrors { get; set; }
-    }
 }
 
 

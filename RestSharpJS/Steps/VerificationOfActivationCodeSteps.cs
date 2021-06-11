@@ -11,9 +11,9 @@ namespace RestSharpProject.Steps
     [Binding]
     public class VerificationOfActivationCodeSteps
     {
-        private IRestClient restClient = new RestClient();
-        private IRestRequest restRequest;
-        private IRestResponse restResponse = new RestResponse();
+        private IRestClient _restClient;
+        private IRestRequest _restRequest;
+        private IRestResponse _restResponse;
 
         private string userName = "Janina";
         private string userLastName = "Nowak";
@@ -23,20 +23,31 @@ namespace RestSharpProject.Steps
         private Nullable<int> phoneNumber = 123456789;
         private string password = "randomPassword5@";
         private string activatedUserEmail;
+        private string activateUrl = "/activate";
+        private string registrationUrl, activationUrl;
+
+        public VerificationOfActivationCodeSteps(RestClient restClient)
+        {
+            activationUrl = restClient.BaseUrl + "/list";
+            registrationUrl = restClient.BaseUrl + "/register";
+            _restClient = new RestClient(restClient.BaseUrl + activateUrl);
+            _restRequest = new RestRequest(Method.PUT);
+        }
 
         [Given(@"Endpoint is /api/activate")]
         public void GivenEndpointIsApiActivate()
         {
-            restRequest = new RestRequest("http://127.0.0.1:8080/api/activate");
+            _restClient.BaseUrl = _restClient.BaseUrl;
         }
 
         [Given(@"Inactive User is in database")]
         public void GivenInactiveUserIsInDatabase()
         {
+            RestClient restClient = new RestClient();
             List<string> technologies = new List<string>();
             technologies.Add("QA");
-            IRestRequest restRequestRegister = new RestRequest("http://127.0.0.1:8080/api/register");
-            restRequestRegister.AddJsonBody(new
+            RestRequest restRequest = new RestRequest(registrationUrl, Method.POST);
+            restRequest.AddJsonBody(new
             {
                 technologies = technologies,
                 firstName = userName,
@@ -48,30 +59,30 @@ namespace RestSharpProject.Steps
                 githubLink = githubLink,
             });
 
-            IRestResponse restResponseRegister = new RestResponse();
-            restResponseRegister = restClient.Post(restRequestRegister);
+            restClient.Execute(restRequest);
         }
 
         [Given(@"User is activated")]
         public void GivenUserIsActivated()
         {
-            IRestRequest restRequestList = new RestRequest("http://127.0.0.1:8080/api/list?active=true");
-            IRestResponse restResponseList = new RestResponse();
-            restResponseList = restClient.Get(restRequestList);
-            List<UserModel> userList = JsonConvert.DeserializeObject<List<UserModel>>(restResponseList.Content);
+            RestResponse restResponse = new RestResponse();
+            RestRequest restRequest = new RestRequest(activationUrl + "?active=true");
+            RestClient restClient = new RestClient();
+            restResponse = (RestResponse)restClient.Get(restRequest);
+            List<UserModel> userList = JsonConvert.DeserializeObject<List<UserModel>>(restResponse.Content);
             activatedUserEmail = userList[0].email;
         }
 
         [When(@"the request is sent to API")]
         public void WhenTheRequestIsSentToAPI()
         {
-            restResponse = restClient.Put(restRequest);
+            _restResponse = _restClient.Put(_restRequest);
         }
 
         [When(@"Client enters a code and not existing email")]
         public void WhenClientEntersACodeAndNotExistingEmail()
         {
-            restRequest.AddJsonBody(new
+            _restRequest.AddJsonBody(new
             {
                 email = "email@email.com",
                 activationCode = "12345678"
@@ -81,7 +92,7 @@ namespace RestSharpProject.Steps
         [When(@"Client inserts previously used code and the email")]
         public void WhenClientInsertsPreviouslyUsedCodeAndTheEmail()
         {
-            restRequest.AddJsonBody(new
+            _restRequest.AddJsonBody(new
             {
                 email = activatedUserEmail,
                 activationCode = "12345678"
@@ -91,7 +102,7 @@ namespace RestSharpProject.Steps
         [When(@"Client enters (.*) and the email")]
         public void WhenClientEntersAndTheEmail(string code)
         {
-            restRequest.AddJsonBody(new
+            _restRequest.AddJsonBody(new
             {
                 email = email,
                 activationCode = code
@@ -101,7 +112,7 @@ namespace RestSharpProject.Steps
         [When(@"Client enters code and incomplete email")]
         public void WhenClientEntersCodeAndIncompleteEmail(Table table)
         {
-            restRequest.AddJsonBody(new
+            _restRequest.AddJsonBody(new
             {
                 email = "example476email.com",
                 activationCode = "12345678"
@@ -111,19 +122,19 @@ namespace RestSharpProject.Steps
         [Then(@"response contains status '(.*)'")]
         public void ThenResponseContainsStatus(string status)
         {
-            Assert.IsTrue(restResponse.Content.Contains(status));
+            Assert.IsTrue(_restResponse.Content.Contains(status));
         }
 
         [Then(@"Verification is not successful")]
         public void ThenVerificationIsNotSuccessful()
         {
-            Assert.That(restResponse.IsSuccessful, Is.False);
+            Assert.That(_restResponse.IsSuccessful, Is.False);
         }
 
         [Then(@"return Status is (.*)")]
         public void ThenReturnStatusIs(int statusCode)
         {
-            Assert.AreEqual(statusCode, (int)restResponse.StatusCode);
+            Assert.AreEqual(statusCode, (int)_restResponse.StatusCode);
         }
     }
 }
