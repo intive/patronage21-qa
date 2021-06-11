@@ -76,6 +76,7 @@ namespace patronage21_qa_appium.Steps
         [When(@"User clicks ""(.*)""")]
         public void WhenUserClicks(string element)
         {
+            BaseScreen.SwipeDown(_driver, "Szczegóły użytkownika");
             _userDetailsScreen.ClickElement(_driver, element);
         }
         
