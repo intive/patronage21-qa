@@ -115,7 +115,7 @@ namespace RestSharpProject.Steps
         public void GivenUserFilledRequiredDataWithCheckingOneFieldAboutTechnologyGroups()
         {
             List<string> technologies = new List<string>();
-            technologies.Add("Mobile");
+            technologies.Add("QA");
             user = new User(null, null, null, null, technologies, null, null, null);
             user = user.CreateUser(user);
         }
@@ -226,6 +226,20 @@ namespace RestSharpProject.Steps
         public void GivenUserFillsLoginWhichIsNotUnique()
         {
             user = new User(null, null, null, null, null, null, null, null);
+            user = user.CreateUser(user);
+        }
+
+        [Given(@"User filled data correctly with polish characters in name and lastname")]
+        public void GivenUserFilledDataCorrectlyWithPolishCharactersInNameAndLastname()
+        {
+            user = new User("QŃ", "Kędzierzawy", null, null, null, null, null, null);
+            user = user.CreateUser(user);
+        }
+
+        [Given(@"User filled data correctly with two-part lastname")]
+        public void GivenUserFilledDataCorrectlyWithTwo_PartLastname()
+        {
+            user = new User(null, "Kowalski-Nowak", null, null, null, null, null, null);
             user = user.CreateUser(user);
         }
 
