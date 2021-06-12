@@ -39,11 +39,12 @@ namespace SeleniumProject.Features
         {
           
         }
-         
-        [Then(@"User with this name and surname is not displayed")]
-        public void ThenUserWithThisNameAndSurnameIsNotDisplayed()
+
+        [Then(@"A user with name and surname equal '(.*)' is displayed")]
+        public void ThenAUserWithNameAndSurnameEqualIsDisplayed(string userData)
         {
-         
+
         }
+        
     }
 }
