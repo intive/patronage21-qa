@@ -1,4 +1,4 @@
-﻿Feature: Error Site
+﻿Feature: ERROR_SITE Error Site
 	There should be possibility to be transferred to main site from "Wystąpił błąd" site.
 
 

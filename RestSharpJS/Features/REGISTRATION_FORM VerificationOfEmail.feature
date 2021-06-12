@@ -1,4 +1,4 @@
-﻿Feature: Verification of activation code
+﻿Feature: REGISTRATION_FORM [/api/activate] Verification of email
 	Endpoint should allow us to verify the email adress with correct code and activate account.
 
 	# Link QA: https://tracker.intive.com/jira/browse/IP2-181

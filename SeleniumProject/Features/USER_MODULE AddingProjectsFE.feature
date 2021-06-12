@@ -1,4 +1,5 @@
-﻿Feature: Adding projects to the user account
+﻿@ignore
+Feature: USER_MODULE Adding projects to the user account
         User can add maximum of 5 projects in which he participates 
 
 #Task in QA: https://tracker.intive.com/jira/browse/IP2-828

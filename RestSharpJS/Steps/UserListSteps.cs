@@ -8,7 +8,6 @@ using TechTalk.SpecFlow;
 namespace RestSharpProject.Steps
 {
     [Binding]
-    [Scope(Feature = "User list")]
     public class UserListSteps
     {
         private IRestClient _restClient;

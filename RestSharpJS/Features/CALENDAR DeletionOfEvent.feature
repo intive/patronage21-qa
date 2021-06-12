@@ -1,4 +1,5 @@
-﻿Feature: Calendar Deletion Of Event
+﻿@ignore
+Feature: CALENDAR [/api/events/delete] Deletion Of Event
 	
 # link QA: https://tracker.intive.com/jira/browse/IP2-640
 # link JS: https://tracker.intive.com/jira/browse/IP2-549

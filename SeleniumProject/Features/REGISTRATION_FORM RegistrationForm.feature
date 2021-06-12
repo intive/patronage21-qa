@@ -1,4 +1,4 @@
-﻿Feature: Registration form
+﻿Feature: REGISTRATION_FORM Registration form
 	User signs up to Patronage by form.
 	#Task in JS Board: https://tracker.intive.com/jira/browse/IP2-98 and https://tracker.intive.com/jira/browse/IP2-243
 	#Task in QA Board: https://tracker.intive.com/jira/browse/IP2-180

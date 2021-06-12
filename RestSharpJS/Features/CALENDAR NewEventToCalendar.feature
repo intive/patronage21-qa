@@ -1,4 +1,5 @@
-﻿Feature: New event to calendar
+﻿@ignore
+Feature: CALENDAR [/api/events] New event to calendar
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-633
 #Task in JS Team: https://tracker.intive.com/jira/browse/IP2-548
 
