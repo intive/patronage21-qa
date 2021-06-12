@@ -17,7 +17,7 @@ namespace RestSharpJava.Hooks
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            _extentHtmlReporter = new ExtentHtmlReporter(@".\Reports\");
+            _extentHtmlReporter = new ExtentHtmlReporter(@"..\..\..\Reports\");
             _extentReports = new ExtentReports();
             _extentReports.AttachReporter(_extentHtmlReporter);
         }
