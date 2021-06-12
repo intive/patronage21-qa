@@ -14,8 +14,8 @@ Then A user with name and surname equal '<user_data>' is displayed
 
 Examples:
 | user_data        | technology_group                                  |
-| name and surname | Wszystkie grupy technologiczne                    |
-| name and surname | technological group in which this user is located |
+| Tomek Kowalski   | Wszystkie grupy technologiczne                    |
+| Tomek Kowalski   | Java                                              |
 
 
 # link to Zephyr_2 test
