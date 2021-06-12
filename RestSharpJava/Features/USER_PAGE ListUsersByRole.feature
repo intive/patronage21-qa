@@ -1,4 +1,5 @@
-﻿Feature: Listing users by given role
+﻿@ignore
+Feature: USER_PAGE [/api/users] Listing users by given role
 	User Story: There will be a user story when it's ready
 	Task in Java Board: https://tracker.intive.com/jira/browse/IP2-85
 	Task in QA Board: https://tracker.intive.com/jira/browse/IP2-190
@@ -7,7 +8,7 @@ Background:
 Given Endpoint is /api/users
 
 # https://tracker.intive.com/jira/browse/IP2-349
-Scenario Outline: [/api/users][GET]_1_Getting list of users with given role
+Scenario Outline: USER_PAGE_[/api/users]_[GET]_1_Getting list of users with given role
 Given Customer sets the endpoint with method GET
 And Several users with different roles exist in application
 And Customer enters valid <role> as a query parameter

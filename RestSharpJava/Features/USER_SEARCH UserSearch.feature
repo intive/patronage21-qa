@@ -1,4 +1,5 @@
-﻿Feature: User Search
+﻿@ignore
+Feature: USER_SEARCH [/api/users] User Search
 	User Story: There will be a user story when it's ready
 	Task in Java Board: https://tracker.intive.com/jira/browse/IP2-90
 	Task in QA Board: https://tracker.intive.com/jira/browse/IP2-193

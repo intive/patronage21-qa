@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\USER_PROFILE DeactivatingUserAddingFunctionality .feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
 	<PackageReference Include="ExtentReports" Version="4.1.0" />
 	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
@@ -22,5 +26,28 @@
   <ItemGroup>
 	<Folder Include="Drivers\" />
 	<Folder Include="Hooks\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\USER_CONTACT UserContact.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\USER_PROFILE DeactivatingUserAddingFunctionality .feature.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\USER_CONTACT UserContact.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>USER_CONTACT UserContact.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\USER_PROFILE DeactivatingUserAddingFunctionality .feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
  </Project>

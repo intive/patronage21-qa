@@ -1,5 +1,5 @@
 ﻿@ignore
-Feature: USER_MODULE Adding projects to the user account
+Feature: USER_PROFILE Adding projects to the user account
         User can add maximum of 5 projects in which he participates 
 
 #Task in QA: https://tracker.intive.com/jira/browse/IP2-828
@@ -9,7 +9,7 @@ Background:
 	Given User is in the User Module
 
 #https://tracker.intive.com/jira/browse/IP2-859
-Scenario Outline: USER_MODULE_1_IP2-677_User_can_add_a_maximum_of_5_projects_to_user_account
+Scenario Outline: USER_PROFILE_1_IP2-677_User_can_add_a_maximum_of_5_projects_to_user_account
 	When User clicks Edytuj profil
 	And User clicks + 
 	And User chooses project name '<name>' and role '<role>'
@@ -26,7 +26,7 @@ Examples:
 
 
 #https://tracker.intive.com/jira/browse/IP2-860
-Scenario Outline: USER_MODULE_2_IP2-677_User_should_not_be_allowed_to_add_more_than_5_projects_to_user_account
+Scenario Outline: USER_PROFILE_2_IP2-677_User_should_not_be_allowed_to_add_more_than_5_projects_to_user_account
 	When User clicks Edytuj profil
 	And User clicks +
 	And User chooses project name '<name>' and role '<role>'
