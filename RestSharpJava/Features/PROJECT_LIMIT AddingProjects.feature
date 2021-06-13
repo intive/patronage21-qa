@@ -1,4 +1,4 @@
-﻿Feature: Adding projects to user account
+﻿Feature: PROJECT_LIMIT [api/users] Adding projects to user account
 	 	
 	Task in Java Board: https://tracker.intive.com/jira/browse/IP2-676
 	Task in QA Board: https://tracker.intive.com/jira/browse/IP2-772
@@ -7,7 +7,7 @@ Background:
 	Given Url is set
 
 #https://tracker.intive.com/jira/browse/IP2-856
-Scenario Outline: PROJECT_LIMIT_1_[api/users]_[PUT]_IP2-676_Adding_projects_to_user_account
+Scenario Outline: PROJECT_LIMIT_[api/users]_[PUT]_1_IP2-676_Adding_projects_to_user_account
 	When User '<username>' sends the PUT request to add <count> projects
 	Then Server returns status <code>
 	
@@ -21,7 +21,7 @@ Examples:
 
 
 #https://tracker.intive.com/jira/browse/IP2-857
-Scenario Outline: PROJECT_LIMIT_2_[api/users]_[PUT]_IP2-676_Adding_more_than_five_projects_to_user_account
+Scenario Outline: PROJECT_LIMIT_[api/users]_[PUT]_2_IP2-676_Adding_more_than_five_projects_to_user_account
 	When User '<username>' sends the PUT request to add <count> projects
 	Then Server returns status <code> and error message '<message>' 
 
@@ -32,7 +32,7 @@ Examples:
 
 
 #https://tracker.intive.com/jira/browse/IP2-858
-Scenario Outline: PROJECT_LIMIT_3_[api/users]_[PUT]_IP2-676_Adding_projects_to_user_account_that_does_not_exist
+Scenario Outline: PROJECT_LIMIT_[api/users]_[PUT]_3_IP2-676_Adding_projects_to_user_account_that_does_not_exist
 	When User '<username>' sends the PUT request to add <count> projects
 	Then Server returns status <code> and error message '<message>'
 

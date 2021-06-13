@@ -1,4 +1,4 @@
-﻿Feature: Hamburger menu
+﻿Feature: HAMBURGER_MENU Hamburger menu
 	#Task in QA: https://tracker.intive.com/jira/browse/IP2-606
 	#Task in JS: https://tracker.intive.com/jira/browse/IP2-541
 

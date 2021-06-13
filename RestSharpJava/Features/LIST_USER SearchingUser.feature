@@ -1,4 +1,4 @@
-﻿Feature: Searching User
+﻿Feature: LIST_USER [/api/users] Searching User
 
 #Task in Java Board:https://tracker.intive.com/jira/browse/IP2-90
 #Task in Java Board:https://tracker.intive.com/jira/browse/IP2-85
@@ -12,7 +12,7 @@ Background:
 Given Url is set
 
 #https://tracker.intive.com/jira/browse/IP2-854
-Scenario Outline: LIST_USER_1_[/api/users][GET]_IP2-90_Getting_list_of_users_with_given_parameter_success
+Scenario Outline: LIST_USER_[/api/users]_[GET]_1_IP2-90_Getting_list_of_users_with_given_parameter_success
 When User sends the GET request with a '<query>' parameter
 Then Server return the code <code> 
 And JSON body contain list of users with proper '<parameter>' with '<value>'  
@@ -44,7 +44,7 @@ Examples:
      
 
 #https://tracker.intive.com/jira/browse/IP2-855
-Scenario Outline: LIST_USER_2_[/api/users][GET]_IP2-90_Getting_list_of_users_with_given_parameter_fail
+Scenario Outline: LIST_USER_[/api/users]_[GET]_2_IP2-90_Getting_list_of_users_with_given_parameter_fail
 When User sends the GET request with a '<query>' parameter
 Then Server returns the code <code> and the message '<firstMessage>'
 

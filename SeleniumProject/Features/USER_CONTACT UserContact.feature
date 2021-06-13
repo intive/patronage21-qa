@@ -1,4 +1,5 @@
-﻿Feature: User contact
+﻿@ignore
+Feature: USER_CONTACT User contact
 	User can contact with another users via application (phone, email) and see their github repository
 
 #Task in QA: https://tracker.intive.com/jira/browse/IP2-877

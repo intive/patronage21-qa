@@ -1,4 +1,5 @@
-﻿Feature: DeletingUsersImage
+﻿@ignore
+Feature: USER_PROFILE [frontend-api/users/{login}/image] Deleting Users Image
 
 Task in QA board: https://tracker.intive.com/jira/browse/IP2-795
 Task in Java board: https://tracker.intive.com/jira/browse/IP2-765
@@ -7,7 +8,7 @@ Background:
 Given Endpoint is /frontend-api/users/{login}/image
 
 # https://tracker.intive.com/jira/browse/IP2-849
-Scenario: 1_[frontend-api/users/{login}/image]_[DELETE]_Delete_users_image_correct
+Scenario: USER_PROFILE_[frontend-api/users/{login}/image]_[DELETE]_1_IP2-765_Delete_users_image_correct
 Given Client sets the endpoint with method DELETE
 And enters valid login 
 
@@ -19,7 +20,7 @@ Then The server returns code 200 - image removed
 
 
 # https://tracker.intive.com/jira/browse/IP2-850
-Scenario: 2_[frontend-api/users/{login}/image]_[DELETE]_Incorrect_login_entered_when_deleting_photo
+Scenario: USER_PROFILE_[frontend-api/users/{login}/image]_[DELETE]_2_IP2-765_Incorrect_login_entered_when_deleting_photo
 Given Client sets the endpoint with method DELETE
 And enters wrong login 
 
@@ -32,7 +33,7 @@ And message "User not found" is displayed
 
 
 # https://tracker.intive.com/jira/browse/IP2-851
-Scenario: 3_[frontend-api/users/{login}/image]_[DELETE]_Entering_login_with_an_illegal_character_when_deleting_photo
+Scenario: USER_PROFILE_[frontend-api/users/{login}/image]_[DELETE]_3_IP2-765_Entering_login_with_an_illegal_character_when_deleting_photo
 Given Client sets the endpoint with method DELETE
 And enters login with an illegal character
 

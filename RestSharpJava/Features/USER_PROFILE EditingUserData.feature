@@ -1,4 +1,4 @@
-﻿Feature: Editing user data 
+﻿Feature: USER PROFILE [/api/users] Editing user data 
 
 #Task in Java Board:https://tracker.intive.com/jira/browse/IP2-186
 #Task in QA Board:https://tracker.intive.com/jira/browse/IP2-89
@@ -9,7 +9,7 @@ Given User exists in the database
 | AnnaNowak | Tomasz    | Nowak    | tom@gmail.com | 783984984   | https://github.com/tom7u | duhfisudfhisudfh | 
 
 # https://tracker.intive.com/jira/browse/IP2-487
-Scenario Outline: USER_EDIT_1_[/api/users]_[PUT]_IP2-89_API_editing_user_who_exists_in_the_database_success
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_1_IP2-89_API_editing_user_who_exists_in_the_database_success
 When User sends a PUT request 
 | login   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   | bio   |
 | <login> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> | <bio> | 
@@ -27,7 +27,7 @@ Examples:
 | AnnaNowak | Anna      | Nowak     | ania1233d@gmail.com     | 111111111   | https://github.com/Ania    | jestem Ania | 200  |
 
 # https://tracker.intive.com/jira/browse/IP2-488
-Scenario Outline: USER_EDIT_2_[/api/users]_[PUT]_IP2-89_API_editing_user_who_exists_in_the_database_fail
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_2_IP2-89_API_editing_user_who_exists_in_the_database_fail
 When User sends a PUT request 
 | login   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   | bio   | 
 | <login> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> | <bio> | 
@@ -55,7 +55,7 @@ Examples:
 
 
 # https://tracker.intive.com/jira/browse/IP2-505
-Scenario Outline: USER_EDIT_3_[/api/users]_[PUT]_IP2-89_API_editing_user_who_does_not_exists_in_the_database
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_3_IP2-89_API_editing_user_who_does_not_exists_in_the_database
 When User sends a PUT request 
 | login   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   | bio   | 
 | <login> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> | <bio> | 

@@ -1,4 +1,5 @@
-﻿Feature: UserDownload
+﻿@ignore
+Feature: USERS_PAGE UserDownload
 
 Task in QA board: https://tracker.intive.com/jira/browse/IP2-188
 Task in Java board: https://tracker.intive.com/jira/browse/IP2-91

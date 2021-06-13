@@ -1,4 +1,4 @@
-﻿Feature: Home page
+﻿Feature: HOME_PAGE Home page
 	#Task in QA: https://tracker.intive.com/jira/browse/IP2-618
 	#Task in JS: https://tracker.intive.com/jira/browse/IP2-542 and https://tracker.intive.com/jira/browse/IP2-778
 
