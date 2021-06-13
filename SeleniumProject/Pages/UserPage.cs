@@ -27,6 +27,25 @@ namespace SeleniumProject.Pages
         public By searchUserInputXpath = By.XPath("//input[@placeholder='Szukaj użytkownika']");
         public IWebElement SearchUserInput => driver.FindElement(searchUserInputXpath);
 
+        public By technologyGroupListXPath = By.XPath("//*[(text()='Wszystkie grupy technologiczne')]//parent::div");
+        public IWebElement technologyGroupList => driver.FindElement(technologyGroupListXPath);
 
+        public By allTechnologyGroupXPath = By.XPath(".//li[contains(text(),'Wszystkie grupy technologiczne')]");
+
+        public IWebElement allTechnologyGroup => driver.FindElement(allTechnologyGroupXPath);
+
+        public By JavaXPath = By.XPath(".//li[contains(text(),'Java')]");
+
+        public IWebElement Java => driver.FindElement(JavaXPath);
+
+        public By mobileAndroidXPath = By.XPath(".//li[contains(text(),'Mobile (Android)')]");
+        public IWebElement mobileAndroid => driver.FindElement(mobileAndroidXPath);
+
+        public By brakWynikówXPath = By.XPath("//*[text()='Brak wyników']//parent::div");
+
+        public IWebElement brakWyników => driver.FindElement(brakWynikówXPath);
+
+        public By TomekKowalskiXPath = By.XPath("//*[text()='Tomek Kowalski']//parent::div");
+        public IWebElement TomekKowalski => driver.FindElement(TomekKowalskiXPath);
     }
 }

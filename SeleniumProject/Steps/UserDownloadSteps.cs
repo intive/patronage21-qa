@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumProject.Pages;
-using System;
 using TechTalk.SpecFlow;
 
 namespace SeleniumProject.Features
@@ -11,40 +10,79 @@ namespace SeleniumProject.Features
     {
         private readonly IWebDriver _webdriver;
         private readonly UserPage userpage;
+        private readonly NavigationPage navigationPage;
+        private readonly HomePage homePage;
 
         public UserDownloadSteps(IWebDriver driver)
         {
             _webdriver = driver;
             userpage = new UserPage(_webdriver);
+            navigationPage = new NavigationPage(_webdriver);
+            homePage = new HomePage(_webdriver);
         }
 
-        [Given(@"User is on the ""(.*)"" page")]
-        public void GivenUserIsOnThePage(string page)
+        [Given(@"User is on the users page")]
+        public void GivenUserIsOnThePage()
         {
-            if (page == "users")
+            navigationPage.NavigateToHomePage();
+            homePage.ClicksOnUsersModule();
+        }
+
+        [Given(@"User clicks on search field")]
+        public void GivenUserClicksOnSearchField()
+        {
+            userpage.SearchUserInput.Click();
+        }
+
+        [When(@"User typing '(.*)' for find specific person")]
+        public void WhenUserTypingForFindSpecificPerson(string userData)
+        {
+            userpage.SearchUserInput.SendKeys(userData);
+        }
+
+        [When(@"User selects a '(.*)'")]
+        public void WhenUserSelectsA(string technologyGroup)
+        {
+            userpage.technologyGroupList.Click();
+
+            if (technologyGroup == userpage.allTechnologyGroup.Text)
             {
-                _webdriver.Navigate().GoToUrl(userpage.envUrl);
-                Assert.AreEqual("Użytkownicy", userpage.UserHeader.Text);
+                userpage.allTechnologyGroup.Click();
+            }
+            else
+            {
+                userpage.Java.Click();
             }
         }
-        
-        [When(@"User enters the '(.*)' he wants to find in the ""(.*)"" field")]
-        public void WhenUserEntersTheHeWantsToFindInTheField(string userData, string searchUser)
+
+        [Then(@"A user with name and surname is displayed")]
+        public void ThenAUserWithNameAndSurnameIsDisplayed()
         {
-        
-        }
-        
-        [When(@"User selects '(.*)'")]
-        public void WhenUserSelects(string technologyGroup)
-        {
-          
+            Assert.IsTrue(userpage.TomekKowalski.Displayed);
         }
 
-        [Then(@"A user with name and surname equal '(.*)' is displayed")]
-        public void ThenAUserWithNameAndSurnameEqualIsDisplayed(string userData)
+        [When(@"User typing incomplete '(.*)' for find specific person")]
+        public void WhenUserTypingIncompleteForFindSpecificPerson(string userData)
         {
-
+            userpage.SearchUserInput.SendKeys(userData);
         }
-        
+
+        [Then(@"Is displayed '(.*)'")]
+        public void ThenIsDisplayed(string result)
+        {
+            Assert.IsTrue(userpage.TomekKowalski.Displayed);
+        }
+
+        [When(@"The user selects a '(.*)' in which this user is not located")]
+        public void WhenTheUserSelectsAInWhichThisUserIsNotLocated(string technologyGroup)
+        {
+            userpage.mobileAndroid.Click();
+        }
+
+        [Then(@"The message ""(.*)"" is displayed")]
+        public void ThenTheMessageIsDisplayed(string message)
+        {
+            Assert.AreEqual(message, userpage.brakWyników.Text);
+        }
     }
 }
