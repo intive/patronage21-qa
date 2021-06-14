@@ -133,7 +133,7 @@ Examples:
 Scenario Outline: USERS_SCREEN_11_IP2-152_view_user_details
 	Given Existing user "<name>" assigned to "<list>" list
 	When User clicks "<name>" in "<list>" list
-	Then User sees "Szczegóły użytkownika" screen
+	Then User is on "Szczegóły użytkownika" screen
 
 Examples: 
 | name         | list       |

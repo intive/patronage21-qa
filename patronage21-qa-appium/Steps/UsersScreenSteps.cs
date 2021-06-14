@@ -187,38 +187,10 @@ namespace patronage21_qa_appium.Steps
             Assert.IsEmpty(_usersScreen.GetElementsFromList(_driver, userName, listName));
         }
         
-        [Then(@"User sees ""(.*)"" screen")]
-        public void ThenUserSeesScreen(string screenName)
-        {
-            switch (screenName)
-            {
-                case "Dezaktywacja":
-                    Assert.IsNotEmpty(_deactivationScreen.GetElements(_driver, "Nagłówek"));
-                    Assert.IsNotEmpty(_deactivationScreen.GetElements(_driver, "Opis"));
-                    break;
-
-                case "Użytkownicy":
-                    Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Nagłówek"));
-                    Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Opis"));
-                    break;
-            }
-        }
-        
         [Then(@"User is on ""(.*)"" screen")]
         public void ThenUserIsOnScreen(string screenName)
         {
-            switch (screenName)
-            {
-                case "Dezaktywacja":
-                    Assert.IsNotEmpty(_deactivationScreen.GetElements(_driver, "Nagłówek"));
-                    Assert.IsNotEmpty(_deactivationScreen.GetElements(_driver, "Opis"));
-                    break;
-
-                case "Użytkownicy":
-                    Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Nagłówek"));
-                    Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Opis"));
-                    break;
-            }
+            Assert.IsNotEmpty(BaseScreen.GetElementsFromScreen(_driver, "Nagłówek", screenName));
         }
         
         [Then(@"User sees only one occurance of ""(.*)"" in ""(.*)"" list")]
