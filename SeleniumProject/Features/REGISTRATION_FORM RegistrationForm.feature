@@ -97,3 +97,17 @@ Scenario: REGISTRATION_FORM_9_IP2-243_form_without_checked_field_'Regulamin'
 		| Jan       | Kowalski | example@email.com | 123456789 | github.com/exampleLink | QA           |exampleLogin | examplePassword6@ | examplePassword6@ |
 	When Users doesn't check field Regulamin
 	Then Button Załóż konto is inactive 
+
+#https://tracker.intive.com/jira/browse/IP2-922
+Scenario: REGISTRATION_FORM_10_IP2-243_form_with_polish_characters_in_name_and_lastname
+	Given User fills data correctly
+		| firstName | lastName			  | email             | phone       | githubLink             | login        | password          | passwordConfirm   |
+		| QŃ        | Brzęczyszczykiewicz | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
+	Then Button Załóż konto is active
+
+#https://tracker.intive.com/jira/browse/IP2-923
+Scenario: REGISTRATION_FORM_11_IP2-243_form_with_two-part_lastname
+	Given User fills data correctly
+		| firstName | lastName       | email             | phone       | githubLink             | login        | password          | passwordConfirm   |
+		| Jan       | Kowalski-Nowak | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
+	Then Button Załóż konto is active
