@@ -1,4 +1,5 @@
-﻿Feature: Using PUT method on URL /api/users to edit User data
+﻿Feature: USER PROFILE [/api/users] Editing user data
+Using PUT method on URL /api/users to edit User data
 
 Description
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-185 
@@ -10,7 +11,7 @@ Given User created for testing purposes
 | Tom34    | Tomasz    | Nowak    | tom@gmail.com | 783984984   | https://github.com/tom7u |
 
 
-Scenario Outline: 1_USER_EDIT_[/api/users]_[PUT]_IP2-89_editing_user_who_exists_in_the_database_success
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_1_IP2-89_editing_user_who_exists_in_the_database_success
 When User sends a PUT request 
 | username   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   |
 | <username> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> |
@@ -32,7 +33,7 @@ Examples:
 | Tom34    | Piotr     | Kowalski | tom@gmail.com     | 783984984   | https://github.com/tomiii4 | 200  | firstName and lastName have been successfully changed |
 
 
-Scenario Outline: 2_USER_EDIT_[/api/users]_[PUT]_IP2-89_editing_user_who_exists_in_the_database_fail
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_2_IP2-89_editing_user_who_exists_in_the_database_fail
 When User sends a PUT request 
 | username   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   |
 | <username> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> |
@@ -55,7 +56,7 @@ Examples:
 | Tom34    | Tomasz                   | Nowak                 | tom@gmail.com | 783984984   | htts://github.com/tom7u  | 400  | gitHubUrl is invalid     |
 
 
-Scenario Outline: 3_USER_EDIT_[/api/users]_[PUT]_IP2-89_editing_userName_to_one_that_already_exists_in_the_databse
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_3_IP2-89_editing_userName_to_one_that_already_exists_in_the_databse
 Given Second user is created for testing purposes
 | username   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   |
 | <username> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> |
@@ -68,7 +69,7 @@ And JSON body should contain original data
 | <username> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> |
 
 
-Scenario Outline: 4_ USER_EDIT_[/api/users]_[PUT]_IP2-89_editing_user_who_does_not_exist_in_the_database 
+Scenario Outline: USER_PROFILE_[/api/users]_[PUT]_4_IP2-89_editing_user_who_does_not_exist_in_the_database 
 Given User who does not exist in the database
 | username   | firstName   | lastName   | email   | phoneNumber   | gitHubUrl   |
 | <username> | <firstName> | <lastName> | <email> | <phoneNumber> | <gitHubUrl> |
