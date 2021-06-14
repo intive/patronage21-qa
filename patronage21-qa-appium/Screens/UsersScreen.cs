@@ -40,6 +40,17 @@ namespace patronage21_qa_appium.Screens
             return base.SearchForElement(driver, _screenName, searchFor);
         }
 
+        public AndroidElement GetElementFromList(AppiumDriver<AndroidElement> driver, string element, string listName)
+        {
+            return driver.FindElementByXPath(_screensXpathDict[_screenName][listName + " lista"] + "[@text = '" + element + "']");
+        }
+
+        public IReadOnlyCollection<AndroidElement> GetElementsFromList(AppiumDriver<AndroidElement> driver, string element, string listName)
+        {
+            return driver.FindElementsByXPath(_screensXpathDict[_screenName][listName + " lista"] + "[@text = '" + element + "']");
+            // return base.SearchForElements(driver, _screenName, searchFor);
+        }
+
         public IReadOnlyCollection<AndroidElement> GetLidersList(AppiumDriver<AndroidElement> driver)
         {
             var participantsHeader = GetElements(driver, "Uczestnicy nagłówek");
@@ -54,6 +65,24 @@ namespace patronage21_qa_appium.Screens
         {
             SearchForElement(driver, "Uczestnicy nagłówek");
             return GetElements(driver, "Uczestnicy lista");
+        }
+
+        public AndroidElement GetUserFromList(AppiumDriver<AndroidElement> driver, string username, string list)
+        {
+            if (list == "Uczestnicy")
+            {
+                SearchForElement(driver, "Uczestnicy nagłówek");
+                return driver.FindElementByXPath(_screenXpath["Uczestnicy lista"] + $"[text()={username}]");
+            }
+            else
+            {
+                var participantsHeader = GetElements(driver, "Uczestnicy nagłówek");
+                if (participantsHeader.Count == 0)
+                {
+                    return driver.FindElementByXPath(_screenXpath["Liderzy lista bez widocznych uczestników"] + $"[text()={username}]");
+                }
+                return driver.FindElementByXPath(_screenXpath["Liderzy lista"] + $"[text()={username}]");
+            }
         }
     }
 }

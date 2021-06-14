@@ -89,13 +89,16 @@ namespace patronage21_qa_appium.Screens
             { "Liderzy nagłówek", "//android.view.View[@text='Liderzy']" },
             { "Liderzy licznik", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()=1]" },
             { "Liderzy lista", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']]" },
+            { "Liderzy Ty użytkownik", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']][@text='Ty']/preceding-sibling::android.view.View[position()=1]]" },
             { "Liderzy lista bez widocznych uczestników", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1]" },
             { "Liderzy brak wyników", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']][@text='Brak wyników']" },
             { "Uczestnicy nagłówek", "//android.view.View[@text='Uczestnicy']" },
             { "Uczestnicy licznik", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()=1]" },
             { "Uczestnicy lista", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1]" },
+            { "Uczestnicy Ty użytkownik", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1][@text='Ty']/preceding-sibling::android.view.View[position()=1]]" },
             { "Uczestnicy brak wyników", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1][@text='Brak wyników']" },
             { "Ty", "//android.view.View[@text='Ty']" },
+            { "Ty użytkownik", "//android.view.View[@text='Ty']/preceding-sibling::android.view.View[position()=1]" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
             { "Grupy", "//android.view.View[@text='Wszystkie grupy']/following-sibling::android.view.View" },
@@ -321,11 +324,6 @@ namespace patronage21_qa_appium.Screens
             {
                 // ignore
             }
-        }
-      
-        public static AndroidElement GetElementFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
-        {
-            return driver.FindElementByXPath(_screensXpathDict[screenName][elementName]);
         }
 
         public static IReadOnlyCollection<AndroidElement> GetElementsFromScreen(AppiumDriver<AndroidElement> driver, string elementName, string screenName)
