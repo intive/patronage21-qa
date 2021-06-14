@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using TechTalk.SpecFlow;
-using patronage21_qa_appium.Screens;
 using patronage21_qa_appium.Drivers;
+using patronage21_qa_appium.Screens;
+using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
+    [Scope(Feature = "UsersScreen")]
     public class UsersScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
@@ -31,18 +31,6 @@ namespace patronage21_qa_appium.Steps
             _driver = driver;
         }
 
-        [BeforeFeature]
-        [Scope(Feature = "UsersScreen")]
-        public void Setup()
-        {
-            /*
-             * create user Jan Kowalski in Uczestnicy list and groups group 1, group 2
-             * create user Jan Kowalski in Liderzy list and groups group 1, group 2
-             * create user Anna Nowak in Liderzy list and groups group 3, group 4
-             * create user Anna Nowak in Uczestnicy list and groups group 3, group 4
-             */
-        }
-
         [Given(@"User is on ""(.*)"" screen")]
         public void GivenUserIsOnScreen(string screenName)
         {
@@ -58,113 +46,86 @@ namespace patronage21_qa_appium.Steps
             Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Nagłówek"));
             Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Opis"));
         }
-        
+
         [Given(@"Existing user ""(.*)"" assigned to ""(.*)"" list")]
-        public void GivenExistingUserAssignedToList(string userName, string listName)
+        public void GivenExistingUserAssignedToList(string username, string list)
         {
+            // To be developed, there is no implementation allowing this step to work for now
         }
-        
-        [Given(@"User ""(.*)"" does not exist")]
-        public void GivenUserDoesNotExist(string userName)
-        {
-        }
-        
-        [Given(@"Existing user ""(.*)"" assigned to ""(.*)"" list and ""(.*)"" group")]
-        public void GivenExistingUserAssignedToListAndGroup(string userName, string listName, string groupName)
-        {
-        }
-        
-        [Given(@"Existing user ""(.*)"" assigned to ""(.*)"" list and not to ""(.*)"" group")]
-        public void GivenExistingUserAssignedToListAndNotToGroup(string userName, string listName, string groupName)
-        {
-        }
-        
-        [Given(@"Existing user ""(.*)"" assigned to ""(.*)"" list and ""(.*)"" and ""(.*)"" groups")]
-        public void GivenExistingUserAssignedToListAndAndGroups(string userName, string listName, string group1Name, string group2Name)
-        {
-        }
-        
-        [Given(@"Existing users in ""(.*)"" group and ""(.*)"" list")]
-        public void GivenExistingUsersInGroupAndList(string groupName, string listName)
-        {
-        }
-        
-        [Given(@"No existing user named ""(.*)""")]
-        public void GivenNoExistingUserNamed(string userName)
-        {
-        }
-        
+
         [Given(@"User is logged in as ""(.*)"" assigned to ""(.*)"" list")]
-        public void GivenUserIsLoggedInAsAssignedToList(string userName, string listName)
+        public void GivenUserIsLoggedInAsAssignedToList(string username, string list)
         {
-            // log in as ...
+            // To be developed, there is no implementation allowing this step to work for now
         }
-        
-        [Given(@"No other user in list ""(.*)"" is named ""(.*)""")]
-        public void GivenNoOtherUserInListIsNamed(string listName, string userName)
-        {
-        }
-        
+
         [When(@"User writes ""(.*)"" into ""(.*)"" field")]
-        public void WhenUserWritesIntoField(string input, string fieldName)
+        public void WhenUserWritesIntoField(string text, string field)
         {
-            _usersScreen.WriteTextToField(_driver, input, fieldName);
+            _usersScreen.WriteTextToField(_driver, text, field);
         }
-        
-        [When(@"User clicks ""(.*)"" button")]
-        public void WhenUserClicksButton(string buttonName)
-        {
-            _usersScreen.ClickElement(_driver, buttonName);
-        }
-        
+
         [When(@"User clicks ""(.*)""")]
-        public void WhenUserClicks(string elementName)
+        public void WhenUserClicks(string element)
         {
-            _usersScreen.ClickElement(_driver, elementName);
+            _usersScreen.ClickElement(_driver, element);
         }
-        
+
         [When(@"User clears ""(.*)"" field")]
-        public void WhenUserClearsField(string fieldName)
+        public void WhenUserClearsField(string field)
         {
-            _usersScreen.GetElement(_driver, fieldName).Clear();
+            _usersScreen.GetElement(_driver, field).Clear();
         }
-        
+
         [When(@"User clicks ""(.*)"" in ""(.*)"" list")]
-        public void WhenUserClicksInList(string userName, string listName)
+        public void WhenUserClicksInList(string element, string list)
         {
-            _usersScreen.GetElementFromList(_driver, userName, listName).Click();
+            _usersScreen.GetElementFromList(_driver, element, list).Click();
         }
-        
+
+        [When(@"User clicks ""(.*)"" button")]
+        public void WhenUserClicksButton(string button)
+        {
+            _driver.Navigate().Back();
+        }
+
         [Then(@"""(.*)"" field is empty")]
         public void ThenFieldIsEmpty(string fieldName)
         {
             Assert.AreEqual(_usersScreen.GetElement(_driver, fieldName).Text, fieldName);
         }
-        
+
         [Then(@"""(.*)"" is set to ""(.*)""")]
-        public void ThenIsSetTo(string fieldName, string elementText)
+        public void ThenIsSetTo(string fieldName, string text)
         {
-            Assert.AreEqual(_usersScreen.GetElement(_driver, fieldName).Text, elementText);
+            Assert.AreEqual(_usersScreen.GetElement(_driver, fieldName).Text, text);
         }
-        
+
         [Then(@"User sees ""(.*)"" list")]
-        public void ThenUserSeesList(string listName)
+        public void ThenUserSeesList(string list)
         {
-            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, listName + " nagłówek"));
-            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, listName + " licznik"));
-            switch (listName)
+            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, list + " nagłówek"));
+            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, list + " licznik"));
+            switch (list)
             {
                 case "Liderzy":
                     Assert.IsNotEmpty(_usersScreen.GetLidersList(_driver));
                     break;
 
                 case "Uczestnicy":
+                    _usersScreen.SearchForElement(_driver, list + " lista");
                     Assert.IsNotEmpty(_usersScreen.GetParticipantsList(_driver));
                     break;
             }
-            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, listName + " licznik"));
+            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, list + " licznik"));
         }
-        
+
+        [Then(@"User sees user ""(.*)"" in ""(.*)"" list")]
+        public void ThenUserSeesUserInList(string username, string list)
+        {
+            Assert.IsNotEmpty(_usersScreen.GetElementsFromList(_driver, username, list));
+        }
+
         [Then(@"User sees information that searched user does not exist")]
         public void ThenUserSeesInformationThatSearchedUserDoesNotExist()
         {
@@ -173,58 +134,51 @@ namespace patronage21_qa_appium.Steps
             Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Liderzy brak wyników"));
             Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Uczestnicy brak wyników"));
         }
-        
-        [Then(@"User sees user ""(.*)"" in ""(.*)"" list")]
-        public void ThenUserSeesUserInList(string userName, string listName)
-        {
-            
-            Assert.IsNotEmpty(_usersScreen.GetElementsFromList(_driver, userName, listName));
-        }
-        
+
         [Then(@"User does not see user ""(.*)"" in ""(.*)"" list")]
-        public void ThenUserDoesNotSeeUserInList(string userName, string listName)
+        public void ThenUserDoesNotSeeUserInList(string username, string list)
         {
-            Assert.IsEmpty(_usersScreen.GetElementsFromList(_driver, userName, listName));
+            Assert.IsEmpty(_usersScreen.GetElementsFromList(_driver, username, list));
         }
-        
+
         [Then(@"User is on ""(.*)"" screen")]
         public void ThenUserIsOnScreen(string screenName)
         {
             Assert.IsNotEmpty(BaseScreen.GetElementsFromScreen(_driver, "Nagłówek", screenName));
         }
-        
+
         [Then(@"User sees only one occurance of ""(.*)"" in ""(.*)"" list")]
-        public void ThenUserSeesOnlyOneOccuranceOfInList(string userName, string listName)
+        public void ThenUserSeesOnlyOneOccuranceOfInList(string username, string list)
         {
-            Assert.Equals(1, _usersScreen.GetElementsFromList(_driver, userName, listName).Count);
+            Assert.Equals(1, _usersScreen.GetElementsFromList(_driver, username, list).Count);
         }
-        
+
         [Then(@"""(.*)"" list users counter is correct")]
-        public void ThenListUsersCounterIsCorrect(string listName)
+        public void ThenListUsersCounterIsCorrect(string list)
         {
-            var usersCount = _usersScreen.GetElements(_driver, listName + " lista").Count;
-            var counter = _usersScreen.GetElements(_driver, listName + " licznik");
+            var usersCount = _usersScreen.GetElements(_driver, list + " lista").Count;
+            var counter = _usersScreen.GetElements(_driver, list + " licznik");
             Assert.Equals(counter, usersCount.ToString());
         }
-        
+
         [Then(@"User sees ""(.*)"" mark next to user ""(.*)"" in ""(.*)"" list")]
-        public void ThenUserSeesMarkNextToUserInList(string markText, string userName, string listName)
+        public void ThenUserSeesMarkNextToUserInList(string mark, string username, string list)
         {
-            var markedUser = _usersScreen.GetElement(_driver, listName + " Ty użytkownik");
-            Assert.Equals(userName, markedUser.Text);
+            var markedUser = _usersScreen.GetElement(_driver, list + " Ty użytkownik");
+            Assert.Equals(username, markedUser.Text);
         }
-        
+
         [Then(@"No other user is marked with ""(.*)""")]
-        public void ThenNoOtherUserIsMarkedWith(string markText)
+        public void ThenNoOtherUserIsMarkedWith(string mark)
         {
-            var marks = _usersScreen.GetElements(_driver, markText);
+            var marks = _usersScreen.GetElements(_driver, mark);
             Assert.AreEqual(1, marks.Count);
         }
-        
+
         [Then(@"User does not see ""(.*)"" mark next to user ""(.*)"" in ""(.*)"" list")]
-        public void ThenUserDoesNotSeeMarkNextToUserInList(string markText, string userName, string listName)
+        public void ThenUserDoesNotSeeMarkNextToUserInList(string mark, string username, string list)
         {
-            Assert.IsEmpty(_usersScreen.GetElementsFromList(_driver, markText, listName));
+            Assert.IsEmpty(_usersScreen.GetElements(_driver, list + " Ty użytkownik"));
         }
     }
 }

@@ -66,5 +66,23 @@ namespace patronage21_qa_appium.Screens
             SearchForElement(driver, "Uczestnicy nagłówek");
             return GetElements(driver, "Uczestnicy lista");
         }
+
+        public AndroidElement GetUserFromList(AppiumDriver<AndroidElement> driver, string username, string list)
+        {
+            if (list == "Uczestnicy")
+            {
+                SearchForElement(driver, "Uczestnicy nagłówek");
+                return driver.FindElementByXPath(_screenXpath["Uczestnicy lista"] + $"[text()={username}]");
+            }
+            else
+            {
+                var participantsHeader = GetElements(driver, "Uczestnicy nagłówek");
+                if (participantsHeader.Count == 0)
+                {
+                    return driver.FindElementByXPath(_screenXpath["Liderzy lista bez widocznych uczestników"] + $"[text()={username}]");
+                }
+                return driver.FindElementByXPath(_screenXpath["Liderzy lista"] + $"[text()={username}]");
+            }
+        }
     }
 }
