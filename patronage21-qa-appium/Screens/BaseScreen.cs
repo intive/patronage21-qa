@@ -296,6 +296,12 @@ namespace patronage21_qa_appium.Screens
                 ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
         }
 
+        public virtual IReadOnlyCollection<AndroidElement> FindElementsByText(AppiumDriver<AndroidElement> driver, string text)
+        {
+            return driver.FindElements(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList()" +
+                ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
+        }
+
         public static void SwipeToBottom(AppiumDriver<AndroidElement> driver)
         {
             try

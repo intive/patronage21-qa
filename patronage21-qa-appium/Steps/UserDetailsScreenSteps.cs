@@ -13,6 +13,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
+    [Scope(Feature = "UserDetailsScreen")]
     public class UserDetailsScreenSteps
     {
         private string _url;
@@ -75,7 +76,7 @@ namespace patronage21_qa_appium.Steps
         [When(@"User clicks ""(.*)""")]
         public void WhenUserClicks(string element)
         {
-            BaseScreen.FindElementByText(_driver, element).Click();
+            _userDetailsScreen.FindElementByText(_driver, element).Click();
         }
 
         [When(@"User selects ""(.*)"" from ""(.*)"" list")]
@@ -118,33 +119,36 @@ namespace patronage21_qa_appium.Steps
             // "Otwórz link" visible), when it happens code should be replaced
             // by commented code
             /*
+            BaseScreen.SwipeToBottom(_driver);
             switch(profile)
             {
-                case "own":
-                    Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Edytuj profil").isDisplayed());
-                    Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Dezaktywuj profil").isDisplayed());
-                    Assert.IsFalse(BaseScreen.FindElementByText(_driver, "Kontakt nagłówek").isDisplayed());
-                    Assert.IsFalse(BaseScreen.FindElementByText(_driver, "Wyślij wiadomość").isDisplayed());
-                    Assert.IsFalse(BaseScreen.FindElementByText(_driver, "Zadzwoń").isDisplayed());
-                    Assert.IsFalse(BaseScreen.FindElementByText(_driver, "Otwórz link").isDisplayed());
+                case "owned":
+                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Edytuj profil"));
+                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Dezaktywuj profil"));
+                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Kontakt nagłówek"));
+                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
+                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
+                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
                     break;
 
-                case "not own":
-                    Assert.IsFalse(BaseScreen.FindElementByText(_driver, "Edytuj profil").isDisplayed());
-                    Assert.IsFalse(BaseScreen.FindElementByText(_driver, "Dezaktywuj profil").isDisplayed());
-                    Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Kontakt nagłówek").isDisplayed());
-                    Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Wyślij wiadomość").isDisplayed());
-                    Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Zadzwoń").isDisplayed());
-                    Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Otwórz link").isDisplayed());
+                case "not owned":
+                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Edytuj profil"));
+                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Dezaktywuj profil"));
+                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Kontakt nagłówek"));
+                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
+                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
+                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
                     break;
             }
             */
-            Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Edytuj profil").isDisplayed());
-            Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Dezaktywuj profil").isDisplayed());
-            Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Kontakt nagłówek").isDisplayed());
-            Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Wyślij wiadomość").isDisplayed());
-            Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Zadzwoń").isDisplayed());
-            Assert.IsTrue(BaseScreen.FindElementByText(_driver, "Otwórz link").isDisplayed());
+            BaseScreen.SwipeToBottom(_driver);
+            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Edytuj profil"));
+            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Dezaktywuj profil"));
+            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Kontakt nagłówek"));
+            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
+            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
+            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
+            Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Nie istnieje"));
         }
     }
 }
