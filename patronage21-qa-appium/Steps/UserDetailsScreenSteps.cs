@@ -148,7 +148,6 @@ namespace patronage21_qa_appium.Steps
             Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
             Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
             Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
-            Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Nie istnieje"));
         }
     }
 }
