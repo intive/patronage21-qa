@@ -12,35 +12,98 @@ namespace SeleniumProject.Pages
             this.driver = driver;
         }
 
-        private By firstName = By.XPath(".//*[@name='firstName']");
-        private By lastName = By.XPath(".//*[@name='lastName']");
-        private By email = By.XPath(".//*[@name='email']");
-        private By phone = By.XPath(".//*[@name='phone']");
-        private By githubLink = By.XPath(".//*[@name='githubLink']");
-        private By javaScriptCheckBox = By.XPath(".//*[@value='JS']");
-        private By javaCheckBox = By.XPath(".//*[@value='Java']");
-        private By qaCheckBox = By.XPath(".//*[@value='QA']");
-        private By mobileCheckBox = By.XPath(".//*[@value='Mobile']");
-        private By login = By.XPath(".//*[@name='login']");
-        private By password = By.XPath(".//*[@name='password']");
-        private By passwordconfirm = By.XPath(".//*[@name='passwordConfirm']");
-        private By createAccountButton = By.XPath(".//*[@type='submit']");
-        private By termsAndConditionsCheckBox = By.XPath(".//*[@name='regulations']");
+        private By firstNameXPath = By.XPath(".//*[@name='firstName']");
+        public IWebElement txtFirstName => driver.FindElement(firstNameXPath);
 
-        public IWebElement txtFirstName => driver.FindElement(firstName);
-        public IWebElement txtLastName => driver.FindElement(lastName);
-        public IWebElement txtEmail => driver.FindElement(email);
-        public IWebElement txtPhone => driver.FindElement(phone);
-        public IWebElement txtGithubLink => driver.FindElement(githubLink);
-        public IWebElement checkBoxJavaScript => driver.FindElement(javaScriptCheckBox);
-        public IWebElement checkBoxJava => driver.FindElement(javaCheckBox);
-        public IWebElement checkBoxQA => driver.FindElement(qaCheckBox);
-        public IWebElement checkBoxMobileAndroid => driver.FindElement(mobileCheckBox);
-        public IWebElement txtLogin => driver.FindElement(login);
-        public IWebElement txtPassword => driver.FindElement(password);
-        public IWebElement txtPasswordConfirm => driver.FindElement(passwordconfirm);
-        public IWebElement buttonCreateAccount => driver.FindElement(createAccountButton);
-        public IWebElement checkBoxTermsAndConditions => driver.FindElement(termsAndConditionsCheckBox);
+        private By lastNameXPath = By.XPath(".//*[@name='lastName']");
+        public IWebElement txtLastName => driver.FindElement(lastNameXPath);
+
+        private By emailXPath = By.XPath(".//*[@name='email']");
+        public IWebElement txtEmail => driver.FindElement(emailXPath);
+
+        private By phoneXPath = By.XPath(".//*[@name='phone']");
+        public IWebElement txtPhone => driver.FindElement(phoneXPath);
+
+        private By githubLinkXPath = By.XPath(".//*[@name='githubLink']");
+        public IWebElement txtGithubLink => driver.FindElement(githubLinkXPath);
+
+        private By javaScriptCheckBoxXPath = By.XPath(".//*[@value='JS']");
+        public IWebElement checkBoxJavaScript => driver.FindElement(javaScriptCheckBoxXPath);
+
+        private By javaCheckBoxXPath = By.XPath(".//*[@value='Java']");
+        public IWebElement checkBoxJava => driver.FindElement(javaCheckBoxXPath);
+
+        private By qaCheckBoxXPath = By.XPath(".//*[@value='QA']");
+        public IWebElement checkBoxQA => driver.FindElement(qaCheckBoxXPath);
+
+        private By mobileCheckBoxXPath = By.XPath(".//*[@value='Mobile']");
+        public IWebElement checkBoxMobileAndroid => driver.FindElement(mobileCheckBoxXPath);
+
+        private By loginXPath = By.XPath(".//*[@name='login']");
+        public IWebElement txtLogin => driver.FindElement(loginXPath);
+
+        private By passwordXPath = By.XPath(".//*[@name='password']");
+        public IWebElement txtPassword => driver.FindElement(passwordXPath);
+
+        private By passwordconfirmXPath = By.XPath(".//*[@name='passwordConfirm']");
+        public IWebElement txtPasswordConfirm => driver.FindElement(passwordconfirmXPath);
+
+        private By createAccountButtonXPath = By.XPath(".//*[@type='submit']");
+        public IWebElement buttonCreateAccount => driver.FindElement(createAccountButtonXPath);
+
+        private By firstTermsAndConditionsCheckBoxXPath = By.XPath(".//*[@name='regulations']");
+        public IWebElement firstTermsAndConditions => driver.FindElement(firstTermsAndConditionsCheckBoxXPath);
+
+        private By secondTermsAndConditionsCheckBoxXPath = By.XPath(".//*[@name='information']");
+
+        public IWebElement secondTermsAndConditions => driver.FindElement(secondTermsAndConditionsCheckBoxXPath);
+
+        private By wrongEmailLabelXPath = By.XPath(".//*[contains(text(),'Niepoprawny adres e-mail')]");
+
+        public IWebElement errorAboutEmailAdress => driver.FindElement(wrongEmailLabelXPath);
+
+        private By wrongPhoneNumberLabelXPath = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
+
+        public IWebElement errorAboutPhoneNumber => driver.FindElement(wrongPhoneNumberLabelXPath);
+
+        private By wrongGithubLinkXPath = By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]");
+        public IWebElement errorAboutGithubLink => driver.FindElement(wrongGithubLinkXPath);
+
+        private By wrongPasswordXPath = By.XPath(".//*[contains(text(),'Hasło musi mieć przynajmniej jedną dużą literę')]");
+        public IWebElement errorAboutPassword => driver.FindElement(wrongPasswordXPath);
+
+        private By wrongPasswordConfirmXPath = By.XPath(".//*[contains(text(),'Hasła nie zgadzają się')]");
+        public IWebElement errorAboutPasswordConfirm => driver.FindElement(wrongPasswordConfirmXPath);
+
+        private By tooShortFirstNameXPath = By.XPath(".//*[contains(text(),'Imię jest za krótkie')]");
+        public IWebElement errorAboutTooShortFirstName => driver.FindElement(tooShortFirstNameXPath);
+
+        private By tooShortLastNameXPath = By.XPath(".//*[contains(text(),'Nazwisko jest za krótkie')]");
+        public IWebElement errorAboutTooShortLastName => driver.FindElement(tooShortLastNameXPath);
+
+        private By tooShortLoginXPath = By.XPath(".//*[contains(text(),'Login jest za krótki')]");
+        public IWebElement errorAboutTooShortLogin => driver.FindElement(tooShortLoginXPath);
+
+        private By tooShortPasswordXPath = By.XPath(".//*[contains(text(),'Hasło jest za krótkie - min. 8 znaków')]");
+        public IWebElement errorAboutTooShortPassword => driver.FindElement(tooShortPasswordXPath);
+
+        private By tooLongFirstNameXPath = By.XPath(".//*[contains(text(),'Imię jest za długie')]");
+        public IWebElement errorAboutTooLongFirstName => driver.FindElement(tooLongFirstNameXPath);
+
+        private By tooLongLastNameXPath = By.XPath(".//*[contains(text(),'Nazwisko jest za długie')]");
+        public IWebElement errorAboutTooLongLastName => driver.FindElement(tooLongLastNameXPath);
+
+        private By tooLongLoginXPath = By.XPath(".//*[contains(text(),'Login jest za długi')]");
+        public IWebElement errorAboutTooLongLogin => driver.FindElement(tooLongLoginXPath);
+
+        private By tooLongPasswordXPath = By.XPath(".//*[contains(text(),'Hasło jest za długie - max. 20 znaków')]");
+        public IWebElement errorAboutTooLongPassword => driver.FindElement(tooLongPasswordXPath);
+
+        private By tooLongGithubLinkXPath = By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]");
+        public IWebElement errorAboutTooLongGithubLink => driver.FindElement(tooLongGithubLinkXPath);
+
+        private By technologies = By.XPath(".//*[contains(text(),'Można wybrać tylko 3 technologie.')]");
+        public IWebElement errorAboutTechnologies => driver.FindElement(technologies);
 
         public void RegistrationFormWithData(string firstName, string lastName, string email, Nullable<int> phone, string githubLink, string login, string password, string passwordConfirm)
         {
@@ -64,18 +127,6 @@ namespace SeleniumProject.Pages
             txtLogin.SendKeys("");
             txtPassword.SendKeys("");
             txtPasswordConfirm.SendKeys("");
-        }
-
-        public bool CreateAccountButtonIsActiveOrNot()
-        {
-            if (buttonCreateAccount.Enabled)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public void RegistrationFormWithIncorrectEmail(string firstName, string lastName)
@@ -229,6 +280,7 @@ namespace SeleniumProject.Pages
             txtFirstName.SendKeys(firstName);
             txtLastName.SendKeys("K");
         }
+
         public void RegistrationFormWithTooLongGithubLink()
         {
             txtFirstName.SendKeys("Jan");

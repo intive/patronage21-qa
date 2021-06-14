@@ -26,7 +26,8 @@ namespace SeleniumProject.Steps
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
             registrationFormPage.checkBoxJavaScript.Click();
-            registrationFormPage.checkBoxTermsAndConditions.Click();
+            registrationFormPage.firstTermsAndConditions.Click();
+            registrationFormPage.secondTermsAndConditions.Click();
         }
 
         [Given(@"User doesn't fill data")]
@@ -157,7 +158,8 @@ namespace SeleniumProject.Steps
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
             registrationFormPage.checkBoxJavaScript.Click();
-            registrationFormPage.checkBoxTermsAndConditions.Click();
+            registrationFormPage.firstTermsAndConditions.Click();
+            registrationFormPage.secondTermsAndConditions.Click();
         }
 
         [Given(@"User fills all data")]
@@ -196,7 +198,7 @@ namespace SeleniumProject.Steps
         [When(@"User clicks on next Regulamin")]
         public void WhenUserClicksOnNextRegulamin()
         {
-            registrationFormPage.checkBoxTermsAndConditions.Click();
+            registrationFormPage.firstTermsAndConditions.Click();
         }
 
         [When(@"User clicks on next Hasło")]
@@ -253,166 +255,115 @@ namespace SeleniumProject.Steps
         [Then(@"Button Załóż konto is active")]
         public void ThenUserShouldBeOnSiteAboutE_MailVerification()
         {
-            Assert.That(registrationFormPage.CreateAccountButtonIsActiveOrNot(), Is.True);
+            Assert.That(registrationFormPage.buttonCreateAccount.Enabled, Is.True);
         }
 
         [Then(@"Button Załóż konto is inactive")]
         public void ThenUserCanTClickOnTheButtonZalozKonto()
         {
-            Assert.That(registrationFormPage.CreateAccountButtonIsActiveOrNot(), Is.False);
+            Assert.That(registrationFormPage.buttonCreateAccount.Enabled, Is.False);
         }
 
         [Then(@"User should see that field Adres email is incorrect")]
         public void ThenUserShouldSeeThatFieldAdresEmailIsIncorrect()
         {
-            By email = By.XPath(".//*[contains(text(),'Niepoprawny adres e-mail')]");
-            IWebElement errorAboutEmailAdress = _webdriver.FindElement(email);
-
-            Assert.AreEqual(true, errorAboutEmailAdress.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutEmailAdress.Displayed);
         }
 
         [Then(@"User should see that field Numer telefonu is incorrect")]
         public void ThenUserShouldSeeThatFieldNumerTelefonuIsIncorrect()
         {
-            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
-            IWebElement errorAboutPhoneNumber = _webdriver.FindElement(phoneNumber);
-
-            Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutPhoneNumber.Displayed);
         }
 
         [Then(@"User should see that field Github link is incorrect")]
         public void ThenUserShouldSeeThatFieldGithubLinkIsIncorrect()
         {
-            By githubLink = By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]");
-            IWebElement errorAboutGithubLink = _webdriver.FindElement(githubLink);
-
-            Assert.AreEqual(true, errorAboutGithubLink.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutGithubLink.Displayed);
         }
 
         [Then(@"User should see that field Hasło is incorrect")]
         public void ThenUserShouldSeeThatFieldHasloIsIncorrect()
         {
-            By password = By.XPath(".//*[contains(text(),'Hasło musi mieć przynajmniej jedną dużą literę')]");
-            IWebElement errorAboutPassword = _webdriver.FindElement(password);
-
-            Assert.AreEqual(true, errorAboutPassword.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutPassword.Displayed);
         }
 
         [Then(@"User should see that field Powtórz hasło is incorrect")]
         public void ThenUserShouldSeeThatFieldPowtorzHasloIsIncorrect()
         {
-            By passwordConfirm = By.XPath(".//*[contains(text(),'Hasła nie zgadzają się')]");
-            IWebElement errorAboutPasswordConfirm = _webdriver.FindElement(passwordConfirm);
-
-            Assert.AreEqual(true, errorAboutPasswordConfirm.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutPasswordConfirm.Displayed);
         }
 
         [Then(@"User should see error message about too short Imię")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortImie()
         {
-            By firstName = By.XPath(".//*[contains(text(),'Imię jest za krótkie')]");
-            IWebElement errorAboutFirstName = _webdriver.FindElement(firstName);
-
-            Assert.AreEqual(true, errorAboutFirstName.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooShortFirstName.Displayed);
         }
 
         [Then(@"User should see error message about too short Nazwisko")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortNazwisko()
         {
-            By lastName = By.XPath(".//*[contains(text(),'Nazwisko jest za krótkie')]");
-            IWebElement errorAboutLastName = _webdriver.FindElement(lastName);
-
-            Assert.AreEqual(true, errorAboutLastName.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooShortLastName.Displayed);
         }
 
         [Then(@"User should see error message about too short Numer telefonu")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortNumerTelefonu()
         {
-            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
-            IWebElement errorAboutPhoneNumber = _webdriver.FindElement(phoneNumber);
-
-            Assert.AreEqual(true, errorAboutPhoneNumber.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutPhoneNumber.Displayed);
         }
 
         [Then(@"User should see error message about too short Login")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortLogin()
         {
-            By login = By.XPath(".//*[contains(text(),'Login jest za krótki')]");
-            IWebElement errorAboutLogin = _webdriver.FindElement(login);
-
-            Assert.AreEqual(true, errorAboutLogin.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooShortLogin.Displayed);
         }
 
         [Then(@"User should see error message about too short Hasło")]
         public void ThenUserShouldSeeErrorMessageAboutTooShortHaslo()
         {
-            By password = By.XPath(".//*[contains(text(),'Hasło jest za krótkie - min. 8 znaków')]");
-            IWebElement errorAboutPassword = _webdriver.FindElement(password);
-
-            Assert.AreEqual(true, errorAboutPassword.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooShortPassword.Displayed);
         }
 
         [Then(@"User should see error message about too long Imie")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongImie()
         {
-            By firstName = By.XPath(".//*[contains(text(),'Imię jest za długie')]");
-            IWebElement errorAboutTooLongFirstName = _webdriver.FindElement(firstName);
-
-            Assert.AreEqual(true, errorAboutTooLongFirstName.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooLongFirstName.Displayed);
         }
 
         [Then(@"User should see error message about too long Nazwisko")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongNazwisko()
         {
-            By lastName = By.XPath(".//*[contains(text(),'Nazwisko jest za długie')]");
-            IWebElement errorAboutTooLongLastName = _webdriver.FindElement(lastName);
-
-            Assert.AreEqual(true, errorAboutTooLongLastName.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooLongLastName.Displayed);
         }
 
         [Then(@"User should see error message about too long Numer telefonu")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongNumerTelefonu()
         {
-            By phoneNumber = By.XPath(".//*[contains(text(),'Niepoprawny numer telefonu')]");
-            IWebElement errorAboutTooLongPhoneNumber = _webdriver.FindElement(phoneNumber);
-
-            Assert.AreEqual(true, errorAboutTooLongPhoneNumber.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutPhoneNumber.Displayed);
         }
 
         [Then(@"User should see error message about too long Login")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongLogin()
-        {
-            By login = By.XPath(".//*[contains(text(),'Login jest za długi')]");
-            IWebElement errorAboutTooLongLogin = _webdriver.FindElement(login);
-
-            Assert.AreEqual(true, errorAboutTooLongLogin.Displayed);
+        { 
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooLongLogin.Displayed);
         }
 
         [Then(@"User should see error message about too long Hasło")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongHaslo()
         {
-            By password = By.XPath(".//*[contains(text(),'Hasło jest za długie - max. 20 znaków')]");
-            IWebElement errorAboutTooLongPassword = _webdriver.FindElement(password);
-
-            Assert.AreEqual(true, errorAboutTooLongPassword.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooLongPassword.Displayed);
         }
 
         [Then(@"User should see error message about too long Githublink")]
         public void ThenUserShouldSeeErrorMessageAboutTooLongGithublink()
         {
-            By githubLink = By.XPath(".//*[contains(text(),'To nie jest link do konta GitHub')]");
-            IWebElement errorAboutTooLongGithubLink = _webdriver.FindElement(githubLink);
-
-            Assert.AreEqual(true, errorAboutTooLongGithubLink.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTooLongGithubLink.Displayed);
         }
 
         [Then(@"User should see error message about checked too many technology groups")]
         public void ThenUserShouldSeeErrorMessageAboutCheckedTooManyTechnologyGroups()
         {
-            By technologies = By.XPath(".//*[contains(text(),'Można wybrać tylko 3 technologie.')]");
-            IWebElement errorAboutTechnologies = _webdriver.FindElement(technologies);
-
-            Assert.AreEqual(true, errorAboutTechnologies.Displayed);
+            Assert.AreEqual(true, registrationFormPage.errorAboutTechnologies.Displayed);
         }
     }
 }
