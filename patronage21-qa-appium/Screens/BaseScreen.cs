@@ -182,6 +182,18 @@ namespace patronage21_qa_appium.Screens
         private static Dictionary<string, string> _eventsAuditXpathDict = new()
         {
             { "Nagłówek", "//android.view.View[@text='Audyt zdarzeń']" },
+            { "Szukaj", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.Button[position()=1]" },
+            { "Wyszukaj", "//android.view.View[@text='Wyszukaj']" },
+            { "Sortuj", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.Button[position()=2]" },
+            { "Od najnowszych", "//android.widget.ImageView[@content-desc='Ikona strzałka do góry']" },
+            { "Od najstarszych", "//android.view.View[@text='Od najstarszych']" },
+            { "Przewiń do góry", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.Button[position()=3]" },
+            { "Mobile (Android)", "//android.view.View[contains(@text, 'Android')]" },
+            { "Pierwsze zdarzenie data", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[contains(@text, ', ')][position()=1]" },
+            { "Ostatnie zdarzenie data", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[contains(@text, ', ')][position()=last()]" },
+            { "Logowanie", "//android.view.View[@text='Logowanie']" },
+            { "Rejestracja", "//android.view.View[@text='Rejestracja']" },
+            { "Wylogowanie", "//android.view.View[@text='Wylogowanie']" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
         };
@@ -230,6 +242,20 @@ namespace patronage21_qa_appium.Screens
             .Release();
 
             touchAction.Perform();
+        }
+
+        public static void FastSwipes(IPerformsTouchActions driver, int amount)
+        {
+            ITouchAction touchAction = new TouchAction(driver)
+            .Press(500, 1500)
+            .MoveTo(500, 100)
+            .Wait(100)
+            .Release();
+
+            for (int i = 0; i < amount; i++)
+            {
+                touchAction.Perform();
+            }
         }
 
         public static void SwipeDown(AppiumDriver<AndroidElement> driver, string screenName)
