@@ -15,6 +15,7 @@ namespace patronage21_qa_appium.Steps
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
         private readonly ActivationScreen _activationScreen = new();
+
         public RegisteredSuccesfullyNotificationSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;

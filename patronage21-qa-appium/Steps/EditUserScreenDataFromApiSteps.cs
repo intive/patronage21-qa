@@ -68,7 +68,7 @@ namespace patronage21_qa_appium.Steps
                     break;
             }
         }
-        
+
         [Then(@"User sees correct user data")]
         public void ThenUserSeesCorrectUserData()
         {

@@ -32,7 +32,7 @@ namespace patronage21_qa_appium.Screens
 
         public DateTime ParseDateTime(string dateTimeString)
         {
-            // Changes strings like "12/4/07, 8:03 PM" to DateTime object 
+            // Changes strings like "12/4/07, 8:03 PM" to DateTime object
             DateTime output;
             var subs = dateTimeString.Split(", ");
             var dateSubs = subs[0].Split("/");
