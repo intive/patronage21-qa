@@ -25,7 +25,7 @@ And User chooses the photo from his device storage
 Then User receives the message 'Nieprawidłowy format zdjęcia'
 
 
-Scenario: USER_PROFILE_3_IP2-767_Deleting_photo_in_the_user_account
+Scenario: USER_PROFILE_3_IP2-767_Deleting_photo_from_the_user_account
 Given User already has the photo
 When User clicks Edytuj profil
 And User clicks Bin icon
