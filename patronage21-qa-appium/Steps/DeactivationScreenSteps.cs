@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Screens;
 using TechTalk.SpecFlow;
 
@@ -13,7 +12,6 @@ namespace patronage21_qa_appium.Steps
     public class DeactivationScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();

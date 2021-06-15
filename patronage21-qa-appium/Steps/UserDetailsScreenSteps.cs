@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
 using RestSharp;
@@ -20,7 +18,6 @@ namespace patronage21_qa_appium.Steps
         private RestClient _client;
         private RestRequest _requestGet;
         private TechGroupsResponse _response;
-        private List<string> _groups;
 
         private LoginScreen _loginScreen = new();
         private RegisterScreen _registerScreen = new();
@@ -29,7 +26,6 @@ namespace patronage21_qa_appium.Steps
         private HomeScreen _homeScreen = new();
         private UsersScreen _usersScreen = new();
         private UserDetailsScreen _userDetailsScreen = new();
-        private JavaDatabase _javaDatabase = new();
 
         private readonly AppiumDriver<AndroidElement> _driver;
 

@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
 using RestSharp;
@@ -28,7 +27,6 @@ namespace patronage21_qa_appium.Steps
         private RegisterSubmitScreen _registerSubmitScreen = new();
         private HomeScreen _homeScreen = new();
         private UsersScreen _usersScreen = new();
-        private JavaDatabase _javaDatabase = new();
 
         private readonly AppiumDriver<AndroidElement> _driver;
 
