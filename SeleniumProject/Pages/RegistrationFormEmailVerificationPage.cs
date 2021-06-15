@@ -12,6 +12,8 @@ namespace SeleniumProject.Pages
             this.driver = driver;
         }
 
+        public IWebElement title => driver.FindElement(By.XPath("//*[@id='title-label']"));
+        public IWebElement gender => driver.FindElement(By.XPath("//*[@value='Pan']"));
         public IWebElement firstName => driver.FindElement(By.XPath("//*[@name='firstName']"));
         public IWebElement lastName => driver.FindElement(By.XPath("//*[@name='lastName']"));
         public IWebElement email => driver.FindElement(By.XPath("//*[@name='email']"));
@@ -26,6 +28,7 @@ namespace SeleniumProject.Pages
         public IWebElement zalozKontoButton => driver.FindElement(By.XPath("//*[text()[contains(.,'Załóż konto')]]"));
         public IWebElement codeInput => driver.FindElement(By.XPath("//*[@id='outlined-adornment-password']"));
         public IWebElement renewalSentButton => driver.FindElement(By.XPath("//span[@class='MuiButton-label' and text() = 'Nie otrzymałem/am kodu']"));
+
         public IWebElement getErrorMessage(string text)
         {
             return driver.FindElement(By.XPath("//*[text()[contains (.,'" + text + "')]]"));

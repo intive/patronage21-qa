@@ -27,8 +27,8 @@ Scenario: REGISTRATION_FORM_2_IP2-135_User_should_be_able_to_retrieve_code_on_ma
 #https://tracker.intive.com/jira/browse/IP2-299
 Scenario: REGISTRATION_FORM_3_IP2-135_False_code_should_not_allow_User_to_be_verified_and_activated
 	Given User enters data
-	| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
-	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
+	| Title | firstName | lastName | email | phone | githubLink | login | password | passwordConfirm |
+	|Pan    | Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
 	And is transferred to verification site 
 	When User enters code '00000000'
 	And User clicks "Zatwierdź kod" 
@@ -62,8 +62,8 @@ Scenario: REGISTRATION_FORM_6_IP2-135_Generated_code_is_unique
 #https://tracker.intive.com/jira/browse/IP2-518
 Scenario: REGISTRATION_FORM_7_IP2-135_Retrieving_of_the_code_should_be_possible
 	Given User enters data
-	| firstName | lastName | email             | phone       | githubLink             | login        | password         | passwordConfirm  |
-	| Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
+	| Title | firstName | lastName | email | phone | githubLink | login | password | passwordConfirm |
+	|Pan    | Jan       | Nowak    | example@email.com | 123456789   | github.com/exampleLink | exampleLogin | examplePassword6@ | examplePassword6@ |
 	And is transferred to verification site
 	When User clicks Nie otrzymałem/am kodu button
 	Then User sees 'Kod aktywacyjny został wysłany pomyślnie'
