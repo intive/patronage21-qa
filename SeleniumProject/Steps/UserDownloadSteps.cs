@@ -6,14 +6,14 @@ using TechTalk.SpecFlow;
 namespace SeleniumProject.Features
 {
     [Binding]
-    public class UserDownloadSteps
+    public class USERS_PAGEUserDownloadSteps
     {
         private readonly IWebDriver _webdriver;
         private readonly UserPage userpage;
         private readonly NavigationPage navigationPage;
         private readonly HomePage homePage;
 
-        public UserDownloadSteps(IWebDriver driver)
+        public USERS_PAGEUserDownloadSteps(IWebDriver driver)
         {
             _webdriver = driver;
             userpage = new UserPage(_webdriver);
@@ -76,6 +76,7 @@ namespace SeleniumProject.Features
         [When(@"The user selects a '(.*)' in which this user is not located")]
         public void WhenTheUserSelectsAInWhichThisUserIsNotLocated(string technologyGroup)
         {
+            userpage.technologyGroupList.Click();
             userpage.mobileAndroid.Click();
         }
 
