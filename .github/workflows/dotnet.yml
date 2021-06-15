@@ -30,7 +30,7 @@ jobs:
     - run: mkdir -p ./RestSharpJS/Reports
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings > ./RestSharpJS/Reports/restSharpJsReports.html
+      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings > ./RestSharpJS/Reports/index.html
       working-directory: ./RestSharpJS
       
     - uses: actions/upload-artifact@v2
