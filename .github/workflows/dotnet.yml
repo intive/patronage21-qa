@@ -37,11 +37,13 @@ jobs:
         path: |
           RestSharpJS
           !RestSharpJS/**/*.md
+        working-directory: ./RestSharpJS      
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage-report
         path: .RestSharpJS/ReportReadme.html
+        working-directory: ./RestSharpJS  
       
   build_restsharp_java:
 
