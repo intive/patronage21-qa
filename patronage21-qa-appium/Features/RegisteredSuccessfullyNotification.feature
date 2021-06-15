@@ -1,4 +1,4 @@
-﻿Feature: RegisteredSuccesfullyNotification
+﻿Feature: RegisteredSuccessfullyNotification
 	User wants to be able to 
 	be ensured that his registration
 	process is successfully finished
