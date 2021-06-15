@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "RegisteredSuccessfullyNotification")]
+    [Scope(Feature = "REGISTERED_SUCCESSFULLY_NOTIFICATION")]
     public class RegisteredSuccesfullyNotificationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;

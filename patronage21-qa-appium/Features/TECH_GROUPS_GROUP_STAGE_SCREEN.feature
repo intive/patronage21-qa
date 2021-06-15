@@ -1,4 +1,5 @@
-﻿Feature: TechGroupsGroupStage
+﻿@ignore
+Feature: TECH_GROUPS_GROUP_STAGE_SCREEN
 	User wants to be able to 
 	view details about stages
 	of certain tech group

@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "ResendCodeScreen")]
+    [Scope(Feature = "RESEND_CODE_SCREEN")]
     public class ResendCodeScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;

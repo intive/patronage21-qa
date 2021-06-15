@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "DeactivationScreen")]
+    [Scope(Feature = "DEACTIVATION_SCREEN")]
     public class DeactivationScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;

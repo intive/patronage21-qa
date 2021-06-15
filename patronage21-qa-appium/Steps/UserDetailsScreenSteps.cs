@@ -13,7 +13,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "UserDetailsScreen")]
+    [Scope(Feature = "USER_DETAILS_SCREEN")]
     public class UserDetailsScreenSteps
     {
         private string _url;

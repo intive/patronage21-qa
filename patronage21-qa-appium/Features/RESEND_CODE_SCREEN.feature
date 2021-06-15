@@ -1,4 +1,4 @@
-﻿Feature: ResendCodeScreen
+﻿Feature: RESEND_CODE_SCREEN
 	User wants to be able to 
 	resend activation code
 	during registration process

@@ -13,7 +13,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "UsersScreenTechGroupsFromApi")]
+    [Scope(Feature = "USERS_SCREEN Tech Groups From Api")]
     public class UsersScreenTechGroupsFromApiSteps
     {
         private string _url;

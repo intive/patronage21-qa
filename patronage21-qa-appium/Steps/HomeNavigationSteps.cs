@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "HomeNavigation")]
+    [Scope(Feature = "HOME_SCREEN Navigation")]
     public class HomeNavigationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;

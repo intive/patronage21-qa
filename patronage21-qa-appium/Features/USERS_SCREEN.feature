@@ -1,4 +1,4 @@
-﻿Feature: UsersScreen
+﻿Feature: USERS_SCREEN
 	User wants to be able to find
 	other users, filter them 
 	by groups and names and view 

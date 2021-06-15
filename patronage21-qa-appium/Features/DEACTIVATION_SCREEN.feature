@@ -1,4 +1,4 @@
-﻿Feature: DeactivationScreen
+﻿Feature: DEACTIVATION_SCREEN
 	User wants to be able to 
 	deactivate his profile
 	to sign out from Patronage

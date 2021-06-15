@@ -1,4 +1,4 @@
-﻿Feature: RegisterScreen
+﻿Feature: REGISTER_SCREEN
 	New user wants to be able to register an account
 	to apply for the Patronative program
 

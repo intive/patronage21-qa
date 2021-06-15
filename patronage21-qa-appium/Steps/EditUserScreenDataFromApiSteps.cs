@@ -12,7 +12,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "EditUserScreenDataFromApi")]
+    [Scope(Feature = "EDIT_PROFILE_SCREEN Data From Api")]
     public class EditUserScreenDataFromApiSteps
     {
         private string _url;

@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "EventsAuditScreen")]
+    [Scope(Feature = "EVENTS_AUDIT_SCREEN")]
     public class EventsAuditScreenSteps
     {
         private string _url;

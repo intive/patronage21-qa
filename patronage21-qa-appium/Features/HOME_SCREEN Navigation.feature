@@ -1,4 +1,4 @@
-﻿Feature: HomeNavigation
+﻿Feature: HOME_SCREEN Navigation
 	User want to be able to navigate 
 	throughout the application from Home Page
 # https://tracker.intive.com/jira/browse/IP2-93
