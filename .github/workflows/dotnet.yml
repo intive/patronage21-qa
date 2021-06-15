@@ -37,7 +37,7 @@ jobs:
         name: Selenim-Reports
         path: |
           RestSharpJS
-          !RestSharpJS/**/*.html
+          !RestSharpJS/**/*.md
       
   build_restsharp_java:
 
