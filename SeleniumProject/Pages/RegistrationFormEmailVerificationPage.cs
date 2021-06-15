@@ -12,8 +12,8 @@ namespace SeleniumProject.Pages
             this.driver = driver;
         }
 
-        public IWebElement title => driver.FindElement(By.XPath("//*[@id='title-label']"));
-        public IWebElement gender => driver.FindElement(By.XPath("//*[@value='Pan']"));
+        public IWebElement title => driver.FindElement(By.XPath("//*[@id='title-label']/parent::*"));
+        public IWebElement gender => driver.FindElement(By.XPath("//*[text()[contains(.,'Pan')]]"));
         public IWebElement firstName => driver.FindElement(By.XPath("//*[@name='firstName']"));
         public IWebElement lastName => driver.FindElement(By.XPath("//*[@name='lastName']"));
         public IWebElement email => driver.FindElement(By.XPath("//*[@name='email']"));
