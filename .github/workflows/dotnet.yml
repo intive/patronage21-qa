@@ -81,4 +81,4 @@ jobs:
         name: Selenim-Reports
         path: |
           SeleniumProject
-          !SeleniumProject/Reports/*.html
+          !SeleniumProject/**/*.html
