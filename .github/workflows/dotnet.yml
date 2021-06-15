@@ -27,16 +27,9 @@ jobs:
       run: dotnet build --no-restore
       working-directory: ./RestSharpJS
       
-    - run: mkdir -p ./RestSharpJS/Reports
-      
     - name: Test
-      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings > ./RestSharpJS/Reports/index.html
+      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings 
       working-directory: ./RestSharpJS
-      
-    - uses: actions/upload-artifact@v2
-      with:
-        name: restSharpJSReports
-        path: ./RestSharpJS/Reports/restSharpJsReports.html
       
   build_restsharp_java:
 
