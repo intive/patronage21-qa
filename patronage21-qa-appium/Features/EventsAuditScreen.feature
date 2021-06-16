@@ -25,7 +25,7 @@ Examples:
 	
 # https://tracker.intive.com/jira/browse/IP2-808
 Scenario Outline: EVENTS_AUDIT_3_IP2-273_search_events_of_type
-	When User clicks "Wyszukaj"
+	When User clicks "Szukaj"
 	And User writes "<search>" to "Wyszukaj" field 
 	Then "<search>" events are displayed
 
@@ -37,9 +37,9 @@ Examples:
 	
 # https://tracker.intive.com/jira/browse/IP2-809
 Scenario Outline: EVENTS_AUDIT_4_IP2-273_search_events_by_username
-	When User clicks "Wyszukaj"
+	When User clicks "Szukaj"
 	And User writes "<search>" to "Wyszukaj" field 
-	Then "<search>" events are displayed
+	Then User "<search>" events are displayed
 
 Examples: 
 	| search      |
