@@ -12,27 +12,33 @@ namespace SeleniumProject.Steps
         private readonly IWebDriver _webdriver;
         private readonly RegistrationFormEmailVerificationPage registrationFormEmailVerificationPage;
         private readonly BasePage basePage;
-
+        private string verificationLink, registrationLink;
+        
         public RegistrationFormEmailVerificationSteps(IWebDriver driver)
         {
             _webdriver = driver;
             registrationFormEmailVerificationPage = new RegistrationFormEmailVerificationPage(_webdriver);
             basePage = new BasePage(_webdriver);
+            verificationLink = _webdriver.Url + "weryfikacja";
+            registrationLink = _webdriver.Url + "rejestracja";
         }
 
         [Given(@"User proceeds with registration via email verification page")]
         public void GivenUserProceedsWithRegistrationViaEmailVerificationPage()
         {
-            _webdriver.Url = _webdriver.Url + "weryfikacja";
+            _webdriver.Url = verificationLink;
         }
 
         [Given(@"User enters data")]
         public void GivenUserEntersData(Table table)
         {
-            _webdriver.Url = "http://localhost:3000/rejestracja";
+            _webdriver.Url = registrationLink;
 
             dynamic data = table.CreateDynamicInstance();
 
+            
+            registrationFormEmailVerificationPage.title.Click();
+            registrationFormEmailVerificationPage.gender.Click();
             registrationFormEmailVerificationPage.firstName.SendKeys(data.firstName);
             registrationFormEmailVerificationPage.lastName.SendKeys(data.lastName);
             registrationFormEmailVerificationPage.email.SendKeys(RegistrationFormEmailVerificationPage.GenerateEmailAdress());
