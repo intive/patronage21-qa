@@ -49,7 +49,7 @@ namespace patronage21_qa_appium.Steps
                 true, false, false, false, username, "TechGroups1!", "TechGroups1!", "", true, true, true);
             _activationScreen.Wait(_driver);
             // to be changed, there is no code table in database yet
-            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", username);
             string code = "99999999";
             _activationScreen.WriteTextToField(_driver, code, "Kod");
             _activationScreen.ClickElement(_driver, "Zatwierdź kod");
