@@ -32,12 +32,6 @@ namespace patronage21_qa_appium.Steps
         public UserDetailsScreenSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            _url = "http://www.intive-patronage.pl";
-            _client = new RestClient(_url);
-            _requestGet = new RestRequest("/api/groups", Method.GET);
-            _response = JsonConvert.DeserializeObject<TechGroupsResponse>(_client.Execute(_requestGet).Content);
-            _groups = _response.groups;
         }
 
         [Given(@"User registers as ""(.*)""")]
