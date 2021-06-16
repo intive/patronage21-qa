@@ -45,14 +45,14 @@ namespace patronage21_qa_appium.Steps
         }
 
         [When(@"User registers as ""(.*)"" with surname ""(.*)""")]
-        public void WhenUserRegistersAsWithSurname(string p0, string p1)
+        public void WhenUserRegistersAsWithSurname(string username, string surname)
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", p1, "test@email.com", "123456789",
-                true, false, false, false, p0, "Deactivate11!", "Deactivate11!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", surname, "test@email.com", "123456789",
+                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "", true, true, true);
             // to be changed, there is no code table in database yet
-            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", username);
             string code = "99999999";
             _activationScreen.Wait(_driver);
             _activationScreen.WriteTextToField(_driver, code, "Kod");

@@ -50,7 +50,7 @@ namespace patronage21_qa_appium.Steps
                 true, false, false, false, "Login", "TechGroups1!", "TechGroups1!", "", true, true, true);
             _activationScreen.Wait(_driver);
             // to be changed, there is no code table in database yet
-            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", "Username");
             string code = "99999999";
             _activationScreen.WriteTextToField(_driver, code, "Kod");
             _activationScreen.ClickElement(_driver, "Zatwierdź kod");
@@ -61,9 +61,9 @@ namespace patronage21_qa_appium.Steps
         }
 
         [When(@"User clicks ""(.*)""")]
-        public void WhenUserClicks(string p0)
+        public void WhenUserClicks(string element)
         {
-            _usersScreen.ClickElement(_driver, "Wybierz grupę");
+            _usersScreen.ClickElement(_driver, element);
         }
 
         [Then(@"User sees correct tech groups")]
