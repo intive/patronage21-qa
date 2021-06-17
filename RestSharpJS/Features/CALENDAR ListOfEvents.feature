@@ -16,7 +16,7 @@ Scenario Outline: CALENDAR_[/api/events/{fromDate}/{toDate}]_[GET]_2_IP2-547_Get
 	Given User filled correctly '<fromDate>' field 
 	When Request is sent to API
 	Then The server should return status 200
-	And JSON body with lists of events
+	And JSON body with list of events
 
 	Examples: 
 		| fromDate            |
@@ -61,7 +61,7 @@ Scenario Outline: CALENDAR_[/api/events/{fromDate}/{toDate}]_[GET]_4_IP2-547_Get
 
 #https://tracker.intive.com/jira/browse/IP2-950
 Scenario: CALENDAR_[/api/events/{fromDate}/{toDate}]_[GET]_5_IP2-547_Get_events_request_with_toDate_field_which_is_earlier_than_fromDate_field_is_sent
-	Given User filled to date field incorrectly
+	Given User filled toDate field incorrectly
 	When Request is sent to API
 	Then The server should return status 400
-	And JSON body with message about too early field to date
+	And JSON body with message about too early field toDate
