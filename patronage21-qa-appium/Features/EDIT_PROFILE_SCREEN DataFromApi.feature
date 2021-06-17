@@ -1,4 +1,4 @@
-﻿Feature: EditUserScreenDataFromApi
+﻿Feature: EDIT_PROFILE_SCREEN Data From Api
 	User needs to see correct
 	data while editing his account
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-894

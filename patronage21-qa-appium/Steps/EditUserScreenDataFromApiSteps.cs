@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
 using RestSharp;
@@ -12,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "EditUserScreenDataFromApi")]
+    [Scope(Feature = "EDIT_PROFILE_SCREEN Data From Api")]
     public class EditUserScreenDataFromApiSteps
     {
         private string _url;
@@ -20,7 +19,6 @@ namespace patronage21_qa_appium.Steps
         private RestRequest _requestGet;
         private GetUserResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -70,7 +68,7 @@ namespace patronage21_qa_appium.Steps
                     break;
             }
         }
-        
+
         [Then(@"User sees correct user data")]
         public void ThenUserSeesCorrectUserData()
         {

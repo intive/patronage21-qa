@@ -1,4 +1,4 @@
-﻿Feature: UsersScreenTechGroupsFromApi
+﻿Feature: USERS_SCREEN Tech Groups From Api
 	User needs to see correct
 	tech groups in Users screen
 	while searching for users

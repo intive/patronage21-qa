@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
 using RestSharp;
@@ -13,7 +12,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "UsersScreenTechGroupsFromApi")]
+    [Scope(Feature = "USERS_SCREEN Tech Groups From Api")]
     public class UsersScreenTechGroupsFromApiSteps
     {
         private string _url;
@@ -28,7 +27,6 @@ namespace patronage21_qa_appium.Steps
         private RegisterSubmitScreen _registerSubmitScreen = new();
         private HomeScreen _homeScreen = new();
         private UsersScreen _usersScreen = new();
-        private JavaDatabase _javaDatabase = new();
 
         private readonly AppiumDriver<AndroidElement> _driver;
 
@@ -52,7 +50,7 @@ namespace patronage21_qa_appium.Steps
                 true, false, false, false, "Login", "TechGroups1!", "TechGroups1!", "", true, true, true);
             _activationScreen.Wait(_driver);
             // to be changed, there is no code table in database yet
-            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", p0);
+            // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", "Username");
             string code = "99999999";
             _activationScreen.WriteTextToField(_driver, code, "Kod");
             _activationScreen.ClickElement(_driver, "Zatwierdź kod");
@@ -63,9 +61,9 @@ namespace patronage21_qa_appium.Steps
         }
 
         [When(@"User clicks ""(.*)""")]
-        public void WhenUserClicks(string p0)
+        public void WhenUserClicks(string element)
         {
-            _usersScreen.ClickElement(_driver, "Wybierz grupę");
+            _usersScreen.ClickElement(_driver, element);
         }
 
         [Then(@"User sees correct tech groups")]

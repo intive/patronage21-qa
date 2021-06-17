@@ -1,4 +1,4 @@
-﻿Feature: EventsAuditScreen
+﻿Feature: EVENTS_AUDIT_SCREEN
 	User wants to be able to inspect 
 	logs of events that are
 	assotiated with his account

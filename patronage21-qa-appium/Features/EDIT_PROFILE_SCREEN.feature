@@ -1,4 +1,4 @@
-﻿Feature: EditProfileScreen
+﻿Feature: EDIT_PROFILE_SCREEN
 	User wants to be able to 
 	edit his profile data
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-266

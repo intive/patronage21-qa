@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
-    [Scope(Feature = "EditProfileScreen")]
+    [Scope(Feature = "EDIT_PROFILE_SCREEN")]
     public class EditProfileScreenSteps
     {
         private string _url;

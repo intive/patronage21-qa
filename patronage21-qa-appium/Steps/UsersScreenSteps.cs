@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Screens;
 using TechTalk.SpecFlow;
 
@@ -13,18 +11,12 @@ namespace patronage21_qa_appium.Steps
     public class UsersScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
-        private readonly ActivationScreen _activationScreen = new();
         private readonly RegisterSubmitScreen _registerSubmitScreen = new();
         private readonly UsersScreen _usersScreen = new();
-        private readonly UserDetailsScreen _userDetailsScreen = new();
-        private readonly DeactivationScreen _deactivationScreen = new();
-        private readonly DeactivationSubmitScreen _deactivationSubmitScreen = new();
-        private readonly Dictionary<string, Dictionary<string, string>> _screensDict = BaseScreen._screensXpathDict;
 
         public UsersScreenSteps(AppiumDriver<AndroidElement> driver)
         {

@@ -18,6 +18,7 @@ namespace patronage21_qa_appium.Screens
             { "Github URL", "Github URL, Github URL" },
             { "Załóż konto", "Załóż konto" },
         };
+
         private static readonly string _screenName = "Rejestracja";
         public static Dictionary<string, string> _screenXpath = _screensXpathDict[_screenName];
 

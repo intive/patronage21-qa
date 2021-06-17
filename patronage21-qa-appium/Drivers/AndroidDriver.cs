@@ -1,10 +1,10 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using System;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using System;
 
 namespace patronage21_qa_appium.Drivers
 {
-    class AndroidDriver
+    internal class AndroidDriver
     {
         public static AppiumDriver<AndroidElement> Init()
         {

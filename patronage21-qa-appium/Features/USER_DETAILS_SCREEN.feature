@@ -1,4 +1,4 @@
-﻿Feature: UserDetailsScreen
+﻿Feature: USER_DETAILS_SCREEN
 	User wants to be able to 
 	view informations about
 	himself and other users

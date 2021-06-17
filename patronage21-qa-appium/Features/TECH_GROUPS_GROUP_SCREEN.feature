@@ -1,4 +1,5 @@
-﻿Feature: TechGroupsGroupScreen
+﻿@ignore
+Feature: TECH_GROUPS_GROUP_SCREEN
 	User wants to be able to 
 	view details about certain
 	tech group

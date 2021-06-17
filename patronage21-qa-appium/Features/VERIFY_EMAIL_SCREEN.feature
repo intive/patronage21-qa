@@ -1,4 +1,5 @@
-﻿Feature: VerifyEmailScreen
+﻿@ignore
+Feature: VERIFY_EMAIL_SCREEN
 	User wants to be able to
 	activate his account during 
 	registration process
