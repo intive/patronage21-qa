@@ -9,7 +9,7 @@ Scenario Outline: CALENDAR_[/api/events/{fromDate}/{toDate}]_[GET]_1_IP2-547_Get
 	Given User filled data correctly
 	When Request is sent to API
 	Then The server should return status 200
-	And JSON body with lists of events
+	And JSON body with list of events
 
 #https://tracker.intive.com/jira/browse/IP2-947
 Scenario Outline: CALENDAR_[/api/events/{fromDate}/{toDate}]_[GET]_2_IP2-547_Get_events_request_with_correct_fromDate_field_is_sent
