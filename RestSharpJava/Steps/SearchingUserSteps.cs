@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
@@ -10,34 +11,41 @@ namespace RestSharpProject.Features
     [Binding]
     public class SearchingUserSteps
     {
-        RestClient client;
-        RestRequest request;
-        IRestResponse response;
 
+        private RestClient _client;
+        private RestRequest _request;
+        private IRestResponse _response;
+        private string searchUsertUrl = "/users?";
+       
+
+        public SearchingUserSteps(RestClient client)
+        {
+            _client = new RestClient(client.BaseUrl + searchUsertUrl);
+        }
 
         [Given(@"Url is set")]
         public void GivenUrlIsSet()
         {
-            client = new RestClient("http://intive-patronage.pl");
+            _client.BaseUrl = _client.BaseUrl;
         }
 
         [When(@"User sends the GET request with a '(.*)' parameter")]
         public void WhenUserSendsTheGETRequestWithAParameter(string query)
         {
-            request = new RestRequest("/api/users?" + query, Method.GET);
+            _request = new RestRequest(_client.BaseUrl + query);
         }
 
         [Then(@"Server return the code (.*)")]
         public void ThenServerReturnTheCode(int code)
         {
-            response = client.Execute(request);
-            Assert.AreEqual(code, (int)response.StatusCode);
+            _response = _client.Get(_request);
+            Assert.AreEqual(code, (int)_response.StatusCode);
         }
 
         [Then(@"JSON body contain list of users with proper '(.*)' with '(.*)'")]
         public void ThenJSONBodyContainListOfUsersWithProperWith(string parameter, string value)
         {
-            var responseMessage = JsonConvert.DeserializeObject<GetUsersList>(response.Content);
+            var responseMessage = JsonConvert.DeserializeObject<GetUsersList>(_response.Content);
 
             if (parameter == "firstName")
             {
@@ -83,10 +91,10 @@ namespace RestSharpProject.Features
         [Then(@"Server returns the code (.*) and the message '(.*)'")]
         public void ThenServerReturnsTheCodeAndTheMessage(int code, string firstMessage)
         {
-            response = client.Execute(request);
-            Assert.AreEqual(code, (int)response.StatusCode);
+            _response = _client.Get(_request);
+            Assert.AreEqual(code, (int)_response.StatusCode);
 
-            var responseMessage1 = JsonConvert.DeserializeObject<RootResponse>(response.Content);
+            var responseMessage1 = JsonConvert.DeserializeObject<RootResponse>(_response.Content);
 
             Assert.That(firstMessage, Is.EqualTo(responseMessage1.violationErrors[0].message));
         }

@@ -17,7 +17,6 @@ namespace RestSharpProject.Models
         public string login { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public List<string> image { get; set; } = null!;
         public string status { get; set; }
     }
 
