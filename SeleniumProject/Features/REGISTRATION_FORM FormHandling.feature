@@ -1,4 +1,5 @@
-﻿Feature: REGISTRATION_FORM FormHandling
+﻿@ignore
+Feature: REGISTRATION_FORM FormHandling
 	
 # link JS: https://tracker.intive.com/jira/browse/IP2-293
 # link QA: https://tracker.intive.com/jira/browse/IP2-315
