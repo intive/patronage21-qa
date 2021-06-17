@@ -10,6 +10,7 @@ namespace RestSharpProject.Models
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
+        public string gender { get; set; }
         public string email { get; set; }
         public Nullable<int> phone { get; set; }
 
@@ -22,10 +23,11 @@ namespace RestSharpProject.Models
         public string githubLink { get; set; }
 
 
-        public User( string name, string surname, string email, Nullable<int> phone, List<string> technology, string password, string login, string githubLink)
+        public User( string firstName, string lastName, string gender, string email, Nullable<int> phone, List<string> technology, string password, string login, string githubLink)
         {
-            this.firstName = name;
-            this.lastName = surname;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.gender = gender;
             this.email = email;
             this.phone = phone;
             this.technologies = technology;
@@ -63,6 +65,8 @@ namespace RestSharpProject.Models
                 user.firstName = "Jan";
             if (user.lastName == null)
                 user.lastName = "Kowalski";
+            if (user.gender == null)
+                user.gender = "Kobieta";
             if (user.email == null)
                 user.email = GenerateEmailAdress();
             if (user.phone == null)
@@ -76,7 +80,7 @@ namespace RestSharpProject.Models
             if (user.githubLink == null)
                 user.githubLink = GenerateGithubLink();
 
-            user = new User(firstName, lastName, email, phone, technologies, password, login, githubLink);
+            user = new User(firstName, lastName, gender, email, phone, technologies, password, login, githubLink);
 
             return user;
         }

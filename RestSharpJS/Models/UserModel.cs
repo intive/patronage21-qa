@@ -11,6 +11,7 @@ namespace RestSharpProject.Models
         public string _id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
+        public string gender { get; set; }
         public string email { get; set; }
         public Nullable<int> phone { get; set; }
         public List<string> technologies { get; set; }
@@ -29,6 +30,7 @@ namespace RestSharpProject.Models
     {
         public List<string> firstName { get; set; }
         public List<string> lastName { get; set; }
+        public List<string> gender { get; set; }
         public List<string> email { get; set; }
 
         public List<string> phone { get; set; }
