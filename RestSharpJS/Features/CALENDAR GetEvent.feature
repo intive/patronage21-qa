@@ -18,7 +18,7 @@ Scenario: CALENDAR_[api/events/event/{id}]_[GET]_1_IP2-884_Get_event_request_wit
 Scenario Outline: CALENDAR_[api/events/event/{id}]_[GET]_2_IP2-884_Get_event_request_with_incorrect_id_is_sent
 	Given User chose event with '<inccorectId>'
 	When Request is sent to API
-	Then The server should return status 404
+	Then The server should return status 500
 	And JSON body with error message
 
 	Examples:
@@ -28,3 +28,10 @@ Scenario Outline: CALENDAR_[api/events/event/{id}]_[GET]_2_IP2-884_Get_event_req
 		| int      | 12                                   |
 		| float    | 10000.23                             |
 		| null     | null                                 |
+
+#https://tracker.intive.com/jira/browse/IP2-962
+Scenario: CALENDAR_[api/events/event/{id}]_[GET]_3_IP2-884_Get_event_request_with_id_which_not_exists_is_sent
+	Given User entered id
+	When Request is sent to API
+	Then The server should return status 404
+	And JSON body with error message about wrong id
