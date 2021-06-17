@@ -7,24 +7,23 @@ Feature: REGISTRATION_FORM FormHandling
 Background:
 Given The user passed through the form correctly
 
-#Link to Zephyr 1
-Scenario: REGISTRATION_FORM_STEP_1_1_IP2_293_Verification_site_is_visible
+#https://tracker.intive.com/jira/browse/IP2-710
+Scenario: REGISTRATION_FORM_STEP_1_IP2_293_Verification_site_is_visible
 Given The user fills the form by correct details
-When The user clicks button 'załóż konto' 
+When The user clicks button 'Załóż konto' 
 Then Response is successful
 And The user is redirected to the site 'Weryfikacja'
 
-#Link to Zephyr 2 
-
-Scenario: REGISTRATION_FORM_STEP_1_2_IP2_293_Verification_site_is_not_visible
+#https://tracker.intive.com/jira/browse/IP2-711
+Scenario: REGISTRATION_FORM_STEP_2_IP2_293_Verification_site_is_not_visible
 Given The user fills the form by correct details
-When The user clicks button 'załóz konto'
+When The user clicks button 'Załóz konto'
 Then Response is not successful
 And contains error information 
 
-#Link to Zephyr 3 
-Scenario: REGISTRATION_FORM_STEP_1_3_IP2_293_Verification_site_is_not_visible
+#https://tracker.intive.com/jira/browse/IP2-712
+Scenario: REGISTRATION_FORM_STEP_3_IP2_293_Verification_site_is_not_visible
 Given The user fills the form by correct details
-When The user clicks button 'załóż konto'
+When The user clicks button 'Załóż konto'
 Then Response is not successful
 And contains unspecified error
