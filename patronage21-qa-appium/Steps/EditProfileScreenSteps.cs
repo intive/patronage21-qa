@@ -6,6 +6,7 @@ using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
 using patronage21_qa_appium.Utils;
+using RestSharp;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -14,10 +15,6 @@ namespace patronage21_qa_appium.Steps
     [Scope(Feature = "EDIT_PROFILE_SCREEN")]
     public class EditProfileScreenSteps
     {
-        private string _url;
-        private RestClient _client;
-        private RestRequest _requestGet;
-        private GetUserResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
