@@ -5,7 +5,7 @@ using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
-using RestSharp;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -19,7 +19,7 @@ namespace patronage21_qa_appium.Steps
         private RestRequest _requestGet;
         private GetUserResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -39,10 +39,12 @@ namespace patronage21_qa_appium.Steps
         [When(@"User registers as ""(.*)"" with surname ""(.*)""")]
         public void WhenUserRegistersAsWithSurname(string username, string surname)
         {
+            username = username.Replace("[unique]", _testKey);
+            surname = surname.Replace("[unique]", _testKey);
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", surname, "test@email.com", "123456789",
-                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", surname, "[unique]@ema.il", "123456789",
+                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             string code = "99999999";
             _activationScreen.Wait(_driver);
             _activationScreen.WriteTextToField(_driver, code, "Kod");
@@ -73,8 +75,8 @@ namespace patronage21_qa_appium.Steps
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, table.Rows[0][0], table.Rows[0][1], table.Rows[0][2], table.Rows[0][3], table.Rows[0][4],
-                true, false, false, false, "Username", "Deactivate11!", "Deactivate11!", table.Rows[0][5], true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, table.Rows[0][0], table.Rows[0][1], table.Rows[0][2], table.Rows[0][3], table.Rows[0][4],
+                true, false, false, false, table.Rows[0][6], "Deactivate11!", "Deactivate11!", table.Rows[0][5], true, true, true);
             string code = "99999999";
             _activationScreen.Wait(_driver);
             _activationScreen.WriteTextToField(_driver, code, "Kod");

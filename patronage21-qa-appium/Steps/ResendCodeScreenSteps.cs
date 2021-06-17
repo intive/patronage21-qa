@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -12,6 +13,7 @@ namespace patronage21_qa_appium.Steps
     public class ResendCodeScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
@@ -35,10 +37,12 @@ namespace patronage21_qa_appium.Steps
         [Given(@"User registers as ""(.*)"" with ""(.*)"" email")]
         public void GivenUserRegistersAsWithEmail(string username, string email)
         {
+            email = email.Replace("[unique]", _testKey);
+            username = username.Replace("[unique]", _testKey);
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", email, "123456789",
-                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", email, "123456789",
+                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
         }
 
         // rename "Weryfikacja adresu email" to "Aktywacja"

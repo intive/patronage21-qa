@@ -138,7 +138,7 @@ namespace patronage21_qa_appium.Screens
             { "Nagłówek", "//android.view.View[@text='Czy na pewno chcesz dezaktywować użytkownika?']" },
             { "Opis", "//android.view.View[@text='Operacji tej nie będzie można cofnąć.']" },
             { "Instrukcja", "//android.view.View[@text='Aby potwierdzić dezaktywację wprowadź nazwisko w pole poniżej.']" },
-            { "Nazwisko", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.EditText" },
+            { "Nazwisko", "//android.widget.EditText" },
             { "Dezaktywuj profil", "//android.widget.Button[@text='Dezaktywuj profil']" },
             { "Anuluj", "//android.widget.Button[@text='Anuluj']" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },

@@ -5,6 +5,7 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using RestSharp;
 using TechTalk.SpecFlow;
 
@@ -19,6 +20,7 @@ namespace patronage21_qa_appium.Steps
         private RestRequest _requestGet;
         private GetUserResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -52,8 +54,8 @@ namespace patronage21_qa_appium.Steps
                 case "Edycja użytkownika":
                     _loginScreen.ClickElement(_driver, "Rejestracja");
                     _registerScreen.Wait(_driver);
-                    _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "Kowalski", "test@email.com", "123456789",
-                        true, false, false, false, "Username", "Deactivate11!", "Deactivate11!", "", true, true, true);
+                    _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+                        true, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
                     string code = "99999999";
                     _activationScreen.Wait(_driver);
                     _activationScreen.WriteTextToField(_driver, code, "Kod");

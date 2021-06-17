@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -11,6 +12,7 @@ namespace patronage21_qa_appium.Steps
     public class UsersScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -28,15 +30,13 @@ namespace patronage21_qa_appium.Steps
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "Usersscreen", "test@email.com", "123456789",
-                true, false, false, false, "Usersscreen", "UsersScreen1!", "UsersScreen1!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+                true, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             _registerSubmitScreen.Wait(_driver);
             _registerSubmitScreen.ClickElement(_driver, "Zamknij");
             _homeScreen.Wait(_driver);
             _homeScreen.ClickElement(_driver, "Użytkownicy");
             _usersScreen.Wait(_driver);
-            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Nagłówek"));
-            Assert.IsNotEmpty(_usersScreen.GetElements(_driver, "Opis"));
         }
 
         [Given(@"Existing user ""(.*)"" assigned to ""(.*)"" list")]

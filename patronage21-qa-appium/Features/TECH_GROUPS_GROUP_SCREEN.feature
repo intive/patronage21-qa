@@ -20,7 +20,7 @@ Scenario: TECH_GROUPS_GROUP_SCREEN_1_IP2-249_group_screen_displayed_correctly
 # there is no ready concept of signing to group yet
 @ignore
 Scenario: TECH_GROUPS_GROUP_SCREEN_2_IP2-249_sign_in_to_group
-	Given User is registered as "JanKowalski"
+	Given User is registered as "[unique]"
 	When User navigates to "Grupy technologiczne"
 	And User clicks "Grupa I"
 	And User clicks "Zapisz się do grupy"
@@ -30,7 +30,7 @@ Scenario: TECH_GROUPS_GROUP_SCREEN_2_IP2-249_sign_in_to_group
 # there is no ready concept of signing to group yet
 @ignore
 Scenario: TECH_GROUPS_GROUP_SCREEN_3_IP2-249_sign_out_from_group
-	Given User is registered as "JanKowalski"
+	Given User is registered as "[unique]"
 	When User navigates to "Grupy technologiczne"
 	And User clicks "Grupa I"
 	And User clicks "Zapisz się do grupy"

@@ -6,15 +6,15 @@
 
 # https://tracker.intive.com/jira/browse/IP2-862
 Scenario: EDIT_PROFILE_SCREEN_1_IP2-154_edit_profile_screen_displayed_correctly
-	When User registers as "JanKowalski" with surname "Kowalski"
+	When User registers as "[unique]" with surname "[unique]"
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	Then User sees "Edycja użytkownika" screen
 	
 # https://tracker.intive.com/jira/browse/IP2-863
 Scenario: EDIT_PROFILE_SCREEN_2_IP2-154_edit_profile_correctly
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                     | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski | Test bio |
+	| title | first_name | last_name | email              | phone     | github                     | bio      | username |
+	| Pan   | Jan        | [unique]  | [unique]@email.com | 123456789 | www.github.com/jankowalski | Test bio | [unique] |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User fills edit form with data
 	| first_nameEdit | last_nameEdit | emailEdit                | phoneEdit | githubEdit                    | bioEdit         |
@@ -27,8 +27,8 @@ Scenario: EDIT_PROFILE_SCREEN_2_IP2-154_edit_profile_correctly
 # https://tracker.intive.com/jira/browse/IP2-864
 Scenario: EDIT_PROFILE_SCREEN_3_IP2-154_incorrect_first_name_provided
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                             | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
+	| title | first_name | last_name | email                 | phone     | github                             | bio      | username |
+	| Pan   | Jan        | [unique]  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio | [unique] |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User writes "[empty]" to "Imię" field
 	And User clicks "Zapisz"
@@ -43,8 +43,8 @@ Scenario: EDIT_PROFILE_SCREEN_3_IP2-154_incorrect_first_name_provided
 # https://tracker.intive.com/jira/browse/IP2-865
 Scenario: EDIT_PROFILE_SCREEN_4_IP2-154_incorrect_last_name_provided
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                             | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
+	| title | first_name | last_name | email                 | phone     | github                             | bio      | username |
+	| Pan   | Jan        | [unique]  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio | [unique] |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User writes "[empty]" to "Nazwisko" field
 	And User clicks "Zapisz"
@@ -59,8 +59,8 @@ Scenario: EDIT_PROFILE_SCREEN_4_IP2-154_incorrect_last_name_provided
 # https://tracker.intive.com/jira/browse/IP2-866
 Scenario: EDIT_PROFILE_SCREEN_5_IP2-154_incorrect_email_provided
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                             | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
+	| title | first_name | last_name | email                 | phone     | github                             | bio      | username |
+	| Pan   | Jan        | [unique]  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio | [unique] |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User writes "[empty]" to "Email" field
 	And User clicks "Zapisz"
@@ -79,8 +79,8 @@ Scenario: EDIT_PROFILE_SCREEN_5_IP2-154_incorrect_email_provided
 # https://tracker.intive.com/jira/browse/IP2-867
 Scenario: EDIT_PROFILE_SCREEN_6_IP2-154_incorrect_phone_number_provided
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                             | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
+	| title | first_name | last_name | email                 | phone     | github                             | bio      | username |
+	| Pan   | Jan        | [unique]  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio | [unique] |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User writes "[empty]" to "Numer telefonu" field
 	And User clicks "Zapisz"
@@ -93,8 +93,8 @@ Scenario: EDIT_PROFILE_SCREEN_6_IP2-154_incorrect_phone_number_provided
 # https://tracker.intive.com/jira/browse/IP2-868
 Scenario: EDIT_PROFILE_SCREEN_7_IP2-154_incorrect_github_provided
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                             | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
+	| title | first_name | last_name | email                 | phone     | github                             | bio      | username |
+	| Pan   | Jan        | [unique]  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio | [unique] |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User writes "https://www./jan-kowalski" to "Github" field
 	And User clicks "Zapisz"
@@ -110,7 +110,7 @@ Scenario: EDIT_PROFILE_SCREEN_7_IP2-154_incorrect_github_provided
 	
 # https://tracker.intive.com/jira/browse/IP2-869
 Scenario: EDIT_PROFILE_SCREEN_8_IP2-154_fields_max_length
-	When User registers as "JanKowalski" with surname "Kowalski"
+	When User registers as "[unique]" with surname "[unique]"
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User writes "ImięęImięęImięęImięęImięęImięęę" to "Imię" field
 	And User writes "NazwiNazwiNazwiNazwiNazwiNazwis" to "Nazwisko" field

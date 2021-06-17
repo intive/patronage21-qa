@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
@@ -7,6 +6,7 @@ using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using RestSharp;
 using TechTalk.SpecFlow;
 
@@ -20,7 +20,8 @@ namespace patronage21_qa_appium.Steps
         private RestClient _client;
         private RestRequest _requestGet;
         private TechGroupsResponse _response;
-        private List<string> _groups;
+        private readonly AppiumDriver<AndroidElement> _driver;
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private LoginScreen _loginScreen = new();
         private RegisterScreen _registerScreen = new();
@@ -30,8 +31,6 @@ namespace patronage21_qa_appium.Steps
         private UsersScreen _usersScreen = new();
         private UserDetailsScreen _userDetailsScreen = new();
         private JavaDatabase _javaDatabase = new();
-
-        private readonly AppiumDriver<AndroidElement> _driver;
 
         public UserDetailsScreenSteps(AppiumDriver<AndroidElement> driver)
         {
@@ -47,10 +46,11 @@ namespace patronage21_qa_appium.Steps
         [Given(@"User registers as ""(.*)""")]
         public void GivenUserRegistersAs(string username)
         {
+            username = username.Replace("[empty]", _testKey);
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "Nazwisko", "test@email.com", "123456789",
-                true, false, false, false, username, "TechGroups1!", "TechGroups1!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             _activationScreen.Wait(_driver);
             // to be changed, there is no code table in database yet
             // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", username);

@@ -3,6 +3,7 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -12,7 +13,7 @@ namespace patronage21_qa_appium.Steps
     public class RegisteredSuccesfullyNotificationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -41,8 +42,7 @@ namespace patronage21_qa_appium.Steps
         public void WhenUserSubmitsRegistrationFormCorrectly()
         {
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", "test@e.mail", "123456789",
-                true, false, false, false, "TestUsername", "Deactivate11!", "Deactivate11!", "", true, true, true);
+            _registerScreen.SubmitRegisterFormCorrectly(_driver, _testKey);
         }
 
         [When(@"User submits activation code form correctly")]

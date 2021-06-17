@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -11,6 +12,7 @@ namespace patronage21_qa_appium.Steps
     public class HomeNavigationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -28,8 +30,8 @@ namespace patronage21_qa_appium.Steps
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", "test@email.com", "123456789",
-                true, false, false, false, "test", "Deactivate11!", "Deactivate11!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+                true, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             // to be changed, there is no code table in database yet
             // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", "username");
             string code = "99999999";
