@@ -7,12 +7,14 @@ Feature: CALENDAR [api/events/event/{id}] Get Event
 Background:
 	Given User get list of events
 
+#https://tracker.intive.com/jira/browse/IP2-960
 Scenario: CALENDAR_[api/events/event/{id}]_[GET]_1_IP2-884_Get_event_request_with_correct_id_is_sent
 	Given User chose event
 	When Request is sent to API
 	Then The server should return status 200
 	And JSON body with data about event
 
+#https://tracker.intive.com/jira/browse/IP2-961
 Scenario Outline: CALENDAR_[api/events/event/{id}]_[GET]_2_IP2-884_Get_event_request_with_incorrect_id_is_sent
 	Given User chose event with '<inccorectId>'
 	When Request is sent to API
