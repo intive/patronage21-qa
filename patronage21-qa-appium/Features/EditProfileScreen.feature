@@ -13,16 +13,16 @@ Scenario: EDIT_PROFILE_SCREEN_1_IP2-154_edit_profile_screen_displayed_correctly
 # https://tracker.intive.com/jira/browse/IP2-863
 Scenario: EDIT_PROFILE_SCREEN_2_IP2-154_edit_profile_correctly
 	When User registers
-	| title | first_name | last_name | email                 | phone     | github                             | bio      |
-	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
+	| title | first_name | last_name | email                 | phone     | github                     | bio      |
+	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski | Test bio |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
 	And User fills edit form with data
-	| titleEdit | first_nameEdit | last_nameEdit | emailEdit                | phoneEdit | githubEdit                            | bioEdit         |
-	| Pani      | Janina         | Kowalska      | janinakowalska@email.com | 987654321 | www.github.com/janinakowalska12874509 | Test bio janina |
+	| first_nameEdit | last_nameEdit | emailEdit                | phoneEdit | githubEdit                    | bioEdit         |
+	| Janina         | Kowalska      | janinakowalska@email.com | 987654321 | www.github.com/janinakowalska | Test bio janina |
 	And User clicks "Zapisz"
 	Then User "JanKowalski" data is
-	| titleEdit | first_nameEdit | last_nameEdit | emailEdit                | phoneEdit | githubEdit                            | bioEdit         |
-	| Pani      | Janina         | Kowalska      | janinakowalska@email.com | 987654321 | www.github.com/janinakowalska12874509 | Test bio janina |
+	| first_nameEdit | last_nameEdit | emailEdit                | phoneEdit | githubEdit                    | bioEdit         |
+	| Janina         | Kowalska      | janinakowalska@email.com | 987654321 | www.github.com/janinakowalska | Test bio janina |
 	
 # https://tracker.intive.com/jira/browse/IP2-864
 Scenario: EDIT_PROFILE_SCREEN_3_IP2-154_incorrect_first_name_provided
@@ -30,7 +30,7 @@ Scenario: EDIT_PROFILE_SCREEN_3_IP2-154_incorrect_first_name_provided
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
 	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
-	And User writes "" to "Imię" field
+	And User writes "[empty]" to "Imię" field
 	And User clicks "Zapisz"
 	And User writes "J" to "Imię" field
 	And User clicks "Zapisz"
@@ -46,7 +46,7 @@ Scenario: EDIT_PROFILE_SCREEN_4_IP2-154_incorrect_last_name_provided
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
 	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
-	And User writes "" to "Nazwisko" field
+	And User writes "[empty]" to "Nazwisko" field
 	And User clicks "Zapisz"
 	And User writes "K" to "Nazwisko" field
 	And User clicks "Zapisz"
@@ -62,7 +62,7 @@ Scenario: EDIT_PROFILE_SCREEN_5_IP2-154_incorrect_email_provided
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
 	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
-	And User writes "" to "Email" field
+	And User writes "[empty]" to "Email" field
 	And User clicks "Zapisz"
 	And User writes "jankowalskigmail.com" to "Email" field
 	And User clicks "Zapisz"
@@ -82,7 +82,7 @@ Scenario: EDIT_PROFILE_SCREEN_6_IP2-154_incorrect_phone_number_provided
 	| title | first_name | last_name | email                 | phone     | github                             | bio      |
 	| Pan   | Jan        | Kowalski  | jankowalski@email.com | 123456789 | www.github.com/jankowalski12874509 | Test bio |
 	And User navigates to "Edycja profilu" screen through "Użytkownicy"
-	And User writes "" to "Numer telefonu" field
+	And User writes "[empty]" to "Numer telefonu" field
 	And User clicks "Zapisz"
 	And User writes "12345678" to "Numer telefonu" field
 	And User clicks "Zapisz"
