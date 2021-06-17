@@ -56,13 +56,6 @@ namespace RestSharpProject.Steps
             user = user.CreateUser(user);
         }
 
-        [Given(@"User filled required data but without data in field Płeć")]
-        public void GivenUserFilledRequiredDataButWithoutDataInFieldPlec()
-        {
-            user = new User(null, null, "", null, null, null, null, null, null);
-            user = user.CreateUser(user);
-        }
-
         [Given(@"User filled required data but without data in field Adres email")]
         public void GivenUserFilledRequiredDataButWithoutDataInFieldAdresEmail()
         {
@@ -131,7 +124,7 @@ namespace RestSharpProject.Steps
         public void GivenUserDidnTFillData()
         {
             List<string> technologies = new List<string>();
-            user = new User("", "", "", "", 0, technologies, "", "", "");
+            user = new User("", "", null, "", 0, technologies, "", "", "");
             user = user.CreateUser(user);
         }
 
@@ -188,13 +181,6 @@ namespace RestSharpProject.Steps
         public void GivenUserFilledRequestToAPIWithTooShortLogin()
         {
             user = new User(null, null, null, null, null, null, null, "L", null);
-            user = user.CreateUser(user);
-        }
-
-        [Given(@"User fills incorrect Plec")]
-        public void GivenUserFillsIncorrectPlec()
-        {
-            user = new User(null, null, "wrongGender", null, null, null, null, null, null);
             user = user.CreateUser(user);
         }
 
@@ -296,13 +282,6 @@ namespace RestSharpProject.Steps
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(responseMessage.fields.lastName[0], Is.EqualTo("Nazwisko musi mieć co najmniej 2 znaki"));
-        }
-
-        [Then(@"JSON body with message about empty field Plec")]
-        public void ThenJSONBodyWithMessageAboutEmptyFieldPlec()
-        {
-            responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.gender[0], Is.EqualTo(""));
         }
 
         [Then(@"JSON body with message about empty field Adres email")]
@@ -415,13 +394,6 @@ namespace RestSharpProject.Steps
         {
             responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(responseMessage.fields.login[0], Is.EqualTo("Login musi składać się z co najmniej 2 znaków"));
-        }
-
-        [Then(@"JSON body with message about incorrect Płeć")]
-        public void ThenJSONBodyWithMessageAboutIncorrectPlec()
-        {
-            responseMessage = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(responseMessage.fields.gender[0], Is.EqualTo(""));
         }
 
         [Then(@"JSON body with message about incorrect Adres email")]

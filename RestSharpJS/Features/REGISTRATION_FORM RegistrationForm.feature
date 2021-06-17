@@ -31,7 +31,6 @@ Examples:
 	| fieldName      |
 	| Imię           |
 	| Nazwisko       |
-	| Płeć           |
 	| Adres email    |
 	| Numer telefonu |
 	| Technologie    |
@@ -97,7 +96,6 @@ Scenario Outline: REGISTRATION_FORM_[/api/register]_[POST]_9_IP-244_form_with_in
 
 Examples: 
 	| fieldName      |
-	| Płeć           |
 	| Adres email    |
 	| Hasło          |
 	| Github link    |
