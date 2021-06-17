@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
 using RestSharp;
@@ -18,6 +20,7 @@ namespace patronage21_qa_appium.Steps
         private RestClient _client;
         private RestRequest _requestGet;
         private TechGroupsResponse _response;
+        private List<string> _groups;
 
         private LoginScreen _loginScreen = new();
         private RegisterScreen _registerScreen = new();
@@ -26,12 +29,19 @@ namespace patronage21_qa_appium.Steps
         private HomeScreen _homeScreen = new();
         private UsersScreen _usersScreen = new();
         private UserDetailsScreen _userDetailsScreen = new();
+        private JavaDatabase _javaDatabase = new();
 
         private readonly AppiumDriver<AndroidElement> _driver;
 
         public UserDetailsScreenSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            _url = "http://www.intive-patronage.pl";
+            _client = new RestClient(_url);
+            _requestGet = new RestRequest("/api/groups", Method.GET);
+            _response = JsonConvert.DeserializeObject<TechGroupsResponse>(_client.Execute(_requestGet).Content);
+            _groups = _response.groups;
         }
 
         [Given(@"User registers as ""(.*)""")]
