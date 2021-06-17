@@ -160,6 +160,8 @@ namespace patronage21_qa_appium.Screens
             { "Numer telefonu", "//android.widget.EditText[position()=4]" },
             { "Github", "//android.widget.EditText[position()=5]" },
             { "Bio", "//android.widget.EditText[position()=6]" },
+            { "Zapisz", "//android.widget.Button[@text='Zapisz']" },
+            { "Anuluj", "//android.widget.Button[@text='Anuluj']" },
         };
 
         private static Dictionary<string, string> _gradebookXpathDict = new()
