@@ -34,15 +34,7 @@ namespace SeleniumProject.Steps
         [Given(@"User doesn't fill data")]
         public void GivenUserDoesnTFillData()
         {
-            registrationFormPage.titleListBox.Click();
             registrationFormPage.RegistrationFormWithoutData();
-        }
-
-        [Given(@"User fills Tytuł incorrect")]
-        public void GivenUserFillsTytulIncorrect(Table table)
-        {
-            dynamic data = table.CreateDynamicInstance();
-            registrationFormPage.titleListBox.Click();
         }
 
         [Given(@"User fills Adres email incorrect")]
@@ -199,12 +191,6 @@ namespace SeleniumProject.Steps
             registrationFormPage.checkBoxJavaScript.Click();
         }
 
-        [When(@"User clicks on next Imię")]
-        public void WhenUserClicksOnNextImie()
-        {
-            registrationFormPage.txtFirstName.Click();
-        }
-
         [When(@"User clicks on next Numer telefonu")]
         public void WhenUserClicksOnNextNumerTelefonu()
         {
@@ -294,12 +280,6 @@ namespace SeleniumProject.Steps
         public void ThenUserCanTClickOnTheButtonZalozKonto()
         {
             Assert.That(registrationFormPage.buttonCreateAccount.Enabled, Is.False);
-        }
-
-        [Then(@"User should see that field Tytuł is incorrect")]
-        public void ThenUserShouldSeeThatFieldTytulIsIncorrect()
-        {
-            Assert.AreEqual(true, registrationFormPage.errorMessageAboutTitle.Displayed);
         }
 
         [Then(@"User should see that field Adres email is incorrect")]

@@ -26,7 +26,6 @@ Scenario Outline: REGISTRATION_FORM_3_IP2-243_form_with_incorrect:_email_phoneNu
 
 Examples:
 	| fieldName      | nextFieldName  |
-	| Tytuł          | Imię           |
 	| Adres email    | Numer telefonu |
 	| Numer telefonu | Github link    |
 	| Github link    | Technologie    |
