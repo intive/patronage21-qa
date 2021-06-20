@@ -47,15 +47,18 @@ namespace patronage21_qa_appium.Screens
             return base.SearchForElement(driver, _screenName, searchFor);
         }
 
-        public void SubmitRegisterForm(AppiumDriver<AndroidElement> driver, string title = "Pan", string first_name = "", string last_name = "", string email = "", string phone = "",
+        public void SubmitRegisterForm(AppiumDriver<AndroidElement> driver, string testKey, string title = "Pan", string first_name = "", string last_name = "", string email = "", string phone = "",
             bool qa = false, bool android = false, bool javascript = false, bool java = false, string login = "", string password = "", string confirmPassword = "", string github = "",
             bool first_regulations = false, bool second_regulations = false, bool submit = false)
         {
-            Wait(driver);
+            last_name = last_name.Replace("[unique]", testKey);
+            email = email.Replace("[unique]", testKey);
+            login = login.Replace("[unique]", testKey);
+            github = github.Replace("[unique]", testKey);
             if (title.Equals("Pani"))
             {
                 ClickElement(driver, "Zwrot");
-                FindElementByText(driver, title).Click();
+                ClickElement(driver, title);
             }
             FindElementByText(driver, _fieldsText["Imię"]).SendKeys(first_name);
             FindElementByText(driver, _fieldsText["Nazwisko"]).SendKeys(last_name);
@@ -97,34 +100,50 @@ namespace patronage21_qa_appium.Screens
             }
         }
 
-        public void SubmitRegisterFormWithFieldSetTo(AppiumDriver<AndroidElement> driver, string field, string value)
+        public void SubmitRegisterFormWithFieldSetTo(AppiumDriver<AndroidElement> driver, string field, string value, string testKey)
         {
             Dictionary<string, string> fieldsValues = new()
             {
                 { "Imię", "Jan" },
-                { "Nazwisko", "Kowalski" },
-                { "Email", "test@test.test" },
+                { "Nazwisko", testKey },
+                { "Email", testKey + "@ema.il" },
                 { "Numer telefonu", "123456789" },
-                { "Login", "JanKowalski" },
+                { "Login", testKey },
                 { "Hasło", "Password1!" },
                 { "Potwierdź hasło", "Password1!" },
-                { "Github URL", "https://www.github.com/JanKowalski" },
+                { "Github URL", "https://www.github.com/" + testKey },
             };
+            value = value.Replace("[unique]", testKey);
             if (value.Equals("[Empty]")) { value = ""; }
             fieldsValues[field] = value;
 
-            Wait(driver);
             FindElementByText(driver, _fieldsText["Imię"]).SendKeys(fieldsValues["Imię"]);
             FindElementByText(driver, _fieldsText["Nazwisko"]).SendKeys(fieldsValues["Nazwisko"]);
             FindElementByText(driver, _fieldsText["Email"]).SendKeys(fieldsValues["Email"]);
             FindElementByText(driver, _fieldsText["Numer telefonu"]).SendKeys(fieldsValues["Numer telefonu"]);
             FindElementByText(driver, "QA");
             ClickElement(driver, "QA_checkbox");
-            Wait(driver);
             FindElementByText(driver, _fieldsText["Login"]).SendKeys(fieldsValues["Login"]);
             FindElementByText(driver, _fieldsText["Hasło"]).SendKeys(fieldsValues["Hasło"]);
             FindElementByText(driver, _fieldsText["Potwierdź hasło"]).SendKeys(fieldsValues["Potwierdź hasło"]);
             FindElementByText(driver, _fieldsText["Github URL"]).SendKeys(fieldsValues["Github URL"]);
+            BaseScreen.SwipeToBottom(driver);
+            ClickElement(driver, "Zgoda wymagana_checkbox");
+            ClickElement(driver, "Zgoda wymagana_checkbox");
+        }
+
+        public void SubmitRegisterFormCorrectly(AppiumDriver<AndroidElement> driver, string testKey)
+        {
+            FindElementByText(driver, _fieldsText["Imię"]).SendKeys("Imię");
+            FindElementByText(driver, _fieldsText["Nazwisko"]).SendKeys(testKey);
+            FindElementByText(driver, _fieldsText["Email"]).SendKeys(testKey + "@ema.il");
+            FindElementByText(driver, _fieldsText["Numer telefonu"]).SendKeys("123456789");
+            FindElementByText(driver, "QA");
+            ClickElement(driver, "QA_checkbox");
+            FindElementByText(driver, _fieldsText["Login"]).SendKeys(testKey);
+            FindElementByText(driver, _fieldsText["Hasło"]).SendKeys("Aaaaaaaa1!");
+            FindElementByText(driver, _fieldsText["Potwierdź hasło"]).SendKeys("Aaaaaaaa1!");
+            FindElementByText(driver, _fieldsText["Github URL"]).SendKeys("https://www.github.com/" + testKey);
             BaseScreen.SwipeToBottom(driver);
             ClickElement(driver, "Zgoda wymagana_checkbox");
             ClickElement(driver, "Zgoda wymagana_checkbox");

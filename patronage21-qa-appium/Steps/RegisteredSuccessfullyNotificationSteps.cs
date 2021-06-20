@@ -3,16 +3,18 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
 {
     [Binding]
     [Scope(Feature = "REGISTERED_SUCCESSFULLY_NOTIFICATION")]
-    public class RegisteredSuccesfullyNotificationSteps
+    public class RegisteredSuccessfullyNotificationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
-        private readonly JavaDatabase _javaDatabase = new();
+        private static JavaApi _javaApi = new();
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
@@ -25,10 +27,15 @@ namespace patronage21_qa_appium.Steps
         private readonly DeactivationScreen _deactivationScreen = new();
         private readonly DeactivationSubmitScreen _deactivationSubmitScreen = new();
 
-        public RegisteredSuccesfullyNotificationSteps(AppiumDriver<AndroidElement> driver)
+        public RegisteredSuccessfullyNotificationSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [When(@"User clicks ""(.*)""")]
@@ -41,8 +48,8 @@ namespace patronage21_qa_appium.Steps
         public void WhenUserSubmitsRegistrationFormCorrectly()
         {
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", "test@e.mail", "123456789",
-                true, false, false, false, "TestUsername", "Deactivate11!", "Deactivate11!", "", true, true, true);
+            _registerScreen.SubmitRegisterFormCorrectly(_driver, _testKey);
+            _registerScreen.SearchForElement(_driver, "Załóż konto").Click();
         }
 
         [When(@"User submits activation code form correctly")]
