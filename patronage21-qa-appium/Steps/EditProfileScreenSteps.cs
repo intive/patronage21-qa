@@ -18,6 +18,7 @@ namespace patronage21_qa_appium.Steps
         private readonly AppiumDriver<AndroidElement> _driver;
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
+        private readonly Topbar _topbar = new();
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
@@ -40,7 +41,7 @@ namespace patronage21_qa_appium.Steps
             surname = surname.Replace("[unique]", _testKey);
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", surname, "[unique]@ema.il", "123456789",
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", surname, "[unique]@ema.il", "123456789",
                 true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             string code = "99999999";
             _activationScreen.Wait(_driver);
@@ -58,8 +59,15 @@ namespace patronage21_qa_appium.Steps
             {
                 case ("Edycja profilu", "Użytkownicy"):
                     _homeScreen.ClickElement(_driver, "Użytkownicy");
-                    _usersScreen.Wait(_driver);
-                    _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
+                    _usersScreen.WriteTextToField(_driver, _testKey, "Szukaj użytkownika");
+                    _usersScreen.ClickElement(_driver, "Ty");
+                    BaseScreen.SwipeToBottom(_driver);
+                    _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
+                    BaseScreen.SwipeToBottom(_driver);
+                    break;
+
+                case ("Edycja profilu", "Moje konto"):
+                    _topbar.ClickElement(_driver, "Moje konto");
                     BaseScreen.SwipeToBottom(_driver);
                     _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
                     BaseScreen.SwipeToBottom(_driver);
@@ -99,12 +107,6 @@ namespace patronage21_qa_appium.Steps
         public void WhenUserWritesToField(string text, string field)
         {
             if (text == "[empty]") { text = ""; }
-            _editUserScreen.WriteTextToField(_driver, text, field);
-        }
-
-        [When(@"User writes ""(.*)"" to ""(.*)"" field")]
-        public void WhenUserWritesToField(int text, string field)
-        {
             _editUserScreen.WriteTextToField(_driver, text.ToString(), field);
         }
 
@@ -113,44 +115,29 @@ namespace patronage21_qa_appium.Steps
         {
             _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
             BaseScreen.SwipeToBottom(_driver);
-            Assert.Equals(_editUserScreen.GetElement(_driver, "Imię").Text, userData.Rows[0][0]);
-            Assert.Equals(_editUserScreen.GetElement(_driver, "Nazwisko").Text, userData.Rows[0][1]);
-            Assert.Equals(_editUserScreen.GetElement(_driver, "Email").Text, userData.Rows[0][2]);
-            Assert.Equals(_editUserScreen.GetElement(_driver, "Numer telefonu").Text, userData.Rows[0][3]);
-            Assert.Equals(_editUserScreen.GetElement(_driver, "Github").Text, userData.Rows[0][4]);
-            Assert.Equals(_editUserScreen.GetElement(_driver, "Bio").Text, userData.Rows[0][5]);
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Imię").Text, userData.Rows[0][0]);
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Nazwisko").Text, userData.Rows[0][1]);
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Email").Text, userData.Rows[0][2]);
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Numer telefonu").Text, userData.Rows[0][3]);
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Github").Text, userData.Rows[0][4]);
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Bio").Text, userData.Rows[0][5]);
         }
 
         [Then(@"User ""(.*)"" ""(.*)"" is ""(.*)""")]
         public void ThenUserIs(string username, string attribute, string value)
         {
+            value = value.Replace("[unique]", _testKey);
             _editUserScreen.ClickElement(_driver, "Anuluj");
             BaseScreen.SwipeToBottom(_driver);
             _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
             BaseScreen.SwipeToBottom(_driver);
-            Assert.Equals(_editUserScreen.GetElement(_driver, attribute).Text, value);
-        }
-
-        [Then(@"User ""(.*)"" ""(.*)"" is ""(.*)""")]
-        public void ThenUserIs(string username, string attribute, int value)
-        {
-            _editUserScreen.ClickElement(_driver, "Anuluj");
-            BaseScreen.SwipeToBottom(_driver);
-            _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
-            BaseScreen.SwipeToBottom(_driver);
-            Assert.Equals(_editUserScreen.GetElement(_driver, attribute).Text, value.ToString());
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, attribute).Text, value.ToString());
         }
 
         [Then(@"User sees ""(.*)"" in ""(.*)"" field")]
         public void ThenUserSeesInField(string value, string field)
         {
-            Assert.Equals(_editUserScreen.GetElement(_driver, field).Text, value);
-        }
-
-        [Then(@"User sees ""(.*)"" in ""(.*)"" field")]
-        public void ThenUserSeesInField(int value, string field)
-        {
-            Assert.Equals(_editUserScreen.GetElement(_driver, field).Text, value.ToString());
+            Assert.AreEqual(_editUserScreen.GetElement(_driver, field).Text, value.ToString());
         }
     }
 }
