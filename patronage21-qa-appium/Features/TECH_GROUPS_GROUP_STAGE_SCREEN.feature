@@ -10,7 +10,7 @@ Background:
 	Given User is on "Grupa I" group "Etap I" stage screen
 
 # https://tracker.intive.com/jira/browse/IP2-820
-Scenario: TECH_GROUPS_GROUP_STAGE_1_IP2-247_deactivation_screen_displayed_correctly
+Scenario: TECH_GROUPS_GROUP_STAGE_1_IP2-247_stage_screen_displayed_correctly
 	Then User sees "Grupa I" group "Etap I" stage screen
 	And User sees "Grupa I" group "Etap I" stage description 
 	And User sees "Grupa I" group "Etap I" stage meetings 
