@@ -65,14 +65,14 @@ namespace patronage21_qa_appium.Steps
         [When(@"User completes form correctly but with every tech group selected")]
         public void WhenUserCompletesFormCorrectlyButWithEveryTechGroupSelected()
         {
-            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
                 true, true, true, true, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
         }
 
         [When(@"User completes form correctly but without any tech group selected")]
         public void WhenUserCompletesFormCorrectlyButWithoutAnyTechGroupSelected()
         {
-            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
                 false, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
         }
 
