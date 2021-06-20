@@ -43,6 +43,7 @@ namespace patronage21_qa_appium.Steps
         {
             _registerScreen.Wait(_driver);
             _registerScreen.SubmitRegisterFormCorrectly(_driver, _testKey);
+            _registerScreen.SearchForElement(_driver, "Załóż konto").Click();
         }
 
         [When(@"User submits activation code form correctly")]
