@@ -29,16 +29,17 @@ namespace RestSharpProject.Models
             this.projects = projects;
         }
     }
-    public class Projects
-    {
-        public string name { get; set; }
-        public string role { get; set; }
-
-        public Projects(string name, string role)
+        public class Projects
         {
-            this.role = role;
-            this.name = name;
+            public string name { get; set; }
+            public string role { get; set; }
+
+            public Projects(string name, string role)
+            {
+                this.role = role;
+                this.name = name;
+            }
         }
     }
-}
+
 

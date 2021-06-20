@@ -11,12 +11,17 @@ namespace RestSharpProject.Features
     [Binding]
     public class EditingUserDataSteps
     {
-        RestClient client;
-        RestRequest request;
-        IRestResponse response;
+        private RestClient _client;
+        private RestRequest _request;
+        private IRestResponse _response;
+        private string editUsertUrl = "/users";
         RootPUT responseMessage;
         UserPUT updatedUser;
 
+        public EditingUserDataSteps(RestClient client)
+        {
+            _client = new RestClient(client.BaseUrl + editUsertUrl);
+        }
 
         [Given(@"User exists in the database")]
         public static void GivenUserExistsInTheDatabase(Table table)
@@ -28,19 +33,20 @@ namespace RestSharpProject.Features
         public void WhenUserSendsAPUTRequest(Table table)
         {
             updatedUser = table.CreateInstance<UserPUT>();
-            client = new RestClient("http://intive-patronage.pl");
-            request = new RestRequest("/api/users", Method.PUT);
-            request.AddParameter("application/json", JsonConvert.SerializeObject(updatedUser), ParameterType.RequestBody);
-            response = client.Execute(request);
+            _client.BaseUrl = _client.BaseUrl;
+            _request = new RestRequest(_client.BaseUrl);
+            _request.AddParameter("application/json", JsonConvert.SerializeObject(updatedUser), ParameterType.RequestBody);
+
+            _response = _client.Put(_request);
         }
 
         [Then(@"Server returns status (.*) and Json body contain updated parameters")]
         public void ThenServerReturnsStatusAndJsonBodyContainUpdatedParameters(int code)
         {
-            Assert.AreEqual(code, (int)response.StatusCode);
+            Assert.AreEqual(code, (int)_response.StatusCode);
 
-            var getRequest = new RestRequest("/api/users/AnnaNowak", Method.GET);
-            var getResponse = client.Execute(getRequest);
+            var getRequest = new RestRequest(_client.BaseUrl + "/kowalski87");
+            var getResponse = _client.Get(getRequest);
             responseMessage = JsonConvert.DeserializeObject<RootPUT>(getResponse.Content);
 
             Assert.That(responseMessage.user.login, Is.EqualTo(updatedUser.login));
@@ -55,9 +61,9 @@ namespace RestSharpProject.Features
         [Then(@"Server returns status (.*) and message '(.*)'")]
         public void ThenServerReturnsStatusAndMessage(int code, string message)
         {
-            Assert.AreEqual(code, (int)response.StatusCode);
+            Assert.AreEqual(code, (int)_response.StatusCode);
 
-            var responseMessage2 = JsonConvert.DeserializeObject<RootResponse>(response.Content);
+            var responseMessage2 = JsonConvert.DeserializeObject<RootResponse>(_response.Content);
 
             Assert.That(message, Is.EqualTo(responseMessage2.violationErrors[0].message));
         }
