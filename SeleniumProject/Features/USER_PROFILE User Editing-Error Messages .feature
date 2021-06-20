@@ -20,7 +20,7 @@ And User clicks "Zatwierdź" button
 Then "Dane zostały pomyślnie zaktualizowane" will be displayed
 
 #https://tracker.intive.com/jira/browse/IP2-996
-Scenario: USER_PROFILE_3_IP2-881_user enters the data incorrectly
+Scenario: USER_PROFILE_3_IP2-881_user_enters_the_data_incorrectly
 When User clicks the "Edytuj profil" button
 And User enters his data incorrectly
 And User clicks "Zatwierdź" button
