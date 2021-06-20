@@ -26,10 +26,6 @@ Scenario: VERIFY_EMAIL_3_IP2-258_wrong_code_provided
 	And User clicks "Zatwierdź kod"
 	And User writes "1234567" to "Kod" field
 	And User clicks "Zatwierdź kod"
-	Then User sees "Aktywacja" screen
-	
-# https://tracker.intive.com/jira/browse/IP2-873
-Scenario: VERIFY_EMAIL_4_IP2-258_code_field_max_length
-	When User registers as "[unique]"
 	And User writes "123456789" to "Kod" field
-	Then User sees "12345678" in "Kod" field
+	And User clicks "Zatwierdź kod"
+	Then User sees "Aktywacja" screen
