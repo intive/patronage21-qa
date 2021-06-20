@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
@@ -7,6 +6,7 @@ using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Drivers;
 using patronage21_qa_appium.Models;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using RestSharp;
 using TechTalk.SpecFlow;
 
@@ -20,8 +20,11 @@ namespace patronage21_qa_appium.Steps
         private RestClient _client;
         private RestRequest _requestGet;
         private TechGroupsResponse _response;
-        private List<string> _groups;
+        private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
+        private Topbar _topbar = new();
         private LoginScreen _loginScreen = new();
         private RegisterScreen _registerScreen = new();
         private ActivationScreen _activationScreen = new();
@@ -31,26 +34,29 @@ namespace patronage21_qa_appium.Steps
         private UserDetailsScreen _userDetailsScreen = new();
         private JavaDatabase _javaDatabase = new();
 
-        private readonly AppiumDriver<AndroidElement> _driver;
-
         public UserDetailsScreenSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             _url = "http://www.intive-patronage.pl";
             _client = new RestClient(_url);
             _requestGet = new RestRequest("/api/groups", Method.GET);
             _response = JsonConvert.DeserializeObject<TechGroupsResponse>(_client.Execute(_requestGet).Content);
-            _groups = _response.groups;
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User registers as ""(.*)""")]
         public void GivenUserRegistersAs(string username)
         {
+            username = username.Replace("[empty]", _testKey);
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "Nazwisko", "test@email.com", "123456789",
-                true, false, false, false, username, "TechGroups1!", "TechGroups1!", "", true, true, true);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
+                true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             _activationScreen.Wait(_driver);
             // to be changed, there is no code table in database yet
             // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", username);
@@ -62,13 +68,18 @@ namespace patronage21_qa_appium.Steps
             _homeScreen.Wait(_driver);
         }
 
-        [When(@"User clicks ""(.*)"" on ""(.*)"" screen")]
-        public void WhenUserClicksOnScreen(string element, string screen)
+        [When(@"User navigates to ""(.*)"" profile")]
+        public void WhenUserNavigatesToProfile(string profile)
         {
-            switch (screen)
+            switch (profile)
             {
-                case "Home":
-                    _homeScreen.ClickElement(_driver, element);
+                case "not owned":
+                    _homeScreen.ClickElement(_driver, "Użytkownicy");
+                    _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
+                    break;
+
+                case "owned":
+                    _topbar.ClickElement(_driver, "Moje konto");
                     break;
             }
         }
@@ -113,19 +124,12 @@ namespace patronage21_qa_appium.Steps
         [Then(@"""(.*)"" screen is displayed correctly for ""(.*)"" profile")]
         public void ThenScreenIsDisplayedCorrectlyForProfile(string screenName, string profile)
         {
-            // To be changed, for now app is working in admin mode for everyone, in future
-            // those elements will be split into owned ("Edytuj profil" and
-            // "Dezaktywuj profil" visible) and not owned ("Wyślij wiadomość", "Zadzwoń",
-            // "Otwórz link" visible), when it happens code should be replaced
-            // by commented code
-            /*
             BaseScreen.SwipeToBottom(_driver);
             switch(profile)
             {
                 case "owned":
                     Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Edytuj profil"));
                     Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Dezaktywuj profil"));
-                    Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Kontakt nagłówek"));
                     Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
                     Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
                     Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
@@ -134,20 +138,11 @@ namespace patronage21_qa_appium.Steps
                 case "not owned":
                     Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Edytuj profil"));
                     Assert.IsEmpty(_userDetailsScreen.GetElements(_driver, "Dezaktywuj profil"));
-                    Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Kontakt nagłówek"));
                     Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
                     Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
                     Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
                     break;
             }
-            */
-            BaseScreen.SwipeToBottom(_driver);
-            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Edytuj profil"));
-            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Dezaktywuj profil"));
-            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Kontakt nagłówek"));
-            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Wyślij wiadomość"));
-            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Zadzwoń"));
-            Assert.IsNotEmpty(_userDetailsScreen.GetElements(_driver, "Otwórz link"));
         }
     }
 }

@@ -9,6 +9,11 @@ namespace patronage21_qa_appium.Screens
 {
     internal class BaseScreen
     {
+        private static Dictionary<string, string> _topbar = new()
+        {
+            { "Moje konto", "//android.widget.Button[@content-desc='Ikona profilu użytkownika']" },
+        };
+
         private static Dictionary<string, string> _homeXpathDict = new()
         {
             { "Nagłówek", "//android.view.View[@text='Witaj w Patron-a-tive!']" },
@@ -40,7 +45,7 @@ namespace patronage21_qa_appium.Screens
             { "Opis", "//android.view.View[@text='Wystarczy, że wypełnisz poniższy formularz zgłoszeniowy.']" },
             { "Zwrot", "//android.view.View[@text='Wystarczy, że wypełnisz poniższy formularz zgłoszeniowy.']/following-sibling::android.view.View[position()=1]" },
             { "Pan", "//android.view.View[@text='Pan']" },
-            { "Pani", "//android.view.View[@text='Pani']" },
+            { "Pani", "//*[contains(@text, 'Pani')]" },
             { "Imię", "//android.widget.EditText[@text='Imię *, Imię *']" },
             { "Nazwisko", "//android.widget.EditText[@text='Nazwisko *, Nazwisko *']" },
             { "Nazwisko_dezaktywacja", "//android.view.ViewGroup/android.view.View/android.widget.EditText" },
@@ -83,9 +88,8 @@ namespace patronage21_qa_appium.Screens
         {
             { "Nagłówek", "//android.view.View[@text='Użytkownicy']" },
             { "Opis", "//android.view.View[@text='Użytkownicy']/following-sibling::android.view.View[position()=1]" },
-            { "Szukaj użytkownika", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*" },
-            { "Wybrana grupa", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText" },
-            { "Wybierz grupę", "//android.widget.ImageView[@content-desc='Search Icon']/parent::*/following-sibling::android.widget.EditText/following-sibling::*[position()=1]" },
+            { "Szukaj użytkownika", "//android.widget.ImageView[@content-desc='Search Icon']/parent::android.widget.EditText" },
+            { "Wybierz grupę", "//android.widget.ImageView[@content-desc='Search Icon']/parent::android.widget.EditText/following-sibling::android.view.View[position()=1]" },
             { "Liderzy nagłówek", "//android.view.View[@text='Liderzy']" },
             { "Liderzy licznik", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()=1]" },
             { "Liderzy lista", "//android.view.View[@text='Liderzy']/following-sibling::android.view.View[position()>1][following-sibling::android.view.View[@text='Uczestnicy']]" },
@@ -97,7 +101,7 @@ namespace patronage21_qa_appium.Screens
             { "Uczestnicy lista", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1]" },
             { "Uczestnicy Ty użytkownik", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1][@text='Ty']/preceding-sibling::android.view.View[position()=1]]" },
             { "Uczestnicy brak wyników", "//android.view.View[@text='Uczestnicy']/following-sibling::android.view.View[position()>1][@text='Brak wyników']" },
-            { "Ty", "//android.view.View[@text='Ty']" },
+            { "Ty", "//android.view.View[contains(@text, ', Ty')]" },
             { "Ty użytkownik", "//android.view.View[@text='Ty']/preceding-sibling::android.view.View[position()=1]" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
@@ -109,9 +113,9 @@ namespace patronage21_qa_appium.Screens
             { "Mobile (Android)", "//android.view.View[contains(@text, 'Android')]" },
         };
 
-        // To be changed, for now both owned account and other person account details are the same
         private static Dictionary<string, string> _userDetailsXpathDict = new()
         {
+            { "Nagłówek", "//android.widget.ImageView[@content-desc='Search Icon']" },
             { "Opis", "//android.view.View[@text='Użytkownicy']/following-sibling::android.view.View[position()=1]" },
             { "Zdjęcie", "//android.widget.ImageView[@content-desc='Search Icon']" },
             { "Nazwa użytkownika", "//android.widget.ImageView[@content-desc='Zdjęcie profilowe']/following-sibling::android.view.View[position()=1]" },
@@ -138,7 +142,7 @@ namespace patronage21_qa_appium.Screens
             { "Nagłówek", "//android.view.View[@text='Czy na pewno chcesz dezaktywować użytkownika?']" },
             { "Opis", "//android.view.View[@text='Operacji tej nie będzie można cofnąć.']" },
             { "Instrukcja", "//android.view.View[@text='Aby potwierdzić dezaktywację wprowadź nazwisko w pole poniżej.']" },
-            { "Nazwisko", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.EditText" },
+            { "Nazwisko", "//android.widget.EditText" },
             { "Dezaktywuj profil", "//android.widget.Button[@text='Dezaktywuj profil']" },
             { "Anuluj", "//android.widget.Button[@text='Anuluj']" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
@@ -154,6 +158,7 @@ namespace patronage21_qa_appium.Screens
 
         private static Dictionary<string, string> _editUserXpathDict = new()
         {
+            { "Nagłówek", "//android.widget.EditText[position()=1]" },
             { "Imię", "//android.widget.EditText[position()=1]" },
             { "Nazwisko", "//android.widget.EditText[position()=2]" },
             { "Email", "//android.widget.EditText[position()=3]" },
@@ -183,18 +188,20 @@ namespace patronage21_qa_appium.Screens
         private static Dictionary<string, string> _eventsAuditXpathDict = new()
         {
             { "Nagłówek", "//android.view.View[@text='Audyt zdarzeń']" },
-            { "Szukaj", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.Button[position()=1]" },
-            { "Wyszukaj", "//android.view.View[@text='Wyszukaj']" },
+            { "Szukaj", "//android.widget.Button[@content-desc='Ikona wyszukiwania']" },
+            { "Wyszukaj", "//android.widget.EditText[@content-desc='Ikona wyszukiwania']" },
             { "Sortuj", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.Button[position()=2]" },
             { "Od najnowszych", "//android.widget.ImageView[@content-desc='Ikona strzałka do góry']" },
             { "Od najstarszych", "//android.view.View[@text='Od najstarszych']" },
             { "Przewiń do góry", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.widget.Button[position()=3]" },
             { "Mobile (Android)", "//android.view.View[contains(@text, 'Android')]" },
-            { "Pierwsze zdarzenie data", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[contains(@text, ', ')][position()=1]" },
-            { "Ostatnie zdarzenie data", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[contains(@text, ', ')][position()=last()]" },
+            { "Pierwsze zdarzenie data", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[contains(@text, '.')][position()=1]" },
+            { "Ostatnie zdarzenie data", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/android.view.View[contains(@text, '.')][position()=last()]" },
             { "Logowanie", "//android.view.View[@text='Logowanie']" },
-            { "Rejestracja", "//android.view.View[@text='Rejestracja']" },
             { "Wylogowanie", "//android.view.View[@text='Wylogowanie']" },
+            { "Udana rejestracja", "//android.view.View[@text='Udana rejestracja']" },
+            { "Pomyślna edycja", "//android.view.View[@text='Pomyślna edycja użytkownika']" },
+            { "Dodanie wydarzenia", "//android.view.View[contains(@text, 'Dodano wydarzenie:')]" },
             { "First element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[1]" },
             { "Last element", "//android.widget.FrameLayout/android.view.ViewGroup/android.view.View/*[last()]" },
         };
@@ -217,6 +224,7 @@ namespace patronage21_qa_appium.Screens
 
         public static Dictionary<string, Dictionary<string, string>> _screensXpathDict = new()
         {
+            { "Topbar", _topbar },
             { "Home", _homeXpathDict },
             { "Logowanie", _loginXpathDict },
             { "Rejestracja", _registerXpathDict },
@@ -341,6 +349,10 @@ namespace patronage21_qa_appium.Screens
                         "new UiScrollable(new UiSelector().scrollable(true)).flingToEnd(4)"));
             }
             catch (InvalidSelectorException)
+            {
+                // ignore
+            }
+            catch (NoSuchElementException)
             {
                 // ignore
             }

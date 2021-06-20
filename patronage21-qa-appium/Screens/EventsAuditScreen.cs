@@ -32,6 +32,14 @@ namespace patronage21_qa_appium.Screens
 
         public DateTime ParseDateTime(string dateTimeString)
         {
+            // Changes strings like "18.06.2021 04:04" to DateTime object
+            DateTime output;
+            var subs = dateTimeString.Split(" ");
+            var dateSubs = subs[0].Split(".");
+            var timeSubs = subs[1].Split(":");
+            output = new(int.Parse(dateSubs[2]), int.Parse(dateSubs[1]), int.Parse(dateSubs[0]), int.Parse(timeSubs[0]), int.Parse(timeSubs[1]), 0);
+            return output;
+            /* outdated for now
             // Changes strings like "12/4/07, 8:03 PM" to DateTime object 
             DateTime output;
             var subs = dateTimeString.Split(", ");
@@ -48,6 +56,7 @@ namespace patronage21_qa_appium.Screens
                 output = new(int.Parse(dateSubs[2]), int.Parse(dateSubs[1]), int.Parse(dateSubs[0]), int.Parse(time[0]), int.Parse(time[1]), 0);
             }
             return output;
+            */
         }
     }
 }

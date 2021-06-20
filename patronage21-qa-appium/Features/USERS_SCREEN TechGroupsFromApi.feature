@@ -8,5 +8,5 @@
 # https://tracker.intive.com/jira/browse/IP2-563
 Scenario: USERS_SCREEN_1_IP2-469_tech_groups_are_loaded_correctly
 	Given User is on "Użytkownicy" screen
-	When User clicks "Wszystkie grupy"
+	When User clicks "Wybierz grupę"
 	Then User sees correct tech groups

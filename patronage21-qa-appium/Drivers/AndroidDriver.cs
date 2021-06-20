@@ -17,7 +17,7 @@ namespace patronage21_qa_appium.Drivers
             driverOption.AddAdditionalCapability("skipServerInstallation", true);
 
             var driver = new AndroidDriver<AndroidElement>(new Uri("http://localhost:4723/wd/hub"), driverOption);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             return driver;
         }
     }

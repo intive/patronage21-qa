@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Screens;
+using patronage21_qa_appium.Utils;
 using TechTalk.SpecFlow;
 
 namespace patronage21_qa_appium.Steps
@@ -11,13 +12,21 @@ namespace patronage21_qa_appium.Steps
     public class RegisterScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
+        private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
+
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
 
         public RegisterScreenSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User is on Registration page")]
@@ -29,7 +38,7 @@ namespace patronage21_qa_appium.Steps
         [When(@"User completes form correctly but with ""(.*)"" set to ""(.*)""")]
         public void WhenUserCompletesFormCorrectlyButWithSetTo(string field, string value)
         {
-            _registerScreen.SubmitRegisterFormWithFieldSetTo(_driver, field, value);
+            _registerScreen.SubmitRegisterFormWithFieldSetTo(_driver, field, value, _testKey);
         }
 
         [Then(@"Submit button is inactive")]
@@ -62,15 +71,15 @@ namespace patronage21_qa_appium.Steps
         [When(@"User completes form correctly but with every tech group selected")]
         public void WhenUserCompletesFormCorrectlyButWithEveryTechGroupSelected()
         {
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", "test@email.com", "123456789",
-                true, true, true, true, "TestLogin", "Deactivate11!", "Deactivate11!", "", true, true, false);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
+                true, true, true, true, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
         }
 
         [When(@"User completes form correctly but without any tech group selected")]
         public void WhenUserCompletesFormCorrectlyButWithoutAnyTechGroupSelected()
         {
-            _registerScreen.SubmitRegisterForm(_driver, "Pan", "test", "test", "test@email.com", "123456789",
-                false, false, false, false, "TestLogin", "Deactivate11!", "Deactivate11!", "", true, true, false);
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
+                false, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
         }
 
         [When(@"User clicks ""(.*)"" checkbox")]
