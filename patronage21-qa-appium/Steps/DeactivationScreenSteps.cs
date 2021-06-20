@@ -15,6 +15,7 @@ namespace patronage21_qa_appium.Steps
         private readonly AppiumDriver<AndroidElement> _driver;
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
+        private readonly Topbar _topbar = new();
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
@@ -31,24 +32,12 @@ namespace patronage21_qa_appium.Steps
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
-        [BeforeScenario]
-        public void Setup()
-        {
-            _driver.LaunchApp();
-        }
-
-        [Given(@"User is not logged in")]
-        public void GivenUserIsNotLoggedIn()
-        {
-            Assert.IsNotEmpty(_loginScreen.GetElements(_driver, "Nagłówek"));
-        }
-
         [When(@"User registers as ""(.*)"" with surname ""(.*)""")]
         public void WhenUserRegistersAsWithSurname(string username, string surname)
         {
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", surname, "[unique]@ema.il", "123456789",
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", surname, "[unique]@ema.il", "123456789",
                 true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
             // to be changed, there is no code table in database yet
             // string code = _javaDatabase.GetProperty("code", "patronative.code_user", "user", username);
@@ -67,19 +56,16 @@ namespace patronage21_qa_appium.Steps
             {
                 case ("Dezaktywacja", "Użytkownicy"):
                     _homeScreen.ClickElement(_driver, "Użytkownicy");
-                    _usersScreen.Wait(_driver);
-                    // _usersScreen.ClickElement(_driver, "Ty");
-                    // to be changed, code from previous line will replace next line in future (for now data is mocked and it does not contain any user labeled with "Ty")
-                    _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
-                    _userDetailsScreen.SearchForElement(_driver, "Dezaktywuj profil").Click();
+                    _usersScreen.WriteTextToField(_driver, _testKey, "Szukaj użytkownika");
+                    _usersScreen.ClickElement(_driver, "Ty");
+                    BaseScreen.SwipeToBottom(_driver);
+                    _userDetailsScreen.ClickElement(_driver, "Dezaktywuj profil");
                     break;
 
                 case ("Dezaktywacja", "Moje konto"):
-                    // to be changed, there is no such navigation yet
-                    _homeScreen.ClickElement(_driver, "Użytkownicy");
-                    _usersScreen.Wait(_driver);
-                    _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
-                    _userDetailsScreen.SearchForElement(_driver, "Dezaktywuj profil").Click();
+                    _topbar.ClickElement(_driver, "Moje konto");
+                    BaseScreen.SwipeToBottom(_driver);
+                    _userDetailsScreen.ClickElement(_driver, "Dezaktywuj profil");
                     break;
             }
         }
