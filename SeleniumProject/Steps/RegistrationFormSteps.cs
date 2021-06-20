@@ -23,6 +23,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsDataCorrectly(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
             registrationFormPage.checkBoxJavaScript.Click();
@@ -33,13 +34,22 @@ namespace SeleniumProject.Steps
         [Given(@"User doesn't fill data")]
         public void GivenUserDoesnTFillData()
         {
+            registrationFormPage.titleListBox.Click();
             registrationFormPage.RegistrationFormWithoutData();
+        }
+
+        [Given(@"User fills Tytuł incorrect")]
+        public void GivenUserFillsTytulIncorrect(Table table)
+        {
+            dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.titleListBox.Click();
         }
 
         [Given(@"User fills Adres email incorrect")]
         public void GivenUserFillsAdresEmailIncorrect(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithIncorrectEmail((string)data.firstName, (string)data.lastName);
         }
 
@@ -47,6 +57,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsNumerTelefonuIncorrect(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithIncorrectPhoneNumber((string)data.firstName, (string)data.lastName, (string)data.email);
         }
 
@@ -54,6 +65,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsGithubLinkIncorrect(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithIncorrectGithubLink((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone);
         }
 
@@ -61,6 +73,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsHasloIncorrect(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithIncorrectPassword((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login);
         }
@@ -69,6 +82,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsPowtorzHasloIncorrect(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithIncorrectPasswordConfirm((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password);
         }
@@ -76,6 +90,7 @@ namespace SeleniumProject.Steps
         [Given(@"User fills too short Imię")]
         public void GivenUserFillsTooShortImie(Table table)
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooShortImie();          
         }
 
@@ -83,6 +98,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsTooShortNazwisko(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooShortNazwisko((string)data.firstName);
         }
 
@@ -90,6 +106,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsTooShortNumerTelefonu(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooShortPhoneNumber((string)data.firstName, (string)data.lastName, (string)data.email);
         }
 
@@ -97,6 +114,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsTooShortLogin(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooShortLogin((string)data.firstName, (string)data.lastName, (string)data.email, (string)data.githubLink);
         }
 
@@ -104,42 +122,49 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsTooShortHaslo(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooShortHasło((string)data.firstName, (string)data.lastName, (string)data.email, (string)data.githubLink);
         }
 
         [Given(@"User fills too long Imie")]
         public void GivenUserFillsTooLongImie()
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooLongFirstName();
         }
 
         [Given(@"User fills too long Nazwisko")]
         public void GivenUserFillsTooLongNazwisko()
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooLongLastName();
         }
 
         [Given(@"User fills too long Numer telefonu")]
         public void GivenUserFillsTooLongNumerTelefonu()
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooLongPhoneNumber();
         }
 
         [Given(@"User fills too long Login")]
         public void GivenUserFillsTooLongLogin()
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooLongLogin();
         }
 
         [Given(@"User fills too long Hasło")]
         public void GivenUserFillsTooLongHaslo()
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooLongHaslo();
         }
 
         [Given(@"User fills too long Githublink")]
         public void GivenUserFillsTooLongGithublink()
         {
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithTooLongGithubLink();
         }
 
@@ -147,6 +172,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsRequiredData(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWtihoutTechnologies((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink);
         }
@@ -155,6 +181,7 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsDataInTextFields(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
             registrationFormPage.checkBoxJavaScript.Click();
@@ -166,9 +193,16 @@ namespace SeleniumProject.Steps
         public void GivenUserFillsAllData(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
+            registrationFormPage.ChooseUserTitle();
             registrationFormPage.RegistrationFormWithData((string)data.firstName, (string)data.lastName, (string)data.email, (int)data.phone,
                 (string)data.githubLink, (string)data.login, (string)data.password, (string)data.passwordConfirm);
             registrationFormPage.checkBoxJavaScript.Click();
+        }
+
+        [When(@"User clicks on next Imię")]
+        public void WhenUserClicksOnNextImie()
+        {
+            registrationFormPage.txtFirstName.Click();
         }
 
         [When(@"User clicks on next Numer telefonu")]
@@ -243,13 +277,11 @@ namespace SeleniumProject.Steps
             registrationFormPage.CheckMaxTechnologiesFields();
         }
 
-        [When(@"Users doesn't check field Regulamin")]
+        [When(@"Users doesn't check fields about terms and conditions")]
         public void WhenUsersDoesnTCheckFieldRegulamin()
         {
-            By termsAndConditions = By.XPath(".//*[@name='regulations']");
-            IWebElement isSelected = _webdriver.FindElement(termsAndConditions);
-            if (isSelected.Selected)
-                isSelected.Click();
+            Assert.AreEqual(registrationFormPage.firstTermsAndConditions.Selected, false);
+            Assert.AreEqual(registrationFormPage.secondTermsAndConditions.Selected, false);
         }
 
         [Then(@"Button Załóż konto is active")]
@@ -262,6 +294,12 @@ namespace SeleniumProject.Steps
         public void ThenUserCanTClickOnTheButtonZalozKonto()
         {
             Assert.That(registrationFormPage.buttonCreateAccount.Enabled, Is.False);
+        }
+
+        [Then(@"User should see that field Tytuł is incorrect")]
+        public void ThenUserShouldSeeThatFieldTytulIsIncorrect()
+        {
+            Assert.AreEqual(true, registrationFormPage.errorMessageAboutTitle.Displayed);
         }
 
         [Then(@"User should see that field Adres email is incorrect")]
