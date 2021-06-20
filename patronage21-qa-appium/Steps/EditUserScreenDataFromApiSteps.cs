@@ -22,22 +22,20 @@ namespace patronage21_qa_appium.Steps
         private readonly AppiumDriver<AndroidElement> _driver;
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
-        private readonly HomeScreen _homeScreen = new();
+        private readonly Topbar _topbar= new();
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
         private readonly ActivationScreen _activationScreen = new();
         private readonly RegisterSubmitScreen _registerSubmitScreen = new();
-        private readonly UsersScreen _usersScreen = new();
         private readonly UserDetailsScreen _userDetailsScreen = new();
 
         public EditUserScreenDataFromApiSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            _url = "https://64z31.mocklab.io";
+            _url = "http://intive-patronage.pl";
             _client = new RestClient(_url);
-            _requestGet = new RestRequest("/api/users/kowalski87", Method.GET);
-            _response = JsonConvert.DeserializeObject<GetUserResponse>(_client.Execute(_requestGet).Content);
+            _requestGet = new RestRequest("/api/users/" + _testKey, Method.GET);
         }
 
         [BeforeScenario]
@@ -54,7 +52,7 @@ namespace patronage21_qa_appium.Steps
                 case "Edycja użytkownika":
                     _loginScreen.ClickElement(_driver, "Rejestracja");
                     _registerScreen.Wait(_driver);
-                    _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+                    _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
                         true, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
                     string code = "99999999";
                     _activationScreen.Wait(_driver);
@@ -62,11 +60,9 @@ namespace patronage21_qa_appium.Steps
                     _activationScreen.ClickElement(_driver, "Zatwierdź kod");
                     _activationScreen.Wait(_driver);
                     _registerSubmitScreen.ClickElement(_driver, "Zamknij");
-                    _homeScreen.Wait(_driver);
-                    _homeScreen.ClickElement(_driver, "Użytkownicy");
-                    _usersScreen.Wait(_driver);
-                    _usersScreen.ClickElement(_driver, "Liderzy lista bez widocznych uczestników");
-                    _userDetailsScreen.SearchForElement(_driver, "Edytuj profil").Click();
+                    _topbar.ClickElement(_driver, "Moje konto");
+                    BaseScreen.SwipeToBottom(_driver);
+                    _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
                     break;
             }
         }
@@ -74,12 +70,20 @@ namespace patronage21_qa_appium.Steps
         [Then(@"User sees correct user data")]
         public void ThenUserSeesCorrectUserData()
         {
+            _response = JsonConvert.DeserializeObject<GetUserResponse>(_client.Execute(_requestGet).Content);
             Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Imię", "Edycja użytkownika").Text, _response.user.firstName);
             Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Nazwisko", "Edycja użytkownika").Text, _response.user.lastName);
             Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Email", "Edycja użytkownika").Text, _response.user.email);
             Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Numer telefonu", "Edycja użytkownika").Text, _response.user.phoneNumber);
             Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Github", "Edycja użytkownika").Text, _response.user.gitHubUrl);
-            Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text, _response.user.bio);
+            if (_response.user.bio == null)
+            {
+                Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text, "Bio");
+            }
+            else
+            {
+                Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text, _response.user.bio);
+            }
         }
     }
 }
