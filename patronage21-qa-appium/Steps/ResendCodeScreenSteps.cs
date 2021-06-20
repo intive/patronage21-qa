@@ -41,7 +41,7 @@ namespace patronage21_qa_appium.Steps
             username = username.Replace("[unique]", _testKey);
             _loginScreen.ClickElement(_driver, "Rejestracja");
             _registerScreen.Wait(_driver);
-            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", email, "123456789",
+            _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", email, "123456789",
                 true, false, false, false, username, "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
         }
 
