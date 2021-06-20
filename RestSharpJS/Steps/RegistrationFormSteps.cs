@@ -187,7 +187,7 @@ namespace RestSharpProject.Steps
         [Given(@"User fills incorrect Adres email")]
         public void GivenUserFillsIncorrectAdresEmail()
         {
-            user = new User(null, null, "incorrectEmail.com", null, null, null, null, null, null);
+            user = new User(null, null, null, "incorrectEmail.com", null, null, null, null, null);
             user = user.CreateUser(user);
         }
 
