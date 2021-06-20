@@ -77,18 +77,18 @@ namespace patronage21_qa_appium.Steps
         public void ThenUserSeesCorrectUserData()
         {
             _response = JsonConvert.DeserializeObject<GetUserResponse>(_client.Execute(_requestGet).Content);
-            Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Imię", "Edycja użytkownika").Text, _response.user.firstName);
-            Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Nazwisko", "Edycja użytkownika").Text, _response.user.lastName);
-            Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Email", "Edycja użytkownika").Text, _response.user.email);
-            Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Numer telefonu", "Edycja użytkownika").Text, _response.user.phoneNumber);
-            Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Github", "Edycja użytkownika").Text, _response.user.gitHubUrl);
+            Assert.AreEqual(_response.user.firstName, BaseScreen.GetElementFromScreen(_driver, "Imię", "Edycja użytkownika").Text);
+            Assert.AreEqual(_response.user.lastName, BaseScreen.GetElementFromScreen(_driver, "Nazwisko", "Edycja użytkownika").Text);
+            Assert.AreEqual(_response.user.email, BaseScreen.GetElementFromScreen(_driver, "Email", "Edycja użytkownika").Text);
+            Assert.AreEqual(_response.user.phoneNumber, BaseScreen.GetElementFromScreen(_driver, "Numer telefonu", "Edycja użytkownika").Text);
+            Assert.AreEqual(_response.user.gitHubUrl, BaseScreen.GetElementFromScreen(_driver, "Github", "Edycja użytkownika").Text);
             if (_response.user.bio == null)
             {
-                Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text, "Bio");
+                Assert.AreEqual("Bio", BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text);
             }
             else
             {
-                Assert.AreEqual(BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text, _response.user.bio);
+                Assert.AreEqual(_response.user.bio, BaseScreen.GetElementFromScreen(_driver, "Bio", "Edycja użytkownika").Text);
             }
         }
     }

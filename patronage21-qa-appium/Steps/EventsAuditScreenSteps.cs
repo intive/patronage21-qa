@@ -158,7 +158,7 @@ namespace patronage21_qa_appium.Steps
         public void ThenUserSeesFirstElementOfEventsList()
         {
             _eventsAuditScreen.Wait(_driver);
-            Assert.AreEqual(_eventsAuditScreen.GetElement(_driver, "Pierwsze zdarzenie data").Text, _firstElementText);
+            Assert.AreEqual(_firstElementText, _eventsAuditScreen.GetElement(_driver, "Pierwsze zdarzenie data").Text);
         }
     }
 }

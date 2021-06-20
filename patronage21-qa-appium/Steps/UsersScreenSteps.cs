@@ -135,13 +135,13 @@ namespace patronage21_qa_appium.Steps
         [Then(@"""(.*)"" field is empty")]
         public void ThenFieldIsEmpty(string fieldName)
         {
-            Assert.AreEqual(_usersScreen.GetElement(_driver, fieldName).Text, string.Empty);
+            Assert.AreEqual(string.Empty, _usersScreen.GetElement(_driver, fieldName).Text);
         }
 
         [Then(@"""(.*)"" is set to ""(.*)""")]
         public void ThenIsSetTo(string fieldName, string text)
         {
-            Assert.AreEqual(_usersScreen.GetElement(_driver, fieldName).Text, text);
+            Assert.AreEqual(text, _usersScreen.GetElement(_driver, fieldName).Text);
         }
 
         [Then(@"User sees ""(.*)"" mark next to his username in ""(.*)"" list")]
@@ -204,7 +204,7 @@ namespace patronage21_qa_appium.Steps
         {
             var usersCount = _usersScreen.GetElements(_driver, list + " lista").Count;
             var counter = _usersScreen.GetElement(_driver, list + " licznik").Text;
-            Assert.AreEqual(counter, usersCount.ToString());
+            Assert.AreEqual(usersCount.ToString(), counter);
         }
 
         [Then(@"""(.*)"" list users counter is ""(.*)""")]

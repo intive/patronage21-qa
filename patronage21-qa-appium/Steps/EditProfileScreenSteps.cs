@@ -121,12 +121,12 @@ namespace patronage21_qa_appium.Steps
         {
             _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
             BaseScreen.SwipeToBottom(_driver);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Imię").Text, userData.Rows[0][0]);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Nazwisko").Text, userData.Rows[0][1]);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Email").Text, userData.Rows[0][2]);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Numer telefonu").Text, userData.Rows[0][3]);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Github").Text, userData.Rows[0][4]);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, "Bio").Text, userData.Rows[0][5]);
+            Assert.AreEqual(userData.Rows[0][0], _editUserScreen.GetElement(_driver, "Imię").Text);
+            Assert.AreEqual(userData.Rows[0][1], _editUserScreen.GetElement(_driver, "Nazwisko").Text);
+            Assert.AreEqual(userData.Rows[0][2], _editUserScreen.GetElement(_driver, "Email").Text);
+            Assert.AreEqual(userData.Rows[0][3], _editUserScreen.GetElement(_driver, "Numer telefonu").Text);
+            Assert.AreEqual(userData.Rows[0][4], _editUserScreen.GetElement(_driver, "Github").Text);
+            Assert.AreEqual(userData.Rows[0][5], _editUserScreen.GetElement(_driver, "Bio").Text);
         }
 
         [Then(@"User ""(.*)"" ""(.*)"" is ""(.*)""")]
@@ -137,13 +137,13 @@ namespace patronage21_qa_appium.Steps
             BaseScreen.SwipeToBottom(_driver);
             _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
             BaseScreen.SwipeToBottom(_driver);
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, attribute).Text, value.ToString());
+            Assert.AreEqual(value.ToString(), _editUserScreen.GetElement(_driver, attribute).Text);
         }
 
         [Then(@"User sees ""(.*)"" in ""(.*)"" field")]
         public void ThenUserSeesInField(string value, string field)
         {
-            Assert.AreEqual(_editUserScreen.GetElement(_driver, field).Text, value.ToString());
+            Assert.AreEqual(value.ToString(), _editUserScreen.GetElement(_driver, field).Text);
         }
     }
 }
