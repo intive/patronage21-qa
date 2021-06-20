@@ -16,6 +16,7 @@ namespace patronage21_qa_appium.Steps
     public class UsersScreenSteps
     {
         private static readonly string _url = "http://intive-patronage.pl";
+        private static JavaApi _javaApi = new();
         private string _deleteUsername = "";
         private RestClient _client = new(_url);
         private RestRequest _requestPost;
@@ -39,13 +40,7 @@ namespace patronage21_qa_appium.Steps
         [AfterScenario]
         public void TearDown()
         {
-            _requestPatch = new RestRequest("/api/users/" + _testKey + "/deactivate", Method.PATCH);
-            _client.Execute(_requestPatch);
-            if (_deleteUsername.Length > 0)
-            {
-                _requestPatch = new RestRequest("/api/users/" + _deleteUsername + "/deactivate", Method.PATCH);
-                _client.Execute(_requestPatch);
-            }
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User is on ""(.*)"" screen")]

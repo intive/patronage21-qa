@@ -16,6 +16,7 @@ namespace patronage21_qa_appium.Steps
     public class EditProfileScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly Topbar _topbar = new();
@@ -32,6 +33,12 @@ namespace patronage21_qa_appium.Steps
         {
             _driver = driver;
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [When(@"User registers as ""(.*)"" with surname ""(.*)""")]

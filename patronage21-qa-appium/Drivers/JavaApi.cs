@@ -17,7 +17,7 @@ namespace patronage21_qa_appium.Utils
         private static GetUsersResponse _response;
         private static RestRequest _requestPatch;
 
-        public static void DeactivateUsersByLogin(string contains)
+        public void DeactivateUsersByLogin(string contains)
         {
             _requestGet = new RestRequest("/api/users", Method.GET);
             _requestGet = _requestGet.AddParameter("status", "ACTIVE");

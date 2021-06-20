@@ -12,6 +12,7 @@ namespace patronage21_qa_appium.Steps
     public class HomeNavigationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
@@ -23,6 +24,12 @@ namespace patronage21_qa_appium.Steps
         public HomeNavigationSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User is on Home page")]

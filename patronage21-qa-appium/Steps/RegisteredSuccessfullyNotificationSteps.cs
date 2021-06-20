@@ -10,9 +10,10 @@ namespace patronage21_qa_appium.Steps
 {
     [Binding]
     [Scope(Feature = "REGISTERED_SUCCESSFULLY_NOTIFICATION")]
-    public class RegisteredSuccesfullyNotificationSteps
+    public class RegisteredSuccessfullyNotificationSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly HomeScreen _homeScreen = new();
@@ -26,10 +27,16 @@ namespace patronage21_qa_appium.Steps
         private readonly DeactivationScreen _deactivationScreen = new();
         private readonly DeactivationSubmitScreen _deactivationSubmitScreen = new();
 
-        public RegisteredSuccesfullyNotificationSteps(AppiumDriver<AndroidElement> driver)
+        public RegisteredSuccessfullyNotificationSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [When(@"User clicks ""(.*)""")]

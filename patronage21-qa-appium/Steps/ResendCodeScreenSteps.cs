@@ -13,6 +13,7 @@ namespace patronage21_qa_appium.Steps
     public class ResendCodeScreenSteps
     {
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly LoginScreen _loginScreen = new();
@@ -32,6 +33,12 @@ namespace patronage21_qa_appium.Steps
             // reset database
             // or use unique data for every scenario
             _driver.LaunchApp();
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User registers as ""(.*)"" with ""(.*)"" email")]

@@ -20,6 +20,7 @@ namespace patronage21_qa_appium.Steps
         private RestRequest _requestGet;
         private GetUserResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private readonly Topbar _topbar= new();
@@ -42,6 +43,12 @@ namespace patronage21_qa_appium.Steps
         public void Setup()
         {
             _driver.LaunchApp();
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User is on ""(.*)"" screen")]

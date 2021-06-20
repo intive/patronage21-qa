@@ -21,6 +21,7 @@ namespace patronage21_qa_appium.Steps
         private RestRequest _requestGet;
         private TechGroupsResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private Topbar _topbar = new();
@@ -41,6 +42,12 @@ namespace patronage21_qa_appium.Steps
             _client = new RestClient(_url);
             _requestGet = new RestRequest("/api/groups", Method.GET);
             _response = JsonConvert.DeserializeObject<TechGroupsResponse>(_client.Execute(_requestGet).Content);
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User registers as ""(.*)""")]

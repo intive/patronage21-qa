@@ -22,6 +22,7 @@ namespace patronage21_qa_appium.Steps
         private TechGroupsResponse _response;
         private List<string> _groups;
         private readonly AppiumDriver<AndroidElement> _driver;
+        private static JavaApi _javaApi = new();
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
         private LoginScreen _loginScreen = new();
@@ -40,6 +41,12 @@ namespace patronage21_qa_appium.Steps
             _requestGet = new RestRequest("/api/groups", Method.GET);
             _response = JsonConvert.DeserializeObject<TechGroupsResponse>(_client.Execute(_requestGet).Content);
             _groups = _response.groups;
+        }
+
+        [AfterScenario]
+        public void TearDown()
+        {
+            _javaApi.DeactivateUsersByLogin(_testKey);
         }
 
         [Given(@"User is on ""(.*)"" screen")]
