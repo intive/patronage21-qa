@@ -14,13 +14,10 @@ namespace patronage21_qa_appium.Steps
     [Scope(Feature = "EVENTS_AUDIT_SCREEN")]
     public class EventsAuditScreenSteps
     {
-        private string _url;
-        private RestClient _client;
-        private RestRequest _requestGet;
-        private GetUserResponse _response;
         private readonly AppiumDriver<AndroidElement> _driver;
         private readonly string _testKey = UniqueStringGenerator.GenerateShortLettersBasedOnTimestamp();
 
+        private readonly Topbar _topbar = new();
         private readonly HomeScreen _homeScreen = new();
         private readonly LoginScreen _loginScreen = new();
         private readonly RegisterScreen _registerScreen = new();
@@ -28,6 +25,7 @@ namespace patronage21_qa_appium.Steps
         private readonly RegisterSubmitScreen _registerSubmitScreen = new();
         private readonly EventsAuditScreen _eventsAuditScreen = new();
         private readonly UserDetailsScreen _userDetailsScreen = new();
+        private readonly EditUserScreen _editUserScreen = new();
         private string _firstElementText;
 
         public EventsAuditScreenSteps(AppiumDriver<AndroidElement> driver)
@@ -43,7 +41,7 @@ namespace patronage21_qa_appium.Steps
                 case "Audyt zdarzeń":
                     _loginScreen.ClickElement(_driver, "Rejestracja");
                     _registerScreen.Wait(_driver);
-                    _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pani", "test", "[unique]", "[unique]@ema.il", "123456789",
+                    _registerScreen.SubmitRegisterForm(_driver, _testKey, "Pan", "test", "[unique]", "[unique]@ema.il", "123456789",
                         true, false, false, false, "[unique]", "Deactivate11!", "Deactivate11!", "https://www.github.com/[unique]", true, true, true);
                     string code = "99999999";
                     _activationScreen.Wait(_driver);
@@ -57,6 +55,19 @@ namespace patronage21_qa_appium.Steps
                     break;
             }
         }
+
+        [Given(@"""(.*)"" events are existing")]
+        public void GivenEventsAreExisting(int amount)
+        {
+            _topbar.ClickElement(_driver, "Moje konto");
+            for (int i = 0; i < amount - 1; i++)
+            {
+                _userDetailsScreen.ClickElement(_driver, "Edytuj profil");
+                _editUserScreen.ClickElement(_driver, "Zapisz");
+            }
+            _driver.Navigate().Back();
+        }
+
 
         [Given(@"User sees first element of events list")]
         public void GivenUserSeesFirstElementOfEventsList()
@@ -73,7 +84,14 @@ namespace patronage21_qa_appium.Steps
         [When(@"User writes ""(.*)"" to ""(.*)"" field")]
         public void WhenUserWritesToField(string text, string field)
         {
+            _eventsAuditScreen.Wait(_driver);
             _eventsAuditScreen.WriteTextToField(_driver, text, field);
+        }
+
+        [When(@"User writes his username to ""(.*)"" field")]
+        public void WhenUserWritesHisUsernameToField(string field)
+        {
+            _eventsAuditScreen.WriteTextToField(_driver, _testKey, field);
         }
 
         [When(@"User scroll down")]
@@ -93,7 +111,7 @@ namespace patronage21_qa_appium.Steps
         {
             var firstEvent = _eventsAuditScreen.GetElement(_driver, "Pierwsze zdarzenie data");
             var firstEventDateTime = _eventsAuditScreen.ParseDateTime(firstEvent.Text);
-            BaseScreen.FastSwipes(_driver, 5);
+            BaseScreen.FastSwipes(_driver, 2);
             var lastEvent = _eventsAuditScreen.GetElement(_driver, "Ostatnie zdarzenie data");
             var lastEventDateTime = _eventsAuditScreen.ParseDateTime(lastEvent.Text);
 
@@ -118,7 +136,7 @@ namespace patronage21_qa_appium.Steps
         [Then(@"""(.*)"" events are displayed")]
         public void ThenEventsAreDisplayed(string eventType)
         {
-            List<string> eventTypes = new() { "Logowanie", "Rejestracja", "Wylogowanie" };
+            List<string> eventTypes = new() { "Logowanie", "Udana rejestracja", "Wylogowanie", "Dodanie wydarzenia", "Pomyślna edycja" };
             foreach (string type in eventTypes)
             {
                 if (eventType != type)
@@ -126,12 +144,14 @@ namespace patronage21_qa_appium.Steps
                     Assert.IsEmpty(_eventsAuditScreen.GetElements(_driver, type));
                 }
             }
+            Assert.IsNotEmpty(_eventsAuditScreen.GetElements(_driver, eventType));
         }
 
         [Then(@"User sees first element of events list")]
         public void ThenUserSeesFirstElementOfEventsList()
         {
-            Assert.Equals(_eventsAuditScreen.GetElement(_driver, "Pierwsze zdarzenie data").Text, _firstElementText);
+            _eventsAuditScreen.Wait(_driver);
+            Assert.AreEqual(_eventsAuditScreen.GetElement(_driver, "Pierwsze zdarzenie data").Text, _firstElementText);
         }
     }
 }
