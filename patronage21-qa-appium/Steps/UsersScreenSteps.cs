@@ -98,7 +98,7 @@ namespace patronage21_qa_appium.Steps
         [When(@"User scrolls to bottom")]
         public void WhenUserScrollsToBottom()
         {
-            BaseScreen.FastSwipes(_driver, 15);
+            BaseScreen.FastSwipes(_driver, 5);
         }
 
         [When(@"User writes ""(.*)"" into ""(.*)"" field")]
