@@ -7,19 +7,19 @@ Task in Java board: https://tracker.intive.com/jira/browse/IP2-881
 Background:
 Given User is on his profile page 
 
-#link to Zephyr test
+#https://tracker.intive.com/jira/browse/IP2-994
 Scenario: USER_PROFILE_1_IP2-881_User_doesn't_make_changes
 When User clicks the "Edytuj profil" button 
 Then The "Zatwierdź" button is inactive 
 
-#link to Zephyr test
+#https://tracker.intive.com/jira/browse/IP2-995
 Scenario: USER_PROFILE_2_IP2-881_User_added_changes_correctly
 When User clicks the "Edytuj profil" button
 And User enters the correct data
 And User clicks "Zatwierdź" button 
 Then "Dane zostały pomyślnie zaktualizowane" will be displayed
 
-#link to Zephyr test
+#https://tracker.intive.com/jira/browse/IP2-996
 Scenario: USER_PROFILE_3_IP2-881_user enters the data incorrectly
 When User clicks the "Edytuj profil" button
 And User enters his data incorrectly
