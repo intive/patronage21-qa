@@ -10,8 +10,8 @@ Scenario: REGISTRATION_FORM_[/api/register]_[POST]_1_IP-244_send_request_with_co
 	And JSON body without sensitive data
 
 Examples:
-	| firstName | lastName | email			   | phoneNumber | technologies | password        | login       | githubLink         |
-	| Jan       | Kowalski | example@email.com | 123456789   | QA           | randomPassword@ | randomLogin | github.com/example |
+	| firstName | lastName | gender | email            | phoneNumber | technologies | password        | login       | githubLink         |
+	| Jan       | Kowalski | Pan    |example@email.com | 123456789   | QA           | randomPassword@ | randomLogin | github.com/example |
 
 #https://tracker.intive.com/jira/browse/IP2-317
 Scenario: REGISTRATION_FORM_[/api/register]_[POST]_2_IP-244_send_request_filling_data_and_checking_all_required_fields
