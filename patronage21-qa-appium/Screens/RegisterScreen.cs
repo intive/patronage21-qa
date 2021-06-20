@@ -58,7 +58,7 @@ namespace patronage21_qa_appium.Screens
             if (title.Equals("Pani"))
             {
                 ClickElement(driver, "Zwrot");
-                FindElementByText(driver, title).Click();
+                ClickElement(driver, title);
             }
             FindElementByText(driver, _fieldsText["Imię"]).SendKeys(first_name);
             FindElementByText(driver, _fieldsText["Nazwisko"]).SendKeys(last_name);
@@ -137,11 +137,11 @@ namespace patronage21_qa_appium.Screens
             FindElementByText(driver, _fieldsText["Imię"]).SendKeys("Imię");
             FindElementByText(driver, _fieldsText["Nazwisko"]).SendKeys(testKey);
             FindElementByText(driver, _fieldsText["Email"]).SendKeys(testKey + "@ema.il");
-            FindElementByText(driver, _fieldsText["Numer telefonu"]).SendKeys("Numer telefonu");
+            FindElementByText(driver, _fieldsText["Numer telefonu"]).SendKeys("123456789");
             FindElementByText(driver, "QA");
             ClickElement(driver, "QA_checkbox");
             FindElementByText(driver, _fieldsText["Login"]).SendKeys(testKey);
-            FindElementByText(driver, _fieldsText["Hasło"]).SendKeys("Hasło");
+            FindElementByText(driver, _fieldsText["Hasło"]).SendKeys("Aaaaaaaa1!");
             FindElementByText(driver, _fieldsText["Potwierdź hasło"]).SendKeys("Aaaaaaaa1!");
             FindElementByText(driver, _fieldsText["Github URL"]).SendKeys("https://www.github.com/" + testKey);
             BaseScreen.SwipeToBottom(driver);
