@@ -30,7 +30,6 @@ namespace patronage21_qa_appium.Steps
         public RegisteredSuccessfullyNotificationSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
         [AfterScenario]

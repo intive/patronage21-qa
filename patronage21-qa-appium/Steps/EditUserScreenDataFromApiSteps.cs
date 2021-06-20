@@ -33,7 +33,6 @@ namespace patronage21_qa_appium.Steps
         public EditUserScreenDataFromApiSteps(AppiumDriver<AndroidElement> driver)
         {
             _driver = driver;
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             _url = "http://intive-patronage.pl";
             _client = new RestClient(_url);
             _requestGet = new RestRequest("/api/users/" + _testKey, Method.GET);
