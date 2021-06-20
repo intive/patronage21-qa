@@ -20,15 +20,13 @@ And JSON body contain list of users with proper '<parameter>' with '<value>'
 Examples:
 | query                      | code | parameter       | value      |
 |                            | 200  |                 |            |
-| firstName=ilona            | 200  | firstName       | ilona      |
-| firstName=Tomeczek         | 200  | firstName       | Tomeczek   |
+| firstName=Anna             | 200  | firstName       | Anna       |
 | firstName=Wiesław          | 200  | firstName       | Wiesław    |
-| lastName=Kowalski          | 200  | lastName        | Kowalski   |
+| lastName=Nowak             | 200  | lastName        | Nowak      |
 | lastName=asd-esdf          | 200  | lastName        | asd-esdf   |
 | lastName=asd esdf          | 200  | lastName        | asd esdf   |
-| login=AnnaNowak            | 200  | login           | AnnaNowak  |
 | login=kowalski87           | 200  | login           | kowalski87 |
-| login=karol                | 200  | login           | karol      |
+| login=AnnaNowak            | 200  | login           | AnnaNowak  |
 | other=Tom                  | 200  | other           | Tom        |
 | other=Atom                 | 200  | other           | Atom       |
 | other=Nowa                 | 200  | other           | Nowa       |
@@ -49,16 +47,16 @@ When User sends the GET request with a '<query>' parameter
 Then Server returns the code <code> and the message '<firstMessage>'
 
 Examples:
-| query                                               | code | firstMessage                                                                                                                                    |
-| firstName=Oleg435435                                | 422  | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
-| firstName=marta paluszek                            | 422  | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
-| firstName=mar-pal                                   | 422  | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
-| lastName=3dhu-5dsu                                  | 422  | Letters only, capital and Polish letters allowed, either dash or space in case of two-part surname, minimum 2 characters, maximum 30 characters |
-| lastName=2wresdf                                    | 422  | Letters only, capital and Polish letters allowed, either dash or space in case of two-part surname, minimum 2 characters, maximum 30 characters |
-| login=Kas$dd                                        | 422  | Letters and numbers, minimum 2 characters, maximum 15 characters                                                                                |
-| login=Kas dd                                        | 422  | Letters and numbers, minimum 2 characters, maximum 15 characters                                                                                |
-| firstName=tom%asz&lastName=karola3k&login=AnnaNowak | 422  | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |
-| firstName=tomasz&lastName=karola3k&login=AnnaNowak  | 422  | Letters only, capital and Polish letters allowed, either dash or space in case of two-part surname, minimum 2 characters, maximum 30 characters |
-| firstName=tomasz&lastName=karolak&login=anna nowa   | 422  | Letters and numbers, minimum 2 characters, maximum 15 characters                                                                                |
-| firstName=6tgfgh&lastName=5&login=tom3              | 422  | Letters only, capital and Polish letters allowed, minimum 2 characters, maximum 30 characters                                                   |              
+| query                                               | code | firstMessage                                                                                                                                                                           |
+| firstName=Oleg435435                                | 422  | Jedynie litery, dozwolone polskie i wielkie litery, minimalnie 2 znaki, maksymalnie 30 znaków.                                                                                         |
+| firstName=marta paluszek                            | 422  | Jedynie litery, dozwolone polskie i wielkie litery, minimalnie 2 znaki, maksymalnie 30 znaków.                                                                                         |
+| firstName=mar-pal                                   | 422  | Jedynie litery, dozwolone polskie i wielkie litery, minimalnie 2 znaki, maksymalnie 30 znaków.                                                                                         |
+| lastName=3dhu-5dsu                                  | 422  | Jedynie litery, polskie i wielkie litery dozwolone, w przypadku dwuczłonowego nazwiska możliwość oddzielenia członów spacją lub myślnikiem, minimalnie 2 znaki, maksymalnie 30 znaków. |
+| lastName=2wresdf                                    | 422  | Jedynie litery, polskie i wielkie litery dozwolone, w przypadku dwuczłonowego nazwiska możliwość oddzielenia członów spacją lub myślnikiem, minimalnie 2 znaki, maksymalnie 30 znaków. |
+| login=Kas$dd                                        | 422  | Litery i cyfry, minimalnie 2 znaki, maksymalnie 15 znaków.                                                                                                                             |
+| login=Kas dd                                        | 422  | Litery i cyfry, minimalnie 2 znaki, maksymalnie 15 znaków.                                                                                                                             |
+| firstName=tom%asz&lastName=karola3k&login=AnnaNowak | 422  | Jedynie litery, dozwolone polskie i wielkie litery, minimalnie 2 znaki, maksymalnie 30 znaków.                                                                                         |
+| firstName=tomasz&lastName=karola3k&login=AnnaNowak  | 422  | Jedynie litery, polskie i wielkie litery dozwolone, w przypadku dwuczłonowego nazwiska możliwość oddzielenia członów spacją lub myślnikiem, minimalnie 2 znaki, maksymalnie 30 znaków. |
+| firstName=tomasz&lastName=karolak&login=anna nowa   | 422  | Litery i cyfry, minimalnie 2 znaki, maksymalnie 15 znaków.                                                                                                                             |
+| firstName=6tgfgh&lastName=5&login=tom3              | 422  | Jedynie litery, dozwolone polskie i wielkie litery, minimalnie 2 znaki, maksymalnie 30 znaków.                                                                                         |             
                                     

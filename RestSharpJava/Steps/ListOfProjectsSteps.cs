@@ -9,53 +9,59 @@ namespace RestSharpProject.Features
     [Binding]
     public class ListOfProjectsSteps
     {
-        RestClient client;
-        RestRequest request;
-        IRestResponse response;
+        private RestClient _client;
+        private RestRequest _request;
+        private IRestResponse _response;
+        private string projectUrl = "/projects?year=";
 
+
+        public ListOfProjectsSteps(RestClient client)
+        {
+            _client = new RestClient(client.BaseUrl + projectUrl);
+        }
 
         [Given(@"User sets the url")]
         public void GivenUserSetsTheUrl()
         {
-            client = new RestClient("http://intive-patronage.pl");
+            _client.BaseUrl = _client.BaseUrl;
         }
 
         [When(@"User sends a GET request with a valid '(.*)'")]
         public void WhenUserSendsAGETRequestWithAValid(string year)
         {
-            request = new RestRequest("/api/projects?year=" + year, Method.GET);
+            _request = new RestRequest(_client.BaseUrl + year);
         }
 
         [When(@"User sends a GET request with an invalid '(.*)'")]
         public void WhenUserSendsAGETRequestWithAnInvalid(string year)
         {
-            request = new RestRequest("/api/projects?year=" + year, Method.GET);
+            _request = new RestRequest(_client.BaseUrl + year);
         }
 
         [When(@"User sends a GET request without any year")]
         public void WhenUserSendsAGETRequestWithoutAnyYear()
         {
-            request = new RestRequest("/api/projects?year=", Method.GET);
+            _request = new RestRequest(_client.BaseUrl);
         }
 
         [Then(@"Server returns the code (.*)")]
         public void ThenServerReturnsTheCode(int code)
-        {
-            response = client.Execute(request);
-            Assert.AreEqual(code, (int)response.StatusCode);
+        { 
+            _response = _client.Get(_request);
+            Assert.AreEqual(code, (int)_response.StatusCode);
         }
 
         [Then(@"JSON body contain a list of projects from proper year")]
         public void ThenJSONBodyContainAListOfProjectsFromProperYear()
         {
-            var responseMessage = JsonConvert.DeserializeObject<ProjectList>(response.Content);
+            var responseMessage = JsonConvert.DeserializeObject<ProjectList>(_response.Content);
             Assert.IsNotNull(responseMessage);
         }
 
         [Then(@"JSON body contain a list of projects from current year")]
         public void ThenJSONBodyContainAListOfProjectsFromCurrentYear()
         {
-            var responseMessage = JsonConvert.DeserializeObject<ProjectList>(response.Content);
+            var responseMessage = JsonConvert.DeserializeObject<ProjectList>(_response.Content);
             Assert.That(responseMessage.projects.Count, Is.EqualTo(3));
         }
     }

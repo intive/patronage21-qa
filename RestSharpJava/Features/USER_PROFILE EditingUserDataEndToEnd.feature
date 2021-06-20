@@ -1,4 +1,5 @@
-﻿Feature: USER PROFILE [/api/users] Editing user data
+﻿@ignore
+Feature: USER PROFILE [/api/users] Editing user data end to end
 Using PUT method on URL /api/users to edit User data
 
 Description

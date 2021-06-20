@@ -11,14 +11,21 @@ namespace RestSharpProject.Steps
     [Binding]
     public class AddingProjectsToUserAccountSteps
     {
-        RestClient client;
-        RestRequest request;
-        IRestResponse response;
+        private RestClient _client;
+        private RestRequest _request;
+        private IRestResponse _response;
+        private string addProjectUrl = "/users";
+       
 
-        [Given(@"Url is set")]
-        public void GivenUrlIsSet()
+        public AddingProjectsToUserAccountSteps(RestClient client)
         {
-            client = new RestClient("http://intive-patronage.pl");
+            _client = new RestClient(client.BaseUrl + addProjectUrl);
+        }
+
+        [Given(@"Url to add projects is api/users")]
+        public void GivenUrlToAddProjectsIsApiUsers()
+        {
+            _client.BaseUrl = _client.BaseUrl;
         }
 
         [When(@"User '(.*)' sends the PUT request to add (.*) projects")]
@@ -32,26 +39,26 @@ namespace RestSharpProject.Steps
 
             UserWithProjects user1 = new UserWithProjects(username, "Anna", "Nowak", "ania@wp.pl", "456456456", "https://www.github.com/ssadf", "opis", projects);
 
-            request = new RestRequest("/api/users", Method.PUT);
-            request.AddParameter("application/json", JsonConvert.SerializeObject(user1), ParameterType.RequestBody);
+            _request = new RestRequest(_client.BaseUrl);
+            _request.AddParameter("application/json", JsonConvert.SerializeObject(user1), ParameterType.RequestBody);
 
-            response = client.Execute(request);
+            _response = _client.Put(_request);
+
         }
 
         [Then(@"Server returns status (.*)")]
         public void ThenServerReturnsStatus(int code)
         {
-            Assert.AreEqual(code, (int)response.StatusCode);
+            Assert.AreEqual(code, (int)_response.StatusCode);
         }
 
         [Then(@"Server returns status (.*) and error message '(.*)'")]
         public void ThenServerReturnsStatusAndErrorMessage(int code, string message)
         {
-            var responseMessage2 = JsonConvert.DeserializeObject<RootResponse>(response.Content);
+            var responseMessage2 = JsonConvert.DeserializeObject<RootResponse>(_response.Content);
 
-            Assert.AreEqual(code, (int)response.StatusCode);
+            Assert.AreEqual(code, (int)_response.StatusCode);
             Assert.That(message, Is.EqualTo(responseMessage2.violationErrors[0].message));
-
         }
     }
 }
