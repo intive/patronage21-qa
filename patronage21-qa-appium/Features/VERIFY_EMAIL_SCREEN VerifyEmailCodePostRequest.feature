@@ -6,7 +6,7 @@ Feature: VERIFY_EMAIL_SCREEN VerifyEmailCodePostRequest
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-613
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-343
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1012
 @ignore
 Scenario: VERIFY_EMAIL_SCREEN_1_IP2-343_resend_code_request_sent_correctly
 	Given User is on "Weryfikacja adresu email" screen
