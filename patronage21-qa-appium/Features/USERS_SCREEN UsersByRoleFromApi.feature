@@ -11,8 +11,9 @@ Scenario Outline: USERS_SCREEN_1_IP2-339_users_lists_data_from_api_loaded_correc
 	Given User is on "Użytkownicy" screen
 	And Existing user "<user>" assigned to "<list>" list
 	Then User sees user "<user>" in "<list>" list
+	And User does not see "<user> in "<not_in_list>" list
 
 Examples: 
-| user           | list       |
-| Anna Nowak     | Liderzy    |
-| Marshall Smith | Uczestnicy |
+| user           | list       | not_in_list |
+| Anna Nowak     | Liderzy    | Uczestnicy  |
+| Marshall Smith | Uczestnicy | Liderzy     |
