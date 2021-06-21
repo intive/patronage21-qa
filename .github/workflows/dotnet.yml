@@ -35,7 +35,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: RestSharpJS-Reports
-        path: ./RestSharpJS
+        path: ./RestSharpJS/bin/Debug/net5.0/index.html
       
   build_restsharp_java:
 
@@ -58,6 +58,12 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJava.runsettings
       working-directory: ./RestSharpJava
+      
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: RestSharpJava-Reports
+        path: ./RestSharpJava/bin/Debug/net5.0/index.html
       
   build_selenium:
   
