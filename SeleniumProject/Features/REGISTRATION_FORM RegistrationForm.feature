@@ -91,11 +91,11 @@ Scenario: REGISTRATION_FORM_8_IP2-243_form_with_checked_three_fields:_'JavaScrip
 	Then Button Załóż konto is active
 
 #https://tracker.intive.com/jira/browse/IP2-404
-Scenario: REGISTRATION_FORM_9_IP2-243_form_without_checked_field_'Regulamin'
+Scenario: REGISTRATION_FORM_9_IP2-243_form_without_checked_fields_about_terms_and_conditions
 	Given User fills all data
 		| firstName | lastName | email             | phone     | githubLink             | technologies | login       | password          | passwordConfirm   |
 		| Jan       | Kowalski | example@email.com | 123456789 | github.com/exampleLink | QA           |exampleLogin | examplePassword6@ | examplePassword6@ |
-	When Users doesn't check field Regulamin
+	When Users doesn't check fields about terms and conditions
 	Then Button Załóż konto is inactive 
 
 #https://tracker.intive.com/jira/browse/IP2-922
