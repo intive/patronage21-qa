@@ -86,3 +86,9 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:PatronativePage.runsettings
       working-directory: ./SeleniumProject
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: RestSharpJava-Reports
+        path: ./SeleniumProject/bin/Debug/net5.0/index.html
