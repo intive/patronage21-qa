@@ -32,7 +32,7 @@ jobs:
       working-directory: ./RestSharpJS
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings > Reports/index.hmtl
+      run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings 
       working-directory: ./RestSharpJS
       
     - uses: actions/upload-artifact@v2
