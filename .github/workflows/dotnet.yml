@@ -33,6 +33,7 @@ jobs:
          
     - name: Artifacts
       uses: actions/upload-artifact@v2
+      if: ${{always()}}
       with:
         name: RestSharpJS-Reports
         path: ./RestSharpJS/bin/Debug/net5.0/index.html
@@ -61,6 +62,7 @@ jobs:
       
     - name: Artifacts
       uses: actions/upload-artifact@v2
+      if: ${{always()}}
       with:
         name: RestSharpJava-Reports
         path: ./RestSharpJava/bin/Debug/net5.0/index.html
@@ -89,6 +91,7 @@ jobs:
 
     - name: Artifacts
       uses: actions/upload-artifact@v2
+      if: ${{always()}}
       with:
         name: SeleniumProject-Reports
         path: ./SeleniumProject/bin/Debug/net5.0/index.html
