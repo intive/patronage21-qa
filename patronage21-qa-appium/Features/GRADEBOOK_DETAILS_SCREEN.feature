@@ -1,4 +1,5 @@
-﻿Feature: GRADEBOOK_DETAILS_SCREEN
+﻿@ignore
+Feature: GRADEBOOK_DETAILS_SCREEN
 	User wants to see details about 
 	own and other patricipants
 	grades
