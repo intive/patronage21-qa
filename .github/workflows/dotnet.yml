@@ -60,7 +60,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: Reports/index.hmtl
+        path: ./RestSharpJava/Reports/index.hmtl
         working-directory: ./RestSharpJava
       
   build_selenium:
