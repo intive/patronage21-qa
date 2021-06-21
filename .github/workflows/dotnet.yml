@@ -49,19 +49,9 @@ jobs:
       run: dotnet build --no-restore
       working-directory: ./RestSharpJava
       
-    - name: Create file for Reports
-      run: mkdir -p Reports/
-      working-directory: ./RestSharpJava
-      
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJava.runsettings
       working-directory: ./RestSharpJava
-      
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: ./RestSharpJava/Reports/index.hmtl
-        working-directory: ./RestSharpJava
       
   build_selenium:
   
