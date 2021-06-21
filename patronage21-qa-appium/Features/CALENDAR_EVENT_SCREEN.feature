@@ -8,7 +8,7 @@ Feature: CALENDAR_EVENT_SCREEN
 Background: 
 	Given User is on "Kalendarz tygodniowy" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1013
 Scenario: CALENDAR_EVENT_SCREEN_1_IP2-211_screen_displayed_correctly_navigated_from_week_view
 	When User clicks "<switch>"
 	And User clicks "Data z wydarzeniem"
@@ -19,7 +19,7 @@ Scenario: CALENDAR_EVENT_SCREEN_1_IP2-211_screen_displayed_correctly_navigated_f
 	| Poprzedni przedział czasowy | przeszłe    |
 	| Kolejny przedział czasowy   | nadchodzące |
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1014
 Scenario: CALENDAR_EVENT_SCREEN_2_IP2-211_screen_displayed_correctly_navigated_from_month_view
 	When User clicks "Zmień widok"
 	And User clicks "Miesiąc"
