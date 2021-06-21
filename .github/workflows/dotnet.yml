@@ -31,6 +31,12 @@ jobs:
       run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings 
       working-directory: ./RestSharpJS
       
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: RestSharpJS-Reports
+        path: ./RestSharpJS
+      
   build_restsharp_java:
 
     runs-on: ubuntu-latest
