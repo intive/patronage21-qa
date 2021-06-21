@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using patronage21_qa_appium.Screens;
 using TechTalk.SpecFlow;
@@ -41,7 +42,7 @@ namespace patronage21_qa_appium.Steps
             switch (screenName)
             {
                 case "Logowanie":
-
+                    Assert.IsNotEmpty(_loginScreen.GetElements(_driver, "Nagłówek"));
                     break;
             }
         }
