@@ -26,6 +26,11 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: ./RestSharpJS
+
+    - uses: actions/checkout@v2
+    - name: Create file for Reports
+      run: mkdir -p Reports/
+      working-directory: ./RestSharpJS
       
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings 
