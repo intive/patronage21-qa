@@ -4,14 +4,12 @@ Feature: CALENDAR_MONTH_SCREEN
 	view calendar month view
 	containing upcoming 
 	and past meets 
-#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-282
-#Task in Android Team: https://tracker.intive.com/jira/browse/IP2-208
+#Task in QA Team: https://tracker.intive.com/jira/browse/IP2-279
+#Task in Android Team: https://tracker.intive.com/jira/browse/IP2-210
 
 # zephyr link
 Scenario: CALENDAR_MONTH_SCREEN_1_IP2-208_screen_displayed_correctly
 	Given User is on "Kalendarz miesięczny" screen
-	When User clicks "Zmień widok"
-	And User clicks "Miesiąc"
 	Then User sees "Kalendarz widok miesięczny" screen
 	And "Kalendarz miesięczny" screen is displayed correctly
 	
@@ -27,18 +25,16 @@ Scenario Outline: CALENDAR_MONTH_SCREEN_2_IP2-208_change_viewed_time_interval
 	| Kolejny przedział czasowy   |
 	
 # zephyr link
-Scenario Outline: CALENDAR_MONTH_SCREEN_3_IP2-208_navigate_to_screen_and_back
+Scenario: CALENDAR_MONTH_SCREEN_3_IP2-208_navigate_to_screen_and_back
 	Given User is on "Kalendarz miesięczny" screen
-	When User clicks "<screen>"
+	When User clicks "Data z wydarzeniem"
+	And User clicks on "Back" button
+	When User clicks "Dodaj wydarzenie"
 	And User clicks on "Back" button
 	Then User sees "Kalendarz miesięczny" screen
-	
-	Examples: 
-	| screen             |
-	| Data z wydarzeniem |
-	| Dodaj wydarzenie   |
 
 # zephyr link
+@ignore
 Scenario: CALENDAR_MONTH_SCREEN_4_IP2-208_leave_screen_and_come_back
 	Given User is on "Kalendarz miesięczny" screen
 	And User clicks on "Back" button
@@ -52,4 +48,4 @@ Scenario: CALENDAR_MONTH_SCREEN_5_IP2-208_change_viewed_time_interval_view_event
 	And User clicks "Poprzedni przedział czasowy"
 	When User clicks "Data z wydarzeniem"
 	And User clicks on "Back" button
-	And "Kalendarz miesięczny" screen "<switch>" is displayed correctly
+	And "Kalendarz miesięczny" screen "Poprzedni przedział czasowy" is displayed correctly
