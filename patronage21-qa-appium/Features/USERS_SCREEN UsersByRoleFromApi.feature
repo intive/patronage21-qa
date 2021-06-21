@@ -6,7 +6,7 @@ Feature: USERS_SCREEN UsersByRoleFromApi
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-470
 #Task in Android Team: https://tracker.intive.com/jira/browse/IP2-339
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1010
 Scenario Outline: USERS_SCREEN_1_IP2-339_users_lists_data_from_api_loaded_correctly
 	Given User is on "Użytkownicy" screen
 	And Existing user "<user>" assigned to "<list>" list
