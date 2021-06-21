@@ -90,5 +90,5 @@ jobs:
     - name: Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: RestSharpJava-Reports
+        name: SeleniumProject-Reports
         path: ./SeleniumProject/bin/Debug/net5.0/index.html
