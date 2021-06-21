@@ -1,4 +1,5 @@
-﻿Feature: GRADEBOOK_SCREEN
+﻿@ignore
+Feature: GRADEBOOK_SCREEN
 	User wants to see other
 	participants and his own grades
 #Task in QA Team: https://tracker.intive.com/jira/browse/IP2-285
@@ -11,7 +12,6 @@ Background:
 Scenario: GRADEBOOK_SCREEN_1_IP2-232_screen_displayed_correctly
 	Then User sees "Dzienniczek" screen
 	
-
 # zephyr link
 Scenario: GRADEBOOK_SCREEN_2_IP2-232_navigate_to_screen_and_back
 	When User clicks "Dodaj kolumnę"
