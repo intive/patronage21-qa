@@ -17,8 +17,8 @@ Scenario: CALENDAR_WEEK_SCREEN_1_IP2-208_screen_displayed_correctly
 # zephyr link
 Scenario Outline: CALENDAR_WEEK_SCREEN_2_IP2-208_change_viewed_time_interval
 	Given User is on "Kalendarz tygodniowy" screen
-	And User clicks "<switch>"
-	And "Kalendarz tygodniowy" screen "<switch>" is displayed correctly
+	When User clicks "<switch>"
+	Then "Kalendarz tygodniowy" screen "<switch>" is displayed correctly
 
 	Examples: 
 	| switch                      |
@@ -30,14 +30,14 @@ Scenario: CALENDAR_WEEK_SCREEN_3_IP2-208_navigate_to_add_event_screen_and_back
 	Given User is on "Kalendarz tygodniowy" screen
 	When User clicks "Data z wydarzeniem"
 	And User clicks on "Back" button
-	When User clicks "Dodaj wydarzenie"
+	And User clicks "Dodaj wydarzenie"
 	And User clicks on "Back" button
 	Then User sees "Kalendarz tygodniowy" screen
 	
 # zephyr link
 Scenario: CALENDAR_WEEK_SCREEN_4_IP2-208_change_viewed_time_interval_view_event_and_back
 	Given User is on "Kalendarz tygodniowy" screen
-	And User clicks "Poprzedni przedział czasowy"
-	When User clicks "Data z wydarzeniem"
+	When User clicks "Poprzedni przedział czasowy"
+	And User clicks "Data z wydarzeniem"
 	And User clicks on "Back" button
-	And "Kalendarz tygodniowy" screen "<switch>" is displayed correctly
+	Then "Kalendarz tygodniowy" screen "<switch>" is displayed correctly
