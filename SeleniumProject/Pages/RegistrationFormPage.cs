@@ -12,6 +12,15 @@ namespace SeleniumProject.Pages
             this.driver = driver;
         }
 
+        private By titleXPath = By.XPath(".//*[@id='title-select']");
+        public IWebElement titleListBox => driver.FindElement(titleXPath);
+
+        private By firstTitleXPath = By.XPath(".//*[text()='Pan']//parent::li");
+        public IWebElement firstTitle => driver.FindElement(firstTitleXPath);
+
+        private By errorMessageAboutTitleXPath = By.XPath(".//*[text()='Uzupełnij zwrot grzecznościowy']");
+        public IWebElement errorMessageAboutTitle => driver.FindElement(errorMessageAboutTitleXPath);
+
         private By firstNameXPath = By.XPath(".//*[@name='firstName']");
         public IWebElement txtFirstName => driver.FindElement(firstNameXPath);
 
@@ -104,6 +113,12 @@ namespace SeleniumProject.Pages
 
         private By technologies = By.XPath(".//*[contains(text(),'Można wybrać tylko 3 technologie.')]");
         public IWebElement errorAboutTechnologies => driver.FindElement(technologies);
+
+        public void ChooseUserTitle()
+        {
+            titleListBox.Click();
+            firstTitle.Click();
+        }
 
         public void RegistrationFormWithData(string firstName, string lastName, string email, Nullable<int> phone, string githubLink, string login, string password, string passwordConfirm)
         {

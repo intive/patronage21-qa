@@ -30,6 +30,13 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJS.runsettings 
       working-directory: ./RestSharpJS
+         
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      if: ${{always()}}
+      with:
+        name: RestSharpJS-Reports
+        path: ./RestSharpJS/bin/Debug/net5.0/index.html
       
   build_restsharp_java:
 
@@ -53,6 +60,13 @@ jobs:
       run: dotnet test --no-build --verbosity normal --settings:ApiHerokuJava.runsettings
       working-directory: ./RestSharpJava
       
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      if: ${{always()}}
+      with:
+        name: RestSharpJava-Reports
+        path: ./RestSharpJava/bin/Debug/net5.0/index.html
+      
   build_selenium:
   
     runs-on: windows-latest
@@ -70,7 +84,14 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       working-directory: ./SeleniumProject
-      
+            
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:PatronativePage.runsettings
       working-directory: ./SeleniumProject
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      if: ${{always()}}
+      with:
+        name: SeleniumProject-Reports
+        path: ./SeleniumProject/Reports/index.html
