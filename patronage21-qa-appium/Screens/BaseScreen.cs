@@ -84,6 +84,13 @@ namespace patronage21_qa_appium.Screens
             { "Zamknij", "//android.widget.Button[@text='Zamknij']" },
         };
 
+        private static Dictionary<string, string> _registerFailedXpathDict = new()
+        {
+            { "Nagłówek", "//android.view.View[@text='Wystąpił błąd']" },
+            { "Opis", "//android.view.View[@text='Problem z połączeniem internetowym, spróbuj ponownie później']" },
+            { "Strona główna", "//android.widget.Button[@text='Strona główna']" },
+        };
+
         private static Dictionary<string, string> _usersXpathDict = new()
         {
             { "Nagłówek", "//android.view.View[@text='Użytkownicy']" },
@@ -231,6 +238,7 @@ namespace patronage21_qa_appium.Screens
             { "Aktywacja", _activationXpathDict },
             { "Wyślij ponownie kod", _resendCodeXpathDict },
             { "Potwierdzenie rejestracji", _registerSubmitXpathDict },
+            { "Rejestracja nieudana", _registerFailedXpathDict },
             { "Użytkownicy", _usersXpathDict },
             { "Szczegóły użytkownika", _userDetailsXpathDict },
             { "Dezaktywacja", _deactivationXpathDict },
