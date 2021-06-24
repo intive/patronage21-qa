@@ -12,7 +12,6 @@ Background:
 
 # zephyr link
 Scenario: CALENDAR_WEEK_SCREEN_1_IP2-208_screen_displayed_correctly
-	And User navigates to "Dezaktywacja" screen through "<way>"
 	Then User sees "Kalendarz widok tygodniowy" screen
 	And "Kalendarz tygodniowy" screen is displayed correctly
 
