@@ -8,11 +8,11 @@ Feature: GRADEBOOK_SCREEN
 Background: 
 	Given User is on "Dzienniczek" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1025
 Scenario: GRADEBOOK_SCREEN_1_IP2-232_screen_displayed_correctly
 	Then User sees "Dzienniczek" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1026
 Scenario: GRADEBOOK_SCREEN_2_IP2-232_navigate_to_screen_and_back
 	When User clicks "Dodaj kolumnę"
 	And User clicks "Back" button
