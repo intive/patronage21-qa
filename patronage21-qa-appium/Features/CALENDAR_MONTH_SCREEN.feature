@@ -10,12 +10,12 @@ Feature: CALENDAR_MONTH_SCREEN
 Background: 
 	Given User is on "Kalendarz miesięczny" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1040
 Scenario: CALENDAR_MONTH_SCREEN_1_IP2-208_screen_displayed_correctly
 	Then User sees "Kalendarz widok miesięczny" screen
 	And "Kalendarz miesięczny" screen is displayed correctly
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1041
 Scenario Outline: CALENDAR_MONTH_SCREEN_2_IP2-208_change_viewed_time_interval
 	When User clicks "<switch>"
 	Then "Kalendarz miesięczny" screen "<switch>" is displayed correctly
@@ -25,7 +25,7 @@ Scenario Outline: CALENDAR_MONTH_SCREEN_2_IP2-208_change_viewed_time_interval
 	| Poprzedni przedział czasowy |
 	| Kolejny przedział czasowy   |
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1042
 Scenario: CALENDAR_MONTH_SCREEN_3_IP2-208_navigate_to_screen_and_back
 	When User clicks "Data z wydarzeniem"
 	And User clicks on "Back" button
@@ -33,7 +33,7 @@ Scenario: CALENDAR_MONTH_SCREEN_3_IP2-208_navigate_to_screen_and_back
 	And User clicks on "Back" button
 	Then User sees "Kalendarz miesięczny" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1043
 @ignore
 Scenario: CALENDAR_MONTH_SCREEN_4_IP2-208_leave_screen_and_come_back
 	When User clicks on "Back" button
@@ -41,7 +41,7 @@ Scenario: CALENDAR_MONTH_SCREEN_4_IP2-208_leave_screen_and_come_back
 	Then User sees "Kalendarz miesięczny" screen
 	And Spinner is set to "Miesiąc"
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1044
 Scenario Outline: CALENDAR_MONTH_SCREEN_5_IP2-208_change_viewed_time_interval_view_event_and_back
 	When User clicks "<switch>"
 	And User clicks "Data z wydarzeniem"
