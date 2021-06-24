@@ -8,21 +8,21 @@ Feature: CALENDAR_CREATE_EVENT_SCREEN
 Background: 
 	Given User is on "Dodaj nowe wydarzenie" screen
 
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1027
 Scenario: CALENDAR_CREATE_EVENT_SCREEN_1_IP2-212_screen_displayed_correctly
 	Then User sees "Dodaj nowe wydarzenie" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1028
 Scenario: CALENDAR_CREATE_EVENT_SCREEN_2_IP2-212_incorrect_submit_form_no_title
 	When User submits correct form but with no title provided
 	Then User sees "Dodaj nowe wydarzenie" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1029
 Scenario: CALENDAR_CREATE_EVENT_SCREEN_3_IP2-212_incorrect_submit_form_no_tech_groups_selected
 	When User submits correct form but with no tech groups selected
 	Then User sees "Dodaj nowe wydarzenie" screen
 	
-# zephyr link
+# https://tracker.intive.com/jira/browse/IP2-1030
 Scenario: CALENDAR_CREATE_EVENT_SCREEN_4_IP2-212_correct_submit_form_all_tech_groups_selected
 	When User writes "title" to "Nazwa wydarzenia" field
 	And User clicks "Java checkbox"
@@ -32,8 +32,8 @@ Scenario: CALENDAR_CREATE_EVENT_SCREEN_4_IP2-212_correct_submit_form_all_tech_gr
 	And User clicks "Zatwierdź"
 	Then User sees "Kalendarz tydzień" screen
 	
-# zephyr link
-Scenario: CALENDAR_CREATE_EVENT_SCREEN_5_IP2-212_incorrect_datetime_provided
+# https://tracker.intive.com/jira/browse/IP2-1031
+Scenario Outline: CALENDAR_CREATE_EVENT_SCREEN_5_IP2-212_incorrect_datetime_provided
 	When User writes "title" to "Nazwa wydarzenia" field
 	And User clicks "Java checkbox"
 	And User sets "Od data" month "<begin_month>" day "<begin_day>"
@@ -53,8 +53,8 @@ Examples:
 | next        | 15        | 15         | 30           | next      | 14      | 15       | 30         |
 | next        | 15        | 15         | 30           | previous  | 15      | 15       | 30         |
 	
-# zephyr link
-Scenario: CALENDAR_CREATE_EVENT_SCREEN_6_IP2-212_correct_datetime_provided
+# https://tracker.intive.com/jira/browse/IP2-1032
+Scenario Outline: CALENDAR_CREATE_EVENT_SCREEN_6_IP2-212_correct_datetime_provided
 	When User writes "title" to "Nazwa wydarzenia" field
 	And User clicks "Java checkbox"
 	And User sets "Od data" month "<begin_month>" day "<begin_day>"
