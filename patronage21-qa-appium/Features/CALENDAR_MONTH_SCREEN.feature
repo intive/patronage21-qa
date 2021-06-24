@@ -16,8 +16,8 @@ Scenario: CALENDAR_MONTH_SCREEN_1_IP2-208_screen_displayed_correctly
 # zephyr link
 Scenario Outline: CALENDAR_MONTH_SCREEN_2_IP2-208_change_viewed_time_interval
 	Given User is on "Kalendarz miesięczny" screen
-	And User clicks "<switch>"
-	And "Kalendarz miesięczny" screen "<switch>" is displayed correctly
+	When User clicks "<switch>"
+	Then "Kalendarz miesięczny" screen "<switch>" is displayed correctly
 
 	Examples: 
 	| switch                      |
@@ -43,9 +43,14 @@ Scenario: CALENDAR_MONTH_SCREEN_4_IP2-208_leave_screen_and_come_back
 	And Spinner is set to "Miesiąc"
 	
 # zephyr link
-Scenario: CALENDAR_MONTH_SCREEN_5_IP2-208_change_viewed_time_interval_view_event_and_back
+Scenario Outline: CALENDAR_MONTH_SCREEN_5_IP2-208_change_viewed_time_interval_view_event_and_back
 	Given User is on "Kalendarz miesięczny" screen
-	And User clicks "Poprzedni przedział czasowy"
-	When User clicks "Data z wydarzeniem"
+	When User clicks "<switch>"
+	And User clicks "Data z wydarzeniem"
 	And User clicks on "Back" button
-	And "Kalendarz miesięczny" screen "Poprzedni przedział czasowy" is displayed correctly
+	Then "Kalendarz miesięczny" screen "<switch>" is displayed correctly
+
+	Examples: 
+	| switch                      |
+	| Poprzedni przedział czasowy |
+	| Kolejny przedział czasowy   |
