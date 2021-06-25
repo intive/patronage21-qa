@@ -5,8 +5,8 @@ Feature: IP2-546Calendar_Evets_View
 #Link JS: https://tracker.intive.com/jira/browse/IP2-546
 #Link QA: https://tracker.intive.com/jira/browse/IP2-648
 
-Background
-User can see calendar
+Background:
+Given User can see calendar
 
 #Link to Zephyr1
 Scenario: CALENDAR_EVENTS_VIEW_1_IP2-546_User_can_see_details_of_event
