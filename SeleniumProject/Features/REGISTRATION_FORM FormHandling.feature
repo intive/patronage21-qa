@@ -1,11 +1,10 @@
-﻿@ignore
-Feature: REGISTRATION_FORM FormHandling
+﻿Feature: REGISTRATION_FORM FormHandling
 	
 # link JS: https://tracker.intive.com/jira/browse/IP2-293
 # link QA: https://tracker.intive.com/jira/browse/IP2-315
 
 Background:
-Given The user passed through the form correctly
+Given The user is on the registration page
 
 #https://tracker.intive.com/jira/browse/IP2-710
 Scenario: REGISTRATION_FORM_STEP_1_IP2_293_Verification_site_is_visible
